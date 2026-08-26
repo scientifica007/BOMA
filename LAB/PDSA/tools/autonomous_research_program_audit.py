@@ -12,6 +12,7 @@ POLICY_PATH = ROOT / "LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json"
 STATE_PATH = ROOT / "LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json"
 AGENTS_PATH = ROOT / "AGENTS.md"
 STATUS_PATH = ROOT / "LAB/PDSA/STATUS.md"
+BASELINE_AUDIT_PATH = ROOT / "LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md"
 
 errors: list[str] = []
 
@@ -116,6 +117,31 @@ else:
     if isinstance(queue, list) and queue:
         require(queue[state.get("queue_cursor", 0)] in status, "STATUS.md must expose the current authorized queue frontier")
 
+if current_state == "TRANSITION_GATE":
+    transition = state.get("program_transition")
+    require(isinstance(transition, dict), "TRANSITION_GATE requires program_transition object")
+    transition = transition if isinstance(transition, dict) else {}
+    from_experiment = transition.get("from_experiment")
+    to_candidate = transition.get("to_candidate")
+    require(state.get("active_experiment") is None, "TRANSITION_GATE cannot have an active experiment")
+    require(state.get("active_experiment_branch") is None, "TRANSITION_GATE cannot have an active experiment branch")
+    require(state.get("active_frozen_plan") is None, "TRANSITION_GATE cannot have an active Frozen Plan")
+    require(state.get("active_frozen_plan_sha") is None, "TRANSITION_GATE cannot have an active Frozen Plan SHA")
+    require(transition.get("transition_decision_recorded") is False, "TRANSITION_GATE baseline must not pre-record a transition decision")
+    require(isinstance(queue, list) and from_experiment in queue, "TRANSITION_GATE from_experiment must be in authorized queue")
+    require(isinstance(queue, list) and to_candidate in queue, "TRANSITION_GATE to_candidate must be in authorized queue")
+    if isinstance(queue, list) and from_experiment in queue and to_candidate in queue:
+        from_index = queue.index(from_experiment)
+        to_index = queue.index(to_candidate)
+        require(to_index == from_index + 1, "TRANSITION_GATE candidate must be the immediate next authorized queue entry")
+        require(state.get("queue_cursor") == from_index, "TRANSITION_GATE queue_cursor must remain on the completed source experiment until decision")
+    sync_sha = state.get("synchronized_main_sha")
+    require(isinstance(sync_sha, str) and re.fullmatch(r"[0-9a-f]{40}", sync_sha) is not None, "TRANSITION_GATE requires synchronized_main_sha")
+    baseline_rel = state.get("baseline_integrity_audit")
+    require(baseline_rel == "LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md", "unexpected baseline_integrity_audit path")
+    require(BASELINE_AUDIT_PATH.exists(), "TRANSITION_GATE baseline integrity audit file is missing")
+    require(str(from_experiment) in status and str(to_candidate) in status, "STATUS.md must expose both sides of the transition gate")
+
 if current_state == "OWNER_REQUIRED":
     require(bool(state.get("owner_required_reason")), "OWNER_REQUIRED must record a reason")
 
@@ -123,6 +149,7 @@ required_agent_markers = [
     "AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md",
     "AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json",
     "AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json",
+    "BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md",
     "AMBIGUOUS AUTHORITY",
     "OWNER_REQUIRED",
 ]
@@ -132,6 +159,7 @@ for marker in required_agent_markers:
 required_status_markers = [
     "AUTONOMOUS RESEARCH PROGRAM",
     "ST2-EXP-004",
+    "ST2-EXP-014",
 ]
 for marker in required_status_markers:
     require(marker in status, f"STATUS.md missing autonomous-governance marker: {marker}")
