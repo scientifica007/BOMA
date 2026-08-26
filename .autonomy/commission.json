@@ -1,17 +1,24 @@
 {
   "schema": "BOMA-AUTONOMY-COMMISSION-002",
-  "passed": false,
-  "main_anchor_sha": null,
-  "probe_head_sha": null,
-  "branch_push": false,
-  "pull_request_create": false,
-  "pull_request_ci": false,
+  "passed": true,
+  "main_anchor_sha": "0df754ed6af21b0251162ec72a7e29215996518e",
+  "probe_head_sha": "e53726faa49cdd091c1a0260f5e6167fa2fffb39",
+  "branch_push": true,
+  "pull_request_create": true,
+  "pull_request_ci": true,
   "guard_workflow": "BOMA Autonomy Exact-Head Guard 001",
-  "guard_workflow_run": null,
-  "pull_request_close": false,
-  "temporary_pr_number": null,
+  "guard_workflow_run": {
+    "conclusion": "success",
+    "databaseId": 33011456501,
+    "headSha": "e53726faa49cdd091c1a0260f5e6167fa2fffb39",
+    "status": "completed",
+    "url": "https://github.com/scientifica007/BOMA/actions/runs/33011456501",
+    "workflowName": "BOMA Autonomy Exact-Head Guard 001"
+  },
+  "pull_request_close": true,
+  "temporary_pr_number": 7,
   "research_content_changed": false,
   "research_decision_made": false,
-  "completed_at": null,
-  "error": "Generation 001 commission intentionally invalidated; Generation 002 must recommission after Meta-PDSA repair merge."
+  "completed_at": "2026-08-26T20:39:22+00:00",
+  "error": null
 }
