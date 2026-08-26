@@ -1,9 +1,10 @@
 # STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001 — Controlled Research Laboratory
 
-**Status:** `ST2-EXP-001..004 + ST2-EXP-011 CLOSED / PASS / LESSONS INTEGRATED / ST2-RP-001 OWNER_AUTHORIZED / ST2-EXP-014 STUDY_ACT PASS / CLOSING / FINAL EXACT CI PENDING`  
+**Status:** `ST2-EXP-001..004 + ST2-EXP-011 + ST2-EXP-014 CLOSED / PASS / ST2-RP-001 OWNER_AUTHORIZED / TRANSITION_GATE 014→015 / ST2-EXP-015 AUTHORIZED QUEUED NOT STARTED`  
 **Prerequisites:** `CA-20 ACCEPT`, `RE-C-001 COMPLETE`, `RE-STAGE1-001 COMPLETE`  
 **Frozen-reference discipline:** every experiment freezes its accepted baseline independently; historical Plans/Study/Act/failure/closure records are immutable.  
-**Current program authority:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`.
+**Current program authority:** `LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md`.  
+**Synchronized pre-autonomy main:** `2a6c38af70e596c840ef2db4733421bde38f3ee5`.
 
 ---
 
@@ -12,24 +13,23 @@
 ```text
 AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED
 AUTHORIZED QUEUE: ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
-ACTIVE EXPERIMENT: ST2-EXP-014
-ACTIVE STATE: CLOSING
-FROZEN PLAN: LAB/PDSA/PDSA-ST2-EXP-014_CAUCHY_NATIVE_FULL_C.md
-FROZEN PLAN COMMIT: 788ae14649f3245fd8d6ccd43f90038ffba7762b
-FROZEN REFERENCE: fff2400b65b2c9a260fb28defd907ce24387cb80
-RESEARCH BRANCH: feature/stage-two-st2-exp-014-cauchy-native-full-c
-FINAL STUDY/ACT: LAB/PDSA/experiments/ST2-EXP-014_FINAL_STUDY_ACT_001.md / PASS / VERIFIED HEAD 1e08cb127fc6aa5483706a913d24932f4d6a1f31
-LIFECYCLE CLOSURE: LAB/PDSA/experiments/ST2-EXP-014_LIFECYCLE_CLOSURE_001.md / EFFECTIVE ONLY AFTER EXACT CLOSURE-HEAD PASS
-NEXT EXPERIMENT: ST2-EXP-015 / AUTHORIZED / QUEUED / WAITING 014 EXACT CLOSURE + TRANSITION GATE
+ACTIVE EXPERIMENT: NONE
+ACTIVE STATE: TRANSITION_GATE
+LATEST COMPLETED: ST2-EXP-014 / CLOSED / PASS
+014 EXACT CLOSURE HEAD: 19cc6541457b3e8c58ea4607198d2474cd293dc9 / VERIFIED
+014 ROUTINE MERGE: 2a6c38af70e596c840ef2db4733421bde38f3ee5 / COMPLETE
+NEXT EXPERIMENT: ST2-EXP-015 / AUTHORIZED / QUEUED / NOT STARTED
+015 RESEARCH BRANCH: NONE
+015 FROZEN PLAN: NONE
 ROUTINE MERGE AUTHORITY: TRUE WITHIN EXACT PROGRAM-SCOPE GATES
-REQUIRED NEXT ACT: exact 014 lifecycle-closure-head CI → routine merge exact verified head if all gates pass → re-read main → transition gate
+REQUIRED NEXT ACT: re-read synchronized main → evaluate exact 014→015 TRANSITION_GATE → start/freeze 015 only after AUTO_CONTINUE
 ```
 
-`ST2-EXP-014` changes only the scalar producer supplied to selected C Route P:
-accepted Dedekind `RBOMA` is replaced by independently verified Cauchy `RCBOMA`.
+`ST2-EXP-014` changed only the scalar producer supplied to selected C Route P:
+accepted Dedekind `RBOMA` was replaced by independently verified Cauchy `RCBOMA`.
 The C Route-P meaning, nine accepted C Claim meanings, accepted sources,
 relation/function firewall, witness-only inversion, and selected/accepted
-architecture remain controls.
+architecture remained controls.
 
 The Frozen Plan was committed alone at `788ae14649f3245fd8d6ccd43f90038ffba7762b`
 before Do. The verified result reuses H6 seven-Claim mathematics and
@@ -40,14 +40,16 @@ H5/Dedekind transport.
 Final Study/Act at `1e08cb127fc6aa5483706a913d24932f4d6a1f31` passed exact V5
 (run `32873847016`, job `97886976028`, artifact `9573108354`, digest
 `sha256:31259ff1547842f165be99ee8c913453df002b64eb49c34ae99561ad3fb92e73`).
-The lifecycle closure record remains fail-closed until the exact commit
-containing it passes independently.
+The exact closure head `19cc6541457b3e8c58ea4607198d2474cd293dc9`
+then passed the required exact V5, lifecycle-closure, governance, and PR control
+checks and was routine-merged as
+`2a6c38af70e596c840ef2db4733421bde38f3ee5` with no content-tree drift.
 
 ### Immutable historical ST2-EXP-004 final sentinel
 
 The following literals describe the closed 004 lifecycle's own final frontier.
 Historical read-only 004 audits may match them; they do **not** override the
-later owner-authorized current program and active 014 state:
+later owner-authorized current program and current `TRANSITION_GATE` state:
 
 ```text
 NEXT EXPERIMENT: NOT AUTHORIZED
@@ -66,9 +68,7 @@ AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM
 | `ST2-EXP-003` | `DECISION_POINT / R-DP-001` | `PDSA-ST2-EXP-003_INDEPENDENT_CAUCHY_REAL_ROUTE.md` | `CLOSED / PASS / INTEGRATED` | none; Dedekind remains selected, Cauchy evidence remains research-only |
 | `ST2-EXP-011` | `BLOCK / C-COMPARE-BLOCK-001` | `PDSA-ST2-EXP-011_C_COMPARISON_INTERFACE_GENERALIZATION.md` | `CLOSED / PASS / INTEGRATED` | no accepted refactor; comparison-interface lesson integrated |
 | `ST2-EXP-004` | `DECISION_POINT / R-DP-003` | `PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md` | `CLOSED / PASS / ARCHITECTURE LESSON INTEGRATED` | none; Stage-I localized classical totality provider retained |
-
-`ST2-EXP-014` is not moved into this completed table until exact closure-head
-verification succeeds and the exact verified research head is routine-merged.
+| `ST2-EXP-014` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | `PDSA-ST2-EXP-014_CAUCHY_NATIVE_FULL_C.md` | `CLOSED / PASS / EXACT HEAD VERIFIED / ROUTINE MERGED` | none; full nine-Claim Cauchy Route-P research surface retained |
 
 ---
 
@@ -81,8 +81,8 @@ preserved and their IDs are not reused.
 
 | Order | ID | Architectural origin | Intended single change | State |
 | ---: | --- | --- | --- | --- |
-| 1 | `ST2-EXP-014` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | selected C Route-P scalar producer `RBOMA/Dedekind` → independently verified `RCBOMA/Cauchy`; C Route-P meaning fixed | `STUDY_ACT PASS / CLOSING / FINAL EXACT CI PENDING` |
-| 2 | `ST2-EXP-015` | `DECISION_POINT / C-DP-001` | with Cauchy scalar producer fixed, C realization Route P → Route Q | `OWNER_AUTHORIZED / QUEUED / WAITING 014 EXACT CLOSURE + TRANSITION` |
+| 1 | `ST2-EXP-014` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | selected C Route-P scalar producer `RBOMA/Dedekind` → independently verified `RCBOMA/Cauchy`; C Route-P meaning fixed | `CLOSED / PASS / EXACT HEAD VERIFIED / ROUTINE MERGED` |
+| 2 | `ST2-EXP-015` | `DECISION_POINT / C-DP-001` | with Cauchy scalar producer fixed, C realization Route P → Route Q | `OWNER_AUTHORIZED / QUEUED / NOT STARTED / 014→015 TRANSITION_GATE PENDING` |
 | 3 | `ST2-EXP-016` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | production `orderTotal` → one exact frozen non-order algebraic nondegeneracy condition | `OWNER_AUTHORIZED / QUEUED / WAITING TRANSITION` |
 | 4 | `ST2-EXP-017` | `DEPENDENCY_EDGE / BOMA-C-R-DEP-001` | concrete real scalar specialization → abstract field `K` satisfying exactly the interface verified by 016 | `OWNER_AUTHORIZED / QUEUED / WAITING TRANSITION` |
 
@@ -92,7 +92,7 @@ authorization record.
 
 ---
 
-## ST2-EXP-014 authority — current closing experiment
+## ST2-EXP-014 authority — closed experiment
 
 ```text
 origin                         DEPENDENCY_EDGE / BOMA-C-R-DEP-001
@@ -105,6 +105,8 @@ changed factor                 C Route-P scalar producer: Dedekind RBOMA → Cau
 Final Study/Act                LAB/PDSA/experiments/ST2-EXP-014_FINAL_STUDY_ACT_001.md
 verified Study/Act head        1e08cb127fc6aa5483706a913d24932f4d6a1f31
 lifecycle closure              LAB/PDSA/experiments/ST2-EXP-014_LIFECYCLE_CLOSURE_001.md
+exact closure head             19cc6541457b3e8c58ea4607198d2474cd293dc9
+routine merge commit           2a6c38af70e596c840ef2db4733421bde38f3ee5
 mathematical result            PASS / NINE-CLAIM NATIVE CAUCHY SURFACE VERIFIED
 sequence-critical prerequisite NONE DISCOVERED / F14 NOT TRIGGERED
 accepted promotion             NONE / NOT AUTHORIZED
@@ -123,7 +125,9 @@ H6, the 011 generic/native Cauchy comparison sources, and the 014 integration
 source. Exact verification excludes H5 `cToD/dToC`, selected Dedekind/RStage
 implementation producers, and the accepted-RBOMA 011 adapter.
 
-The exact closure head must re-establish these properties before routine merge.
+The lifecycle is closed. The post-merge program frontier is the fail-closed
+`014→015` transition gate; no 015 Plan or research branch is created by this
+record.
 
 ---
 
