@@ -140,6 +140,12 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
         for i in range(8):
             self.assertIn(f"## FILE synthetic/{i}.txt", user)
 
+    def test_transition_direct_decision_is_preserved(self) -> None:
+        raw = {"decision": "AUTO_CONTINUE", "rationale": "synthetic"}
+        normalized = provider.canonicalize_role_response("transition_auditor", raw)
+        self.assertEqual(normalized["decision"], "AUTO_CONTINUE")
+        self.assertEqual(normalized["rationale"], "synthetic")
+
     def test_transition_response_alias_is_narrowly_canonicalized(self) -> None:
         raw = {
             "audit_result": "OWNER_REQUIRED",
@@ -150,21 +156,103 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
         self.assertNotIn("audit_result", normalized)
         self.assertEqual(raw["audit_result"], "OWNER_REQUIRED")
 
-    def test_transition_response_conflict_fails_closed(self) -> None:
+    def test_transition_exact_wrapper_decision_is_flattened(self) -> None:
+        raw = {
+            "ok": True,
+            "transition_gate_evaluation": {
+                "decision": "AUTO_CONTINUE",
+                "rationale": "synthetic wrapped decision",
+                "sequence_critical_prerequisite_discovered": False,
+            },
+        }
+        normalized = provider.canonicalize_role_response("transition_auditor", raw)
+        self.assertTrue(normalized["ok"])
+        self.assertEqual(normalized["decision"], "AUTO_CONTINUE")
+        self.assertEqual(normalized["rationale"], "synthetic wrapped decision")
+        self.assertFalse(normalized["sequence_critical_prerequisite_discovered"])
+        self.assertNotIn("transition_gate_evaluation", normalized)
+
+    def test_transition_exact_wrapper_alias_is_flattened(self) -> None:
+        raw = {
+            "transition_gate_evaluation": {
+                "audit_result": "OWNER_REQUIRED",
+                "owner_required_reason": "synthetic",
+            },
+        }
+        normalized = provider.canonicalize_role_response("transition_auditor", raw)
+        self.assertEqual(normalized["decision"], "OWNER_REQUIRED")
+        self.assertEqual(normalized["owner_required_reason"], "synthetic")
+        self.assertNotIn("audit_result", normalized)
+
+    def test_transition_response_alias_conflict_fails_closed(self) -> None:
         with self.assertRaises(core.GovernanceError):
             provider.canonicalize_role_response(
                 "transition_auditor",
                 {"decision": "AUTO_CONTINUE", "audit_result": "OWNER_REQUIRED"},
             )
 
-    def test_transition_response_unknown_alias_value_is_not_promoted(self) -> None:
-        raw = {"audit_result": "PASS"}
-        normalized = provider.canonicalize_role_response("transition_auditor", raw)
-        self.assertNotIn("decision", normalized)
-        self.assertEqual(normalized["audit_result"], "PASS")
+    def test_transition_direct_envelope_conflict_fails_closed(self) -> None:
+        with self.assertRaises(core.GovernanceError):
+            provider.canonicalize_role_response(
+                "transition_auditor",
+                {
+                    "decision": "AUTO_CONTINUE",
+                    "transition_gate_evaluation": {"decision": "OWNER_REQUIRED"},
+                },
+            )
+
+    def test_transition_wrapper_field_conflict_fails_closed(self) -> None:
+        with self.assertRaises(core.GovernanceError):
+            provider.canonicalize_role_response(
+                "transition_auditor",
+                {
+                    "decision": "AUTO_CONTINUE",
+                    "rationale": "top",
+                    "transition_gate_evaluation": {
+                        "decision": "AUTO_CONTINUE",
+                        "rationale": "wrapped",
+                    },
+                },
+            )
+
+    def test_transition_unknown_value_fails_closed(self) -> None:
+        with self.assertRaises(core.GovernanceError):
+            provider.canonicalize_role_response(
+                "transition_auditor",
+                {"audit_result": "PASS"},
+            )
+
+    def test_transition_malformed_wrapper_fails_closed(self) -> None:
+        with self.assertRaises(core.GovernanceError):
+            provider.canonicalize_role_response(
+                "transition_auditor",
+                {"transition_gate_evaluation": "AUTO_CONTINUE"},
+            )
+
+    def test_transition_wrapper_without_decision_fails_closed(self) -> None:
+        with self.assertRaises(core.GovernanceError):
+            provider.canonicalize_role_response(
+                "transition_auditor",
+                {"transition_gate_evaluation": {"rationale": "missing decision"}},
+            )
+
+    def test_transition_recursive_wrapper_fails_closed(self) -> None:
+        with self.assertRaises(core.GovernanceError):
+            provider.canonicalize_role_response(
+                "transition_auditor",
+                {
+                    "transition_gate_evaluation": {
+                        "decision": "AUTO_CONTINUE",
+                        "transition_gate_evaluation": {"decision": "AUTO_CONTINUE"},
+                    }
+                },
+            )
 
     def test_non_transition_response_is_untouched(self) -> None:
-        raw = {"audit_result": "OWNER_REQUIRED"}
+        raw = {
+            "transition_gate_evaluation": {"decision": "OWNER_REQUIRED"},
+            "audit_result": "OWNER_REQUIRED",
+        }
         normalized = provider.canonicalize_role_response("planner", raw)
         self.assertEqual(normalized, raw)
 
