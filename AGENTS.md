@@ -9,6 +9,7 @@ Read, in order:
 ```text
 README.md
 LAB/PDSA/STATUS.md
+LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json
@@ -22,6 +23,8 @@ LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_001.md
 LAB/PDSA/PDSA-ST2-EXP-004_R_TOTAL_ORDER_LOGICAL_REGIME.md
 LAB/PDSA/experiments/ST2-EXP-004_FINAL_STUDY_ACT_001.md
 LAB/PDSA/experiments/ST2-EXP-004_LIFECYCLE_CLOSURE_001.md
+LAB/PDSA/experiments/ST2-EXP-014_FINAL_STUDY_ACT_001.md
+LAB/PDSA/experiments/ST2-EXP-014_LIFECYCLE_CLOSURE_001.md
 LAB/00_ARCHITECTURE/GRAPH.md
 LAB/00_ARCHITECTURE/REGISTRY.md
 LAB/00_ARCHITECTURE/R_DAG.md
@@ -57,12 +60,18 @@ C comparison          C-COMPARE-BLOCK-001 / five scalar ops + coordinate laws
 C alternative         C-ROUTE-Q PERMANENT VERIFIED / NON-SELECTED
 C alt Junction        ST2-EXP-002-PQ-J-001 / NON-ACCEPTANCE
 ST2-EXP-001..004+011  CLOSED / PASS / VERIFIED LESSONS INTEGRATED
+ST2-EXP-014           CLOSED / PASS / EXACT CLOSURE VERIFIED / ROUTINE MERGED
 ACTIVE EXPERIMENT     NONE
-AUTONOMOUS PROGRAM    ST2-RP-001 / OWNER_AUTHORIZED / PROGRAM_READY
+AUTONOMOUS PROGRAM    ST2-RP-001 / OWNER_AUTHORIZED
+ACTIVE STATE          TRANSITION_GATE
 AUTHORIZED QUEUE      ST2-EXP-014 → ST2-EXP-015 → ST2-EXP-016 → ST2-EXP-017
-NEXT EXPERIMENT       ST2-EXP-014 / AUTHORIZED / NO FROZEN PLAN
+TRANSITION            ST2-EXP-014 → ST2-EXP-015 / DECISION NOT YET RECORDED
+NEXT CANDIDATE        ST2-EXP-015 / AUTHORIZED / QUEUED / NOT STARTED
+015 BRANCH            NONE
+015 FROZEN PLAN       NONE
+SYNCHRONIZED MAIN     2a6c38af70e596c840ef2db4733421bde38f3ee5
 ROUTINE MERGE         TRUE / EXACT PROGRAM-SCOPE GATES ONLY
-REQUIRED NEXT ACT     merge+verify program authority → re-read main → freeze independent 014 Plan
+REQUIRED NEXT ACT     re-read synchronized main → evaluate 014→015 transition gate
 ```
 
 Historical proposed IDs `ST2-EXP-005..013` remain candidate history and are not
@@ -80,11 +89,15 @@ B. exact scope of an OWNER_AUTHORIZED autonomous research program
 The current autonomous-program machine state is:
 
 ```text
-state = PROGRAM_READY
+state = TRANSITION_GATE
 active_program_id = ST2-RP-001
 authorized_experiment_queue = [ST2-EXP-014, ST2-EXP-015, ST2-EXP-016, ST2-EXP-017]
 queue_cursor = 0
 active_experiment = null
+transition_from = ST2-EXP-014
+transition_candidate = ST2-EXP-015
+transition_decision_recorded = false
+synchronized_main_sha = 2a6c38af70e596c840ef2db4733421bde38f3ee5
 routine_merge_authorized = true
 ```
 
@@ -330,7 +343,7 @@ these selected/accepted facts remain controls.
 
 ## 11. Stage-Two lifecycle rule
 
-Closed and integrated:
+Closed and integrated/retained:
 
 ```text
 ST2-EXP-001
@@ -338,15 +351,18 @@ ST2-EXP-002
 ST2-EXP-003
 ST2-EXP-011
 ST2-EXP-004
+ST2-EXP-014 / CLOSED PASS / research-only evidence retained
 ```
 
 Current program:
 
 ```text
-ST2-RP-001 OWNER_AUTHORIZED / PROGRAM_READY
+ST2-RP-001 OWNER_AUTHORIZED / TRANSITION_GATE
 queue: 014 → 015 → 016 → 017
 active experiment: NONE
-next: ST2-EXP-014 / NO FROZEN PLAN until authorization merge + synchronized main re-read
+latest completed: ST2-EXP-014 / CLOSED PASS / exact closure verified / routine merged
+transition: 014 → 015 / decision not yet recorded
+next candidate: ST2-EXP-015 / AUTHORIZED / QUEUED / NOT STARTED
 ```
 
 Historical closure is monotone evidence. Never mutate closed Frozen Plan, Study/Act, failure, run, artifact, merge, or lifecycle records.
@@ -398,32 +414,37 @@ The autonomous state/program files govern execution scope; they may not rewrite 
 
 The old top-level stop markers in `STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json` were
 correct at the completed 004 frontier. When they conflict with the later
-explicit `ST2-RP-001` authorization, treat them as historical current-frontier
-metadata; do not mutate closed experiment origin records. New experiment typed
-origins are carried by the active program manifest and must enter permanent
-origin records as each experiment is independently frozen.
+explicit `ST2-RP-001` authorization or the synchronized post-014 state, treat
+them as historical current-frontier metadata; do not mutate closed experiment
+origin records. New experiment typed origins are carried by the active program
+manifest and must enter permanent origin records as each experiment is
+independently frozen.
 
 ## 14. Verification rules
 
-Historical ST2-EXP-004 evidence remains immutable and must continue to verify as
-historical closure. Do not reinterpret its final `NO_ACTIVE_PROGRAM` sentinel as
-a prohibition after the later explicit owner authorization of `ST2-RP-001`.
+Historical ST2-EXP-004 and ST2-EXP-014 evidence remains immutable and must
+continue to verify as historical closure. Do not reinterpret historical
+`NO_ACTIVE_PROGRAM` or `CLOSING` sentinels as current state after their later
+authorized transitions completed.
 
-For the current program authorization transition verify:
+For the synchronized pre-autonomy baseline verify:
 
 ```text
-program authorization baseline == exact main 1fac73b24b9b2e0db9dafc95e1944267aa9040da
-state == PROGRAM_READY
+program authorization baseline == 1fac73b24b9b2e0db9dafc95e1944267aa9040da
+synchronized post-014 main == 2a6c38af70e596c840ef2db4733421bde38f3ee5
+014 exact closure head == 19cc6541457b3e8c58ea4607198d2474cd293dc9
+014 exact V5 / lifecycle / governance checks == PASS
+014 routine merge == COMPLETE with no tree drift
+state == TRANSITION_GATE
 active_program_id == ST2-RP-001
 queue == [014,015,016,017] exactly and without duplicates
-program manifest queue == state queue
-all four manifest entries have typed origin + one intended changed factor
+active_experiment == null
+015 branch == none
+015 Frozen Plan == none
+transition decision 014→015 == not yet recorded
 routine merge authority == true in authorization + state + manifest
 accepted selections/exports unchanged
-no research experiment activated by the authorization merge itself
-all governance/architecture checks pass on exact PR head
-merge exact verified authorization head with no content drift
-re-read synchronized main before freezing 014
+no research decision is made by baseline synchronization itself
 ```
 
 Pinned Lean toolchain for historical experiment evidence:
@@ -440,13 +461,13 @@ Do not conduct experiment work on `main`.
 Current legal sequence:
 
 ```text
-merge exact verified ST2-RP-001 authorization/governance PR
-→ synchronize/re-read exact main
-→ create independent ST2-EXP-014 branch
-→ freeze immutable 014 Plan before Do
-→ execute/verify/Study/Act/close 014
-→ evaluate exact 014→015 transition gate
-→ AUTO_CONTINUE only if gate remains valid
+re-read synchronized main 2a6c38af70e596c840ef2db4733421bde38f3ee5
+→ evaluate exact ST2-EXP-014 → ST2-EXP-015 transition gate
+→ AUTO_CONTINUE only if every declared gate remains valid
+→ create independent ST2-EXP-015 branch
+→ freeze immutable 015 Plan before Do
+→ execute/verify/Study/Act/close 015
+→ evaluate exact 015→016 transition gate
 ```
 
 The same pattern applies at every program transition. Routine merge authority is
@@ -456,7 +477,7 @@ Do not:
 
 ```text
 work directly on main
-start 015 before 014 lifecycle closure + transition gate
+start or freeze 015 before the 014→015 transition gate is positively recorded
 start 016 before 015 lifecycle closure + transition gate
 start 017 without the exact sufficient algebraic interface required from 016
 insert/reorder a sequence-critical experiment

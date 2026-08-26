@@ -6,6 +6,7 @@ on:
     paths:
       - 'AGENTS.md'
       - 'LAB/PDSA/STATUS.md'
+      - 'LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json'
@@ -20,6 +21,7 @@ on:
     paths:
       - 'AGENTS.md'
       - 'LAB/PDSA/STATUS.md'
+      - 'LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json'
@@ -60,7 +62,7 @@ jobs:
 
           This read-only guard verifies the machine-readable policy/state,
           active owner-authorization record and program manifest when present,
-          queue frontier, typed experiment origins, and required handoff markers.
-          It does not create authority by itself, start an experiment, change
-          accepted mathematics, or merge research.
+          queue frontier, typed experiment origins, transition-gate baseline,
+          and required handoff markers. It does not create authority by itself,
+          start an experiment, change accepted mathematics, or merge research.
           EOF
