@@ -3,9 +3,9 @@
   "experiment_generation": "BOMA-AUTONOMY-005",
   "started_at": "2026-08-26T21:40:00+00:00",
   "bootstrap_ai_calls": 7,
-  "ai_calls": 0,
+  "ai_calls": 1,
   "ai_calls_by_role": {
-    "transition_auditor": 1,
+    "transition_auditor": 2,
     "planner": 2,
     "reviewer": 1,
     "executor": 1,
@@ -13,22 +13,22 @@
     "act_analyst": 1
   },
   "models_used": {
-    "qwen/qwen3.6-27b": 4,
+    "qwen/qwen3.6-27b": 5,
     "openai/gpt-oss-120b": 3
   },
-  "reported_input_tokens": 6634,
-  "reported_output_tokens": 478,
-  "request_compactions": 2,
-  "max_estimated_admitted_tokens": 6330,
+  "reported_input_tokens": 10602,
+  "reported_output_tokens": 1033,
+  "request_compactions": 3,
+  "max_estimated_admitted_tokens": 6367,
   "last_admission": {
-    "role": "act_analyst",
+    "role": "transition_auditor",
     "model": "qwen/qwen3.6-27b",
-    "estimated_admitted_tokens": 744,
-    "admitted_completion_tokens": 350,
-    "compacted": false
+    "estimated_admitted_tokens": 6367,
+    "admitted_completion_tokens": 1000,
+    "compacted": true
   },
-  "wakes_started": 0,
-  "wakes_completed": 0,
+  "wakes_started": 1,
+  "wakes_completed": 1,
   "transition_decisions": 0,
   "plans_frozen": 0,
   "plan_revisions": 0,
