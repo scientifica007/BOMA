@@ -20,7 +20,9 @@ from core import AUTONOMY, EXP_STATE, ROOT, current_head, load_json, run, save_j
 
 OUT = AUTONOMY / "commission.json"
 GUARD_WORKFLOW = "BOMA Autonomy Exact-Head Guard 001"
-CI_TIMEOUT_SECONDS = 180
+# GitHub may delay pull_request workflow dispatch by several minutes; keep the
+# exact-head SUCCESS requirement but allow enough time for the event to arrive.
+CI_TIMEOUT_SECONDS = 600
 CI_POLL_SECONDS = 5
 TERMINAL_FAILURES = {
     "failure",
