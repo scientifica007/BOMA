@@ -140,6 +140,34 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
         for i in range(8):
             self.assertIn(f"## FILE synthetic/{i}.txt", user)
 
+    def test_transition_response_alias_is_narrowly_canonicalized(self) -> None:
+        raw = {
+            "audit_result": "OWNER_REQUIRED",
+            "rationale": "synthetic technical contract test",
+        }
+        normalized = provider.canonicalize_role_response("transition_auditor", raw)
+        self.assertEqual(normalized["decision"], "OWNER_REQUIRED")
+        self.assertNotIn("audit_result", normalized)
+        self.assertEqual(raw["audit_result"], "OWNER_REQUIRED")
+
+    def test_transition_response_conflict_fails_closed(self) -> None:
+        with self.assertRaises(core.GovernanceError):
+            provider.canonicalize_role_response(
+                "transition_auditor",
+                {"decision": "AUTO_CONTINUE", "audit_result": "OWNER_REQUIRED"},
+            )
+
+    def test_transition_response_unknown_alias_value_is_not_promoted(self) -> None:
+        raw = {"audit_result": "PASS"}
+        normalized = provider.canonicalize_role_response("transition_auditor", raw)
+        self.assertNotIn("decision", normalized)
+        self.assertEqual(normalized["audit_result"], "PASS")
+
+    def test_non_transition_response_is_untouched(self) -> None:
+        raw = {"audit_result": "OWNER_REQUIRED"}
+        normalized = provider.canonicalize_role_response("planner", raw)
+        self.assertEqual(normalized, raw)
+
     def test_outer_observation_window_is_state_aware(self) -> None:
         policy = core.load_json(core.POLICY)
         experiment = core.load_json(core.EXP_STATE)
