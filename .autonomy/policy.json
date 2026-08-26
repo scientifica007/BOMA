@@ -1,0 +1,66 @@
+{
+  "schema": "BOMA-AUTONOMY-RUNTIME-POLICY-001",
+  "fail_closed": true,
+  "max_context_characters": 42000,
+  "max_executor_operations": 48,
+  "max_executor_read_files": 18,
+  "max_plan_revisions": 2,
+  "max_recovery_attempts_per_head": 4,
+  "max_verification_commands": 20,
+  "schedule_semantics": "WAKE_UP_ONLY",
+  "research_branch_prefix": "autonomy/",
+  "protected_exact_paths": [
+    "LAB/PDSA/AUTONOMY_EXPERIMENT_PROTOCOL_001.md",
+    "LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md",
+    "LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json",
+    "LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md",
+    "LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json",
+    "LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md",
+    "LAB/10_CONSTRUCTION/decisions/R-DP-001/UNIT.md",
+    "LAB/10_CONSTRUCTION/decisions/R-DP-003/UNIT.md",
+    "LAB/10_CONSTRUCTION/decisions/C-DP-001/UNIT.md",
+    "LAB/10_CONSTRUCTION/blocks/R-BLOCK-001/UNIT.md",
+    "LAB/10_CONSTRUCTION/blocks/C-BLOCK-002/UNIT.md",
+    "LAB/00_ARCHITECTURE/C_ACCEPTANCE_SPECIFICATION.md",
+    "LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json",
+    "LAB/PDSA/STATUS.md",
+    "LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md",
+    "AGENTS.md",
+    "LAB/PDSA/tools/autonomous_research_program_audit.py",
+    "LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py"
+  ],
+  "protected_prefixes": [
+    ".autonomy/",
+    "scripts/boma_autonomy/",
+    "tests/boma_autonomy/",
+    "LAB/PDSA/autonomy/"
+  ],
+  "accepted_manifests": [
+    "LAB/20_FORMALIZATION/Q_STAGE/Q_ACCEPTED_INPUTS.txt",
+    "LAB/20_FORMALIZATION/R_STAGE/R_INTEGRATION_002_INPUTS.txt",
+    "LAB/20_FORMALIZATION/C_STAGE/C_ACCEPTED_INPUTS.txt"
+  ],
+  "allowed_executor_actions": [
+    "write",
+    "delete"
+  ],
+  "forbidden_secret_name_fragments": [
+    "TOKEN",
+    "SECRET",
+    "PASSWORD",
+    "API_KEY",
+    "AUTHORIZATION",
+    "COOKIE"
+  ],
+  "required_start_research_state": "TRANSITION_GATE",
+  "required_start_transition_from": "ST2-EXP-014",
+  "required_start_transition_candidate": "ST2-EXP-015",
+  "allowed_repository": "scientifica007/BOMA",
+  "observation_window": {
+    "enabled": true,
+    "default_hours": 168,
+    "completion_mode": "PAUSE_BEFORE_NEXT_RESEARCH_WAKE",
+    "human_mode_during_window": "READ_ONLY",
+    "resume_requires_new_measurement_window": true
+  }
+}

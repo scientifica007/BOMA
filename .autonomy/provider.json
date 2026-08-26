@@ -1,0 +1,25 @@
+{
+  "schema": "BOMA-AUTONOMY-PROVIDER-001",
+  "provider_kind": "openai_compatible",
+  "api_key_env": "AI_API_KEY",
+  "base_url_env": "AI_BASE_URL",
+  "default_base_url": "https://api.groq.com/openai/v1",
+  "models": {
+    "transition_auditor": "qwen/qwen3.6-27b",
+    "planner": "openai/gpt-oss-120b",
+    "reviewer": "qwen/qwen3.6-27b",
+    "executor": "openai/gpt-oss-120b",
+    "recovery_analyst": "qwen/qwen3.6-27b",
+    "study_analyst": "qwen/qwen3.6-27b",
+    "act_analyst": "qwen/qwen3.6-27b",
+    "closure_auditor": "openai/gpt-oss-120b",
+    "program_synthesizer": "openai/gpt-oss-120b"
+  },
+  "request": {
+    "temperature": 0.1,
+    "reasoning_effort": "low",
+    "retry_429": 4,
+    "minimum_retry_seconds": 10,
+    "timeout_seconds": 150
+  }
+}
