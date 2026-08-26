@@ -2,19 +2,38 @@
   "schema": "BOMA-AUTONOMY-COMMISSION-003",
   "experiment_generation": "BOMA-AUTONOMY-007",
   "passed": false,
-  "main_anchor_sha": null,
-  "probe_head_sha": null,
-  "branch_push": false,
-  "pull_request_create": false,
+  "main_anchor_sha": "90d7cbeacd3e0270d868f850de6678463736a00c",
+  "probe_head_sha": "addc220deb6e6f2aeeb607c9d4fc9736b41f539c",
+  "branch_push": true,
+  "pull_request_create": true,
   "pull_request_ci": false,
   "guard_workflow": "BOMA Autonomy Exact-Head Guard 001",
   "guard_workflow_run": null,
-  "pull_request_close": false,
-  "temporary_pr_number": null,
-  "stale_runtime_branch_quarantine_exercised": false,
-  "stale_branch_archives": [],
+  "pull_request_close": true,
+  "temporary_pr_number": 18,
+  "stale_runtime_branch_quarantine_exercised": true,
+  "stale_branch_archives": [
+    {
+      "source_branch": "autonomy/transition-st2-exp-014-to-st2-exp-015",
+      "source_head_sha": "0a7f16769eec9bf3e6db2fe2f6c765071a5e4bcc",
+      "archive_branch": "archive/boma-autonomy-007/prestart/transition-st2-exp-014-to-st2-exp-015",
+      "pull_requests": [
+        {
+          "headRefName": "autonomy/transition-st2-exp-014-to-st2-exp-015",
+          "headRefOid": "0a7f16769eec9bf3e6db2fe2f6c765071a5e4bcc",
+          "mergedAt": null,
+          "number": 14,
+          "state": "CLOSED",
+          "title": "Autonomy: evaluate ST2-EXP-014 → ST2-EXP-015 transition",
+          "url": "https://github.com/scientifica007/BOMA/pull/14"
+        }
+      ],
+      "research_content_rewritten": false,
+      "research_decision_changed": false
+    }
+  ],
   "research_content_changed": false,
   "research_decision_made": false,
-  "completed_at": null,
-  "error": "Generation 007 requires a fresh post-merge commission."
+  "completed_at": "2026-08-26T22:58:03+00:00",
+  "error": "commission PR never triggered 'BOMA Autonomy Exact-Head Guard 001' within 180s; autonomous PR-to-CI plumbing is not commissioned"
 }
