@@ -1,0 +1,15 @@
+{
+  "schema": "BOMA-AUTONOMY-META-STOP-006",
+  "experiment_generation": "BOMA-AUTONOMY-006",
+  "valid_start": true,
+  "started_at": "2026-08-26T22:17:43+00:00",
+  "stopped_for_meta_pdsa": true,
+  "stop_reason": "TECHNICAL_STALE_BRANCH_INHERITANCE_AND_RECOVERY_OPERATION_SCHEMA_DEFECT",
+  "research_transition_decision_recorded": false,
+  "st2_exp_015_started": false,
+  "frozen_plan_created": false,
+  "research_operations_applied": false,
+  "HRIC": 0,
+  "HIIC": 0,
+  "next_generation": "BOMA-AUTONOMY-007"
+}
