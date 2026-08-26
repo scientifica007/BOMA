@@ -1,0 +1,174 @@
+name: BOMA Autonomous Research Engine 001
+
+on:
+  schedule:
+    - cron: "37 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "validate, commission, start, or run"
+        required: true
+        default: "validate"
+        type: choice
+        options:
+          - validate
+          - commission
+          - start
+          - run
+
+permissions:
+  contents: write
+  pull-requests: write
+  actions: read
+  checks: read
+
+concurrency:
+  group: boma-autonomous-research-engine
+  cancel-in-progress: false
+
+jobs:
+  autonomy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+
+    steps:
+      - name: Checkout exact main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate autonomy runtime and BOMA governance
+        run: |
+          set -euo pipefail
+          python3 scripts/boma_autonomy/validate.py
+          python3 -m unittest discover -s tests/boma_autonomy -v
+
+      - name: Read experiment control state
+        id: experiment_state
+        shell: bash
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          state = json.load(open('.autonomy/state.json', encoding='utf-8'))
+          print('armed=' + ('true' if state.get('armed') else 'false'))
+          terminal = state.get('experiment_state') in {'FINISHED','STOPPED','PAUSED_FOR_META_REVIEW'}
+          print('terminal=' + ('true' if terminal else 'false'))
+          PY
+
+      - name: Pre-START GitHub branch and PR commission
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'commission'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/boma_autonomy/commission.py
+
+      - name: Provider preflight before START
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'start'
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_BASE_URL: ${{ vars.AI_BASE_URL }}
+        run: python3 scripts/boma_autonomy/probe.py
+
+      - name: Synthetic technical PDSA dry run before START
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'start'
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_BASE_URL: ${{ vars.AI_BASE_URL }}
+        run: python3 scripts/boma_autonomy/dry_run.py
+
+      - name: Perform one-time valid START
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'start'
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          CONFIRM_EXPERIMENT_START: "YES"
+        run: python3 scripts/boma_autonomy/start.py
+
+      - name: Persist START before first research decision
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'start'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "BOMA Autonomous Research Control"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A .autonomy
+          if git diff --cached --quiet; then
+            echo "No START control-plane changes to persist."
+          else
+            git commit -m "autonomy: persist valid BOMA experiment START"
+            git push origin HEAD:main
+          fi
+
+      - name: Set up pinned Lean for autonomous research
+        if: >-
+          github.event_name == 'schedule' ||
+          (github.event_name == 'workflow_dispatch' && (inputs.mode == 'start' || inputs.mode == 'run'))
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Run autonomous research wake
+        id: autonomy_run
+        if: >-
+          (github.event_name == 'schedule' &&
+           steps.experiment_state.outputs.armed == 'true' &&
+           steps.experiment_state.outputs.terminal != 'true') ||
+          (github.event_name == 'workflow_dispatch' && (inputs.mode == 'start' || inputs.mode == 'run'))
+        env:
+          AI_API_KEY: ${{ secrets.AI_API_KEY }}
+          AI_BASE_URL: ${{ vars.AI_BASE_URL }}
+          GH_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
+          PYTHONUNBUFFERED: "1"
+        run: python3 scripts/boma_autonomy/controller.py
+
+      - name: Return to exact current main and preserve control-plane evidence
+        if: always()
+        shell: bash
+        run: |
+          set +e
+          rm -rf /tmp/boma-autonomy-control
+          if [ -d .autonomy ]; then
+            cp -a .autonomy /tmp/boma-autonomy-control
+          fi
+          git reset --hard
+          git fetch origin main
+          git checkout -B main origin/main
+          if [ -d /tmp/boma-autonomy-control ]; then
+            rm -rf .autonomy
+            cp -a /tmp/boma-autonomy-control .autonomy
+          fi
+
+      - name: Re-validate governance after wake
+        if: always()
+        run: |
+          python3 scripts/boma_autonomy/validate.py
+          python3 -m unittest discover -s tests/boma_autonomy -v
+
+      - name: Persist control-plane state and measurement evidence
+        if: >-
+          always() &&
+          (github.event_name == 'schedule' ||
+           (github.event_name == 'workflow_dispatch' && inputs.mode != 'validate'))
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "BOMA Autonomous Research Control"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A .autonomy
+          if git diff --cached --quiet; then
+            echo "No control-plane changes to commit."
+            exit 0
+          fi
+          git commit -m "autonomy: persist BOMA runtime state and metrics"
+          git push origin HEAD:main
