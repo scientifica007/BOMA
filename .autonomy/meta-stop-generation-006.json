@@ -11,5 +11,6 @@
   "research_operations_applied": false,
   "HRIC": 0,
   "HIIC": 0,
-  "next_generation": "BOMA-AUTONOMY-007"
+  "next_generation": "BOMA-AUTONOMY-007",
+  "meta_repair_scope": "TECHNICAL_ONLY"
 }
