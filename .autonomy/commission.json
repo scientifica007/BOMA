@@ -1,13 +1,13 @@
 {
   "schema": "BOMA-AUTONOMY-COMMISSION-001",
   "passed": false,
-  "main_anchor_sha": "a8ee9c5e5be63ff7e502fa7554604d6556cc37e0",
+  "main_anchor_sha": "db39ec6919795d3fa389c156c724d1287f10e103",
   "branch_push": false,
   "pull_request_create": false,
   "pull_request_close": false,
   "temporary_pr_number": null,
   "research_content_changed": false,
   "research_decision_made": false,
-  "completed_at": "2026-08-26T19:10:24+00:00",
-  "error": "command failed (128): git commit -m autonomy: synthetic pre-START commission probe\n\nAuthor identity unknown\n\n*** Please tell me who you are.\n\nRun\n\n  git config --global user.email \"you@example.com\"\n  git config --global user.name \"Your Name\"\n\nto set your account's default identity.\nOmit --global to set the identity only in this repository.\n\nfatal: empty ident name (for <runner@runnervm76f27.muhvirrxgieepmboiwwwvpzrwa.phxx.internal.cloudapp.net>) not allowed\n"
+  "completed_at": "2026-08-26T19:14:58+00:00",
+  "error": "command failed (1): gh pr create --base main --head autonomy/commission-probe-1787771693 --title Autonomy pre-START commission probe --body Synthetic control-plane plumbing test only. No BOMA research decision or content change.\n\npull request create failed: GraphQL: GitHub Actions is not permitted to create or approve pull requests (createPullRequest)\n"
 }
