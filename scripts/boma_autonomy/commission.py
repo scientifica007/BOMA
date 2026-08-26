@@ -3,12 +3,16 @@
 
 Creates a temporary control-plane-only branch and PR, proves that the dedicated
 autonomy exact-head guard is triggered and succeeds without human approval, then
-closes/deletes the probe. No BOMA research content or decision is changed.
+closes/deletes the probe. Before the probe it also quarantines stale runtime
+research branches left by earlier stopped Meta-PDSA generations so a new generation
+cannot inherit a closed PR/branch by deterministic-name collision. No BOMA research
+content or decision is changed.
 """
 from __future__ import annotations
 
 import json
 import os
+import re
 import sys
 import time
 
@@ -25,6 +29,14 @@ TERMINAL_FAILURES = {
     "action_required",
     "stale",
     "startup_failure",
+}
+RUNTIME_RESEARCH_BRANCH_PREFIXES = (
+    "autonomy/transition-",
+    "autonomy/st2-exp-",
+    "autonomy/postmerge-",
+)
+RUNTIME_RESEARCH_BRANCH_EXACT = {
+    "autonomy/st2-rp-001-program-synthesis",
 }
 
 
@@ -48,6 +60,93 @@ def gh_json(args: list[str]):
         return json.loads(result.get("stdout") or "null")
     except json.JSONDecodeError as exc:
         raise RuntimeError(f"invalid gh JSON: {result.get('stdout', '')[:1000]}") from exc
+
+
+def is_runtime_research_branch(branch: str) -> bool:
+    return branch in RUNTIME_RESEARCH_BRANCH_EXACT or any(
+        branch.startswith(prefix) for prefix in RUNTIME_RESEARCH_BRANCH_PREFIXES
+    )
+
+
+def archive_branch_name(generation: str, branch: str) -> str:
+    generation_slug = re.sub(r"[^a-z0-9]+", "-", generation.lower()).strip("-")
+    suffix = branch[len("autonomy/") :] if branch.startswith("autonomy/") else branch
+    return f"archive/{generation_slug}/prestart/{suffix}"
+
+
+def remote_runtime_research_branches() -> list[tuple[str, str]]:
+    result = run(["git", "ls-remote", "--heads", "origin"], timeout=120, check=True)
+    found: list[tuple[str, str]] = []
+    for raw in str(result.get("stdout") or "").splitlines():
+        parts = raw.split()
+        if len(parts) != 2 or not parts[1].startswith("refs/heads/"):
+            continue
+        branch = parts[1][len("refs/heads/") :]
+        if is_runtime_research_branch(branch):
+            found.append((branch, parts[0]))
+    return sorted(found)
+
+
+def pull_requests_for_branch(branch: str) -> list[dict]:
+    data = gh_json([
+        "pr", "list", "--head", branch, "--state", "all", "--limit", "10",
+        "--json", "number,state,mergedAt,headRefName,headRefOid,url,title",
+    ])
+    return data if isinstance(data, list) else []
+
+
+def quarantine_stale_runtime_branches(generation: str) -> list[dict]:
+    """Archive prior-generation runtime refs before the new measurement window.
+
+    Only branches used by the autonomous research runtime are considered. An open PR
+    is never renamed/deleted automatically; that is ambiguous authority and fails
+    commission closed. Closed/merged historical PRs remain immutable GitHub evidence,
+    while the exact branch head is preserved under an archive ref before the live
+    deterministic branch name is removed.
+    """
+    archived: list[dict] = []
+    for branch, sha in remote_runtime_research_branches():
+        prs = pull_requests_for_branch(branch)
+        if any(str(pr.get("state") or "").upper() == "OPEN" for pr in prs):
+            raise RuntimeError(
+                f"stale runtime research branch has an open PR and cannot be quarantined automatically: {branch}"
+            )
+
+        archive = archive_branch_name(generation, branch)
+        existing = run(
+            ["git", "ls-remote", "--heads", "origin", f"refs/heads/{archive}"],
+            timeout=120,
+            check=True,
+        )
+        existing_lines = str(existing.get("stdout") or "").splitlines()
+        if existing_lines:
+            existing_sha = existing_lines[0].split()[0]
+            if existing_sha != sha:
+                raise RuntimeError(
+                    f"archive ref collision for {branch}: {archive} points to {existing_sha}, expected {sha}"
+                )
+        else:
+            run(["git", "push", "origin", f"{sha}:refs/heads/{archive}"], timeout=180, check=True)
+
+        run(["git", "push", "origin", "--delete", branch], timeout=180, check=True)
+        verify = run(
+            ["git", "ls-remote", "--heads", "origin", f"refs/heads/{branch}"],
+            timeout=120,
+            check=True,
+        )
+        if str(verify.get("stdout") or "").strip():
+            raise RuntimeError(f"runtime branch quarantine failed; source ref still exists: {branch}")
+
+        archived.append({
+            "source_branch": branch,
+            "source_head_sha": sha,
+            "archive_branch": archive,
+            "pull_requests": prs,
+            "research_content_rewritten": False,
+            "research_decision_changed": False,
+        })
+
+    return archived
 
 
 def wait_for_guard_ci(branch: str, probe_head_sha: str) -> dict:
@@ -106,6 +205,7 @@ def main() -> int:
         print("GITHUB_REPOSITORY unavailable", file=sys.stderr)
         return 4
 
+    generation = str(state.get("experiment_generation") or "")
     anchor = current_head()
     suffix = str(int(time.time()))
     branch = f"autonomy/commission-probe-{suffix}"
@@ -120,8 +220,14 @@ def main() -> int:
     pull_request_close = False
     passed = False
     error = None
+    stale_branch_archives: list[dict] = []
 
     try:
+        stale_branch_archives = quarantine_stale_runtime_branches(generation)
+        remaining = remote_runtime_research_branches()
+        if remaining:
+            raise RuntimeError(f"runtime research branches remain after quarantine: {remaining}")
+
         run(["git", "checkout", "-b", branch], check=True)
         probe.write_text(
             "Synthetic pre-START autonomy commission probe. No research content.\n",
@@ -171,7 +277,8 @@ def main() -> int:
             run(["git", "push", "origin", "--delete", branch], check=False)
 
     record = {
-        "schema": "BOMA-AUTONOMY-COMMISSION-002",
+        "schema": "BOMA-AUTONOMY-COMMISSION-003",
+        "experiment_generation": generation,
         "passed": passed,
         "main_anchor_sha": anchor,
         "probe_head_sha": probe_head_sha,
@@ -182,6 +289,8 @@ def main() -> int:
         "guard_workflow_run": guard_run,
         "pull_request_close": pull_request_close,
         "temporary_pr_number": pr_number,
+        "stale_runtime_branch_quarantine_exercised": True,
+        "stale_branch_archives": stale_branch_archives,
         "research_content_changed": False,
         "research_decision_made": False,
         "completed_at": utc_now(),
@@ -192,8 +301,8 @@ def main() -> int:
         print(f"BOMA autonomy commission: FAIL — {error}", file=sys.stderr)
         return 5
     print(
-        f"BOMA autonomy commission: PASS (temporary PR #{pr_number}; "
-        f"{GUARD_WORKFLOW} SUCCESS)"
+        f"BOMA autonomy commission: PASS (archived {len(stale_branch_archives)} stale runtime branch(es); "
+        f"temporary PR #{pr_number}; {GUARD_WORKFLOW} SUCCESS)"
     )
     return 0
 
