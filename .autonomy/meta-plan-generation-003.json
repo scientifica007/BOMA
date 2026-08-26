@@ -1,0 +1,56 @@
+{
+  "schema": "BOMA-AUTONOMY-META-PLAN-003",
+  "experiment_generation": "BOMA-AUTONOMY-003",
+  "parent_meta_study": ".autonomy/meta-study-generation-002.json",
+  "generation_002_stop_classification": "CLEAN_TECHNICAL_STOP_AFTER_AUDIT_RESPONSE_BEFORE_ANY_RECORDED_RESEARCH_DECISION",
+  "objective": "Repair only the technical evidence-adapter and transition-response-contract defects observed in Generation 002, then reopen a clean measurement generation without changing ST2-RP-001 mathematics, queue, frontier, or research decisions.",
+  "technical_changed_factors": [
+    {
+      "factor": "legacy_experiment_evidence_compatibility",
+      "change": "Materialize provenance-preserving compatibility JSON for ST2-EXP-014 from already authoritative historical Study/Act, exact closure, synchronized baseline audit, and routine-merge evidence. The bridge explicitly states that it is not an autonomous re-execution and adds no new research conclusion."
+    },
+    {
+      "factor": "transition_response_contract",
+      "change": "Canonicalize only the transition-auditor alias audit_result to decision when decision is absent and the alias value is exactly AUTO_CONTINUE or OWNER_REQUIRED; reject conflicting or unknown values fail-closed."
+    },
+    {
+      "factor": "prestart_transition_contract_probe",
+      "change": "Exercise the transition-auditor response contract synthetically before START so a response-key mismatch cannot first appear in a measured research wake."
+    },
+    {
+      "factor": "generation_isolation",
+      "change": "Close Generation 002, reset Generation 003 measurement counters/state, invalidate prior commission/preflight/dry-run evidence, and require fresh exact-head pre-START checks."
+    }
+  ],
+  "research_invariants": {
+    "research_frontier": "ST2-EXP-014 -> ST2-EXP-015 TRANSITION_GATE",
+    "st2_exp_014_historical_disposition": "CLOSED_PASS / EXACT_HEAD_VERIFIED / ROUTINE_MERGED",
+    "st2_exp_015_started": false,
+    "st2_exp_015_frozen_plan_exists": false,
+    "transition_decision_recorded": false,
+    "queue_change": false,
+    "scientific_factor_change": false,
+    "proof_hint_or_lemma_selection": false,
+    "acceptance_or_selects_change": false,
+    "research_content_edit_authorized_by_meta_plan": false
+  },
+  "evidence_precedence": {
+    "rule": "Compatibility bridge records may only restate already authoritative historical evidence and must cite their source files/SHAs/runs. They cannot manufacture missing historical evidence or decide the 014-to-015 gate.",
+    "authoritative_sources": [
+      "LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md",
+      "LAB/PDSA/experiments/ST2-EXP-014_FINAL_STUDY_ACT_001.md",
+      "LAB/PDSA/experiments/ST2-EXP-014_LIFECYCLE_CLOSURE_001.md",
+      "LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json"
+    ]
+  },
+  "verification": [
+    "Static runtime validation passes.",
+    "Unit tests prove transition-response alias canonicalization is narrow, deterministic, and contradiction-safe.",
+    "Historical 014 compatibility evidence records explicitly identify themselves as derived bridge metadata and cite exact pre-existing sources.",
+    "Synthetic provider preflight exercises the canonical transition decision contract before START.",
+    "Post-merge Generation 003 commission must pass branch -> PR -> exact-head CI -> cleanup with no human approval in the chain.",
+    "Generation 003 provider preflight and dry run must pass on the exact START head before START opens."
+  ],
+  "success_criteria": "A new BOOTSTRAP Generation 003 can reach a valid START with the 014 historical evidence represented accurately and the transition response contract validated, while no 014-to-015 decision is made during Meta-PDSA repair.",
+  "failure_policy": "Fail closed. Any repair requiring new mathematical judgment or alteration of ST2-RP-001 scope/frontier is out of Meta-PDSA scope and must not be performed."
+}
