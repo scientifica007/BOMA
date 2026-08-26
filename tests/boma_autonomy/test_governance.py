@@ -96,8 +96,33 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
             text = path.read_text(encoding="utf-8")
             self.assertEqual(text.count(core.RUNTIME_BEGIN), 1)
             self.assertEqual(text.count(core.RUNTIME_END), 1)
-            self.assertIn("TRANSITION_GATE", text)
+            self.assertIn(f"STATE: {state.get('state')}", text)
+            self.assertIn(f"NEXT_LEGAL_ACTION: {state.get('next_legal_action')}", text)
             self.assertIn("second", text)
+
+    def test_closed_014_workflow_ignores_later_transition_state_updates(self) -> None:
+        workflow = (
+            ROOT / ".github/workflows/boma-st2-exp-014-cauchy-native-full-c.yml"
+        ).read_text(encoding="utf-8")
+        pull_request_trigger = workflow.split("  push:", 1)[0]
+        self.assertIn(
+            "!LAB/PDSA/experiments/ST2-EXP-014_TO_ST2-EXP-015_AUTONOMOUS_TRANSITION_*.json",
+            pull_request_trigger,
+        )
+        for generic_state_path in (
+            "LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json",
+            "LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md",
+            "LAB/PDSA/STATUS.md",
+            "AGENTS.md",
+        ):
+            self.assertNotIn(f"- '{generic_state_path}'", pull_request_trigger)
+        for actual_014_path in (
+            "LAB/PDSA/PDSA-ST2-EXP-014_CAUCHY_NATIVE_FULL_C.md",
+            "LAB/payloads/lean/CStage/ST2Exp014*.lean",
+            "LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_014_*",
+            ".github/workflows/boma-st2-exp-014-cauchy-native-full-c.yml",
+        ):
+            self.assertIn(f"- '{actual_014_path}'", pull_request_trigger)
 
     def test_protocol_defines_measurement_metrics(self) -> None:
         text = core.PROTOCOL.read_text(encoding="utf-8")
