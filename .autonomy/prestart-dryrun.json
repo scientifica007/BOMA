@@ -1,10 +1,16 @@
 {
   "schema": "BOMA-AUTONOMY-PRESTART-DRYRUN-005",
   "experiment_generation": "BOMA-AUTONOMY-005",
-  "passed": false,
-  "head_sha": null,
-  "completed_at": null,
+  "passed": true,
+  "head_sha": "151be2c5ba166f4612b5fe5390d15ad2e3d25d03",
+  "completed_at": "2026-08-26T21:39:59+00:00",
   "research_content_read": false,
   "research_decision_made": false,
-  "roles_exercised": []
+  "roles_exercised": [
+    "planner",
+    "reviewer",
+    "executor",
+    "study_analyst",
+    "act_analyst"
+  ]
 }
