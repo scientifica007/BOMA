@@ -1,7 +1,9 @@
 {
-  "schema": "BOMA-AUTONOMY-RUNTIME-POLICY-001",
+  "schema": "BOMA-AUTONOMY-RUNTIME-POLICY-002",
   "fail_closed": true,
-  "max_context_characters": 42000,
+  "max_context_characters": 14000,
+  "context_tree_characters": 1800,
+  "context_min_section_characters": 480,
   "max_executor_operations": 48,
   "max_executor_read_files": 18,
   "max_plan_revisions": 2,
