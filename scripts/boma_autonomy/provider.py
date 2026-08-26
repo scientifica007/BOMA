@@ -15,39 +15,83 @@ from core import EXP_STATE, METRICS, PROVIDER, GovernanceError, load_json, save_
 
 _SECTION = re.compile(r"(?m)^## (?:FILE .+|REPOSITORY TREE)\s*$")
 _TRANSITION_DECISIONS = {"AUTO_CONTINUE", "OWNER_REQUIRED"}
+_TRANSITION_WRAPPER = "transition_gate_evaluation"
+
+
+def _transition_value(payload: dict[str, Any], *, location: str) -> str | None:
+    """Read one explicitly supported transition decision spelling fail-closed."""
+    has_decision = "decision" in payload
+    has_alias = "audit_result" in payload
+    if not has_decision and not has_alias:
+        return None
+
+    decision = payload.get("decision")
+    alias = payload.get("audit_result")
+    if has_decision and decision not in _TRANSITION_DECISIONS:
+        raise GovernanceError(f"unrecognized transition decision at {location}: {decision!r}")
+    if has_alias and alias not in _TRANSITION_DECISIONS:
+        raise GovernanceError(f"unrecognized transition audit_result at {location}: {alias!r}")
+    if has_decision and has_alias and decision != alias:
+        raise GovernanceError(
+            f"transition auditor returned conflicting decision and audit_result values at {location}"
+        )
+    return str(decision if has_decision else alias)
 
 
 def canonicalize_role_response(role: str, result: dict[str, Any]) -> dict[str, Any]:
-    """Normalize only explicitly safe, non-semantic provider response aliases.
+    """Canonicalize only enumerated non-semantic transition response shapes.
 
-    Generation 002 observed a transition auditor returning ``audit_result`` with an
-    otherwise valid AUTO_CONTINUE/OWNER_REQUIRED value even though the controller
-    contract names that field ``decision``.  Treating a spelling-level alias as a
-    research decision would be wrong, but silently accepting arbitrary schema drift
-    would also weaken fail-closed behavior.  Therefore only this one enumerated alias
-    is canonicalized, only for the transition-auditor role, and contradictions fail.
+    Generation 002 observed the spelling alias ``audit_result``. Generation 003 then
+    observed a semantically valid transition object nested exactly under
+    ``transition_gate_evaluation``. The controller contract remains a direct object.
+
+    For ``transition_auditor`` only, this adapter therefore accepts exactly two
+    structural forms: a direct object, or one exact ``transition_gate_evaluation``
+    envelope. Within either form only ``decision`` and the historical ``audit_result``
+    alias are accepted decision spellings, and only AUTO_CONTINUE/OWNER_REQUIRED are
+    valid values. Contradictions, malformed wrappers, unknown values, conflicting
+    duplicate fields, and arbitrary deeper nesting fail closed.
     """
     if role != "transition_auditor":
         return result
 
-    has_decision = "decision" in result
-    has_alias = "audit_result" in result
-    if not has_decision and not has_alias:
+    direct_value = _transition_value(result, location="top-level")
+    wrapper_present = _TRANSITION_WRAPPER in result
+    wrapper: dict[str, Any] | None = None
+    wrapper_value: str | None = None
+
+    if wrapper_present:
+        raw_wrapper = result.get(_TRANSITION_WRAPPER)
+        if not isinstance(raw_wrapper, dict):
+            raise GovernanceError("transition_gate_evaluation wrapper must be a JSON object")
+        wrapper = raw_wrapper
+        wrapper_value = _transition_value(wrapper, location=_TRANSITION_WRAPPER)
+        if wrapper_value is None:
+            raise GovernanceError(
+                "transition_gate_evaluation wrapper lacks decision/audit_result"
+            )
+        if _TRANSITION_WRAPPER in wrapper:
+            raise GovernanceError("recursive transition_gate_evaluation nesting is forbidden")
+
+    values = [value for value in (direct_value, wrapper_value) if value is not None]
+    if not values:
         return result
+    if len(set(values)) != 1:
+        raise GovernanceError("transition auditor returned conflicting direct/enveloped decisions")
+    canonical_value = values[0]
 
-    decision = result.get("decision")
-    alias = result.get("audit_result")
-    if has_decision and has_alias and decision != alias:
-        raise GovernanceError(
-            "transition auditor returned conflicting decision and audit_result values"
-        )
+    normalized = {k: v for k, v in result.items() if k != _TRANSITION_WRAPPER}
+    if wrapper is not None:
+        for key, value in wrapper.items():
+            if key in {"decision", "audit_result"}:
+                continue
+            if key in normalized and normalized[key] != value:
+                raise GovernanceError(
+                    f"transition wrapper conflicts with top-level field {key!r}"
+                )
+            normalized[key] = value
 
-    value = decision if has_decision else alias
-    if value not in _TRANSITION_DECISIONS:
-        return result
-
-    normalized = dict(result)
-    normalized["decision"] = value
+    normalized["decision"] = canonical_value
     normalized.pop("audit_result", None)
     return normalized
 
@@ -243,7 +287,7 @@ class AIProvider:
                 headers={
                     "Authorization": f"Bearer {self.api_key}",
                     "Content-Type": "application/json",
-                    "User-Agent": "BOMA-Autonomous-Research/3.0",
+                    "User-Agent": "BOMA-Autonomous-Research/4.0",
                 },
                 method="POST",
             )

@@ -1,0 +1,47 @@
+{
+  "schema": "BOMA-AUTONOMY-META-PLAN-004",
+  "experiment_generation": "BOMA-AUTONOMY-004",
+  "parent_meta_study": ".autonomy/meta-study-generation-003.json",
+  "generation_003_stop_classification": "TECHNICAL_STOP_AFTER_UNCOMMITTED_TRANSITION_JUDGMENT_BEFORE_RESEARCH_STATE_MUTATION",
+  "objective": "Repair only the transition-auditor response-envelope mismatch observed in Generation 003 and reopen a clean measurement generation without changing ST2-RP-001 mathematics, its frontier, or the pending 014->015 transition conclusion.",
+  "technical_changed_factors": [
+    {
+      "factor": "transition_response_envelope_canonicalization",
+      "change": "For the transition_auditor role only, accept either a direct response object or exactly one transition_gate_evaluation object; canonicalize decision/audit_result only when its value is AUTO_CONTINUE or OWNER_REQUIRED."
+    },
+    {
+      "factor": "response_conflict_fail_closed",
+      "change": "Reject malformed wrappers, unrecognized decision values, contradictory direct versus enveloped decisions, contradictory decision versus audit_result aliases, and conflicting duplicate payload fields."
+    },
+    {
+      "factor": "realistic_prestart_envelope_probe",
+      "change": "Require the real Qwen pre-START probe to return the exact nested transition_gate_evaluation synthetic sentinel and verify that provider canonicalization yields the direct controller contract."
+    },
+    {
+      "factor": "generation_isolation",
+      "change": "Reset Generation 004 measurement counters and invalidate Generation 003 commission, provider-preflight, and dry-run evidence so all pre-START gates must be re-established after this repair."
+    }
+  ],
+  "research_invariants": {
+    "research_frontier": "ST2-EXP-014 -> ST2-EXP-015 TRANSITION_GATE",
+    "transition_decision_recorded": false,
+    "observed_generation_003_ai_judgment_reused_as_decision": false,
+    "st2_exp_015_started": false,
+    "st2_exp_015_frozen_plan_exists": false,
+    "queue_change": false,
+    "scientific_factor_change": false,
+    "proof_hint_or_lemma_selection": false,
+    "acceptance_or_selects_change": false,
+    "research_content_edit_authorized_by_meta_plan": false
+  },
+  "verification": [
+    "Static runtime validation passes.",
+    "Unit tests accept direct decision, direct audit_result, exact transition_gate_evaluation.decision, and exact transition_gate_evaluation.audit_result forms.",
+    "Unit tests reject conflicting direct/enveloped values, conflicting aliases, malformed wrappers, unknown values, and arbitrary deeper nesting.",
+    "Provider preflight exercises the exact nested wrapper through the real configured transition-auditor model before START.",
+    "Post-merge Generation 004 commission must pass branch -> PR -> exact-head CI -> cleanup before START.",
+    "Generation 004 START must use fresh exact-head provider-preflight and dry-run records."
+  ],
+  "success_criteria": "A fresh Generation 004 can pass pre-START gates and the first real transition-auditor response can be deterministically interpreted under the enumerated response contract without human mathematical intervention.",
+  "failure_policy": "Fail closed. Any repair requiring a mathematical judgment, changing the pending 014->015 result, or altering ST2-RP-001 scope/frontier is outside this Meta-PDSA."
+}
