@@ -1,0 +1,26 @@
+{
+  "schema": "BOMA-AUTONOMY-HISTORICAL-EVIDENCE-BRIDGE-001",
+  "experiment_id": "ST2-EXP-014",
+  "artifact_role": "FINAL_STUDY_COMPATIBILITY",
+  "evidence_kind": "DERIVED_HISTORICAL_BRIDGE",
+  "autonomous_reexecution": false,
+  "new_research_decision": false,
+  "source_records": [
+    {
+      "path": "LAB/PDSA/experiments/ST2-EXP-014_FINAL_STUDY_ACT_001.md",
+      "blob_sha": "3c47d8b4cef6bbb08aa9381ef40510c00dd02adf"
+    },
+    {
+      "path": "LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md",
+      "blob_sha": "982a8869c24961e1ac205b0023699bd32a41671d"
+    }
+  ],
+  "historical_result": "PASS",
+  "historical_findings": {
+    "coherent_cauchy_route_p_baseline_for_015": true,
+    "st2_exp_015_remains_scientifically_meaningful": true,
+    "sequence_critical_prerequisite_before_015": false,
+    "owner_required_at_014_study_act_checkpoint": false
+  },
+  "provenance_note": "This file is compatibility metadata for an experiment completed before the autonomy runtime existed. It restates only findings already recorded by the cited historical sources and must not be interpreted as an autonomous rerun of ST2-EXP-014."
+}
