@@ -7,6 +7,7 @@ on:
       - 'AGENTS.md'
       - 'LAB/PDSA/STATUS.md'
       - 'LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md'
+      - 'LAB/PDSA/AUTONOMY_EXPERIMENT_PROTOCOL_001.md'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json'
@@ -14,6 +15,11 @@ on:
       - 'LAB/PDSA/RESEARCH_PROGRAM_*.md'
       - 'LAB/PDSA/ST2_RP_*_PROGRAM_MANIFEST_*.json'
       - 'LAB/PDSA/tools/autonomous_research_program_audit.py'
+      - '.autonomy/**'
+      - 'scripts/boma_autonomy/**'
+      - 'tests/boma_autonomy/**'
+      - '.github/workflows/boma-autonomous-engine.yml'
+      - '.github/workflows/boma-autonomy-experiment-guard.yml'
       - '.github/workflows/boma-autonomous-research-program-audit-001.yml'
   push:
     branches:
@@ -22,6 +28,7 @@ on:
       - 'AGENTS.md'
       - 'LAB/PDSA/STATUS.md'
       - 'LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md'
+      - 'LAB/PDSA/AUTONOMY_EXPERIMENT_PROTOCOL_001.md'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json'
       - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json'
@@ -29,13 +36,18 @@ on:
       - 'LAB/PDSA/RESEARCH_PROGRAM_*.md'
       - 'LAB/PDSA/ST2_RP_*_PROGRAM_MANIFEST_*.json'
       - 'LAB/PDSA/tools/autonomous_research_program_audit.py'
+      - '.autonomy/**'
+      - 'scripts/boma_autonomy/**'
+      - 'tests/boma_autonomy/**'
+      - '.github/workflows/boma-autonomous-engine.yml'
+      - '.github/workflows/boma-autonomy-experiment-guard.yml'
       - '.github/workflows/boma-autonomous-research-program-audit-001.yml'
 
 permissions:
   contents: read
 
 concurrency:
-  group: boma-autonomous-research-program-governance-${{ github.ref }}
+  group: boma-autonomous-research-governance-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -53,6 +65,15 @@ jobs:
           set -euo pipefail
           python3 LAB/PDSA/tools/autonomous_research_program_audit.py
 
+      - name: Validate autonomy experiment runtime when installed
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -f scripts/boma_autonomy/validate.py ]; then
+            python3 scripts/boma_autonomy/validate.py
+            python3 -m unittest discover -s tests/boma_autonomy -v
+          fi
+
       - name: Record governance scope
         if: always()
         shell: bash
@@ -63,6 +84,9 @@ jobs:
           This read-only guard verifies the machine-readable policy/state,
           active owner-authorization record and program manifest when present,
           queue frontier, typed experiment origins, transition-gate baseline,
-          and required handoff markers. It does not create authority by itself,
-          start an experiment, change accepted mathematics, or merge research.
+          and required handoff markers. When the autonomy experiment runtime is
+          installed it also runs its static validation and unit tests.
+
+          It does not create authority by itself, start an experiment, change
+          accepted mathematics, or merge research.
           EOF
