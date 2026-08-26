@@ -1,0 +1,82 @@
+{
+  "schema": "BOMA-AUTONOMY-META-STUDY-005",
+  "experiment_generation": "BOMA-AUTONOMY-005",
+  "measurement_window_id": "MW-20260826T214000Z-168H-G5",
+  "start": {
+    "valid": true,
+    "started_at": "2026-08-26T21:40:00+00:00",
+    "start_head_sha": "151be2c5ba166f4612b5fe5390d15ad2e3d25d03",
+    "provider_preflight": "PASS",
+    "synthetic_dry_run": "PASS"
+  },
+  "first_research_wake": {
+    "wake": 1,
+    "controller_result": "WAITING_CI",
+    "transition_branch": "autonomy/transition-st2-exp-014-to-st2-exp-015",
+    "transition_branch_head": "0a7f16769eec9bf3e6db2fe2f6c765071a5e4bcc",
+    "pull_request": 14,
+    "pull_request_state_at_stop": "CLOSED_UNMERGED",
+    "transition_decision_generated": "AUTO_CONTINUE",
+    "transition_decision_committed_on_branch": true,
+    "transition_decision_merged_to_main": false,
+    "st2_exp_015_started": false,
+    "frozen_plan_created": false,
+    "executor_ran": false
+  },
+  "stop": {
+    "stopped_at": "2026-08-26T21:51:29+00:00",
+    "reason_class": "TECHNICAL_LIFECYCLE_UNAWARE_CI_AFTER_VALID_TRANSITION_DECISION",
+    "decision": "STOP_GENERATION_AND_REQUIRE_META_PDSA"
+  },
+  "primary_failures": [
+    {
+      "code": "RUNTIME_MARKER_TEST_ASSUMED_PRETRANSITION_STATE",
+      "workflows": [
+        {"name": "BOMA Autonomous Research Program Governance Audit 001", "run_id": 33016448730},
+        {"name": "BOMA Autonomy Exact-Head Guard 001", "run_id": 33016448707}
+      ],
+      "detail": "test_runtime_marker_upsert_is_idempotent asserted the literal TRANSITION_GATE even after the runtime correctly rendered PREPARING_EXPERIMENT following AUTO_CONTINUE."
+    },
+    {
+      "code": "HISTORICAL_ST2_EXP_014_WORKFLOW_RETRIGGERED_POST_CLOSURE",
+      "workflows": [
+        {"name": "BOMA ST2-EXP-014 Cauchy-Native Full C — V5", "run_id": 33016448902}
+      ],
+      "detail": "The closed ST2-EXP-014 workflow was retriggered by transition-state files and the ST2-EXP-014_TO_ST2-EXP-015 transition record, then asserted that ST2-EXP-014 remained the active experiment with queue_cursor=0."
+    }
+  ],
+  "research_effect": {
+    "ai_research_calls": 1,
+    "transition_decision": "AUTO_CONTINUE",
+    "transition_decision_location": "closed unmerged PR #14 branch only",
+    "plans_frozen": 0,
+    "executor_runs": 0,
+    "research_content_changed_on_main": false,
+    "queue_changed": false,
+    "accepted_or_canonical_state_changed": false
+  },
+  "intervention_accounting_at_stop": {
+    "HRIC": 0,
+    "HIIC": 0,
+    "note": "The owner authorized termination and Meta-PDSA after the CI harness failure. No proof hint, lemma choice, mathematical direction, queue change, or in-window research repair was supplied."
+  },
+  "meta_learning": [
+    "Generation 005 passed realistic provider capacity probing, nested transition-contract probing, valid START, first autonomous research wake, and autonomous recording of AUTO_CONTINUE on a research branch.",
+    "The remaining failure was not mathematical: CI assumptions were tied to the pre-transition lifecycle state.",
+    "Runtime-marker tests must validate the state actually rendered, not a fixed historical state literal.",
+    "Closed experiment workflows must not retrigger merely because a later transition updates global program-state prose or creates a transition record whose filename contains the closed experiment id."
+  ],
+  "next_meta_pdsa_scope": [
+    "Make runtime-marker idempotency testing lifecycle-aware by asserting the currently supplied state and next legal action.",
+    "Scope the historical ST2-EXP-014 pull-request workflow to actual 014 implementation/Plan changes and explicitly exclude the 014-to-015 transition record and generic program-state prose changes.",
+    "Add regression coverage for both lifecycle conditions.",
+    "Advance bootstrap/preflight/dry-run/START bindings to Generation 006 and require fresh commission/preflight/dry-run evidence."
+  ],
+  "forbidden_in_meta_repair": [
+    "Do not alter the AUTO_CONTINUE mathematical conclusion recorded by Generation 005.",
+    "Do not merge PR #14 after the Generation 005 stop.",
+    "Do not start ST2-EXP-015, freeze its Plan, select lemmas, or modify mathematical sources during Meta-PDSA.",
+    "Do not change the owner-authorized queue, experiment factors, accepted controls, SELECTS, canonical producers, or acceptance contracts."
+  ],
+  "classification": "TECHNICAL_STOP_AFTER_VALID_BRANCH_RESEARCH_DECISION_BEFORE_MERGE_OR_ST2_EXP_015_START"
+}
