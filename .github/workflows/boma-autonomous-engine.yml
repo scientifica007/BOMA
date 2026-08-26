@@ -30,6 +30,8 @@ jobs:
   autonomy:
     runs-on: ubuntu-latest
     timeout-minutes: 180
+    env:
+      AUTONOMY_GH_TOKEN: ${{ secrets.AUTONOMY_GH_TOKEN }}
 
     steps:
       - name: Checkout exact main
@@ -37,6 +39,7 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
+          token: ${{ secrets.AUTONOMY_GH_TOKEN || github.token }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -68,11 +71,26 @@ jobs:
           print('terminal=' + ('true' if terminal else 'false'))
           PY
 
-      - name: Pre-START GitHub branch and PR commission
+      - name: Require independent GitHub token for autonomous writes
+        if: >-
+          (github.event_name == 'workflow_dispatch' && inputs.mode != 'validate') ||
+          (github.event_name == 'schedule' &&
+           steps.experiment_state.outputs.armed == 'true' &&
+           steps.experiment_state.outputs.terminal != 'true')
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "${AUTONOMY_GH_TOKEN:-}" ]; then
+            echo "::error::AUTONOMY_GH_TOKEN is required for commission/start/run/scheduled autonomous writes."
+            echo "::error::The default workflow GITHUB_TOKEN is intentionally rejected because autonomous PRs must be able to trigger and complete downstream CI without human approval."
+            exit 1
+          fi
+
+      - name: Pre-START GitHub branch, PR, and CI commission
         if: github.event_name == 'workflow_dispatch' && inputs.mode == 'commission'
         env:
-          GH_TOKEN: ${{ github.token }}
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.AUTONOMY_GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.AUTONOMY_GH_TOKEN }}
         run: python3 scripts/boma_autonomy/commission.py
 
       - name: Provider preflight before START
@@ -132,8 +150,8 @@ jobs:
         env:
           AI_API_KEY: ${{ secrets.AI_API_KEY }}
           AI_BASE_URL: ${{ vars.AI_BASE_URL }}
-          GH_TOKEN: ${{ github.token }}
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ secrets.AUTONOMY_GH_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.AUTONOMY_GH_TOKEN }}
           PYTHONUNBUFFERED: "1"
         run: python3 scripts/boma_autonomy/controller.py
 
