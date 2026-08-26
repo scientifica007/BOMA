@@ -1,5 +1,5 @@
 {
-  "schema": "BOMA-AUTONOMY-PROVIDER-001",
+  "schema": "BOMA-AUTONOMY-PROVIDER-002",
   "provider_kind": "openai_compatible",
   "api_key_env": "AI_API_KEY",
   "base_url_env": "AI_BASE_URL",
@@ -15,11 +15,31 @@
     "closure_auditor": "openai/gpt-oss-120b",
     "program_synthesizer": "openai/gpt-oss-120b"
   },
+  "capacity": {
+    "source": "Generation-001 observed Groq organization limit plus provider documentation",
+    "organization_tpm_limit": 8000,
+    "max_admitted_request_tokens": 6500,
+    "safety_margin_tokens": 1500,
+    "conservative_chars_per_token": 2.5,
+    "message_overhead_tokens": 256,
+    "minimum_user_prompt_characters": 1200,
+    "role_completion_caps": {
+      "transition_auditor": 1000,
+      "planner": 1400,
+      "reviewer": 800,
+      "executor": 2400,
+      "recovery_analyst": 1500,
+      "study_analyst": 1000,
+      "act_analyst": 700,
+      "closure_auditor": 900,
+      "program_synthesizer": 1400
+    }
+  },
   "request": {
     "temperature": 0.1,
     "reasoning_effort": "low",
-    "retry_429": 4,
+    "retry_429": 6,
     "minimum_retry_seconds": 10,
-    "timeout_seconds": 150
+    "timeout_seconds": 180
   }
 }

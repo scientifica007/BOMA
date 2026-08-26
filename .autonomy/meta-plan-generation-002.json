@@ -1,0 +1,54 @@
+{
+  "schema": "BOMA-AUTONOMY-META-PLAN-002",
+  "experiment_generation": "BOMA-AUTONOMY-002",
+  "parent_meta_study": ".autonomy/meta-study-generation-001.json",
+  "generation_001_stop_classification": "CLEAN_TECHNICAL_STOP_BEFORE_ANY_RESEARCH_DECISION",
+  "objective": "Repair only the two technical bootstrap insufficiencies observed in Generation 001, strengthen START against the same failure class, and reopen a clean measurement generation without changing ST2-RP-001 mathematics or its frontier.",
+  "technical_changed_factors": [
+    {
+      "factor": "provider_capacity_admission",
+      "change": "Bound every AI request below the observed 8000 TPM organization ceiling using deterministic role completion caps, a conservative prompt-size estimate, and a 1500-token safety margin."
+    },
+    {
+      "factor": "evidence_preservation_under_compaction",
+      "change": "Balance marked repository evidence sections during deterministic prompt compaction so late lifecycle evidence is not discarded merely because earlier governance files are long."
+    },
+    {
+      "factor": "realistic_prestart_capacity_probe",
+      "change": "Exercise both configured production model classes with large synthetic marked evidence before START; persist an exact-head preflight record and require it at START."
+    },
+    {
+      "factor": "lifecycle_aware_runtime_test",
+      "change": "Make observation-window tests distinguish BOOTSTRAP, ACTIVE, and terminal invariants instead of requiring a null deadline after START."
+    },
+    {
+      "factor": "generation_isolation",
+      "change": "Reset Generation 002 measurement counters and invalidate the Generation 001 commission so a fresh post-repair commission is mandatory."
+    }
+  ],
+  "provider_envelope": {
+    "observed_generation_001_tpm_limit": 8000,
+    "generation_001_rejected_requested_tokens": 15242,
+    "generation_002_max_admitted_request_tokens": 6500,
+    "generation_002_safety_margin_tokens": 1500
+  },
+  "research_invariants": {
+    "research_frontier": "ST2-EXP-014 -> ST2-EXP-015 TRANSITION_GATE",
+    "st2_exp_015_started": false,
+    "st2_exp_015_frozen_plan_exists": false,
+    "queue_change": false,
+    "scientific_factor_change": false,
+    "proof_hint_or_lemma_selection": false,
+    "acceptance_or_selects_change": false,
+    "research_content_edit_authorized_by_meta_plan": false
+  },
+  "verification": [
+    "Static runtime validation passes.",
+    "Autonomy unit tests pass in BOOTSTRAP and remain valid after START semantics populate observation_deadline.",
+    "Provider admission unit test proves every marked synthetic evidence section survives bounded compaction.",
+    "Post-merge Generation 002 commission must pass branch -> PR -> exact-head CI -> cleanup with no human approval in the chain.",
+    "Generation 002 START must refuse to open unless realistic provider preflight and dry run both pass on the exact START head."
+  ],
+  "success_criteria": "A new BOOTSTRAP generation is technically commissioned and can reach a valid START without repeating either Generation 001 bootstrap failure class; no mathematical decision is made during Meta-PDSA repair.",
+  "failure_policy": "Fail closed. Any repair requiring mathematical guidance or alteration of ST2-RP-001 scope/frontier is out of Meta-PDSA scope and must not be performed."
+}
