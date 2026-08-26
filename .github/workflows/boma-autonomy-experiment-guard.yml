@@ -1,0 +1,73 @@
+name: BOMA Autonomy Exact-Head Guard 001
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches:
+      - "autonomy/**"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: boma-autonomy-guard-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  guard:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate runtime and BOMA governance
+        run: |
+          set -euo pipefail
+          python3 scripts/boma_autonomy/validate.py
+          python3 -m unittest discover -s tests/boma_autonomy -v
+
+      - name: Set up pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+
+      - name: Run exact-head Frozen-Plan guard
+        run: python3 scripts/boma_autonomy/guard.py
+
+      - name: Publish autonomy guard summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            printf '## BOMA Autonomy Exact-Head Guard\n\n'
+            printf -- '- Exact head: `%s`\n' "$(git rev-parse HEAD)"
+            printf -- '- BOMA governance + architecture audit: executed by runtime validation.\n'
+            printf -- '- Frozen Plan and accepted controls: checked when an experiment is active.\n'
+            printf -- '- Frozen Plan verification commands: executed when an experiment is active.\n'
+            printf -- '- This workflow does not grant new research authority.\n'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Preserve generic autonomy guard evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: boma-autonomy-guard-${{ github.run_id }}
+          path: /tmp/boma-autonomy-guard.json
+          if-no-files-found: ignore
