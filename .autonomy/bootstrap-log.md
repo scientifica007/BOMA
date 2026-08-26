@@ -109,3 +109,30 @@ Generation 006 is limited to those technical lifecycle fixes and a fresh
 measurement reset. The Generation 005 research conclusion is not promoted,
 reused, merged, or altered by this Meta-PDSA. Fresh commission, provider
 preflight, synthetic dry run, and valid START remain mandatory.
+
+## 2026-08-26 — Generation 007 cross-generation branch isolation Meta-PDSA
+
+Generation 006 reached a valid START at `2026-08-26T22:17:43+00:00`. Its first
+research wake did **not** record a new 014→015 transition decision. Instead, the
+runtime encountered the surviving live branch name
+`autonomy/transition-st2-exp-014-to-st2-exp-015` from the stopped Generation 005
+PR #14 and treated it as current transition work.
+
+The controller therefore entered non-plan technical recovery. The recovery
+model returned a patch-style operation object (`type/file/patch`) rather than
+the runtime's complete `action/path/content` operation contract. The fail-closed
+validator rejected that payload before any operation was applied. Generation
+006 ended with `transition_decisions = 0`, `plans_frozen = 0`,
+`executor_runs = 0`, `HRIC = 0`, and `HIIC = 0`.
+
+Generation 007 is technical-only. Before START, fresh commission now quarantines
+historical live runtime research branch names under generation-specific archive
+refs while preserving the exact head SHA and GitHub PR history. An open runtime
+research PR or archive collision fails commission closed. The provider preflight
+also exercises the `recovery_analyst` complete-operation response contract and
+forbids patch/diff aliases.
+
+No Generation 005 transition conclusion is reused or merged. The scientific
+frontier remains `ST2-EXP-014 → ST2-EXP-015 / TRANSITION_GATE_PENDING`; 015 is
+not started and has no Frozen Plan. Fresh Generation 007 commission, provider
+preflight, dry run, and exact-head START are mandatory.
