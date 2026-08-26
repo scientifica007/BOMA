@@ -1,0 +1,46 @@
+{
+  "schema": "BOMA-AUTONOMY-META-PLAN-007",
+  "experiment_generation": "BOMA-AUTONOMY-007",
+  "parent_generation": "BOMA-AUTONOMY-006",
+  "meta_anchor_main_sha": "3778ae7cef739b77b8f0531ece8c31f8b02f0ac2",
+  "frontier_preserved": {
+    "state": "TRANSITION_GATE",
+    "from": "ST2-EXP-014",
+    "to": "ST2-EXP-015",
+    "transition_decision_recorded": false,
+    "st2_exp_015_started": false,
+    "frozen_plan_exists": false
+  },
+  "single_meta_objective": "Prevent cross-generation inheritance of stale autonomous research branch/PR state and prove the recovery-operation JSON contract before START, without making or reusing any mathematical research decision.",
+  "technical_changed_factors": [
+    "Fresh pre-START commission quarantines historical live runtime research branches under generation-specific archive refs before the measurement window can open.",
+    "Commission fails closed on open runtime research PRs, archive-ref collisions, or inability to verify removal of the old live deterministic branch name.",
+    "Provider preflight exercises recovery_analyst and requires complete action/path/content write/delete operations while forbidding patch/diff/type/file aliases.",
+    "START requires Generation 007 commission evidence that branch quarantine was exercised and provider evidence that the recovery operation contract was exercised."
+  ],
+  "required_regressions": [
+    "Only autonomous runtime research branch names are classified for quarantine; commission probes and Meta-PDSA branches are excluded.",
+    "Generation-specific archive naming is deterministic and preserves the exact historical head SHA before removal of the live runtime branch name.",
+    "Recovery preflight rejects patch-style aliases and accepts only complete write/delete operation objects.",
+    "Existing runtime protection, lifecycle-aware CI, provider capacity, transition normalization, governance, and exact-head tests remain green."
+  ],
+  "generation_reset": [
+    "Reset experiment state and metrics to Generation 007 BOOTSTRAP with HRIC=0 and HIIC=0.",
+    "Invalidate prior commission, provider preflight, and dry run.",
+    "Require fresh Generation 007 commission, realistic transition/recovery provider preflight, synthetic dry run, and exact-head START."
+  ],
+  "historical_branch_policy": {
+    "preserve_history": true,
+    "live_deterministic_names_may_not_cross_generation_boundary": true,
+    "archive_before_live_ref_removal": true,
+    "open_pr_means_fail_closed": true,
+    "research_decision_reuse": false
+  },
+  "forbidden": [
+    "No reuse or merge of the Generation 005 AUTO_CONTINUE conclusion from PR #14.",
+    "No 014-to-015 transition evaluation during Meta-PDSA.",
+    "No mathematical implementation, proof hint, lemma selection, Frozen Plan, SELECTS change, acceptance promotion, canonical choice, or queue change.",
+    "No weakening of fail-closed operation validation or exact-head governance."
+  ],
+  "status": "FROZEN_META_PLAN"
+}
