@@ -1,16 +1,32 @@
 {
   "schema": "BOMA-AUTONOMY-METRICS-006",
   "experiment_generation": "BOMA-AUTONOMY-006",
-  "started_at": null,
-  "bootstrap_ai_calls": 0,
+  "started_at": "2026-08-26T22:17:43+00:00",
+  "bootstrap_ai_calls": 7,
   "ai_calls": 0,
-  "ai_calls_by_role": {},
-  "models_used": {},
-  "reported_input_tokens": 0,
-  "reported_output_tokens": 0,
-  "request_compactions": 0,
-  "max_estimated_admitted_tokens": 0,
-  "last_admission": null,
+  "ai_calls_by_role": {
+    "transition_auditor": 1,
+    "planner": 2,
+    "reviewer": 1,
+    "executor": 1,
+    "study_analyst": 1,
+    "act_analyst": 1
+  },
+  "models_used": {
+    "qwen/qwen3.6-27b": 4,
+    "openai/gpt-oss-120b": 3
+  },
+  "reported_input_tokens": 6627,
+  "reported_output_tokens": 471,
+  "request_compactions": 2,
+  "max_estimated_admitted_tokens": 6330,
+  "last_admission": {
+    "role": "act_analyst",
+    "model": "qwen/qwen3.6-27b",
+    "estimated_admitted_tokens": 745,
+    "admitted_completion_tokens": 350,
+    "compacted": false
+  },
   "wakes_started": 0,
   "wakes_completed": 0,
   "transition_decisions": 0,
@@ -25,5 +41,5 @@
   "human_research_interventions": 0,
   "human_infrastructure_interventions": 0,
   "observation_pauses": 0,
-  "measurement_window_id": null
+  "measurement_window_id": "MW-20260826T221743Z-168H-G6"
 }
