@@ -1,0 +1,73 @@
+{
+  "schema": "BOMA-AUTONOMY-META-STUDY-003",
+  "experiment_generation": "BOMA-AUTONOMY-003",
+  "measurement_window_id": "MW-20260826T210522Z-168H-G3",
+  "start": {
+    "valid": true,
+    "started_at": "2026-08-26T21:05:22+00:00",
+    "start_head_sha": "8fbdcfb4573a72b724dd96b590221c57ec49682f",
+    "provider_preflight": "PASS",
+    "synthetic_dry_run": "PASS"
+  },
+  "stop": {
+    "stopped_at": "2026-08-26T21:12:23+00:00",
+    "reason_class": "TECHNICAL_TRANSITION_RESPONSE_ENVELOPE_MISMATCH",
+    "decision": "STOP_GENERATION_AND_REQUIRE_META_PDSA",
+    "first_research_wake": 1
+  },
+  "observed_ai_transition_judgment": {
+    "produced": true,
+    "value": "AUTO_CONTINUE",
+    "shape": "transition_gate_evaluation.decision",
+    "all_declared_prerequisites_reported_satisfied": true,
+    "sequence_critical_prerequisite_discovered": false,
+    "controller_committed_transition_decision": false,
+    "effect": "The controller rejected the valid nested response shape before recording or applying the transition decision."
+  },
+  "primary_failure": {
+    "code": "TRANSITION_DECISION_NESTED_UNDER_EXACT_WRAPPER",
+    "accepted_generation_003_shapes": [
+      "decision at top level",
+      "audit_result alias at top level"
+    ],
+    "observed_shape": "transition_gate_evaluation.decision",
+    "effect": "GovernanceError: invalid transition decision; no transition record, branch, Frozen Plan, or executor run was created."
+  },
+  "provider_capacity_result": {
+    "realistic_request_succeeded": true,
+    "max_estimated_admitted_tokens": 6367,
+    "provider_tpm_failure_repeated": false
+  },
+  "research_effect": {
+    "ai_research_calls": 1,
+    "transition_judgments_produced_by_ai": 1,
+    "transition_decisions_committed": 0,
+    "plans_frozen": 0,
+    "executor_runs": 0,
+    "research_content_changed": false,
+    "st2_exp_015_started": false
+  },
+  "intervention_accounting_at_stop": {
+    "HRIC": 0,
+    "HIIC": 0,
+    "note": "The owner authorized termination and Meta-PDSA classification after the controller error. No mathematical guidance or in-window technical repair was supplied."
+  },
+  "meta_learning": [
+    "Generation 002 capacity repair succeeded: the first realistic research request fit the provider envelope and returned normally.",
+    "Generation 003 historical evidence compatibility succeeded: the transition auditor found all four 014->015 prerequisites satisfied rather than falsely treating historical 014 evidence as missing.",
+    "A JSON contract can still fail when a model preserves the requested semantic payload but nests it under a descriptive envelope.",
+    "Fail-closed normalization should accept only explicitly enumerated envelope shapes, canonicalize them before controller semantics, and reject contradictions or arbitrary recursive nesting."
+  ],
+  "next_meta_pdsa_scope": [
+    "Accept exactly the direct transition object or the exact transition_gate_evaluation envelope, with decision/audit_result aliases restricted to AUTO_CONTINUE or OWNER_REQUIRED.",
+    "Reject conflicting direct/enveloped values and malformed or arbitrary nested response shapes.",
+    "Exercise the exact enveloped shape in pre-START provider probing.",
+    "Reopen a fresh measurement generation with reset counters and fresh commission/preflight/dry-run evidence."
+  ],
+  "forbidden_in_meta_repair": [
+    "No change to the 014->015 transition conclusion.",
+    "No proof hint, lemma selection, or mathematical content edit.",
+    "No change to ST2-RP-001 queue order, experiment factors, Frozen Plans, SELECTS, accepted exports, or acceptance contracts."
+  ],
+  "classification": "TECHNICAL_STOP_AFTER_UNCOMMITTED_TRANSITION_JUDGMENT_BEFORE_RESEARCH_STATE_MUTATION"
+}
