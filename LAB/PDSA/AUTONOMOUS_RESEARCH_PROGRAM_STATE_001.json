@@ -1,7 +1,7 @@
 {
   "schema": "BOMA-AUTONOMOUS-RESEARCH-PROGRAM-STATE-001",
   "status_date": "2026-08-26",
-  "state": "TRANSITION_GATE",
+  "state": "PREPARING_EXPERIMENT",
   "active_program_id": "ST2-RP-001",
   "owner_authorization_record": "LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md",
   "program_manifest": "LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json",
@@ -14,7 +14,7 @@
     "ST2-EXP-016",
     "ST2-EXP-017"
   ],
-  "queue_cursor": 0,
+  "queue_cursor": 1,
   "active_experiment": null,
   "active_experiment_branch": null,
   "active_frozen_plan": null,
@@ -33,8 +33,8 @@
     "latest_completed_status": "CLOSED_PASS / EXACT_HEAD_VERIFIED / ROUTINE_MERGED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-003",
     "next_experiment": "ST2-EXP-015",
-    "next_experiment_status": "OWNER_AUTHORIZED_QUEUED_NOT_STARTED / TRANSITION_GATE_PENDING",
-    "activation_authorized_by_this_state": false
+    "next_experiment_status": "OWNER_AUTHORIZED / TRANSITION_PASSED / NOT_STARTED",
+    "activation_authorized_by_this_state": true
   },
   "program_transition": {
     "from_experiment": "ST2-EXP-014",
@@ -43,12 +43,14 @@
     "informative_fail_may_transition_if_prerequisites_hold": true,
     "sequence_critical_discovery_means": "OWNER_REQUIRED",
     "program_completion_requires_program_level_synthesis": true,
-    "transition_decision_recorded": false
+    "transition_decision_recorded": true,
+    "last_transition_decision": "AUTO_CONTINUE"
   },
-  "next_legal_action": "RE_READ_SYNCHRONIZED_MAIN_AND_EVALUATE_014_TO_015_TRANSITION_GATE_ONLY; DO_NOT_START_OR_FREEZE_ST2_EXP_015_UNTIL_THE_GATE_PASSES",
+  "next_legal_action": "CREATE_INDEPENDENT_ST2-EXP-015_BRANCH_AND_FREEZE_PLAN_BEFORE_DO",
   "safety": {
     "fail_closed": true,
     "ambiguous_authority_means": "OWNER_REQUIRED",
     "main_research_writes_allowed": false
-  }
+  },
+  "active_frozen_plan_machine": null
 }
