@@ -14,6 +14,42 @@ from core import EXP_STATE, METRICS, PROVIDER, GovernanceError, load_json, save_
 
 
 _SECTION = re.compile(r"(?m)^## (?:FILE .+|REPOSITORY TREE)\s*$")
+_TRANSITION_DECISIONS = {"AUTO_CONTINUE", "OWNER_REQUIRED"}
+
+
+def canonicalize_role_response(role: str, result: dict[str, Any]) -> dict[str, Any]:
+    """Normalize only explicitly safe, non-semantic provider response aliases.
+
+    Generation 002 observed a transition auditor returning ``audit_result`` with an
+    otherwise valid AUTO_CONTINUE/OWNER_REQUIRED value even though the controller
+    contract names that field ``decision``.  Treating a spelling-level alias as a
+    research decision would be wrong, but silently accepting arbitrary schema drift
+    would also weaken fail-closed behavior.  Therefore only this one enumerated alias
+    is canonicalized, only for the transition-auditor role, and contradictions fail.
+    """
+    if role != "transition_auditor":
+        return result
+
+    has_decision = "decision" in result
+    has_alias = "audit_result" in result
+    if not has_decision and not has_alias:
+        return result
+
+    decision = result.get("decision")
+    alias = result.get("audit_result")
+    if has_decision and has_alias and decision != alias:
+        raise GovernanceError(
+            "transition auditor returned conflicting decision and audit_result values"
+        )
+
+    value = decision if has_decision else alias
+    if value not in _TRANSITION_DECISIONS:
+        return result
+
+    normalized = dict(result)
+    normalized["decision"] = value
+    normalized.pop("audit_result", None)
+    return normalized
 
 
 def _compact_text(text: str, limit: int, *, label: str) -> tuple[str, bool]:
@@ -207,7 +243,7 @@ class AIProvider:
                 headers={
                     "Authorization": f"Bearer {self.api_key}",
                     "Content-Type": "application/json",
-                    "User-Agent": "BOMA-Autonomous-Research/2.0",
+                    "User-Agent": "BOMA-Autonomous-Research/3.0",
                 },
                 method="POST",
             )
@@ -218,6 +254,7 @@ class AIProvider:
                 result = json.loads(content)
                 if not isinstance(result, dict):
                     raise GovernanceError("AI response must be a JSON object")
+                result = canonicalize_role_response(role, result)
                 self._record(role, model, data.get("usage", {}), admission)
                 return result
             except urllib.error.HTTPError as exc:

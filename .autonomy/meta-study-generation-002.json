@@ -1,0 +1,62 @@
+{
+  "schema": "BOMA-AUTONOMY-META-STUDY-002",
+  "experiment_generation": "BOMA-AUTONOMY-002",
+  "measurement_window_id": "MW-20260826T204122Z-168H-G2",
+  "start": {
+    "valid": true,
+    "started_at": "2026-08-26T20:41:22+00:00",
+    "start_head_sha": "454aba8cfd62f701832656ff198f82b21bfc0e89",
+    "provider_preflight": "PASS",
+    "synthetic_dry_run": "PASS"
+  },
+  "stop": {
+    "stopped_after_run_at": "2026-08-26T20:41:41+00:00",
+    "reason_class": "TECHNICAL_EVIDENCE_ADAPTER_AND_RESPONSE_SCHEMA_DEFECT",
+    "decision": "STOP_GENERATION_AND_REQUIRE_META_PDSA",
+    "github_actions_run_id": 33011643864,
+    "first_research_wake": 1
+  },
+  "primary_failure": {
+    "code": "LEGACY_EXPERIMENT_EVIDENCE_PACKET_EXPECTED_AUTONOMY_ERA_ARTIFACTS",
+    "effect": "The 014-to-015 transition auditor was shown missing paths under LAB/PDSA/autonomy/ST2-EXP-014 even though ST2-EXP-014 predates the autonomy runtime. It therefore treated absent autonomy-era artifacts as missing closure evidence and returned OWNER_REQUIRED despite the authoritative synchronized baseline recording CLOSED/PASS, exact evidence complete, and routine merge complete."
+  },
+  "secondary_failure": {
+    "code": "TRANSITION_RESPONSE_KEY_ALIAS_NOT_CANONICALIZED",
+    "observed_payload_key": "audit_result",
+    "required_payload_key": "decision",
+    "effect": "The provider returned an otherwise classifiable transition payload using audit_result instead of decision; the controller correctly failed closed but classified the response as invalid rather than recording a transition outcome."
+  },
+  "research_effect": {
+    "research_ai_answers_received": 1,
+    "transition_decisions_recorded": 0,
+    "plans_frozen": 0,
+    "executor_runs": 0,
+    "research_content_changed": false,
+    "research_result_selected": false,
+    "st2_exp_015_started": false
+  },
+  "intervention_accounting_at_stop": {
+    "HRIC": 0,
+    "HIIC": 0,
+    "note": "The owner authorized termination and a next Meta-PDSA generation only after the controller had already failed closed. No mathematical hint, lemma, preferred result, queue change, or experiment-factor guidance was supplied inside Generation 002."
+  },
+  "meta_learning": [
+    "Historical experiments completed before autonomy installation need an explicit compatibility evidence layer; absence of autonomy-era JSON artifacts must not be interpreted as absence of historical exact evidence.",
+    "A fail-closed JSON consumer should canonicalize a narrowly enumerated non-semantic key alias when the value is unambiguous, while rejecting conflicting or unknown fields.",
+    "A pre-START technical probe should test the transition-auditor response contract itself, not only provider connectivity and capacity."
+  ],
+  "next_meta_pdsa_scope": [
+    "Add provenance-preserving compatibility evidence for ST2-EXP-014 derived only from already authoritative historical records and synchronized baseline audit.",
+    "Canonicalize the transition-auditor alias audit_result to decision only when decision is absent, the alias value is one of AUTO_CONTINUE/OWNER_REQUIRED, and no contradiction exists.",
+    "Extend the synthetic pre-START provider probe to exercise the canonical transition response contract.",
+    "Reset measurement state and require a fresh commission, provider preflight, dry run, and valid START for Generation 003."
+  ],
+  "forbidden_in_meta_repair": [
+    "No new mathematical evaluation of the 014-to-015 gate.",
+    "No proof hint or lemma selection.",
+    "No change to ST2-RP-001 queue order or experiment scientific factors.",
+    "No Frozen Plan change because no ST2-EXP-015 Frozen Plan exists.",
+    "No canonical, SELECTS, acceptance, or mathematical scope change."
+  ],
+  "classification": "CLEAN_TECHNICAL_STOP_AFTER_AUDIT_RESPONSE_BEFORE_ANY_RECORDED_RESEARCH_DECISION"
+}

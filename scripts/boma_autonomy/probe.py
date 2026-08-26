@@ -29,7 +29,7 @@ def require(condition: bool, message: str) -> None:
 def main() -> int:
     state = load_json(EXP_STATE)
     generation = str(state.get("experiment_generation") or "")
-    require(generation == "BOMA-AUTONOMY-002", "provider probe requires Generation 002 bootstrap")
+    require(generation == "BOMA-AUTONOMY-003", "provider probe requires Generation 003 bootstrap")
 
     metrics = load_json(METRICS)
     ai = AIProvider(metrics)
@@ -37,15 +37,19 @@ def main() -> int:
 
     qwen = ai.ask_json(
         "transition_auditor",
-        "Technical capacity probe only. Return JSON only. Do not analyze BOMA or mathematics.",
-        "Return exactly an object with ok=true, kind='BOMA_REALISTIC_QWEN_PREFLIGHT'. "
+        "Technical capacity and response-contract probe only. Return JSON only. Do not analyze BOMA or mathematics.",
+        "Return exactly an object with ok=true, kind='BOMA_REALISTIC_QWEN_PREFLIGHT', "
+        "decision='OWNER_REQUIRED', and rationale='SYNTHETIC_CONTRACT_ONLY'. The decision value is a synthetic schema sentinel, not a BOMA research decision. "
         "The following large marked sections are synthetic padding used only to exercise deterministic capacity compaction.\n\n"
         + evidence,
         max_tokens=3000,
     )
     require(
-        qwen.get("ok") is True and qwen.get("kind") == "BOMA_REALISTIC_QWEN_PREFLIGHT",
-        f"Qwen realistic preflight returned unexpected payload: {qwen!r}",
+        qwen.get("ok") is True
+        and qwen.get("kind") == "BOMA_REALISTIC_QWEN_PREFLIGHT"
+        and qwen.get("decision") == "OWNER_REQUIRED"
+        and qwen.get("rationale") == "SYNTHETIC_CONTRACT_ONLY",
+        f"Qwen realistic preflight/transition contract returned unexpected payload: {qwen!r}",
     )
 
     gpt = ai.ask_json(
@@ -62,7 +66,7 @@ def main() -> int:
     )
 
     record = {
-        "schema": "BOMA-AUTONOMY-PROVIDER-PREFLIGHT-002",
+        "schema": "BOMA-AUTONOMY-PROVIDER-PREFLIGHT-003",
         "experiment_generation": generation,
         "passed": True,
         "head_sha": current_head(),
@@ -76,11 +80,13 @@ def main() -> int:
             "transition_auditor": 3000,
             "planner": 4500,
         },
+        "transition_response_contract_exercised": True,
+        "transition_response_contract_expected": "decision=OWNER_REQUIRED / synthetic sentinel only",
         "research_content_read": False,
         "research_decision_made": False,
     }
     save_json(OUT, record)
-    print("BOMA realistic AI provider capacity preflight: PASS")
+    print("BOMA Generation-003 realistic AI provider capacity and transition-contract preflight: PASS")
     return 0
 
 

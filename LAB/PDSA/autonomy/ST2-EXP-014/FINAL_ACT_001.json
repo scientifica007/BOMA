@@ -1,0 +1,26 @@
+{
+  "schema": "BOMA-AUTONOMY-HISTORICAL-EVIDENCE-BRIDGE-001",
+  "experiment_id": "ST2-EXP-014",
+  "artifact_role": "FINAL_ACT_COMPATIBILITY",
+  "evidence_kind": "DERIVED_HISTORICAL_BRIDGE",
+  "autonomous_reexecution": false,
+  "new_research_decision": false,
+  "source_records": [
+    {
+      "path": "LAB/PDSA/experiments/ST2-EXP-014_FINAL_STUDY_ACT_001.md",
+      "blob_sha": "3c47d8b4cef6bbb08aa9381ef40510c00dd02adf"
+    },
+    {
+      "path": "LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md",
+      "blob_sha": "982a8869c24961e1ac205b0023699bd32a41671d"
+    }
+  ],
+  "historical_act": {
+    "classification": "PASS / BOUNDED_PROGRAM_LEARNING",
+    "acceptance_promotion": false,
+    "selects_change": false,
+    "queue_change": false,
+    "next_transition_gate_pre_decided": false
+  },
+  "provenance_note": "Compatibility metadata only. The 014-to-015 gate remains intentionally undecided and must be evaluated after a valid autonomy START."
+}

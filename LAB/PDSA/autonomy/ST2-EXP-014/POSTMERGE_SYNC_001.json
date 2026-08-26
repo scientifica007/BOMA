@@ -1,0 +1,29 @@
+{
+  "schema": "BOMA-AUTONOMY-HISTORICAL-EVIDENCE-BRIDGE-001",
+  "experiment_id": "ST2-EXP-014",
+  "artifact_role": "POSTMERGE_SYNC_COMPATIBILITY",
+  "evidence_kind": "DERIVED_HISTORICAL_BRIDGE",
+  "autonomous_reexecution": false,
+  "new_research_decision": false,
+  "source_records": [
+    {
+      "path": "LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md",
+      "blob_sha": "982a8869c24961e1ac205b0023699bd32a41671d"
+    },
+    {
+      "path": "LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json",
+      "blob_sha_at_generation_002_stop": "0be7a4bc628746e6ad7fea960bf7ebcac4b3ce89"
+    }
+  ],
+  "historical_postmerge": {
+    "exact_closure_head": "19cc6541457b3e8c58ea4607198d2474cd293dc9",
+    "routine_merge_commit": "2a6c38af70e596c840ef2db4733421bde38f3ee5",
+    "closure_head_tree": "1e4232e3f6fb2565efaad849a3091ba38c55bad4",
+    "merge_tree": "1e4232e3f6fb2565efaad849a3091ba38c55bad4",
+    "content_drift_at_merge": false,
+    "synchronized_frontier": "TRANSITION_GATE / ST2-EXP-014 -> ST2-EXP-015",
+    "transition_decision_recorded": false,
+    "st2_exp_015_started": false
+  },
+  "provenance_note": "Compatibility metadata only. It establishes the already-recorded post-merge state of ST2-EXP-014 and does not decide whether the 014-to-015 transition should AUTO_CONTINUE or require owner intervention."
+}
