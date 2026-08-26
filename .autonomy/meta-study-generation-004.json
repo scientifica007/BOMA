@@ -1,0 +1,52 @@
+{
+  "schema": "BOMA-AUTONOMY-META-STUDY-004",
+  "experiment_generation": "BOMA-AUTONOMY-004",
+  "measurement_window_id": "MW-20260826T212440Z-168H-G4",
+  "start": {
+    "valid": true,
+    "started_at": "2026-08-26T21:24:40+00:00",
+    "start_head_sha": "0acbbd0ba00df599c9fc6dab482057bd28cc56a3",
+    "provider_preflight": "PASS",
+    "synthetic_dry_run": "PASS"
+  },
+  "stop": {
+    "stopped_at": "2026-08-26T21:31:01+00:00",
+    "reason_class": "TECHNICAL_PYTHON_BYTECODE_EPHEMERA_FALSE_POSITIVE",
+    "decision": "STOP_GENERATION_AND_REQUIRE_META_PDSA",
+    "first_research_wake": 1
+  },
+  "primary_failure": {
+    "code": "UNTRACKED_PYTHON_CACHE_CLASSIFIED_AS_RUNTIME_INSTRUMENT_CHANGE",
+    "observed_path": "scripts/boma_autonomy/__pycache__/",
+    "effect": "assert_working_tree_safe treated interpreter-generated untracked bytecode cache as a forbidden runtime-instrument modification and stopped fail-closed before a transition record or research branch commit could be created."
+  },
+  "research_effect": {
+    "ai_research_calls": 1,
+    "transition_decisions_committed": 0,
+    "plans_frozen": 0,
+    "executor_runs": 0,
+    "research_content_changed": false,
+    "st2_exp_015_started": false
+  },
+  "intervention_accounting_at_stop": {
+    "HRIC": 0,
+    "HIIC": 0,
+    "note": "The owner authorized generation termination and Meta-PDSA after the fail-closed controller error. No mathematical guidance, proof hint, queue change, or in-window repair was supplied."
+  },
+  "meta_learning": [
+    "Generation 004 passed realistic provider capacity probing, nested transition-contract probing, valid START, post-START governance validation, and exact state persistence.",
+    "The remaining failure occurred after Python imported runtime modules and created ordinary __pycache__ bytecode ephemera.",
+    "Git working-tree safety must distinguish interpreter-generated ignored ephemera from source or instrument changes without weakening protection of tracked runtime files."
+  ],
+  "next_meta_pdsa_scope": [
+    "Ignore only standard Python bytecode ephemera (__pycache__ directories and *.py[cod] files) through repository ignore rules.",
+    "Add a governance test that requires those ignore rules while retaining the existing prohibition on executor writes to scripts/boma_autonomy/controller.py and other runtime/control-plane paths.",
+    "Advance bootstrap/preflight/dry-run/START bindings to Generation 005 and require fresh commission/preflight/dry-run evidence."
+  ],
+  "forbidden_in_meta_repair": [
+    "No change to the 014->015 transition conclusion.",
+    "No proof hint, lemma selection, mathematical source edit, experiment-factor change, or queue change.",
+    "No weakening of protection for tracked files under scripts/boma_autonomy, tests/boma_autonomy, .autonomy, accepted controls, SELECTS, exports, or acceptance contracts."
+  ],
+  "classification": "TECHNICAL_STOP_BEFORE_COMMITTED_RESEARCH_STATE_MUTATION_DUE_TO_INTERPRETER_EPHEMERA"
+}
