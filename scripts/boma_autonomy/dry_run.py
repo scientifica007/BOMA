@@ -8,7 +8,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from core import AUTONOMY, METRICS, GovernanceError, current_head, load_json, save_json, utc_now
+from core import AUTONOMY, EXP_STATE, METRICS, GovernanceError, current_head, load_json, save_json, utc_now
 from provider import AIProvider
 
 OUT = AUTONOMY / "prestart-dryrun.json"
@@ -20,6 +20,10 @@ def require(condition: bool, message: str) -> None:
 
 
 def main() -> int:
+    state = load_json(EXP_STATE)
+    generation = str(state.get("experiment_generation") or "")
+    require(generation == "BOMA-AUTONOMY-002", "dry run requires Generation 002 bootstrap")
+
     metrics = load_json(METRICS)
     ai = AIProvider(metrics)
 
@@ -90,7 +94,8 @@ Return {{"close":true,"carry_forward":["technical JSON pipeline works"]}}.""",
     require(act.get("close") is True, "dry-run Act did not close")
 
     record = {
-        "schema": "BOMA-AUTONOMY-PRESTART-DRYRUN-001",
+        "schema": "BOMA-AUTONOMY-PRESTART-DRYRUN-002",
+        "experiment_generation": generation,
         "passed": True,
         "head_sha": current_head(),
         "completed_at": utc_now(),
@@ -99,7 +104,7 @@ Return {{"close":true,"carry_forward":["technical JSON pipeline works"]}}.""",
         "roles_exercised": ["planner", "reviewer", "executor", "study_analyst", "act_analyst"],
     }
     save_json(OUT, record)
-    print("BOMA pre-START synthetic technical dry run: PASS")
+    print("BOMA Generation-002 pre-START synthetic technical dry run: PASS")
     return 0
 
 
