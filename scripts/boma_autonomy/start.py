@@ -37,8 +37,8 @@ def main() -> int:
 
     state = load_json(EXP_STATE)
     generation = str(state.get("experiment_generation") or "")
-    if generation != "BOMA-AUTONOMY-004":
-        print("Refusing START: experiment generation is not BOMA-AUTONOMY-004", file=sys.stderr)
+    if generation != "BOMA-AUTONOMY-005":
+        print("Refusing START: experiment generation is not BOMA-AUTONOMY-005", file=sys.stderr)
         return 5
     if state.get("armed") or state.get("started_at"):
         print("Refusing START: experiment already started", file=sys.stderr)
@@ -107,7 +107,7 @@ def main() -> int:
         print("Refusing START: observation_window_hours must be positive", file=sys.stderr)
         return 21
     deadline = (now_dt + dt.timedelta(hours=hours)).isoformat()
-    window_id = f"MW-{now_dt.strftime('%Y%m%dT%H%M%SZ')}-{hours}H-G4"
+    window_id = f"MW-{now_dt.strftime('%Y%m%dT%H%M%SZ')}-{hours}H-G5"
 
     metrics = load_json(METRICS)
     state["armed"] = True
@@ -128,7 +128,7 @@ def main() -> int:
     metrics["measurement_window_id"] = window_id
     save_json(EXP_STATE, state)
     save_json(METRICS, metrics)
-    print(f"BOMA AUTONOMY GENERATION 004 STARTED at {now} on {head}; observation deadline {deadline}")
+    print(f"BOMA AUTONOMY GENERATION 005 STARTED at {now} on {head}; observation deadline {deadline}")
     return 0
 
 

@@ -1,0 +1,4 @@
+# Python interpreter bytecode/cache ephemera.
+# These are ignored working-tree artifacts only; tracked runtime source remains protected.
+__pycache__/
+*.py[cod]

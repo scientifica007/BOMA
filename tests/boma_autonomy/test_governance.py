@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import pathlib
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -115,6 +116,26 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
             int(capacity["max_admitted_request_tokens"]) + int(capacity["safety_margin_tokens"]),
             int(capacity["organization_tpm_limit"]),
         )
+
+    def test_python_bytecode_ephemera_are_ignored_without_weakening_runtime_guard(self) -> None:
+        ignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
+        self.assertIn("__pycache__/", ignore)
+        self.assertIn("*.py[cod]", ignore)
+        cache_path = "scripts/boma_autonomy/__pycache__/core.cpython-312.pyc"
+        ignored = subprocess.run(
+            ["git", "check-ignore", "-q", "--no-index", cache_path],
+            cwd=ROOT,
+            check=False,
+        )
+        self.assertEqual(ignored.returncode, 0)
+        runtime_source = subprocess.run(
+            ["git", "check-ignore", "-q", "--no-index", "scripts/boma_autonomy/controller.py"],
+            cwd=ROOT,
+            check=False,
+        )
+        self.assertNotEqual(runtime_source.returncode, 0)
+        with self.assertRaises(core.GovernanceError):
+            core.assert_executor_path_allowed("scripts/boma_autonomy/controller.py")
 
     def test_provider_capacity_guard_balances_marked_evidence(self) -> None:
         config = core.load_json(core.PROVIDER)
