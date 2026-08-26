@@ -1,0 +1,63 @@
+{
+  "schema": "BOMA-AUTONOMY-META-STUDY-001",
+  "experiment_generation": "BOMA-AUTONOMY-001",
+  "measurement_window_id": "MW-20260826T200214Z-168H",
+  "start": {
+    "valid": true,
+    "started_at": "2026-08-26T20:02:14+00:00",
+    "start_head_sha": "50d8bf190457a848cc917a4b68f01fb6638fc5db",
+    "provider_preflight": "PASS",
+    "synthetic_dry_run": "PASS"
+  },
+  "stop": {
+    "stopped_at": "2026-08-26T20:10:06+00:00",
+    "reason_class": "TECHNICAL_BOOTSTRAP_INSUFFICIENCY",
+    "decision": "STOP_GENERATION_AND_REQUIRE_META_PDSA",
+    "github_actions_run_id": 33008298812,
+    "first_research_wake": 1
+  },
+  "primary_failure": {
+    "code": "PROVIDER_REALISTIC_REQUEST_EXCEEDS_TPM_LIMIT",
+    "model": "qwen/qwen3.6-27b",
+    "provider": "Groq",
+    "provider_tpm_limit": 8000,
+    "requested_tokens": 15242,
+    "http_status": 413,
+    "effect": "The first research request was rejected before an AI research answer was produced."
+  },
+  "secondary_failure": {
+    "code": "POSTSTART_GOVERNANCE_TEST_IS_PRESTART_ONLY",
+    "test": "test_outer_observation_window_is_prestart_configured",
+    "effect": "The test incorrectly required observation_deadline=null after START, although START is defined to populate the deadline."
+  },
+  "research_effect": {
+    "transition_decisions": 0,
+    "plans_frozen": 0,
+    "executor_runs": 0,
+    "research_content_changed": false,
+    "research_result_selected": false,
+    "st2_exp_015_started": false
+  },
+  "intervention_accounting_at_stop": {
+    "HRIC": 0,
+    "HIIC": 0,
+    "note": "The owner authorized termination and Meta-PDSA classification, but no mathematical guidance and no corrective infrastructure repair were performed inside the measured generation."
+  },
+  "meta_learning": [
+    "A small provider preflight can pass while the first realistic research prompt exceeds the account TPM envelope.",
+    "Pre-START validation must exercise or bound the realistic production request envelope, not only API connectivity and small JSON reliability.",
+    "Governance tests that inspect experiment state must distinguish BOOTSTRAP invariants from ACTIVE and terminal-state invariants."
+  ],
+  "next_meta_pdsa_scope": [
+    "Make production AI requests fit a validated provider capacity envelope, or select infrastructure whose limits satisfy that envelope, without changing ST2-RP-001 mathematics.",
+    "Make observation-window governance tests state-aware.",
+    "Strengthen the next generation preflight so START cannot occur unless realistic production request size/capacity is validated."
+  ],
+  "forbidden_in_meta_repair": [
+    "No proof hint or lemma selection.",
+    "No change to ST2-RP-001 queue order or experiment scientific factors.",
+    "No Frozen Plan change because no ST2-EXP-015 Frozen Plan exists.",
+    "No canonical, SELECTS, acceptance, or mathematical scope change."
+  ],
+  "classification": "CLEAN_TECHNICAL_STOP_BEFORE_ANY_RESEARCH_DECISION"
+}
