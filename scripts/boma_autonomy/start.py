@@ -37,8 +37,8 @@ def main() -> int:
 
     state = load_json(EXP_STATE)
     generation = str(state.get("experiment_generation") or "")
-    if generation != "BOMA-AUTONOMY-006":
-        print("Refusing START: experiment generation is not BOMA-AUTONOMY-006", file=sys.stderr)
+    if generation != "BOMA-AUTONOMY-007":
+        print("Refusing START: experiment generation is not BOMA-AUTONOMY-007", file=sys.stderr)
         return 5
     if state.get("armed") or state.get("started_at"):
         print("Refusing START: experiment already started", file=sys.stderr)
@@ -54,49 +54,58 @@ def main() -> int:
     if commission.get("passed") is not True:
         print("Refusing START: GitHub commission did not pass", file=sys.stderr)
         return 9
+    if commission.get("experiment_generation") != generation:
+        print("Refusing START: GitHub commission belongs to another generation", file=sys.stderr)
+        return 10
+    if commission.get("stale_runtime_branch_quarantine_exercised") is not True:
+        print("Refusing START: stale runtime branch quarantine was not exercised", file=sys.stderr)
+        return 11
     commission_anchor = commission.get("main_anchor_sha")
     if not isinstance(commission_anchor, str):
         print("Refusing START: invalid commission anchor", file=sys.stderr)
-        return 10
+        return 12
     ancestry = run(["git", "merge-base", "--is-ancestor", commission_anchor, "HEAD"])
     if ancestry["exit_code"] != 0:
         print("Refusing START: commission anchor is not an ancestor of current head", file=sys.stderr)
-        return 11
+        return 13
 
     head = current_head()
     if not PREFLIGHT.is_file():
         print("Refusing START: realistic provider preflight not recorded", file=sys.stderr)
-        return 12
+        return 14
     preflight = load_json(PREFLIGHT)
     if preflight.get("passed") is not True:
         print("Refusing START: realistic provider preflight did not pass", file=sys.stderr)
-        return 13
+        return 15
     if preflight.get("experiment_generation") != generation:
         print("Refusing START: provider preflight belongs to another generation", file=sys.stderr)
-        return 14
+        return 16
+    if preflight.get("recovery_operation_contract_exercised") is not True:
+        print("Refusing START: recovery operation contract was not exercised", file=sys.stderr)
+        return 17
     if preflight.get("head_sha") != head:
         print("Refusing START: provider preflight head differs from current exact head", file=sys.stderr)
-        return 15
+        return 18
 
     if not DRY_RUN.is_file():
         print("Refusing START: prestart dry run not recorded", file=sys.stderr)
-        return 16
+        return 19
     dry = load_json(DRY_RUN)
     if dry.get("passed") is not True:
         print("Refusing START: prestart dry run did not pass", file=sys.stderr)
-        return 17
+        return 20
     if dry.get("experiment_generation") != generation:
         print("Refusing START: dry run belongs to another generation", file=sys.stderr)
-        return 18
+        return 21
     if dry.get("head_sha") != head:
         print("Refusing START: dry-run head differs from current exact head", file=sys.stderr)
-        return 19
+        return 22
 
     validation = run([sys.executable, "scripts/boma_autonomy/validate.py"], timeout=600)
     if validation["exit_code"] != 0:
         print(validation["stdout"] + validation["stderr"], file=sys.stderr)
         print("Refusing START: runtime validation failed", file=sys.stderr)
-        return 20
+        return 23
 
     now_dt = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
     now = now_dt.isoformat()
@@ -105,9 +114,9 @@ def main() -> int:
     hours = int(state.get("observation_window_hours") or window_cfg.get("default_hours", 168))
     if hours <= 0:
         print("Refusing START: observation_window_hours must be positive", file=sys.stderr)
-        return 21
+        return 24
     deadline = (now_dt + dt.timedelta(hours=hours)).isoformat()
-    window_id = f"MW-{now_dt.strftime('%Y%m%dT%H%M%SZ')}-{hours}H-G6"
+    window_id = f"MW-{now_dt.strftime('%Y%m%dT%H%M%SZ')}-{hours}H-G7"
 
     metrics = load_json(METRICS)
     state["armed"] = True
@@ -128,7 +137,7 @@ def main() -> int:
     metrics["measurement_window_id"] = window_id
     save_json(EXP_STATE, state)
     save_json(METRICS, metrics)
-    print(f"BOMA AUTONOMY GENERATION 006 STARTED at {now} on {head}; observation deadline {deadline}")
+    print(f"BOMA AUTONOMY GENERATION 007 STARTED at {now} on {head}; observation deadline {deadline}")
     return 0
 
 

@@ -1,0 +1,79 @@
+{
+  "schema": "BOMA-AUTONOMY-META-STUDY-006",
+  "experiment_generation": "BOMA-AUTONOMY-006",
+  "measurement_window_id": "MW-20260826T221743Z-168H-G6",
+  "start": {
+    "valid": true,
+    "started_at": "2026-08-26T22:17:43+00:00",
+    "start_head_sha": "87cbe06d2476230a4aebcd14b5eb7c522dcfa0be",
+    "provider_preflight": "PASS",
+    "synthetic_dry_run": "PASS"
+  },
+  "first_research_wake": {
+    "wake": 1,
+    "workflow_run_id": 33019117432,
+    "controller_result": "CONTROLLER_ERROR",
+    "stale_branch_detected": "autonomy/transition-st2-exp-014-to-st2-exp-015",
+    "stale_branch_origin": "Generation 005 closed-unmerged transition PR #14",
+    "runtime_behavior": "The deterministic unscoped branch name caused Generation 006 to treat the historical branch as current work and enter non-plan recovery instead of performing a fresh transition audit.",
+    "recovery_ai_called": true,
+    "recovery_response_shape": "legacy patch-style object using type/file/patch instead of complete action/path/content operations",
+    "recovery_applied": false,
+    "transition_decision_recorded": false,
+    "st2_exp_015_started": false,
+    "frozen_plan_created": false,
+    "executor_ran": false
+  },
+  "stop": {
+    "reason_class": "TECHNICAL_STALE_BRANCH_INHERITANCE_AND_RECOVERY_OPERATION_SCHEMA_DEFECT",
+    "decision": "STOP_GENERATION_AND_REQUIRE_META_PDSA"
+  },
+  "primary_failures": [
+    {
+      "code": "CROSS_GENERATION_RUNTIME_BRANCH_COLLISION",
+      "detail": "Runtime branch names were deterministic by research frontier only and did not isolate Meta-PDSA generations. The surviving Generation 005 transition branch therefore hijacked Generation 006 before a new transition decision could be evaluated."
+    },
+    {
+      "code": "RECOVERY_OPERATION_RESPONSE_CONTRACT_NOT_PREFLIGHTED",
+      "detail": "The recovery analyst returned a PATCH/file/type operation object. The controller correctly rejected it fail-closed because apply_operations accepts only complete write/delete action/path/content operations, but the pre-START probe did not exercise this recovery contract."
+    }
+  ],
+  "research_effect": {
+    "ai_research_calls": 1,
+    "role": "recovery_analyst",
+    "transition_decisions": 0,
+    "plans_frozen": 0,
+    "executor_runs": 0,
+    "verification_failures": 0,
+    "technical_recovery_attempts_applied": 0,
+    "research_content_changed_on_main": false,
+    "research_content_changed_on_branch": false,
+    "queue_changed": false,
+    "accepted_or_canonical_state_changed": false
+  },
+  "intervention_accounting_at_stop": {
+    "HRIC": 0,
+    "HIIC": 0,
+    "note": "No human proof hint, lemma, definition, route, assumption, queue change, or research-development instruction was supplied after START. The owner authorized only a Meta-PDSA technical repair after the fail-closed controller error."
+  },
+  "meta_learning": [
+    "A valid START is insufficient if mutable runtime branch names can survive from a stopped generation and be mistaken for current work.",
+    "Cross-generation isolation must be enforced before START at the Git reference/PR layer, not assumed from state-file generation labels alone.",
+    "Historical autonomous research branches must remain preserved as evidence but must not retain the live deterministic names used by a fresh generation.",
+    "The recovery role needs a real pre-START schema probe for complete write/delete operation objects; transition/provider probes alone do not cover this failure mode.",
+    "The fail-closed operation validator worked correctly: the malformed patch was not applied."
+  ],
+  "next_meta_pdsa_scope": [
+    "During fresh pre-START commission, detect historical runtime research branches using live deterministic autonomy names and quarantine them under generation-specific archive refs before research autonomy can START.",
+    "Fail commission if such a branch has an open PR or if archive preservation cannot be proven exact.",
+    "Extend provider preflight to exercise the recovery_analyst complete-operation contract and reject patch/diff/tool aliases before START.",
+    "Bind commission, provider preflight, dry run, and START evidence to Generation 007 and require fresh exact-head evidence."
+  ],
+  "forbidden_in_meta_repair": [
+    "Do not reuse, merge, reinterpret, or alter the Generation 005 AUTO_CONTINUE transition conclusion on closed PR #14.",
+    "Do not evaluate the 014-to-015 transition gate during Meta-PDSA.",
+    "Do not start ST2-EXP-015, freeze its Plan, choose lemmas, change proof direction, or modify mathematical sources.",
+    "Do not change ST2-RP-001 queue order, scientific factors, accepted controls, SELECTS, canonical producers, or acceptance contracts."
+  ],
+  "classification": "CLEAN_TECHNICAL_STOP_AFTER_VALID_START_BEFORE_ANY_GENERATION_006_RESEARCH_DECISION"
+}
