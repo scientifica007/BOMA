@@ -10,6 +10,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts/boma_autonomy"))
 
 import core  # noqa: E402
+import provider  # noqa: E402
 
 
 class BomaAutonomyGovernanceTests(unittest.TestCase):
@@ -33,6 +34,12 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
                     "WAITING_CI", "RECOVERY_ALLOWED", "STUDY", "ACT", "CLOSING",
                     "PROGRAM_COMPLETE", "OWNER_REQUIRED",
                 },
+            )
+            return
+        if experiment.get("experiment_state") != "BOOTSTRAP":
+            self.assertIn(
+                experiment.get("experiment_state"),
+                {"FINISHED", "STOPPED", "PAUSED_FOR_META_REVIEW"},
             )
             return
         self.assertEqual(core.start_frontier_errors(), [])
@@ -61,7 +68,6 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
         for manifest in core.load_json(core.POLICY)["accepted_manifests"]:
             with self.assertRaises(core.GovernanceError):
                 core.assert_executor_path_allowed(manifest)
-        # At least one manifest-listed source must be dynamically protected.
         dynamic = [
             p for p in controls
             if p.startswith("LAB/") and p.endswith(".lean")
@@ -102,10 +108,39 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
     def test_no_secret_is_stored_in_provider_config(self) -> None:
         text = core.PROVIDER.read_text(encoding="utf-8")
         self.assertNotIn("sk-", text)
-        provider = core.load_json(core.PROVIDER)
-        self.assertEqual(provider["api_key_env"], "AI_API_KEY")
+        config = core.load_json(core.PROVIDER)
+        self.assertEqual(config["api_key_env"], "AI_API_KEY")
+        capacity = config["capacity"]
+        self.assertLessEqual(
+            int(capacity["max_admitted_request_tokens"]) + int(capacity["safety_margin_tokens"]),
+            int(capacity["organization_tpm_limit"]),
+        )
 
-    def test_outer_observation_window_is_prestart_configured(self) -> None:
+    def test_provider_capacity_guard_balances_marked_evidence(self) -> None:
+        config = core.load_json(core.PROVIDER)
+        sections = "\n".join(
+            f"## FILE synthetic/{i}.txt\n" + (str(i) * 5000)
+            for i in range(8)
+        )
+        system, user, completion, diagnostics = provider.fit_prompt_to_capacity(
+            config,
+            "transition_auditor",
+            "technical test system prompt",
+            "technical prefix\n" + sections + "\n## REPOSITORY TREE\na\nb\nc\n",
+            3000,
+        )
+        self.assertTrue(system)
+        self.assertTrue(user)
+        self.assertLessEqual(
+            diagnostics["estimated_admitted_tokens"],
+            config["capacity"]["max_admitted_request_tokens"],
+        )
+        self.assertEqual(completion, config["capacity"]["role_completion_caps"]["transition_auditor"])
+        self.assertTrue(diagnostics["compacted"])
+        for i in range(8):
+            self.assertIn(f"## FILE synthetic/{i}.txt", user)
+
+    def test_outer_observation_window_is_state_aware(self) -> None:
         policy = core.load_json(core.POLICY)
         experiment = core.load_json(core.EXP_STATE)
         window = policy.get("observation_window", {})
@@ -113,8 +148,20 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
         self.assertGreater(int(window.get("default_hours", 0)), 0)
         self.assertEqual(window.get("human_mode_during_window"), "READ_ONLY")
         self.assertEqual(experiment.get("observation_window_hours"), window.get("default_hours"))
-        self.assertIsNone(experiment.get("observation_deadline"))
-        self.assertFalse(experiment.get("meta_review_due"))
+
+        phase = experiment.get("experiment_state")
+        if phase == "BOOTSTRAP":
+            self.assertIsNone(experiment.get("observation_deadline"))
+            self.assertFalse(experiment.get("meta_review_due"))
+            self.assertIsNone(experiment.get("started_at"))
+        elif phase == "ACTIVE":
+            self.assertIsInstance(experiment.get("observation_deadline"), str)
+            self.assertFalse(experiment.get("meta_review_due"))
+            self.assertIsInstance(experiment.get("started_at"), str)
+        else:
+            self.assertIn(phase, {"FINISHED", "STOPPED", "PAUSED_FOR_META_REVIEW"})
+            if experiment.get("started_at") is not None:
+                self.assertIsInstance(experiment.get("observation_deadline"), str)
 
     def test_runtime_is_bound_to_experimental_fork(self) -> None:
         policy = core.load_json(core.POLICY)
