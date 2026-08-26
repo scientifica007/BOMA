@@ -1,24 +1,17 @@
 {
   "schema": "BOMA-AUTONOMY-COMMISSION-002",
-  "passed": true,
-  "main_anchor_sha": "9381a234b2e7e127ab90f11e6723cc7d1ea89c47",
-  "probe_head_sha": "eeefde62e54726538bd3bd701cff6c4f6f593b4b",
-  "branch_push": true,
-  "pull_request_create": true,
-  "pull_request_ci": true,
+  "passed": false,
+  "main_anchor_sha": null,
+  "probe_head_sha": null,
+  "branch_push": false,
+  "pull_request_create": false,
+  "pull_request_ci": false,
   "guard_workflow": "BOMA Autonomy Exact-Head Guard 001",
-  "guard_workflow_run": {
-    "conclusion": "success",
-    "databaseId": 33016265992,
-    "headSha": "eeefde62e54726538bd3bd701cff6c4f6f593b4b",
-    "status": "completed",
-    "url": "https://github.com/scientifica007/BOMA/actions/runs/33016265992",
-    "workflowName": "BOMA Autonomy Exact-Head Guard 001"
-  },
-  "pull_request_close": true,
-  "temporary_pr_number": 13,
+  "guard_workflow_run": null,
+  "pull_request_close": false,
+  "temporary_pr_number": null,
   "research_content_changed": false,
   "research_decision_made": false,
-  "completed_at": "2026-08-26T21:38:26+00:00",
-  "error": null
+  "completed_at": null,
+  "error": "INVALIDATED_FOR_GENERATION_006_FRESH_COMMISSION_REQUIRED"
 }
