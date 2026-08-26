@@ -6,7 +6,6 @@ This exercises JSON role reliability without reading or changing BOMA research.
 from __future__ import annotations
 
 import json
-from pathlib import Path
 
 from core import AUTONOMY, EXP_STATE, METRICS, GovernanceError, current_head, load_json, save_json, utc_now
 from provider import AIProvider
@@ -22,7 +21,7 @@ def require(condition: bool, message: str) -> None:
 def main() -> int:
     state = load_json(EXP_STATE)
     generation = str(state.get("experiment_generation") or "")
-    require(generation == "BOMA-AUTONOMY-005", "dry run requires Generation 005 bootstrap")
+    require(generation == "BOMA-AUTONOMY-006", "dry run requires Generation 006 bootstrap")
 
     metrics = load_json(METRICS)
     ai = AIProvider(metrics)
@@ -94,7 +93,7 @@ Return {{"close":true,"carry_forward":["technical JSON pipeline works"]}}.""",
     require(act.get("close") is True, "dry-run Act did not close")
 
     record = {
-        "schema": "BOMA-AUTONOMY-PRESTART-DRYRUN-005",
+        "schema": "BOMA-AUTONOMY-PRESTART-DRYRUN-006",
         "experiment_generation": generation,
         "passed": True,
         "head_sha": current_head(),
@@ -104,7 +103,7 @@ Return {{"close":true,"carry_forward":["technical JSON pipeline works"]}}.""",
         "roles_exercised": ["planner", "reviewer", "executor", "study_analyst", "act_analyst"],
     }
     save_json(OUT, record)
-    print("BOMA Generation-005 pre-START synthetic technical dry run: PASS")
+    print("BOMA Generation-006 pre-START synthetic technical dry run: PASS")
     return 0
 
 
