@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - 'bootstrap/boma_autonomy_bundle.py'
+      - 'bootstrap/chunks/**'
       - '.github/workflows/boma-autonomy-bootstrap-install.yml'
 
 permissions:
@@ -27,15 +28,12 @@ jobs:
       - name: Install pre-START autonomy payload
         run: python3 bootstrap/boma_autonomy_bundle.py
 
-      - name: Validate installed Python and YAML syntax
+      - name: Validate installed autonomy infrastructure
         run: |
           set -euo pipefail
           python3 -m py_compile scripts/boma_autonomy/*.py
-          python3 - <<'PY2'
-          import pathlib, yaml
-          for path in pathlib.Path('.github/workflows').glob('*.yml'):
-              yaml.safe_load(path.read_text(encoding='utf-8'))
-          PY2
+          python3 scripts/boma_autonomy/validate.py
+          python3 -m unittest discover -s tests/boma_autonomy -v
 
       - name: Commit installed bootstrap infrastructure
         env:
