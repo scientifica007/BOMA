@@ -10,6 +10,7 @@ import unittest
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts/boma_autonomy"))
 
+import commission  # noqa: E402
 import core  # noqa: E402
 import provider  # noqa: E402
 
@@ -161,6 +162,42 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
         self.assertNotEqual(runtime_source.returncode, 0)
         with self.assertRaises(core.GovernanceError):
             core.assert_executor_path_allowed("scripts/boma_autonomy/controller.py")
+
+    def test_commission_identifies_only_runtime_research_branches_for_quarantine(self) -> None:
+        self.assertTrue(
+            commission.is_runtime_research_branch(
+                "autonomy/transition-st2-exp-014-to-st2-exp-015"
+            )
+        )
+        self.assertTrue(commission.is_runtime_research_branch("autonomy/st2-exp-015"))
+        self.assertTrue(commission.is_runtime_research_branch("autonomy/postmerge-st2-exp-015-sync"))
+        self.assertTrue(
+            commission.is_runtime_research_branch("autonomy/st2-rp-001-program-synthesis")
+        )
+        self.assertFalse(
+            commission.is_runtime_research_branch("autonomy/commission-probe-123")
+        )
+        self.assertFalse(
+            commission.is_runtime_research_branch("meta/autonomy-generation-007")
+        )
+        archive = commission.archive_branch_name(
+            "BOMA-AUTONOMY-007",
+            "autonomy/transition-st2-exp-014-to-st2-exp-015",
+        )
+        self.assertEqual(
+            archive,
+            "archive/boma-autonomy-007/prestart/transition-st2-exp-014-to-st2-exp-015",
+        )
+
+    def test_generation_007_start_requires_branch_quarantine_and_recovery_contract(self) -> None:
+        start = (ROOT / "scripts/boma_autonomy/start.py").read_text(encoding="utf-8")
+        probe = (ROOT / "scripts/boma_autonomy/probe.py").read_text(encoding="utf-8")
+        self.assertIn('generation != "BOMA-AUTONOMY-007"', start)
+        self.assertIn('commission.get("stale_runtime_branch_quarantine_exercised") is not True', start)
+        self.assertIn('preflight.get("recovery_operation_contract_exercised") is not True', start)
+        self.assertIn('"recovery_analyst"', probe)
+        self.assertIn('"patch"', probe)
+        self.assertIn("legacy patch-style recovery aliases forbidden", probe)
 
     def test_provider_capacity_guard_balances_marked_evidence(self) -> None:
         config = core.load_json(core.PROVIDER)
