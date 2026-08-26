@@ -1,12 +1,22 @@
 {
   "schema": "BOMA-AUTONOMY-METRICS-001",
-  "started_at": null,
-  "bootstrap_ai_calls": 0,
+  "started_at": "2026-08-26T20:02:14+00:00",
+  "bootstrap_ai_calls": 6,
   "ai_calls": 0,
-  "ai_calls_by_role": {},
-  "models_used": {},
-  "reported_input_tokens": 0,
-  "reported_output_tokens": 0,
+  "ai_calls_by_role": {
+    "transition_auditor": 1,
+    "planner": 1,
+    "reviewer": 1,
+    "executor": 1,
+    "study_analyst": 1,
+    "act_analyst": 1
+  },
+  "models_used": {
+    "qwen/qwen3.6-27b": 4,
+    "openai/gpt-oss-120b": 2
+  },
+  "reported_input_tokens": 899,
+  "reported_output_tokens": 409,
   "wakes_started": 0,
   "wakes_completed": 0,
   "transition_decisions": 0,
@@ -21,5 +31,5 @@
   "human_research_interventions": 0,
   "human_infrastructure_interventions": 0,
   "observation_pauses": 0,
-  "measurement_window_id": null
+  "measurement_window_id": "MW-20260826T200214Z-168H"
 }
