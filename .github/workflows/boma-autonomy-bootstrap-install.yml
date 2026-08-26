@@ -35,13 +35,24 @@ jobs:
           python3 scripts/boma_autonomy/validate.py
           python3 -m unittest discover -s tests/boma_autonomy -v
 
-      - name: Commit installed bootstrap infrastructure
+      - name: Persist non-workflow bootstrap infrastructure
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           git config user.name "BOMA Autonomy Bootstrap"
           git config user.email "actions@users.noreply.github.com"
+
+          # The default GITHUB_TOKEN for this fork cannot create/update workflow
+          # files. Keep the temporary carrier and current workflows byte-for-byte
+          # unchanged in this automated commit; the three validated workflow
+          # changes are installed separately through the repository write channel.
+          git restore --source=HEAD -- .github/workflows bootstrap
+
           git add -A
-          git commit -m "bootstrap: install BOMA autonomous research engine"
+          if git diff --cached --quiet; then
+            echo "No non-workflow bootstrap changes to persist."
+            exit 0
+          fi
+          git commit -m "bootstrap: install BOMA autonomy runtime core"
           git push "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" HEAD:main
