@@ -6,7 +6,7 @@ Governing method: **PDSA — Plan → Do → Study → Act**. Historical `PDCA` 
 
 ## Current accepted spine
 
-As of 2026-08-25:
+As of 2026-08-26:
 
 ```text
 framework-neutral pre-numerical layer   CALIBRATED
@@ -268,30 +268,41 @@ ST2-EXP-002  CLOSED / PASS / lesson integrated
 ST2-EXP-003  CLOSED / PASS / lesson integrated
 ST2-EXP-011  CLOSED / PASS / lesson integrated
 ST2-EXP-004  CLOSED / PASS / lesson integrated
+ST2-EXP-014  CLOSED / PASS / exact closure verified / routine merged
+AUTONOMOUS RESEARCH PROGRAM = ST2-RP-001 / OWNER_AUTHORIZED
 ACTIVE EXPERIMENT = NONE
-AUTONOMOUS RESEARCH PROGRAM = NO_ACTIVE_PROGRAM
-NEXT EXPERIMENT = NOT AUTHORIZED
-REQUIRED NEXT ACT = STOP BEFORE NEW EXPERIMENT / OWNER AUTHORIZATION REQUIRED
+ACTIVE STATE = TRANSITION_GATE
+TRANSITION UNDER EVALUATION = ST2-EXP-014 → ST2-EXP-015
+NEXT AUTHORIZED CANDIDATE = ST2-EXP-015 / QUEUED / NOT STARTED
+ST2-EXP-015 BRANCH = NONE
+ST2-EXP-015 FROZEN PLAN = NONE
+SYNCHRONIZED PRE-AUTONOMY MAIN = 2a6c38af70e596c840ef2db4733421bde38f3ee5
+REQUIRED NEXT ACT = RE-READ SYNCHRONIZED MAIN → EVALUATE 014→015 TRANSITION GATE
 ```
 
-The ST2-EXP-004 Frozen Plan remains immutable historical authority. Its thirteen failure records remain preserved.
+The ST2-EXP-004 and ST2-EXP-014 Frozen Plans remain immutable historical authorities. The baseline synchronization records no new mathematical result and does not pre-authorize a transition-gate outcome.
 
 ## Source-of-truth order
 
 When current-state documents disagree, use this order unless a later explicit governance record supersedes it:
 
 1. `LAB/PDSA/STATUS.md`
-2. `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
-3. `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`
-4. `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md`
-5. immutable ST2-EXP-004 Frozen Plan / Study/Act / lifecycle / failures for experiment history
-6. earlier integration authorities 002 and 001
-7. `LAB/00_ARCHITECTURE/ARCHITECTURE.md` / `CONSTRUCTION_TOPOLOGY.md`
-8. `LAB/00_ARCHITECTURE/REGISTRY.md` / `GRAPH.md`
-9. relevant DAG / Decision / Block / acceptance / Claim records and exact evidence
-10. onboarding summaries such as this README and `AGENTS.md`
+2. `LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md`
+3. `LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json`
+4. `LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json` for autonomous-program state
+5. active owner-authorized program record named by state
+6. active program manifest named by state
+7. `LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md`
+8. `LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json`
+9. `LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md`
+10. immutable experiment Plans / Study-Act / lifecycle / failures for experiment history
+11. earlier integration authorities 002 and 001
+12. `LAB/00_ARCHITECTURE/ARCHITECTURE.md` / `CONSTRUCTION_TOPOLOGY.md`
+13. `LAB/00_ARCHITECTURE/REGISTRY.md` / `GRAPH.md`
+14. relevant DAG / Decision / Block / acceptance / Claim records and exact evidence
+15. onboarding summaries such as this README and `AGENTS.md`
 
-Historical documents remain valid records of their own state at their own date; they do not override a later synchronized current-state authority.
+Historical documents remain valid records of their own state at their own date; they do not override a later synchronized current-state authority. The old top-level frontier markers in `STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json` remain historical post-004 metadata and do not override the later owner-authorized program/state.
 
 ## Mandatory reading order
 
@@ -301,9 +312,12 @@ Before canonical work or before proposing any later research cycle, read:
 README.md
 AGENTS.md
 LAB/PDSA/STATUS.md
+LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json
+LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md
+LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json
 LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md
 LAB/PDSA/STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json
 LAB/PDSA/STAGE_TWO_SUCCESSFUL_EXPERIMENTS_ARCHITECTURE_INTEGRATION_003.md
