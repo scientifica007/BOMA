@@ -10,12 +10,9 @@ on:
     paths:
       - 'LAB/PDSA/PDSA-ST2-EXP-014_CAUCHY_NATIVE_FULL_C.md'
       - 'LAB/PDSA/experiments/ST2-EXP-014_*'
+      - '!LAB/PDSA/experiments/ST2-EXP-014_TO_ST2-EXP-015_AUTONOMOUS_TRANSITION_*.json'
       - 'LAB/payloads/lean/CStage/ST2Exp014*.lean'
       - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_014_*'
-      - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json'
-      - 'LAB/PDSA/STAGE_TWO_BRANCH_EXPERIMENT_REGISTER_001.md'
-      - 'LAB/PDSA/STATUS.md'
-      - 'AGENTS.md'
       - '.github/workflows/boma-st2-exp-014-cauchy-native-full-c.yml'
   push:
     branches:
@@ -58,7 +55,7 @@ jobs:
             printf 'frozen_plan_commit=%s\n' "$frozen"
           } | tee /tmp/st2-exp-014-provenance.txt
 
-      - name: Verify owner program authority and active frozen state
+      - name: Verify owner program authority and lifecycle-compatible 014 state
         shell: bash
         run: |
           set -euo pipefail
@@ -68,20 +65,30 @@ jobs:
           state = json.loads(Path('LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json').read_text())
           manifest = json.loads(Path('LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json').read_text())
           assert state['active_program_id'] == 'ST2-RP-001'
-          assert state['state'] in {'PLAN_FROZEN','DO','WAITING_CI','RECOVERY_ALLOWED','STUDY','ACT','CLOSING'}
-          assert state['active_experiment'] == 'ST2-EXP-014'
-          assert state['queue_cursor'] == 0
           assert state['authorized_experiment_queue'] == ['ST2-EXP-014','ST2-EXP-015','ST2-EXP-016','ST2-EXP-017']
-          assert state['active_frozen_plan_sha'] == '788ae14649f3245fd8d6ccd43f90038ffba7762b'
-          assert state['active_experiment_frozen_reference_sha'] == 'fff2400b65b2c9a260fb28defd907ce24387cb80'
           assert manifest['program_id'] == 'ST2-RP-001'
           assert manifest['queue_order'] == state['authorized_experiment_queue']
           rec = manifest['experiments'][0]
           assert rec['experiment_id'] == 'ST2-EXP-014'
           assert rec['origin_kind'] == 'DEPENDENCY_EDGE'
           assert rec['origin_id'] == 'BOMA-C-R-DEP-001'
+          if state.get('active_experiment') == 'ST2-EXP-014':
+              assert state['state'] in {'PLAN_FROZEN','DO','WAITING_CI','RECOVERY_ALLOWED','STUDY','ACT','CLOSING'}
+              assert state['queue_cursor'] == 0
+              assert state['active_frozen_plan_sha'] == '788ae14649f3245fd8d6ccd43f90038ffba7762b'
+              assert state['active_experiment_frozen_reference_sha'] == 'fff2400b65b2c9a260fb28defd907ce24387cb80'
+              lifecycle_mode = 'ACTIVE_014'
+          else:
+              frontier = state.get('current_stage_two_frontier', {})
+              assert frontier.get('latest_completed_experiment') == 'ST2-EXP-014'
+              assert str(frontier.get('latest_completed_status', '')).startswith('CLOSED_PASS')
+              assert state['state'] in {
+                  'TRANSITION_GATE','PREPARING_EXPERIMENT','PLAN_FROZEN','DO','WAITING_CI',
+                  'RECOVERY_ALLOWED','STUDY','ACT','CLOSING','PROGRAM_COMPLETE','OWNER_REQUIRED'
+              }
+              lifecycle_mode = 'POST_014_CLOSED'
           print('program=ST2-RP-001')
-          print('active_experiment=ST2-EXP-014')
+          print('lifecycle_mode=' + lifecycle_mode)
           print('state=' + state['state'])
           PY
 

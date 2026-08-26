@@ -29,7 +29,7 @@ def require(condition: bool, message: str) -> None:
 def main() -> int:
     state = load_json(EXP_STATE)
     generation = str(state.get("experiment_generation") or "")
-    require(generation == "BOMA-AUTONOMY-005", "provider probe requires Generation 005 bootstrap")
+    require(generation == "BOMA-AUTONOMY-006", "provider probe requires Generation 006 bootstrap")
 
     metrics = load_json(METRICS)
     ai = AIProvider(metrics)
@@ -70,7 +70,7 @@ def main() -> int:
     )
 
     record = {
-        "schema": "BOMA-AUTONOMY-PROVIDER-PREFLIGHT-005",
+        "schema": "BOMA-AUTONOMY-PROVIDER-PREFLIGHT-006",
         "experiment_generation": generation,
         "passed": True,
         "head_sha": current_head(),
@@ -91,7 +91,7 @@ def main() -> int:
         "research_decision_made": False,
     }
     save_json(OUT, record)
-    print("BOMA Generation-005 realistic AI provider capacity and nested transition-contract preflight: PASS")
+    print("BOMA Generation-006 realistic AI provider capacity and nested transition-contract preflight: PASS")
     return 0
 
 

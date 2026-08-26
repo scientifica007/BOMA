@@ -1,0 +1,36 @@
+{
+  "schema": "BOMA-AUTONOMY-META-PLAN-006",
+  "experiment_generation": "BOMA-AUTONOMY-006",
+  "parent_generation": "BOMA-AUTONOMY-005",
+  "meta_anchor_main_sha": "af7f6909760de1ca78a0741ebbc89211f009e5ca",
+  "frontier_preserved": {
+    "state": "TRANSITION_GATE",
+    "from": "ST2-EXP-014",
+    "to": "ST2-EXP-015",
+    "st2_exp_015_started": false,
+    "frozen_plan_exists": false
+  },
+  "single_meta_objective": "Remove lifecycle-state false positives that prevented the already generated 014-to-015 transition record from obtaining clean CI, without changing any mathematical decision or research authority.",
+  "technical_changed_factors": [
+    "Runtime-marker unit test derives the expected rendered state from the supplied research-state object instead of hard-coding TRANSITION_GATE.",
+    "The closed ST2-EXP-014 pull-request workflow no longer triggers on generic program-state prose changes or the ST2-EXP-014_TO_ST2-EXP-015 autonomous transition record."
+  ],
+  "required_regressions": [
+    "Runtime-marker upsert remains idempotent across lifecycle states.",
+    "The ST2-EXP-014 workflow retains triggers for actual 014 Plan/source/formalization/workflow changes.",
+    "The ST2-EXP-014 workflow explicitly excludes the 014-to-015 transition record from its experiment wildcard.",
+    "Existing runtime protection, provider capacity, transition JSON normalization, governance, and exact-head tests remain green."
+  ],
+  "generation_reset": [
+    "Reset experiment state and metrics to Generation 006 BOOTSTRAP with HRIC=0 and HIIC=0.",
+    "Invalidate prior commission, provider preflight, and dry run.",
+    "Require a fresh Generation 006 commission, realistic provider preflight, synthetic dry run, and exact-head START."
+  ],
+  "forbidden": [
+    "No change to ST2-RP-001 queue order or experiment factors.",
+    "No change to the Generation 005 AUTO_CONTINUE conclusion.",
+    "No mathematical implementation, proof hint, lemma selection, Frozen Plan, SELECTS change, acceptance promotion, or canonical choice.",
+    "No weakening of fail-closed runtime protections."
+  ],
+  "status": "FROZEN_META_PLAN"
+}

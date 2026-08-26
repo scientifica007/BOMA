@@ -90,3 +90,22 @@ or acceptance contract.
 Generation 002 commission/preflight/dry-run evidence is invalidated. Generation
 003 must complete a fresh post-merge commission, exact-head provider preflight,
 synthetic dry run, and valid START before research autonomy resumes.
+
+## 2026-08-26 — Generation 006 lifecycle-aware CI Meta-PDSA
+
+Generation 005 reached a valid START and autonomously produced an
+`AUTO_CONTINUE` decision for `ST2-EXP-014 → ST2-EXP-015` on PR #14. The decision
+was committed only on the transition branch and was not merged into `main`.
+`ST2-EXP-015` was not started, no Frozen Plan was created, and no executor ran.
+
+The generation was stopped after PR CI exposed two lifecycle-harness defects:
+
+- the runtime-marker idempotency test hard-coded `TRANSITION_GATE` instead of
+  validating the state actually supplied to the renderer;
+- the closed `ST2-EXP-014` workflow retriggered on later global state/transition
+  bookkeeping and demanded that 014 still be active.
+
+Generation 006 is limited to those technical lifecycle fixes and a fresh
+measurement reset. The Generation 005 research conclusion is not promoted,
+reused, merged, or altered by this Meta-PDSA. Fresh commission, provider
+preflight, synthetic dry run, and valid START remain mandatory.
