@@ -4,6 +4,7 @@ from __future__ import annotations
 import json
 import math
 import os
+import re
 import time
 import urllib.error
 import urllib.request
@@ -12,19 +13,61 @@ from typing import Any
 from core import EXP_STATE, METRICS, PROVIDER, GovernanceError, load_json, save_json
 
 
+_SECTION = re.compile(r"(?m)^## (?:FILE .+|REPOSITORY TREE)\s*$")
+
+
 def _compact_text(text: str, limit: int, *, label: str) -> tuple[str, bool]:
     """Deterministically retain both ends of an oversized prompt component."""
     if limit <= 0:
         return "", bool(text)
     if len(text) <= limit:
         return text, False
-    marker = f"\n...[{label}: {len(text) - limit} source characters omitted by capacity guard]...\n"
+    marker = f"\n...[{label}: source excerpt omitted by capacity guard]...\n"
     if limit <= len(marker) + 32:
         return text[:limit], True
     available = limit - len(marker)
     head = (available * 3) // 5
     tail = available - head
     return text[:head] + marker + text[-tail:], True
+
+
+def _compact_structured_user(text: str, limit: int) -> tuple[str, bool]:
+    """Balance marked repository sections instead of keeping only a global head/tail.
+
+    Controller contexts contain ``## FILE ...`` sections. When such structure is
+    present, every section receives a deterministic excerpt so late lifecycle evidence
+    cannot disappear merely because earlier governance documents are long.
+    """
+    if len(text) <= limit:
+        return text, False
+    matches = list(_SECTION.finditer(text))
+    if len(matches) < 2:
+        return _compact_text(text, limit, label="user capacity compaction")
+
+    prefix = text[: matches[0].start()]
+    sections: list[str] = []
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
+        sections.append(text[match.start() : end])
+
+    # Keep request-specific source/state instructions in the prefix while still
+    # reserving most space for evenly sampled evidence sections.
+    prefix_limit = min(len(prefix), max(900, limit // 5))
+    fitted_prefix, _ = _compact_text(prefix, prefix_limit, label="request prefix compaction")
+    separators = 2 * len(sections)
+    remaining = limit - len(fitted_prefix) - separators
+    if remaining <= 0:
+        return _compact_text(text, limit, label="user capacity compaction")
+
+    per_section = max(160, remaining // len(sections))
+    fitted_sections: list[str] = []
+    for section in sections:
+        fitted, _ = _compact_text(section, per_section, label="balanced evidence excerpt")
+        fitted_sections.append(fitted)
+    result = fitted_prefix + "\n\n" + "\n\n".join(fitted_sections)
+    if len(result) > limit:
+        result, _ = _compact_text(result, limit, label="final balanced compaction")
+    return result, True
 
 
 def fit_prompt_to_capacity(
@@ -72,23 +115,17 @@ def fit_prompt_to_capacity(
         raise GovernanceError(
             f"capacity envelope leaves only {user_limit} user-prompt characters for role {role}"
         )
-    fitted_user, user_compacted = _compact_text(
-        user_prompt, user_limit, label="user capacity compaction"
-    )
+    fitted_user, user_compacted = _compact_structured_user(user_prompt, user_limit)
 
     estimated_input = int(
         math.ceil((len(fitted_system) + len(fitted_user)) / chars_per_token)
     ) + overhead_tokens
     estimated_total = estimated_input + completion_tokens
     if estimated_total > admitted:
-        # Floating-point/rounding guard. Remove enough user characters to make the
-        # deterministic estimate fit, then recompute and fail closed if still invalid.
         overshoot = estimated_total - admitted
         shrink = max(1, int(math.ceil(overshoot * chars_per_token)))
-        fitted_user, forced = _compact_text(
-            fitted_user,
-            max(minimum_user_chars, len(fitted_user) - shrink - 8),
-            label="final admission compaction",
+        fitted_user, forced = _compact_structured_user(
+            fitted_user, max(minimum_user_chars, len(fitted_user) - shrink - 8)
         )
         user_compacted = user_compacted or forced
         estimated_input = int(
