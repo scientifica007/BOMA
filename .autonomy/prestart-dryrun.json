@@ -1,8 +1,9 @@
 {
-  "schema": "BOMA-AUTONOMY-PRESTART-DRYRUN-001",
+  "schema": "BOMA-AUTONOMY-PRESTART-DRYRUN-002",
+  "experiment_generation": "BOMA-AUTONOMY-002",
   "passed": true,
-  "head_sha": "50d8bf190457a848cc917a4b68f01fb6638fc5db",
-  "completed_at": "2026-08-26T20:02:14+00:00",
+  "head_sha": "454aba8cfd62f701832656ff198f82b21bfc0e89",
+  "completed_at": "2026-08-26T20:41:22+00:00",
   "research_content_read": false,
   "research_decision_made": false,
   "roles_exercised": [
