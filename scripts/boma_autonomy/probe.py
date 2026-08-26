@@ -80,7 +80,7 @@ def main() -> int:
             "transition_auditor": 3000,
             "planner": 4500,
         },
-        "transition_response_contract_exercised": true,
+        "transition_response_contract_exercised": True,
         "transition_response_contract_expected": "decision=OWNER_REQUIRED / synthetic sentinel only",
         "research_content_read": False,
         "research_decision_made": False,
