@@ -44,10 +44,14 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
 
           # The default GITHUB_TOKEN for this fork cannot create/update workflow
-          # files. Keep the temporary carrier and current workflows byte-for-byte
-          # unchanged in this automated commit; the three validated workflow
-          # changes are installed separately through the repository write channel.
+          # files. Keep the temporary carrier and current workflows unchanged in
+          # this automated commit. Validated workflow changes are installed
+          # separately through the repository write channel.
           git restore --source=HEAD -- .github/workflows bootstrap
+          git clean -fd -- .github/workflows
+
+          # Compilation/tests are validation evidence, not repository artifacts.
+          find scripts tests -type d -name __pycache__ -prune -exec rm -rf {} +
 
           git add -A
           if git diff --cached --quiet; then
