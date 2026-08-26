@@ -1,10 +1,20 @@
 {
   "schema": "BOMA-AUTONOMY-PROVIDER-PREFLIGHT-003",
   "experiment_generation": "BOMA-AUTONOMY-003",
-  "passed": false,
-  "head_sha": null,
-  "completed_at": null,
+  "passed": true,
+  "head_sha": "8fbdcfb4573a72b724dd96b590221c57ec49682f",
+  "completed_at": "2026-08-26T21:05:19+00:00",
+  "synthetic_source_characters": 68925,
+  "models_exercised": [
+    "qwen/qwen3.6-27b",
+    "openai/gpt-oss-120b"
+  ],
+  "production_requested_completion_tokens": {
+    "transition_auditor": 3000,
+    "planner": 4500
+  },
+  "transition_response_contract_exercised": true,
+  "transition_response_contract_expected": "decision=OWNER_REQUIRED / synthetic sentinel only",
   "research_content_read": false,
-  "research_decision_made": false,
-  "error": "Fresh Generation 003 realistic provider/transition-contract preflight required on exact START head."
+  "research_decision_made": false
 }

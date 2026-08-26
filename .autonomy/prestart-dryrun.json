@@ -1,10 +1,16 @@
 {
   "schema": "BOMA-AUTONOMY-PRESTART-DRYRUN-003",
   "experiment_generation": "BOMA-AUTONOMY-003",
-  "passed": false,
-  "head_sha": null,
-  "completed_at": null,
+  "passed": true,
+  "head_sha": "8fbdcfb4573a72b724dd96b590221c57ec49682f",
+  "completed_at": "2026-08-26T21:05:22+00:00",
   "research_content_read": false,
   "research_decision_made": false,
-  "error": "Fresh Generation 003 synthetic technical dry run required on exact START head."
+  "roles_exercised": [
+    "planner",
+    "reviewer",
+    "executor",
+    "study_analyst",
+    "act_analyst"
+  ]
 }
