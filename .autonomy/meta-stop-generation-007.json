@@ -1,0 +1,21 @@
+{
+  "schema": "BOMA-AUTONOMY-META-STOP-007",
+  "experiment_generation": "BOMA-AUTONOMY-007",
+  "valid_start": true,
+  "started_at": "2026-08-26T23:25:38+00:00",
+  "stopped_at": "2026-08-27T16:42:06+00:00",
+  "stopped_for_meta_pdsa": true,
+  "stop_reason": "TECHNICAL_PLANNER_PRE_REVIEW_CONTRACT_FAILURE_AFTER_COMMITTED_014_TO_015_TRANSITION",
+  "research_transition_decision_recorded": true,
+  "transition_decision": "AUTO_CONTINUE",
+  "transition_merge_commit": "493613f5b5113f765db8045fddbf40a98f416665",
+  "st2_exp_015_started": false,
+  "frozen_plan_created": false,
+  "executor_run_for_015": false,
+  "research_operations_applied_for_015": false,
+  "HRIC": 0,
+  "HIIC": 0,
+  "next_generation": "BOMA-AUTONOMY-008",
+  "meta_repair_scope": "TECHNICAL_ONLY",
+  "frontier_to_preserve": "POST_TRANSITION_PRE_PLAN_FREEZE_ST2_EXP_015"
+}
