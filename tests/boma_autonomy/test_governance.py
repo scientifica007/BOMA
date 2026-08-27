@@ -25,7 +25,7 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
         self.assertTrue(research["safety"]["fail_closed"])
         self.assertFalse(research["safety"]["main_research_writes_allowed"])
 
-    def test_prestart_frontier_is_exactly_transition_014_to_015(self) -> None:
+    def test_prestart_frontier_matches_generation_authority(self) -> None:
         experiment = core.load_json(core.EXP_STATE)
         state = core.load_json(core.RESEARCH_STATE)
         if experiment.get("armed"):
@@ -45,12 +45,26 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
             )
             return
         self.assertEqual(core.start_frontier_errors(), [])
-        self.assertEqual(state["state"], "TRANSITION_GATE")
         self.assertIsNone(state["active_experiment"])
+        self.assertIsNone(state["active_frozen_plan"])
         self.assertEqual(state["program_transition"]["from_experiment"], "ST2-EXP-014")
         self.assertEqual(state["program_transition"]["to_candidate"], "ST2-EXP-015")
-        self.assertFalse(state["program_transition"]["transition_decision_recorded"])
-        self.assertIsNone(state["active_frozen_plan"])
+        if experiment.get("experiment_generation") == "BOMA-AUTONOMY-008":
+            self.assertEqual(state["state"], "PREPARING_EXPERIMENT")
+            self.assertEqual(state["queue_cursor"], 1)
+            self.assertTrue(state["program_transition"]["transition_decision_recorded"])
+            self.assertEqual(state["program_transition"]["last_transition_decision"], "AUTO_CONTINUE")
+            self.assertEqual(
+                state["current_stage_two_frontier"]["next_experiment_status"],
+                "OWNER_AUTHORIZED / TRANSITION_PASSED / NOT_STARTED",
+            )
+            self.assertEqual(
+                state["next_legal_action"],
+                "CREATE_INDEPENDENT_ST2-EXP-015_BRANCH_AND_FREEZE_PLAN_BEFORE_DO",
+            )
+        else:
+            self.assertEqual(state["state"], "TRANSITION_GATE")
+            self.assertFalse(state["program_transition"]["transition_decision_recorded"])
 
     def test_executor_cannot_touch_control_plane_or_current_state(self) -> None:
         forbidden = [
@@ -178,26 +192,76 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
             commission.is_runtime_research_branch("autonomy/commission-probe-123")
         )
         self.assertFalse(
-            commission.is_runtime_research_branch("meta/autonomy-generation-007")
+            commission.is_runtime_research_branch("meta/autonomy-generation-008")
         )
         archive = commission.archive_branch_name(
-            "BOMA-AUTONOMY-007",
+            "BOMA-AUTONOMY-008",
             "autonomy/transition-st2-exp-014-to-st2-exp-015",
         )
         self.assertEqual(
             archive,
-            "archive/boma-autonomy-007/prestart/transition-st2-exp-014-to-st2-exp-015",
+            "archive/boma-autonomy-008/prestart/transition-st2-exp-014-to-st2-exp-015",
         )
 
-    def test_generation_007_start_requires_branch_quarantine_and_recovery_contract(self) -> None:
+    def test_generation_008_start_requires_branch_quarantine_and_planner_contract(self) -> None:
         start = (ROOT / "scripts/boma_autonomy/start.py").read_text(encoding="utf-8")
         probe = (ROOT / "scripts/boma_autonomy/probe.py").read_text(encoding="utf-8")
-        self.assertIn('generation != "BOMA-AUTONOMY-007"', start)
+        self.assertIn('generation != "BOMA-AUTONOMY-008"', start)
         self.assertIn('commission.get("stale_runtime_branch_quarantine_exercised") is not True', start)
         self.assertIn('preflight.get("recovery_operation_contract_exercised") is not True', start)
+        self.assertIn('preflight.get("planner_manifest_contract_exercised") is not True', start)
         self.assertIn('"recovery_analyst"', probe)
         self.assertIn('"patch"', probe)
         self.assertIn("legacy patch-style recovery aliases forbidden", probe)
+        self.assertIn("exercise_planner_manifest_contract", probe)
+
+    def test_planner_manifest_contract_injects_missing_fixed_fields(self) -> None:
+        manifest = core.load_json(core.PROGRAM_MANIFEST)
+        rec = core.experiment_record(manifest, "ST2-EXP-015")
+        raw = {
+            "research_question": "synthetic",
+            "smart_objective": "synthetic",
+            "plan_steps": ["synthetic"],
+            "success_criteria": ["synthetic"],
+            "verification_commands": ["true"],
+            "allowed_recovery_envelope": ["synthetic"],
+        }
+        original = provider.load_json
+        provider.load_json = lambda path: {"armed": True} if path == core.EXP_STATE else original(path)
+        try:
+            metrics: dict = {}
+            bound = provider._planner_contract(raw, metrics)
+        finally:
+            provider.load_json = original
+        self.assertEqual(bound["experiment_id"], "ST2-EXP-015")
+        self.assertEqual(bound["single_changed_factor"], rec["single_changed_factor"])
+        self.assertEqual(bound["fixed_controls"], rec["fixed_controls"])
+        self.assertEqual(bound["affected_cone"], rec["affected_cone"])
+        self.assertTrue(metrics["planner_pre_review_validation_history"][-1]["contract_passed"])
+
+    def test_planner_manifest_contract_rejects_conflicting_fixed_field_without_correction(self) -> None:
+        raw = {
+            "experiment_id": "ST2-EXP-015",
+            "single_changed_factor": "SYNTHETIC_CONFLICT",
+            "research_question": "synthetic",
+            "smart_objective": "synthetic",
+            "plan_steps": ["synthetic"],
+            "success_criteria": ["synthetic"],
+            "verification_commands": ["true"],
+            "allowed_recovery_envelope": ["synthetic"],
+        }
+        original = provider.load_json
+        provider.load_json = lambda path: {"armed": True} if path == core.EXP_STATE else original(path)
+        try:
+            metrics: dict = {}
+            bound = provider._planner_contract(raw, metrics)
+        finally:
+            provider.load_json = original
+        self.assertEqual(bound["single_changed_factor"], "SYNTHETIC_CONFLICT")
+        self.assertEqual(bound["experiment_id"], "__PLANNER_MANIFEST_CONTRACT_CONFLICT__")
+        history = metrics["planner_pre_review_validation_history"][-1]
+        self.assertIn("single_changed_factor", history["conflicting_manifest_fields"])
+        self.assertFalse(history["contract_passed"])
 
     def test_provider_capacity_guard_balances_marked_evidence(self) -> None:
         config = core.load_json(core.PROVIDER)
