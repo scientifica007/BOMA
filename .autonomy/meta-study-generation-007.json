@@ -1,0 +1,40 @@
+{
+  "schema": "BOMA-AUTONOMY-META-STUDY-007",
+  "experiment_generation": "BOMA-AUTONOMY-007",
+  "measurement_window_id": "MW-20260826T232538Z-168H-G7",
+  "valid_start": true,
+  "started_at": "2026-08-26T23:25:38+00:00",
+  "stopped_at": "2026-08-27T16:42:06+00:00",
+  "wakes_completed": 2,
+  "committed_research_progress": {
+    "transition_from": "ST2-EXP-014",
+    "transition_to": "ST2-EXP-015",
+    "decision": "AUTO_CONTINUE",
+    "committed": true,
+    "merged": true,
+    "merge_commit": "493613f5b5113f765db8045fddbf40a98f416665"
+  },
+  "failure": {
+    "classification": "TECHNICAL_CONTROLLER_PLANNER_PRE_REVIEW_CONTRACT_FAILURE",
+    "message": "autonomous Plan failed review for ST2-EXP-015: []",
+    "observed_effect": "Three planner attempts in wake 2 exhausted before any new reviewer call; no Plan was frozen and no ST2-EXP-015 executor run occurred.",
+    "root_cause": "Controller asks the model to reproduce manifest-fixed identity/control fields and rejects attempts before Reviewer when those literal structural requirements are not met. The final exception reports reviewer history, which is empty when all attempts fail deterministic pre-review validation, obscuring the actual rejection history."
+  },
+  "research_boundary": {
+    "st2_exp_015_started": false,
+    "frozen_plan_exists": false,
+    "executor_runs_for_015": 0,
+    "mathematical_repair_supplied_by_human": false
+  },
+  "interventions": {
+    "HRIC": 0,
+    "HIIC": 0
+  },
+  "meta_act": {
+    "decision": "STOP_GENERATION_AND_REQUIRE_META_PDSA",
+    "next_generation": "BOMA-AUTONOMY-008",
+    "preserve_committed_transition": true,
+    "do_not_re_evaluate_014_to_015": true,
+    "technical_objective": "Separate manifest-fixed Plan identity/control fields from AI-generated Plan content, reject contradictions fail-closed, and persist deterministic pre-review rejection history."
+  }
+}
