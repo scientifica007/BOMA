@@ -1,5 +1,29 @@
 # PDSA STATUS — Current Research Cycle Index
 
+<!-- BOMA_AUTONOMY_RUNTIME_STATE_BEGIN -->
+### Autonomous runtime current-state marker
+
+This block is maintained by the autonomous runtime and supersedes older
+current-frontier prose below it when the two disagree. Historical records
+remain immutable evidence of their own time.
+
+```text
+STATE: PREPARING_EXPERIMENT
+PROGRAM: ST2-RP-001
+QUEUE_CURSOR: 1
+ACTIVE_EXPERIMENT: None
+LATEST_COMPLETED: ST2-EXP-014
+NEXT_EXPERIMENT: ST2-EXP-015
+TRANSITION_FROM: ST2-EXP-014
+TRANSITION_CANDIDATE: ST2-EXP-015
+TRANSITION_DECISION_RECORDED: True
+NEXT_LEGAL_ACTION: CREATE_INDEPENDENT_ST2-EXP-015_BRANCH_AND_FREEZE_PLAN_BEFORE_DO
+```
+
+Runtime note: Autonomous transition gate ST2-EXP-014→ST2-EXP-015: AUTO_CONTINUE; ST2-EXP-015 not started.
+<!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
+
+
 **Status:** `ST2-EXP-001..004 + ST2-EXP-011 + ST2-EXP-014 CLOSED / PASS / ST2-RP-001 OWNER_AUTHORIZED / TRANSITION_GATE 014→015 / ST2-EXP-015 AUTHORIZED QUEUED NOT STARTED`  
 **Current status date:** `2026-08-26`  
 **Governing method:** **PDSA — Plan → Do → Study → Act**  
