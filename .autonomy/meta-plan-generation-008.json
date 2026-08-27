@@ -1,0 +1,45 @@
+{
+  "schema": "BOMA-AUTONOMY-META-PLAN-008",
+  "experiment_generation": "BOMA-AUTONOMY-008",
+  "parent_generation": "BOMA-AUTONOMY-007",
+  "meta_anchor_main_sha": "c7c231494f92c2821e538214c65cc1d535fcf92a",
+  "frontier_preserved": {
+    "state": "PREPARING_EXPERIMENT",
+    "transition_from": "ST2-EXP-014",
+    "transition_to": "ST2-EXP-015",
+    "transition_decision": "AUTO_CONTINUE",
+    "transition_decision_recorded": true,
+    "transition_merge_commit": "493613f5b5113f765db8045fddbf40a98f416665",
+    "st2_exp_015_started": false,
+    "frozen_plan_exists": false
+  },
+  "single_meta_objective": "Make the ST2-EXP-015 Plan boundary mechanically separate manifest-fixed fields from AI-authored Plan content, preserve fail-closed contradiction detection, and record deterministic pre-review rejection history, without re-evaluating the committed 014-to-015 transition or supplying any mathematical choice.",
+  "technical_changed_factors": [
+    "Controller constructs experiment_id, single_changed_factor, fixed_controls, and affected_cone from the owner-authorized manifest after checking that any model-supplied copies do not contradict the manifest.",
+    "Planner is asked to author only research_question, smart_objective, plan_steps, success_criteria, verification_commands, and allowed_recovery_envelope within the already authorized experiment factor.",
+    "Every deterministic pre-review rejection is persisted in an in-memory pre_review_validation_history and surfaced in the fail-closed terminal error instead of an empty reviewer-history diagnostic.",
+    "Generation-008 START frontier is the committed post-transition/pre-Plan-freeze state and explicitly forbids re-evaluation of 014-to-015."
+  ],
+  "required_regressions": [
+    "Conflicting model-supplied manifest-fixed fields fail closed and are never silently corrected.",
+    "Omitted manifest-fixed fields are injected only from the immutable authorized manifest.",
+    "A structurally valid Plan reaches Reviewer with all manifest-fixed controls present.",
+    "Pre-review rejection history is non-empty when all Plan attempts fail before Reviewer.",
+    "G8 START requires PREPARING_EXPERIMENT, queue_cursor=1, committed AUTO_CONTINUE, no active experiment, and no Frozen Plan.",
+    "Existing provider capacity, recovery contract, branch quarantine, exact-head, lifecycle, and governance tests remain green."
+  ],
+  "generation_reset": [
+    "Reset experiment state and metrics to Generation 008 BOOTSTRAP with HRIC=0 and HIIC=0.",
+    "Preserve the committed research-state transition already merged in Generation 007.",
+    "Invalidate prior commission, provider preflight, and dry run.",
+    "Require fresh Generation 008 commission, provider preflight, synthetic dry run, and exact-head START."
+  ],
+  "forbidden": [
+    "No re-evaluation or replay of the 014-to-015 transition gate.",
+    "No lemma, proof direction, implementation route, success result, or new assumption for ST2-EXP-015 supplied by Meta-PDSA.",
+    "No Frozen Plan authored during Meta-PDSA.",
+    "No SELECTS change, acceptance promotion, canonical choice, queue change, or change to the authorized single scientific factor.",
+    "No weakening of reviewer independence or fail-closed contradiction detection."
+  ],
+  "status": "FROZEN_META_PLAN"
+}
