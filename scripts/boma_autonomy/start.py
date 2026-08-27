@@ -37,8 +37,8 @@ def main() -> int:
 
     state = load_json(EXP_STATE)
     generation = str(state.get("experiment_generation") or "")
-    if generation != "BOMA-AUTONOMY-007":
-        print("Refusing START: experiment generation is not BOMA-AUTONOMY-007", file=sys.stderr)
+    if generation != "BOMA-AUTONOMY-008":
+        print("Refusing START: experiment generation is not BOMA-AUTONOMY-008", file=sys.stderr)
         return 5
     if state.get("armed") or state.get("started_at"):
         print("Refusing START: experiment already started", file=sys.stderr)
@@ -83,29 +83,32 @@ def main() -> int:
     if preflight.get("recovery_operation_contract_exercised") is not True:
         print("Refusing START: recovery operation contract was not exercised", file=sys.stderr)
         return 17
+    if preflight.get("planner_manifest_contract_exercised") is not True:
+        print("Refusing START: planner manifest contract was not exercised", file=sys.stderr)
+        return 18
     if preflight.get("head_sha") != head:
         print("Refusing START: provider preflight head differs from current exact head", file=sys.stderr)
-        return 18
+        return 19
 
     if not DRY_RUN.is_file():
         print("Refusing START: prestart dry run not recorded", file=sys.stderr)
-        return 19
+        return 20
     dry = load_json(DRY_RUN)
     if dry.get("passed") is not True:
         print("Refusing START: prestart dry run did not pass", file=sys.stderr)
-        return 20
+        return 21
     if dry.get("experiment_generation") != generation:
         print("Refusing START: dry run belongs to another generation", file=sys.stderr)
-        return 21
+        return 22
     if dry.get("head_sha") != head:
         print("Refusing START: dry-run head differs from current exact head", file=sys.stderr)
-        return 22
+        return 23
 
     validation = run([sys.executable, "scripts/boma_autonomy/validate.py"], timeout=600)
     if validation["exit_code"] != 0:
         print(validation["stdout"] + validation["stderr"], file=sys.stderr)
         print("Refusing START: runtime validation failed", file=sys.stderr)
-        return 23
+        return 24
 
     now_dt = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
     now = now_dt.isoformat()
@@ -114,14 +117,14 @@ def main() -> int:
     hours = int(state.get("observation_window_hours") or window_cfg.get("default_hours", 168))
     if hours <= 0:
         print("Refusing START: observation_window_hours must be positive", file=sys.stderr)
-        return 24
+        return 25
     deadline = (now_dt + dt.timedelta(hours=hours)).isoformat()
-    window_id = f"MW-{now_dt.strftime('%Y%m%dT%H%M%SZ')}-{hours}H-G7"
+    window_id = f"MW-{now_dt.strftime('%Y%m%dT%H%M%SZ')}-{hours}H-G8"
 
     metrics = load_json(METRICS)
     state["armed"] = True
     state["experiment_state"] = "ACTIVE"
-    state["current_stage"] = "READY_TO_EVALUATE_014_TO_015_TRANSITION"
+    state["current_stage"] = "READY_TO_PREPARE_ST2_EXP_015_PLAN"
     state["started_at"] = now
     state["finished_at"] = None
     state["observation_window_hours"] = hours
@@ -130,14 +133,14 @@ def main() -> int:
     state["meta_review_due"] = False
     state["start_head_sha"] = head
     state["last_run_at"] = now
-    state["last_run_result"] = "EXPERIMENT_STARTED"
+    state["last_run_result"] = "EXPERIMENT_STARTED_POST_TRANSITION_PRE_PLAN_FREEZE"
     state["infrastructure_status"] = "AVAILABLE"
     state["final_status"] = "NOT_REACHED"
     metrics["started_at"] = now
     metrics["measurement_window_id"] = window_id
     save_json(EXP_STATE, state)
     save_json(METRICS, metrics)
-    print(f"BOMA AUTONOMY GENERATION 007 STARTED at {now} on {head}; observation deadline {deadline}")
+    print(f"BOMA AUTONOMY GENERATION 008 STARTED at {now} on {head}; observation deadline {deadline}")
     return 0
 
 

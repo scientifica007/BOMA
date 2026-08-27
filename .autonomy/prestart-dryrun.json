@@ -1,16 +1,11 @@
 {
-  "schema": "BOMA-AUTONOMY-PRESTART-DRYRUN-007",
-  "experiment_generation": "BOMA-AUTONOMY-007",
-  "passed": true,
-  "head_sha": "6763106f3a7caf0206c78333f8199319d4d9f820",
-  "completed_at": "2026-08-26T23:25:38+00:00",
+  "schema": "BOMA-AUTONOMY-PRESTART-DRYRUN-008",
+  "experiment_generation": "BOMA-AUTONOMY-008",
+  "passed": false,
+  "status": "NOT_RUN_FOR_GENERATION_008",
+  "head_sha": null,
+  "completed_at": null,
   "research_content_read": false,
   "research_decision_made": false,
-  "roles_exercised": [
-    "planner",
-    "reviewer",
-    "executor",
-    "study_analyst",
-    "act_analyst"
-  ]
+  "roles_exercised": []
 }
