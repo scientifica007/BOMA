@@ -1,24 +1,13 @@
 {
-  "schema": "BOMA-AUTONOMY-PROVIDER-PREFLIGHT-007",
-  "experiment_generation": "BOMA-AUTONOMY-007",
-  "passed": true,
-  "head_sha": "6763106f3a7caf0206c78333f8199319d4d9f820",
-  "completed_at": "2026-08-26T23:25:35+00:00",
-  "synthetic_source_characters": 68925,
-  "models_exercised": [
-    "openai/gpt-oss-120b",
-    "qwen/qwen3.6-27b"
-  ],
-  "production_requested_completion_tokens": {
-    "transition_auditor": 3000,
-    "planner": 4500,
-    "recovery_analyst": 1500
-  },
-  "transition_response_contract_exercised": true,
-  "transition_response_contract_input_shape": "transition_gate_evaluation.decision",
-  "transition_response_contract_canonical_output": "decision=OWNER_REQUIRED / synthetic sentinel only",
-  "recovery_operation_contract_exercised": true,
-  "recovery_operation_contract_required_shape": "operations[].action/path/content-complete-write-or-delete; patch aliases forbidden",
+  "schema": "BOMA-AUTONOMY-PROVIDER-PREFLIGHT-008",
+  "experiment_generation": "BOMA-AUTONOMY-008",
+  "passed": false,
+  "status": "NOT_RUN_FOR_GENERATION_008",
+  "head_sha": null,
+  "completed_at": null,
+  "transition_response_contract_exercised": false,
+  "recovery_operation_contract_exercised": false,
+  "planner_manifest_contract_exercised": false,
   "research_content_read": false,
   "research_decision_made": false
 }
