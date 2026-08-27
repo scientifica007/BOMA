@@ -10,12 +10,28 @@ import urllib.error
 import urllib.request
 from typing import Any
 
-from core import EXP_STATE, METRICS, PROVIDER, GovernanceError, load_json, save_json
+from core import (
+    EXP_STATE,
+    METRICS,
+    PROGRAM_MANIFEST,
+    PROVIDER,
+    RESEARCH_STATE,
+    GovernanceError,
+    experiment_record,
+    load_json,
+    save_json,
+)
 
 
 _SECTION = re.compile(r"(?m)^## (?:FILE .+|REPOSITORY TREE)\s*$")
 _TRANSITION_DECISIONS = {"AUTO_CONTINUE", "OWNER_REQUIRED"}
 _TRANSITION_WRAPPER = "transition_gate_evaluation"
+_PLANNER_DYNAMIC_ARRAYS = (
+    "plan_steps",
+    "success_criteria",
+    "verification_commands",
+    "allowed_recovery_envelope",
+)
 
 
 def _transition_value(payload: dict[str, Any], *, location: str) -> str | None:
@@ -39,19 +55,7 @@ def _transition_value(payload: dict[str, Any], *, location: str) -> str | None:
 
 
 def canonicalize_role_response(role: str, result: dict[str, Any]) -> dict[str, Any]:
-    """Canonicalize only enumerated non-semantic transition response shapes.
-
-    Generation 002 observed the spelling alias ``audit_result``. Generation 003 then
-    observed a semantically valid transition object nested exactly under
-    ``transition_gate_evaluation``. The controller contract remains a direct object.
-
-    For ``transition_auditor`` only, this adapter therefore accepts exactly two
-    structural forms: a direct object, or one exact ``transition_gate_evaluation``
-    envelope. Within either form only ``decision`` and the historical ``audit_result``
-    alias are accepted decision spellings, and only AUTO_CONTINUE/OWNER_REQUIRED are
-    valid values. Contradictions, malformed wrappers, unknown values, conflicting
-    duplicate fields, and arbitrary deeper nesting fail closed.
-    """
+    """Canonicalize only enumerated non-semantic transition response shapes."""
     if role != "transition_auditor":
         return result
 
@@ -96,6 +100,74 @@ def canonicalize_role_response(role: str, result: dict[str, Any]) -> dict[str, A
     return normalized
 
 
+def _planner_contract(result: dict[str, Any], metrics: dict[str, Any]) -> dict[str, Any]:
+    """Bind manifest-fixed Plan identity/control fields without authoring research content.
+
+    This runs only inside an armed research measurement window. Missing fixed fields are
+    copied mechanically from the already owner-authorized manifest. A model-supplied
+    contradictory fixed field is never corrected silently: the response is marked with a
+    sentinel experiment_id so the controller's deterministic pre-review gate rejects that
+    attempt and can request another sample. Diagnostics are retained in metrics.
+    """
+    state = load_json(EXP_STATE)
+    if not state.get("armed"):
+        return result
+
+    research_state = load_json(RESEARCH_STATE)
+    frontier = research_state.get("current_stage_two_frontier", {})
+    exp = research_state.get("active_experiment") or frontier.get("next_experiment")
+    if not isinstance(exp, str) or not exp:
+        return result
+
+    manifest = load_json(PROGRAM_MANIFEST)
+    rec = experiment_record(manifest, exp)
+    expected = {
+        "experiment_id": exp,
+        "single_changed_factor": rec.get("single_changed_factor"),
+        "fixed_controls": rec.get("fixed_controls", []),
+        "affected_cone": rec.get("affected_cone", []),
+    }
+    normalized = dict(result)
+    injected: list[str] = []
+    conflicts: list[str] = []
+
+    for key, value in expected.items():
+        if key not in normalized:
+            normalized[key] = value
+            injected.append(key)
+        elif normalized.get(key) != value:
+            conflicts.append(key)
+
+    structural_issues: list[str] = []
+    for key in _PLANNER_DYNAMIC_ARRAYS:
+        value = normalized.get(key)
+        if not isinstance(value, list) or not value:
+            structural_issues.append(f"{key} must be a non-empty array")
+
+    if conflicts:
+        # Force deterministic controller rejection without replacing the conflicting
+        # model value with an authorized scientific value.
+        normalized["experiment_id"] = "__PLANNER_MANIFEST_CONTRACT_CONFLICT__"
+
+    history = metrics.setdefault("planner_pre_review_validation_history", [])
+    if not isinstance(history, list):
+        history = []
+        metrics["planner_pre_review_validation_history"] = history
+    history.append(
+        {
+            "experiment_id": exp,
+            "injected_manifest_fields": injected,
+            "conflicting_manifest_fields": conflicts,
+            "structural_issues": structural_issues,
+            "contract_passed": not conflicts and not structural_issues,
+        }
+    )
+    # Bound diagnostic growth while preserving the most recent attempts.
+    if len(history) > 12:
+        del history[:-12]
+    return normalized
+
+
 def _compact_text(text: str, limit: int, *, label: str) -> tuple[str, bool]:
     """Deterministically retain both ends of an oversized prompt component."""
     if limit <= 0:
@@ -112,12 +184,7 @@ def _compact_text(text: str, limit: int, *, label: str) -> tuple[str, bool]:
 
 
 def _compact_structured_user(text: str, limit: int) -> tuple[str, bool]:
-    """Balance marked repository sections instead of keeping only a global head/tail.
-
-    Controller contexts contain ``## FILE ...`` sections. When such structure is
-    present, every section receives a deterministic excerpt so late lifecycle evidence
-    cannot disappear merely because earlier governance documents are long.
-    """
+    """Balance marked repository sections instead of keeping only a global head/tail."""
     if len(text) <= limit:
         return text, False
     matches = list(_SECTION.finditer(text))
@@ -130,8 +197,6 @@ def _compact_structured_user(text: str, limit: int) -> tuple[str, bool]:
         end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
         sections.append(text[match.start() : end])
 
-    # Keep request-specific source/state instructions in the prefix while still
-    # reserving most space for evenly sampled evidence sections.
     prefix_limit = min(len(prefix), max(900, limit // 5))
     fitted_prefix, _ = _compact_text(prefix, prefix_limit, label="request prefix compaction")
     separators = 2 * len(sections)
@@ -157,12 +222,7 @@ def fit_prompt_to_capacity(
     user_prompt: str,
     requested_max_tokens: int,
 ) -> tuple[str, str, int, dict[str, Any]]:
-    """Apply a conservative deterministic admission envelope before an API request.
-
-    Groq free-plan TPM is a provider throughput constraint, not a model context-window
-    constraint. Generation 002 therefore refuses to construct a single request whose
-    conservative estimate approaches the observed organization TPM ceiling.
-    """
+    """Apply a conservative deterministic admission envelope before an API request."""
     capacity = config.get("capacity", {})
     role_caps = capacity.get("role_completion_caps", {})
     if role not in role_caps:
@@ -287,7 +347,7 @@ class AIProvider:
                 headers={
                     "Authorization": f"Bearer {self.api_key}",
                     "Content-Type": "application/json",
-                    "User-Agent": "BOMA-Autonomous-Research/4.0",
+                    "User-Agent": "BOMA-Autonomous-Research/5.0",
                 },
                 method="POST",
             )
@@ -299,6 +359,8 @@ class AIProvider:
                 if not isinstance(result, dict):
                     raise GovernanceError("AI response must be a JSON object")
                 result = canonicalize_role_response(role, result)
+                if role == "planner":
+                    result = _planner_contract(result, self.metrics)
                 self._record(role, model, data.get("usage", {}), admission)
                 return result
             except urllib.error.HTTPError as exc:
