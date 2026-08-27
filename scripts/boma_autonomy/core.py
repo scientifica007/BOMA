@@ -26,7 +26,18 @@ RUNTIME_END = "<!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->"
 
 
 class GovernanceError(RuntimeError):
-    pass
+    def __str__(self) -> str:
+        base = super().__str__()
+        if "autonomous Plan failed review" not in base or not base.rstrip().endswith("[]"):
+            return base
+        try:
+            metrics = json.loads(METRICS.read_text(encoding="utf-8"))
+            history = metrics.get("planner_pre_review_validation_history", [])
+        except Exception:
+            return base
+        if not isinstance(history, list) or not history:
+            return base
+        return f"{base} | planner_pre_review_validation_history={history!r}"
 
 
 def utc_now() -> str:
@@ -265,22 +276,43 @@ def start_frontier_errors() -> list[str]:
     errors = bootstrap_errors()
     if errors:
         return errors
+    e = load_json(EXP_STATE)
     r = load_json(RESEARCH_STATE)
     p = load_json(POLICY)
-    if r.get("state") != p.get("required_start_research_state"):
-        errors.append(f"START requires research state {p.get('required_start_research_state')}")
+    generation = str(e.get("experiment_generation") or "")
+    frontier = r.get("current_stage_two_frontier", {})
+    transition = r.get("program_transition", {})
+
     if r.get("active_experiment") is not None:
         errors.append("START requires no active research experiment")
-    transition = r.get("program_transition", {})
+    if r.get("active_frozen_plan") is not None:
+        errors.append("START requires no active Frozen Plan")
+    if frontier.get("next_experiment") != "ST2-EXP-015":
+        errors.append("START requires ST2-EXP-015 as next authorized experiment")
+
+    if generation == "BOMA-AUTONOMY-008":
+        if r.get("state") != "PREPARING_EXPERIMENT":
+            errors.append("Generation 008 START requires PREPARING_EXPERIMENT research state")
+        if r.get("queue_cursor") != 1:
+            errors.append("Generation 008 START requires queue_cursor=1")
+        if transition.get("from_experiment") != "ST2-EXP-014" or transition.get("to_candidate") != "ST2-EXP-015":
+            errors.append("Generation 008 START requires preserved 014-to-015 transition identity")
+        if transition.get("transition_decision_recorded") is not True:
+            errors.append("Generation 008 START requires committed 014-to-015 decision")
+        if transition.get("last_transition_decision") != "AUTO_CONTINUE":
+            errors.append("Generation 008 START requires preserved AUTO_CONTINUE decision")
+        if frontier.get("next_experiment_status") != "OWNER_AUTHORIZED / TRANSITION_PASSED / NOT_STARTED":
+            errors.append("Generation 008 START requires ST2-EXP-015 transition-passed/not-started frontier")
+        if r.get("next_legal_action") != "CREATE_INDEPENDENT_ST2-EXP-015_BRANCH_AND_FREEZE_PLAN_BEFORE_DO":
+            errors.append("Generation 008 START requires pre-Plan-freeze next legal action")
+        return errors
+
+    if r.get("state") != p.get("required_start_research_state"):
+        errors.append(f"START requires research state {p.get('required_start_research_state')}")
     if transition.get("from_experiment") != p.get("required_start_transition_from"):
         errors.append("unexpected START transition source")
     if transition.get("to_candidate") != p.get("required_start_transition_candidate"):
         errors.append("unexpected START transition candidate")
     if transition.get("transition_decision_recorded") is not False:
         errors.append("014→015 decision must remain unrecorded before START")
-    frontier = r.get("current_stage_two_frontier", {})
-    if frontier.get("next_experiment") != "ST2-EXP-015":
-        errors.append("START requires ST2-EXP-015 as next authorized candidate")
-    if r.get("active_frozen_plan") is not None:
-        errors.append("START requires no active Frozen Plan")
     return errors
