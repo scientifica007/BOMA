@@ -1,0 +1,41 @@
+{
+  "schema": "AUTONOMY-STOP-CHECKPOINT-001",
+  "recorded_date": "2026-09-21",
+  "repository": "scientifica007/BOMA",
+  "reason": "Owner-directed pause for architecture and Meta-PDSA review before any further autonomous research execution.",
+  "stop_method": {
+    "kind": "CONTROL_PLANE_WORKFLOW_EDIT",
+    "workflow": ".github/workflows/boma-autonomous-engine.yml",
+    "scheduled_trigger_removed": true,
+    "previous_schedule_retained_as_comment": "37 */6 * * *",
+    "reversible": true,
+    "stop_commit": "b2c82059ffad8ef6cc08d414dc0d63620cbbfff2",
+    "workflow_dispatch_retained": true,
+    "manual_start_run_commission_forbidden_by_owner_until_new_approval": true
+  },
+  "observed_state": {
+    "armed": false,
+    "experiment_generation": "BOMA-AUTONOMY-008",
+    "experiment_state": "BOOTSTRAP",
+    "current_stage": "BOOTSTRAP_VALIDATION",
+    "research_program": "ST2-RP-001",
+    "latest_completed_experiment": "ST2-EXP-014",
+    "next_experiment": "ST2-EXP-015",
+    "transition_decision": "AUTO_CONTINUE",
+    "st2_exp_015_started": false,
+    "frozen_plan_exists_for_st2_exp_015": false,
+    "HRIC": 0,
+    "HIIC": 0
+  },
+  "verification": {
+    "active_workflow_runs_after_stop": 0,
+    "latest_scheduled_research_engine_run_before_stop": 35537292324,
+    "latest_scheduled_research_engine_run_controller_step": "SKIPPED because Generation 008 remained unarmed",
+    "post_stop_governance_audit": "PASS"
+  },
+  "constraints": [
+    "No START, run, commission, manual recovery, new research Plan, or new research cycle until owner approves a restart architecture.",
+    "Do not re-evaluate the already committed ST2-EXP-014 to ST2-EXP-015 AUTO_CONTINUE transition.",
+    "Do not alter queue, SELECTS, acceptance state, canonical producers, or scientific factors during architecture review."
+  ]
+}
