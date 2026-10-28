@@ -1,0 +1,65 @@
+{
+  "experiment_id": "ST2-EXP-015",
+  "single_changed_factor": "WITH_CAUCHY_SCALAR_FIXED_C_REALIZATION_ROUTE_P_TO_ROUTE_Q",
+  "fixed_controls": [
+    "RCBOMA_CAUCHY_SCALAR_PRODUCER",
+    "QUADRATIC_EXTENSION_TARGET_MEANING",
+    "NO_DEDEKIND_IMPLEMENTATION_TRANSPORT",
+    "ACCEPTED_C_REMAINS_CONTROL"
+  ],
+  "affected_cone": [
+    "C_CARRIER_IDENTITY_OVER_RCBOMA",
+    "C_FIELD_OVER_RCBOMA",
+    "C_COORDINATES_OVER_RCBOMA",
+    "C_COMPARISON_OVER_RCBOMA"
+  ],
+  "schema": "BOMA-OWNER-DIRECTED-FROZEN-PLAN-015-001",
+  "program_id": "ST2-RP-001",
+  "origin_kind": "DECISION_POINT",
+  "origin_id": "C-DP-001",
+  "frozen_reference_main_sha": "575ce175ebc024a33d5c3e7925779b2b8ae9921f",
+  "branch": "feature/stage-two-st2-exp-015-route-composition",
+  "owner_authorization_record": "LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md",
+  "human_plan": "LAB/PDSA/PDSA-ST2-EXP-015_ROUTE_COMPOSITION_SQUARE.md",
+  "research_question": "With RCBOMA fixed, can independently verified native Route Q close the Dedekind/Cauchy by P/Q comparison square?",
+  "smart_objective": "Complete one bounded 015 PDSA lifecycle with native Q field and nine-Claim meaning evidence, explicit native P/Q isomorphism, two commuting square equations, exact closure and immutable controls.",
+  "plan_steps": [
+    "Gate A: freeze independent Plan and protect baseline/provenance.",
+    "Gate B: construct and verify native Q independently of P/H5/Dedekind.",
+    "Gate C: add native P only after Q passes and verify explicit-extractor P/Q isomorphism.",
+    "Gate D: add H5/Dedekind only externally; verify vertical maps and both square equations.",
+    "Gate E: classify exact dependency/axiom/Claim meanings and separation.",
+    "Gate F: verify exact-head CI, historical regressions and six-stage transparency.",
+    "Study/Act/close with exact evidence, retain failures, merge only through program gates; stop before 016."
+  ],
+  "success_criteria": [
+    "H1 independent native Q field and nine target Claim meanings.",
+    "H2 explicit-extractor native P/Q isomorphism with all declared preservation laws.",
+    "H3 vertical field comparisons and both pointwise square equations for all elements.",
+    "H4 exact source/declaration independence and inherited logical cost classified.",
+    "H5 frozen Plan, accepted controls, exact verification and lifecycle complete.",
+    "INFORMATIVE FAIL requires concrete reproducible mathematical evidence; unfinished proofs or tooling failures do not qualify."
+  ],
+  "verification_commands": [
+    "python3 LAB/00_ARCHITECTURE/tools/st2_exp_015_verify.py --output-dir /tmp/boma-st2-exp-015-verification",
+    "python3 LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py",
+    "python3 LAB/00_ARCHITECTURE/tools/claim_surface_audit.py --json",
+    "python3 LAB/PDSA/tools/autonomous_research_program_audit.py",
+    "python3 -m unittest discover -s tests/boma_autonomy -q"
+  ],
+  "allowed_recovery_envelope": [
+    "Namespace/qualification/unfolding/proof-script errors without changing assumptions or target.",
+    "Manifest order/path and dependency-classification false positives without weakening the native separation.",
+    "CI/download/infrastructure retries on the same mathematical source.",
+    "Retain every material failed attempt; no Frozen Plan, single-factor, control, criterion or accepted-source change."
+  ],
+  "expected_files": [
+    "LAB/payloads/lean/CStage/ST2Exp015*.lean",
+    "LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015*",
+    "LAB/00_ARCHITECTURE/tools/st2_exp_015_verify.py",
+    ".github/workflows/boma-st2-exp-015-route-composition.yml",
+    "LAB/PDSA/experiments/ST2-EXP-015*",
+    "LAB/PDSA/autonomy/ST2-EXP-015/*"
+  ],
+  "execution_mode": "OWNER_DIRECTED_BOUNDED_PDSA_NOT_G8_START"
+}
