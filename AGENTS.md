@@ -1,26 +1,28 @@
 # AGENTS.md — BOMA continuation rules
 
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_BEGIN -->
-### Autonomous runtime current-state marker
+### Current execution-state marker
 
-This block is maintained by the autonomous runtime and supersedes older
-current-frontier prose below it when the two disagree. Historical records
-remain immutable evidence of their own time.
+This synchronized marker supersedes older current-frontier prose below.
+Historical records remain immutable evidence of their own time.
 
 ```text
-STATE: PREPARING_EXPERIMENT
+STATE: PLAN_FROZEN
 PROGRAM: ST2-RP-001
 QUEUE_CURSOR: 1
-ACTIVE_EXPERIMENT: None
+ACTIVE_EXPERIMENT: ST2-EXP-015
 LATEST_COMPLETED: ST2-EXP-014
 NEXT_EXPERIMENT: ST2-EXP-015
 TRANSITION_FROM: ST2-EXP-014
 TRANSITION_CANDIDATE: ST2-EXP-015
 TRANSITION_DECISION_RECORDED: True
-NEXT_LEGAL_ACTION: CREATE_INDEPENDENT_ST2-EXP-015_BRANCH_AND_FREEZE_PLAN_BEFORE_DO
+FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
+FROZEN_REFERENCE_MAIN_SHA: 575ce175ebc024a33d5c3e7925779b2b8ae9921f
+NEXT_LEGAL_ACTION: EXECUTE_FROZEN_ST2-EXP-015_PLAN_WITHIN_BOUNDED_OWNER_AUTHORITY
 ```
 
-Runtime note: Autonomous transition gate ST2-EXP-014→ST2-EXP-015: AUTO_CONTINUE; ST2-EXP-015 not started.
+Owner-directed continuation of 2026-10-28: independent Plan frozen before Do.
+G8 remains paused. This bounded continuation stops before starting/freezing 016.
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
 

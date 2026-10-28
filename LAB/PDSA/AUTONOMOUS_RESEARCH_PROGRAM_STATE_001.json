@@ -1,12 +1,12 @@
 {
   "schema": "BOMA-AUTONOMOUS-RESEARCH-PROGRAM-STATE-001",
   "status_date": "2026-10-28",
-  "state": "PREPARING_EXPERIMENT",
+  "state": "PLAN_FROZEN",
   "active_program_id": "ST2-RP-001",
   "owner_authorization_record": "LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md",
   "program_manifest": "LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json",
   "program_baseline_main_sha": "1fac73b24b9b2e0db9dafc95e1944267aa9040da",
-  "synchronized_main_sha": "2a6c38af70e596c840ef2db4733421bde38f3ee5",
+  "synchronized_main_sha": "575ce175ebc024a33d5c3e7925779b2b8ae9921f",
   "baseline_integrity_audit": "LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md",
   "authorized_experiment_queue": [
     "ST2-EXP-014",
@@ -15,25 +15,25 @@
     "ST2-EXP-017"
   ],
   "queue_cursor": 1,
-  "active_experiment": null,
-  "active_experiment_branch": null,
-  "active_frozen_plan": null,
-  "active_frozen_plan_sha": null,
-  "active_experiment_frozen_reference_sha": null,
-  "active_experiment_origin_record": null,
+  "active_experiment": "ST2-EXP-015",
+  "active_experiment_branch": "feature/stage-two-st2-exp-015-route-composition",
+  "active_frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-015_ROUTE_COMPOSITION_SQUARE.md",
+  "active_frozen_plan_sha": "1bd27f622753558fb622436d2e27560462ea1771",
+  "active_experiment_frozen_reference_sha": "575ce175ebc024a33d5c3e7925779b2b8ae9921f",
+  "active_experiment_origin_record": "LAB/PDSA/experiments/ST2-EXP-015_BRANCH_ORIGIN_RECORD_001.json",
   "active_work_head_before_ci_state_commit": null,
   "last_verified_head": "19cc6541457b3e8c58ea4607198d2474cd293dc9",
-  "waiting_on": "OWNER_DIRECTED_ST2_EXP_015_PLAN_PREPARATION_AFTER_AUDIT_CLARIFICATION",
+  "waiting_on": "EXECUTE_IMMUTABLE_ST2_EXP_015_PLAN_GATE_B_NATIVE_Q",
   "owner_required_reason": null,
   "routine_merge_authorized": true,
   "current_stage_two_frontier": {
-    "active_experiment": null,
-    "active_experiment_status": "NONE / PREPARING_EXPERIMENT",
+    "active_experiment": "ST2-EXP-015",
+    "active_experiment_status": "PLAN_FROZEN / OWNER_DIRECTED",
     "latest_completed_experiment": "ST2-EXP-014",
     "latest_completed_status": "CLOSED_PASS / EXACT_HEAD_VERIFIED / ROUTINE_MERGED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-003",
     "next_experiment": "ST2-EXP-015",
-    "next_experiment_status": "OWNER_AUTHORIZED / TRANSITION_PASSED / NOT_STARTED",
+    "next_experiment_status": "ACTIVE / PLAN_FROZEN",
     "activation_authorized_by_this_state": true
   },
   "program_transition": {
@@ -46,12 +46,12 @@
     "transition_decision_recorded": true,
     "last_transition_decision": "AUTO_CONTINUE"
   },
-  "next_legal_action": "CREATE_INDEPENDENT_ST2-EXP-015_BRANCH_AND_FREEZE_PLAN_BEFORE_DO",
+  "next_legal_action": "EXECUTE_FROZEN_ST2-EXP-015_PLAN_WITHIN_BOUNDED_OWNER_AUTHORITY",
   "safety": {
     "fail_closed": true,
     "ambiguous_authority_means": "OWNER_REQUIRED",
     "main_research_writes_allowed": false
   },
-  "active_frozen_plan_machine": null,
+  "active_frozen_plan_machine": "LAB/PDSA/autonomy/ST2-EXP-015/FROZEN_PLAN.json",
   "owner_execution_authorization_record": "LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md"
 }
