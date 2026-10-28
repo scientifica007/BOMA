@@ -1,0 +1,311 @@
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:965:19: warning: This simp argument is unused:
+  mul_add_left
+
+Hint: Omit it from the simp argument list.
+  simp [pairMul, m̵u̵l̵_̵a̵d̵d̵_̵l̵e̵f̵t̵,̵ ̵mul_add_right, mul_assoc, mul_comm, z_mul_left_comm, add_assoc, add_comm,
+  ̲  ̲ ̲ ̲ ̲ ̲z_add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:965:48: warning: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [pairMul, mul_add_left, mul_add_right, m̵u̵l̵_̵a̵s̵s̵o̵c̵,̵ ̵mul_comm, z_mul_left_comm, add_assoc, add_comm,
+  ̲  ̲ ̲ ̲ ̲ ̲z_add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:972:28: warning: This simp argument is unused:
+  mul_add_left
+
+Hint: Omit it from the simp argument list.
+  simp [pairMul, pairAdd, m̵u̵l̵_̵a̵d̵d̵_̵l̵e̵f̵t̵,̵ ̵mul_add_right, mul_assoc, mul_comm, z_mul_left_comm, add_assoc,
+  ̲  ̲ ̲ ̲ ̲ ̲add_comm, z_add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:972:57: warning: This simp argument is unused:
+  mul_assoc
+
+Hint: Omit it from the simp argument list.
+  simp [pairMul, pairAdd, mul_add_left, mul_add_right, mul_a̵s̵s̵o̵c,̵ ̵m̵u̵l̵_̵c̵omm, z_mul_left_comm,
+  ̵  ̵ ̵ ̵ ̵ ̵add_assoc,
+  ̲  ̲ ̲ ̲ ̲ ̲add_comm, z_add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:972:68: warning: This simp argument is unused:
+  mul_comm
+
+Hint: Omit it from the simp argument list.
+  simp [pairMul, pairAdd, mul_add_left, mul_add_right, mul_assoc, m̵u̵l̵_̵c̵o̵m̵m̵,̵ ̵z_mul_left_comm,
+  ̵  ̵ ̵ ̵ ̵ ̵add_assoc,
+  ̲  ̲ ̲ ̲ ̲ ̲add_comm, z_add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:972:78: warning: This simp argument is unused:
+  z_mul_left_comm
+
+Hint: Omit it from the simp argument list.
+  simp [pairMul, pairAdd, mul_add_left, mul_add_right, mul_assoc, mul_comm, z̵_̵m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵,̵add_assoc, add_comm,
+  ̲  ̲ ̲ ̲ ̲ ̲z_add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:973:17: warning: This simp argument is unused:
+  add_comm
+
+Hint: Omit it from the simp argument list.
+  simp [pairMul, pairAdd, mul_add_left, mul_add_right, mul_assoc, mul_comm, z_mul_left_comm,
+        add_assoc, a̵d̵d̵_̵c̵o̵m̵m̵,̵ ̵z_add_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:980:4: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:1072:12: warning: This simp argument is unused:
+  embedN
+
+Hint: Omit it from the simp argument list.
+  simp [zaddD, zaddP, pairAdd, pairOfSigned, normalizePair,
+  ̵  ̵ ̵ ̵ ̵ ̵diff, e̵m̵b̵e̵d̵N̵,̵ ̵add_s_left, add_s_right]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:1088:6: warning: This simp argument is unused:
+  normalize_positive_pair
+
+Hint: Omit it from the simp argument list.
+  simp [zmulD, zmulP, pairMul, pairOfSigned, normalizePair, n̵o̵r̵m̵a̵l̵i̵z̵e̵_̵p̵o̵s̵i̵t̵i̵v̵e̵_̵p̵a̵i̵r̵,̵ ̵normalize_negative_pair,
+        diff_nat_zero, diff_zero_nat, embedN]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:1088:31: warning: This simp argument is unused:
+  normalize_negative_pair
+
+Hint: Omit it from the simp argument list.
+  simp [zmulD, zmulP, pairMul, pairOfSigned, normalizePair, normalize_positive_pair,
+  ̲  ̲ ̲ ̲ ̲ ̲n̵o̵r̵m̵a̵l̵i̵z̵e̵_̵n̵e̵g̵a̵t̵i̵v̵e̵_̵p̵a̵i̵r̵,̵diff_nat_zero, diff_zero_nat, embedN]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:1214:39: warning: This simp argument is unused:
+  mul_one_right
+
+Hint: Omit it from the simp argument list.
+  simp [zmul, zmulD, zone, embedN,̵ ̵m̵u̵l̵_̵o̵n̵e̵_̵r̵i̵g̵h̵t̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:1216:45: warning: This simp argument is unused:
+  mul_one_right
+
+Hint: Omit it from the simp argument list.
+  simp [zmul, zmulD, zone, embedN, zneg,̵ ̵m̵u̵l̵_̵o̵n̵e̵_̵r̵i̵g̵h̵t̵]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:1257:21: warning: This simp argument is unused:
+  zzero
+
+Hint: Omit it from the simp argument list.
+  simp [zadd, z̵z̵e̵r̵o̵,̵ ̵embedN]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:1260:25: warning: This simp argument is unused:
+  zzero
+
+Hint: Omit it from the simp argument list.
+  simp [zadd, z̵z̵e̵r̵o̵,̵ ̵embedN]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:1267:21: warning: This simp argument is unused:
+  zzero
+
+Hint: Omit it from the simp argument list.
+  simp [zmul, z̵z̵e̵r̵o̵,̵ ̵embedN]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:1270:25: warning: This simp argument is unused:
+  zzero
+
+Hint: Omit it from the simp argument list.
+  simp [zmul, z̵z̵e̵r̵o̵,̵ ̵embedN]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:4882:26: warning: Variable name `ha` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:4883:5: warning: Variable name `hy` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:6236:2: warning: try 'simp' instead of 'simpa'
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:6300:5: warning: Variable name `heps` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:7496:5: warning: Variable name `hne` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:7497:18: warning: Variable name `hUB` is not explicitly referenced.
+
+The binding can be removed (if unused) or named `_` (if used implicitly).
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:8740:34: warning: This simp argument is unused:
+  neg_involutive_from_interface C
+
+Hint: Omit it from the simp argument list.
+  simp [nMul, BOMA.C.StageTwo.QNormalRoute015.mul, BOMA.C.StageTwo.QExpression015.nfMul,
+        r_mul_add_left_from_interface C, C.distribRight, mul_neg_left_from_interface C,
+  ̲  ̲ ̲ ̲ ̲ ̲mul_neg_right_from_interface C, r_neg_add_from_interface C, n̵e̵g̵_̵i̵n̵v̵o̵l̵u̵t̵i̵v̵e̵_̵f̵r̵o̵m̵_̵i̵n̵t̵e̵r̵f̵a̵c̵e̵ ̵C̵,̵C.mulAssoc, C.mulComm,
+  ̲  ̲ ̲ ̲ ̲ ̲r_mul_left_comm_from_interface C, C.addAssoc, C.addComm, r_add_left_comm_from_interface C]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:8741:18: warning: This simp argument is unused:
+  C.mulComm
+
+Hint: Omit it from the simp argument list.
+  simp [nMul, BOMA.C.StageTwo.QNormalRoute015.mul, BOMA.C.StageTwo.QExpression015.nfMul,
+        r_mul_add_left_from_interface C, C.distribRight,
+  ̵  ̵ ̵ ̵ ̵ ̵mul_neg_left_from_interface C,
+  ̲  ̲ ̲ ̲ ̲ ̲mul_neg_right_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵r_neg_add_from_interface C, neg_involutive_from_interface C,
+        C.mulAssoc, C̵.̵m̵u̵l̵C̵o̵m̵m̵,̵ ̵r_mul_left_comm_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵C.addAssoc, C.addComm,
+  ̲  ̲ ̲ ̲ ̲ ̲r_add_left_comm_from_interface C]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:8741:29: warning: This simp argument is unused:
+  r_mul_left_comm_from_interface C
+
+Hint: Omit it from the simp argument list.
+  simp [nMul, BOMA.C.StageTwo.QNormalRoute015.mul, BOMA.C.StageTwo.QExpression015.nfMul,
+        r_mul_add_left_from_interface C, C.distribRight,
+  ̵  ̵ ̵ ̵ ̵ ̵mul_neg_left_from_interface C,
+  ̲  ̲ ̲ ̲ ̲ ̲mul_neg_right_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵r_neg_add_from_interface C, neg_involutive_from_interface C,
+        C.mulAssoc, C.mulComm, r̵_̵m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵_̵f̵r̵o̵m̵_̵i̵n̵t̵e̵r̵f̵a̵c̵e̵ ̵C,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵C̵.addAssoc, C.addComm, r_add_left_comm_from_interface C]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:8770:6: warning: This simp argument is unused:
+  r_mul_add_left_from_interface C
+
+Hint: Omit it from the simp argument list.
+  simp [nMul, nAdd, BOMA.C.StageTwo.QNormalRoute015.mul, BOMA.C.StageTwo.QExpression015.nfMul,
+        BOMA.C.StageTwo.QNormalRoute015.add, BOMA.C.StageTwo.QExpression015.nfAdd,
+  ̵  ̵ ̵ ̵ ̵ ̵r̵_̵m̵u̵l̵_̵a̵d̵d̵_̵l̵e̵f̵t̵_̵f̵r̵o̵m̵_̵i̵n̵t̵e̵r̵f̵a̵c̵e̵ ̵C,̵ ̵C̵.distribRight,
+        mul_neg_left_from_interface C, mul_neg_right_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵r_neg_add_from_interface C,
+  ̲  ̲ ̲ ̲ ̲ ̲neg_involutive_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵C.mulAssoc, C.mulComm, r_mul_left_comm_from_interface C,
+        C.addAssoc, C.addComm, r_add_left_comm_from_interface C]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:8771:6: warning: This simp argument is unused:
+  mul_neg_left_from_interface C
+
+Hint: Omit it from the simp argument list.
+  simp [nMul, nAdd, BOMA.C.StageTwo.QNormalRoute015.mul, BOMA.C.StageTwo.QExpression015.nfMul,
+        BOMA.C.StageTwo.QNormalRoute015.add, BOMA.C.StageTwo.QExpression015.nfAdd,
+        r_mul_add_left_from_interface C, C.distribRight,
+  ̵  ̵ ̵ ̵ ̵ ̵mul_neg_l̵e̵f̵t̵_̵f̵ro̵m̵_̵in̵t̵e̵r̵f̵a̵c̵e̵ ̵C̵,̵ ̵m̵u̵l̵_̵n̵e̵g_̵r̵i̵g̵ht_from_interface C,
+        r_neg_add_from_interface C, neg_involutive_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵C.mulAssoc, C.mulComm,
+  ̲  ̲ ̲ ̲ ̲ ̲r_mul_left_comm_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵C.addAssoc, C.addComm, r_add_left_comm_from_interface C]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:8771:37: warning: This simp argument is unused:
+  mul_neg_right_from_interface C
+
+Hint: Omit it from the simp argument list.
+  simp [nMul, nAdd, BOMA.C.StageTwo.QNormalRoute015.mul, BOMA.C.StageTwo.QExpression015.nfMul,
+        BOMA.C.StageTwo.QNormalRoute015.add, BOMA.C.StageTwo.QExpression015.nfAdd,
+        r_mul_add_left_from_interface C, C.distribRight,
+  ̵  ̵ ̵ ̵ ̵ ̵mul_neg_l̵e̵f̵l̲e̲f̲t_from_interface C, ̵m̵u̵l̵_̵n̵e̵g̵_̵r̵i̵g̵h̵t̵_̵f̵r̵o̵m̵_̵i̵n̵t̵e̵r̵f̵a̵c̵e̵ ̵C̵,̵
+        r_neg_add_from_interface C, neg_involutive_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵C.mulAssoc, C.mulComm,
+  ̲  ̲ ̲ ̲ ̲ ̲r_mul_left_comm_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵C.addAssoc, C.addComm, r_add_left_comm_from_interface C]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:8772:34: warning: This simp argument is unused:
+  neg_involutive_from_interface C
+
+Hint: Omit it from the simp argument list.
+  simp [nMul, nAdd, BOMA.C.StageTwo.QNormalRoute015.mul, BOMA.C.StageTwo.QExpression015.nfMul,
+        BOMA.C.StageTwo.QNormalRoute015.add, BOMA.C.StageTwo.QExpression015.nfAdd,
+        r_mul_add_left_from_interface C, C.distribRight,
+  ̵  ̵ ̵ ̵ ̵ ̵mul_neg_left_from_interface C,
+  ̲  ̲ ̲ ̲ ̲ ̲mul_neg_right_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵r_neg_ad̵d̵d̲d̲_from_interface C, n̵e̵g̵_̵i̵n̵v̵o̵l̵u̵t̵i̵v̵e̵_̵f̵r̵o̵m̵_̵i̵n̵t̵e̵r̵f̵a̵c̵e̵ ̵C,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵C̵.mulAssoc, C.mulComm,
+  ̲  ̲ ̲ ̲ ̲ ̲r_mul_left_comm_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵C.addAssoc, C.addComm, r_add_left_comm_from_interface C]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:8773:6: warning: This simp argument is unused:
+  C.mulAssoc
+
+Hint: Omit it from the simp argument list.
+  simp [nMul, nAdd, BOMA.C.StageTwo.QNormalRoute015.mul, BOMA.C.StageTwo.QExpression015.nfMul,
+        BOMA.C.StageTwo.QNormalRoute015.add, BOMA.C.StageTwo.QExpression015.nfAdd,
+        r_mul_add_left_from_interface C, C.distribRight,
+  ̵  ̵ ̵ ̵ ̵ ̵mul_neg_left_from_interface C,
+  ̲  ̲ ̲ ̲ ̲ ̲mul_neg_right_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵r_neg_add_from_interface C, neg_involutive_from_interface C,
+        C.mulA̵s̵s̵o̵c̵,̵ ̵C.̵m̵u̵l̵C̵omm, r_mul_left_comm_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵C.addAssoc, C.addComm,
+  ̲  ̲ ̲ ̲ ̲ ̲r_add_left_comm_from_interface C]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:8773:18: warning: This simp argument is unused:
+  C.mulComm
+
+Hint: Omit it from the simp argument list.
+  simp [nMul, nAdd, BOMA.C.StageTwo.QNormalRoute015.mul, BOMA.C.StageTwo.QExpression015.nfMul,
+        BOMA.C.StageTwo.QNormalRoute015.add, BOMA.C.StageTwo.QExpression015.nfAdd,
+        r_mul_add_left_from_interface C, C.distribRight,
+  ̵  ̵ ̵ ̵ ̵ ̵mul_neg_left_from_interface C,
+  ̲  ̲ ̲ ̲ ̲ ̲mul_neg_right_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵r_neg_add_from_interface C, neg_involutive_from_interface C,
+        C.mulAssoc, C̵.̵m̵u̵l̵C̵o̵m̵m̵,̵ ̵r_mul_left_comm_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵C.addAssoc, C.addComm,
+  ̲  ̲ ̲ ̲ ̲ ̲r_add_left_comm_from_interface C]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:8773:29: warning: This simp argument is unused:
+  r_mul_left_comm_from_interface C
+
+Hint: Omit it from the simp argument list.
+  simp [nMul, nAdd, BOMA.C.StageTwo.QNormalRoute015.mul, BOMA.C.StageTwo.QExpression015.nfMul,
+        BOMA.C.StageTwo.QNormalRoute015.add, BOMA.C.StageTwo.QExpression015.nfAdd,
+        r_mul_add_left_from_interface C, C.distribRight,
+  ̵  ̵ ̵ ̵ ̵ ̵mul_neg_left_from_interface C,
+  ̲  ̲ ̲ ̲ ̲ ̲mul_neg_right_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵r_neg_add_from_interface C, neg_involutive_from_interface C,
+        C.mulAssoc, C.mulComm, r̵_̵m̵u̵l̵_̵l̵e̵f̵t̵_̵c̵o̵m̵m̵_̵f̵r̵o̵m̵_̵i̵n̵t̵e̵r̵f̵a̵c̵e̵ ̵C,̵
+  ̵ ̵ ̵ ̵ ̵ ̵ ̵C̵.addAssoc, C.addComm, r_add_left_comm_from_interface C]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:8774:18: warning: This simp argument is unused:
+  C.addComm
+
+Hint: Omit it from the simp argument list.
+  simp [nMul, nAdd, BOMA.C.StageTwo.QNormalRoute015.mul, BOMA.C.StageTwo.QExpression015.nfMul,
+        BOMA.C.StageTwo.QNormalRoute015.add, BOMA.C.StageTwo.QExpression015.nfAdd,
+        r_mul_add_left_from_interface C, C.distribRight,
+  ̵  ̵ ̵ ̵ ̵ ̵mul_neg_left_from_interface C,
+  ̲  ̲ ̲ ̲ ̲ ̲mul_neg_right_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵r_neg_add_from_interface C, neg_involutive_from_interface C,
+        C.mulAssoc, C.mulComm, r_mul_left_comm_from_interface C,
+  ̵  ̵ ̵ ̵ ̵ ̵C.addAssoc,
+  ̲ C̵.̵a̵d̵d̵C̵o̵m̵m̵,̵  ̲ ̲ ̲ ̲r_add_left_comm_from_interface C]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean:9546:11: error(lean.unknownIdentifier): Unknown identifier `qFieldCertificateFromCauchyR`
+
+Lean dependency audit error: command failed (1): lake env lean -o /workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.olean /workspace/scratch/db17a76ff8ae/BOMA-review/.boma-lean-deps-q8ht_710/BOMAAuditSt2Exp015NativeQAccepted.lean
