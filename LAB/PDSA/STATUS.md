@@ -23,6 +23,18 @@ NEXT_LEGAL_ACTION: CREATE_INDEPENDENT_ST2-EXP-015_BRANCH_AND_FREEZE_PLAN_BEFORE_
 Runtime note: Autonomous transition gate ST2-EXP-014→ST2-EXP-015: AUTO_CONTINUE; ST2-EXP-015 not started.
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
+### Owner-directed continuation — 2026-10-28
+
+The owner authorized preserving the mathematical audit, making documented
+evidence-backed clarifications, then resuming ST2-EXP-015 under the existing
+PDSA lifecycle. Authority:
+`LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md`.
+The audit and clarification are in `LAB/PDSA/reviews/`.
+The recorded 014→015 AUTO_CONTINUE decision remains in force. The current
+pre-Plan frontier is PREPARING_EXPERIMENT, queue_cursor=1, no active experiment.
+The unattended G8 runtime remains paused. The older frontier prose below is
+historical and is superseded by the current marker and this dated continuation.
+
 
 **Status:** `ST2-EXP-001..004 + ST2-EXP-011 + ST2-EXP-014 CLOSED / PASS / ST2-RP-001 OWNER_AUTHORIZED / TRANSITION_GATE 014→015 / ST2-EXP-015 AUTHORIZED QUEUED NOT STARTED`  
 **Current status date:** `2026-08-26`  

@@ -70,6 +70,14 @@ inverseExists
 
 This sixteen-field surface remains the canonical **production mathematical dependency contract** of `BOMA-C-R-DEP-001`. `ST2-EXP-004` did not shrink or rewrite this accepted contract.
 
+**Scope clarification (owner-authorized 2026-10-28):** these sixteen properties
+form a verified sufficient interface for the tested construction. Neither their
+direct use by that proof nor the reduction from a twenty-five-field bundle
+proves that they are an independent or mathematically minimal axiom set.
+Minimality would require a separately stated comparison class and supporting
+evidence. This clarification changes no interface field, accepted producer,
+Claim meaning, or authorized scientific factor in ST2-RP-001.
+
 Formal witness:
 
 ```text
