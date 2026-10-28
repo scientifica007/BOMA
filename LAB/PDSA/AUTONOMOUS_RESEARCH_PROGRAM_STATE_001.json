@@ -1,6 +1,6 @@
 {
   "schema": "BOMA-AUTONOMOUS-RESEARCH-PROGRAM-STATE-001",
-  "status_date": "2026-08-26",
+  "status_date": "2026-10-28",
   "state": "PREPARING_EXPERIMENT",
   "active_program_id": "ST2-RP-001",
   "owner_authorization_record": "LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md",
@@ -23,12 +23,12 @@
   "active_experiment_origin_record": null,
   "active_work_head_before_ci_state_commit": null,
   "last_verified_head": "19cc6541457b3e8c58ea4607198d2474cd293dc9",
-  "waiting_on": "POST-MERGE synchronized-main re-read and 014-to-015 transition-gate evaluation",
+  "waiting_on": "OWNER_DIRECTED_ST2_EXP_015_PLAN_PREPARATION_AFTER_AUDIT_CLARIFICATION",
   "owner_required_reason": null,
   "routine_merge_authorized": true,
   "current_stage_two_frontier": {
     "active_experiment": null,
-    "active_experiment_status": "NONE / TRANSITION_GATE",
+    "active_experiment_status": "NONE / PREPARING_EXPERIMENT",
     "latest_completed_experiment": "ST2-EXP-014",
     "latest_completed_status": "CLOSED_PASS / EXACT_HEAD_VERIFIED / ROUTINE_MERGED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-003",
@@ -52,5 +52,6 @@
     "ambiguous_authority_means": "OWNER_REQUIRED",
     "main_research_writes_allowed": false
   },
-  "active_frozen_plan_machine": null
+  "active_frozen_plan_machine": null,
+  "owner_execution_authorization_record": "LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md"
 }

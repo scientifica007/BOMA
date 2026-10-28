@@ -381,7 +381,12 @@ For reconvergent structures, sensitivity analysis must also identify whether a c
 21. A successful experiment may refine the permanent Construction DAG only through an explicit Study/Act classification and owner-authorized integration action.
 22. Integrating verified knowledge does not by itself promote a producer, change `SELECTS`, or change an accepted export.
 23. A verified non-selected route may remain permanently visible in the Construction DAG with its distinct evidence and provenance.
-24. When a successful experiment demonstrates a smaller sufficient dependency interface, the architectural dependency contract should record that minimal mathematical surface even if legacy implementation bundles remain larger.
+24. When a successful experiment demonstrates a smaller sufficient dependency interface, the architectural dependency contract should record that verified sufficient surface even if legacy implementation bundles remain larger. A measured proof-dependency surface does not by itself establish mathematical minimality or independence of its fields. Any minimality claim must state its comparison class and carry separate evidence that justifies that stronger claim.
+
+The 2026-10-28 owner-authorized clarification is recorded in
+`LAB/PDSA/reviews/BOMA_MATHEMATICAL_AUDIT_CORRECTIONS_2026-10-28.md`.
+Historical experiment and integration records retain their original wording;
+their measured dependency results must be read at the scope actually verified.
 
 ## Repository structure
 

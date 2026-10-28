@@ -4,6 +4,13 @@ BOMA builds a transparent, traceable mathematical architecture from a declared p
 
 Governing method: **PDSA — Plan → Do → Study → Act**. Historical `PDCA` identifiers are provenance only.
 
+Current owner-directed continuation (2026-10-28): the
+[mathematical audit](LAB/PDSA/reviews/BOMA_MATHEMATICAL_AUDIT_2026-10-28_AR.md)
+is preserved, its [scope clarification](LAB/PDSA/reviews/BOMA_MATHEMATICAL_AUDIT_CORRECTIONS_2026-10-28.md)
+is documented, and [bounded ST2-EXP-015 resumption](LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md)
+is authorized. Read the current STATUS marker for the scientific frontier.
+The unattended G8 runtime remains paused; this continuation is not a G8 START.
+
 ## Current accepted spine
 
 As of 2026-08-26:
