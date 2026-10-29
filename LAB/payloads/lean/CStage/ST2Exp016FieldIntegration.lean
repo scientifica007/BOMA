@@ -385,13 +385,44 @@ Claim-surface correspondence still requires Gate D semantic audit. -/
 structure NineClaimCandidate016 (C : RNormAnisotropyCertificate016) : Prop where
   controls : CSurvivorCertificate004 C.scalar
   field : FieldCertificate016 C
-  comparison : BOMA.C.StageTwo.ComparisonInterface011.QuadraticComparisonCertificate
-    comparisonPresentation004 comparisonPresentation004
+  comparison : ∀ (B : BOMA.C.StageTwo.ComparisonInterface011.QuadraticPresentation
+      scalarOps004),
+    BOMA.C.StageTwo.ComparisonInterface011.QuadraticComparisonCertificate
+      comparisonPresentation004 B
+  functionalComparison : ∀
+    (B : BOMA.C.StageTwo.ComparisonInterface011.QuadraticPresentation scalarOps004),
+    BOMA.C.StageTwo.ComparisonInterface011.CoordinateExtractor B →
+    BOMA.C.StageTwo.ComparisonInterface011.ConstructiveQuadraticIsomorphism
+      comparisonPresentation004 B
+
+/-- No choice: the local pair exposes both coordinates by projection. -/
+def explicitPairExtractor016 :
+    BOMA.C.StageTwo.ComparisonInterface011.CoordinateExtractor
+      comparisonPresentation004 where
+  re := fun z => z.re
+  im := fun z => z.im
+  sound := fun _ => rfl
+
+theorem anyQuadraticComparison016
+    (B : BOMA.C.StageTwo.ComparisonInterface011.QuadraticPresentation scalarOps004) :
+    BOMA.C.StageTwo.ComparisonInterface011.QuadraticComparisonCertificate
+      comparisonPresentation004 B :=
+  BOMA.C.StageTwo.ComparisonInterface011.quadraticComparison
+    comparisonPresentation004 B
+
+theorem explicitFunctionalComparison016
+    (B : BOMA.C.StageTwo.ComparisonInterface011.QuadraticPresentation scalarOps004)
+    (EB : BOMA.C.StageTwo.ComparisonInterface011.CoordinateExtractor B) :
+    BOMA.C.StageTwo.ComparisonInterface011.ConstructiveQuadraticIsomorphism
+      comparisonPresentation004 B :=
+  BOMA.C.StageTwo.ComparisonInterface011.constructiveQuadraticIsomorphism
+    comparisonPresentation004 B explicitPairExtractor016 EB
 
 theorem nineClaimCandidate016 (C : RNormAnisotropyCertificate016) :
     NineClaimCandidate016 C where
   controls := cSurvivorCertificate004 C.scalar
   field := fieldCertificate016 C
-  comparison := comparison004
+  comparison := anyQuadraticComparison016
+  functionalComparison := explicitFunctionalComparison016
 
 end BOMA.C.StageTwo.NormAnisotropy016
