@@ -41,6 +41,14 @@ Verification-only Actions are retained, and the GitHub `main` branch Ruleset
 `BOMA-MAIN-INTERACTIVE-PDSA` is active. G8 is manually disabled and unarmed;
 its sources and experiment records remain historical evidence.
 
+**Current governance:** `LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_GOVERNANCE_2026_10_29.md`.
+**Current policy:** `LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_POLICY_2026_10_29.json`.
+The frozen historical policy, governance specification, program Manifest and
+their original merge authorization are retained byte-identical. The
+backward-compatible state flag `routine_merge_authorized: true` is historical,
+whereas `effective_execution_authority.routine_merge_authorized: false`
+and the new interactive policy govern present work.
+
 **Scientific frontier:** `ST2-RP-001` is retained as an ordered research agenda,
 not a blanket execution grant. `ST2-EXP-015` is `CLOSED_PASS` and merged by
 PR #25; `ST2-EXP-016` is `NOT_STARTED / NO_FROZEN_PLAN`, with scientific

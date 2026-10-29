@@ -1,9 +1,9 @@
 {
   "schema": "BOMA-AUTONOMOUS-RESEARCH-PROGRAM-POLICY-001",
-  "status": "SUPERSEDED_FOR_AUTONOMOUS_EXECUTION_BY_OWNER_DECISION_2026_10_29",
+  "status": "PROPOSED_GOVERNANCE",
   "date": "2026-08-25",
   "default_posture": "FAIL_CLOSED",
-  "authority_unit": "EXPLICIT_OWNER_SESSION_INSTRUCTION",
+  "authority_unit": "OWNER_AUTHORIZED_RESEARCH_PROGRAM",
   "program_authorization_required": true,
   "active_program_created_by_policy": false,
   "allowed_states": [
@@ -21,7 +21,24 @@
     "PROGRAM_COMPLETE",
     "OWNER_REQUIRED"
   ],
-  "autonomous_actions_when_authorized": [],
+  "autonomous_actions_when_authorized": [
+    "READ_CURRENT_AUTHORITIES",
+    "VERIFY_BASELINE",
+    "PREPARE_EXPERIMENT_FROM_AUTHORIZED_QUEUE",
+    "FREEZE_NEW_EXPERIMENT_PLAN_BEFORE_DO",
+    "CREATE_SEPARATE_EXPERIMENT_BRANCH",
+    "EXECUTE_FROZEN_PLAN",
+    "DIAGNOSE_TECHNICAL_FAILURE",
+    "REPAIR_WITHIN_RECOVERY_ENVELOPE",
+    "RUN_REQUIRED_VERIFICATION",
+    "RECORD_FAILURE_PROVENANCE",
+    "WRITE_STUDY",
+    "WRITE_ACT",
+    "CLOSE_EXPERIMENT",
+    "EVALUATE_TRANSITION_GATE",
+    "RECORD_NON_SEQUENCE_CRITICAL_CANDIDATE",
+    "START_NEXT_AUTHORIZED_EXPERIMENT_AFTER_GATE"
+  ],
   "owner_required_conditions": [
     "PROGRAM_QUEUE_REORDER_REQUIRED",
     "SEQUENCE_CRITICAL_EXPERIMENT_INSERTION_REQUIRED",
@@ -35,18 +52,15 @@
     "MATERIAL_AUTHORITY_CONFLICT",
     "UNCLASSIFIABLE_EXACT_VERIFICATION_STATE",
     "BASELINE_INVALIDATED_BY_MAIN_CHANGE",
-    "AMBIGUOUS_AUTHORITY",
-    "ANY_UNATTENDED_RESEARCH_ATTEMPT",
-    "AUTONOMOUS_PR_MERGE_ATTEMPT",
-    "EXPERIMENT_START_WITHOUT_NEW_OWNER_SESSION_INSTRUCTION"
+    "AMBIGUOUS_AUTHORITY"
   ],
-  "non_sequence_critical_discovery_policy": "RECORD_CANDIDATE_HOLD_FOR_OWNER",
+  "non_sequence_critical_discovery_policy": "RECORD_CANDIDATE_AND_CONTINUE",
   "sequence_critical_discovery_policy": "RECORD_EVIDENCE_SET_OWNER_REQUIRED_AND_STOP",
-  "mathematical_informative_fail_policy": "CLOSE_DOCUMENT_AND_AWAIT_EXPLICIT_OWNER_DECISION",
-  "technical_failure_policy": "RECOVER_ONLY_WITHIN_CURRENT_EXPLICIT_OWNER_TASK_SCOPE",
+  "mathematical_informative_fail_policy": "CLOSE_AND_EVALUATE_TRANSITION_GATE",
+  "technical_failure_policy": "RECOVER_AUTONOMOUSLY_IF_FROZEN_PLAN_AND_PROGRAM_SCOPE_REMAIN_UNCHANGED",
   "routine_merge_authority": {
     "default": false,
-    "activation": "REVOKED_NO_UNATTENDED_MERGE",
+    "activation": "EXPLICIT_PER_PROGRAM_OWNER_AUTHORIZATION",
     "required_gates": [
       "EXACT_VERIFIED_HEAD",
       "REQUIRED_WORKFLOWS_PASS",
@@ -59,22 +73,13 @@
     ]
   },
   "scheduled_continuation": {
-    "enabled": false,
-    "semantics": "DISABLED_NO_UNATTENDED_WAKE",
+    "semantics": "WAKE_UP_MECHANISM_NOT_SCIENTIFIC_CLOCK",
     "run_until_blocked_by": [
-      "OWNER_REQUIRED"
+      "WAITING_CI",
+      "OWNER_REQUIRED",
+      "PROGRAM_COMPLETE"
     ],
     "one_small_subtask_per_wake": false
   },
-  "fail_closed_rule": "IF_AUTHORITY_OR_SCOPE_IS_AMBIGUOUS_SET_OWNER_REQUIRED",
-  "execution_mode": "OWNER_DIRECTED_INTERACTIVE_PDSA",
-  "owner_decision_record": "LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md",
-  "autonomous_research_enabled": false,
-  "unattended_continuation_enabled": false,
-  "autonomous_merge_enabled": false,
-  "session_authorization_required_for_each_new_task": true,
-  "session_authorization_required_for_experiment_start": true,
-  "session_authorization_required_for_merge": true,
-  "automated_verification_allowed": true,
-  "historical_program_records_are_execution_authority": false
+  "fail_closed_rule": "IF_AUTHORITY_OR_SCOPE_IS_AMBIGUOUS_SET_OWNER_REQUIRED"
 }

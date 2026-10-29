@@ -1,0 +1,21 @@
+name: BOMA Interactive PDSA Governance Audit 001
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit-interactive-pdsa-governance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Validate owner-directed governance
+        run: python3 LAB/PDSA/tools/interactive_pdsa_governance_audit.py

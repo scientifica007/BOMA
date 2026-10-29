@@ -25,7 +25,7 @@
   "last_verified_head": "d91b32250f4cdc800f26b728e388902797bf5200",
   "waiting_on": "EXPLICIT_OWNER_SESSION_INSTRUCTION_WHILE_ST2_EXP_016_NOT_STARTED",
   "owner_required_reason": "BOUNDED_OWNER_INSTRUCTION_COMPLETED_AT_015_NO_016_START_OR_PLAN_FREEZE",
-  "routine_merge_authorized": false,
+  "routine_merge_authorized": true,
   "current_stage_two_frontier": {
     "active_experiment": null,
     "active_experiment_status": "NONE / BOUNDED_015_COMPLETE",
@@ -72,5 +72,17 @@
   "owner_decision_record": "LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md",
   "autonomous_research_enabled": false,
   "unattended_continuation_enabled": false,
-  "autonomous_merge_enabled": false
+  "autonomous_merge_enabled": false,
+  "effective_execution_authority": {
+    "mode": "OWNER_DIRECTED_INTERACTIVE_PDSA",
+    "owner_decision_record": "LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md",
+    "autonomous_research_enabled": false,
+    "unattended_continuation_enabled": false,
+    "routine_merge_authorized": false,
+    "new_task_requires_explicit_owner_session_instruction": true,
+    "new_experiment_requires_explicit_owner_session_instruction": true,
+    "merge_requires_explicit_owner_approval": true,
+    "automated_verification_allowed": true,
+    "historical_routine_merge_authorized_field_is_not_current_authority": true
+  }
 }

@@ -1,59 +1,10 @@
 # AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001 — Owner-Authorized Sequential Research
 
 **Document ID:** `BOMA-ARP-GOV-001`  
-**Status:** `HISTORICAL AUTONOMOUS MODEL / SUPERSEDED FOR EXECUTION 2026-10-29`  
+**Status:** `PROPOSED GOVERNANCE / NO ACTIVE PROGRAM CREATED BY THIS DOCUMENT`  
 **Date:** `2026-08-25`  
 **Method:** PDSA — Plan → Do → Study → Act  
 **Default safety posture:** `FAIL-CLOSED`
-
-## 0. Binding current governance — owner-directed interactive PDSA
-
-**Effective from 2026-10-29:** the owner decision
-`LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md` (PR #26) **revokes unattended Agents, scheduled research
-continuation, program-level `AUTO_CONTINUE`, autonomous recovery, and
-routine auto-merge**. The earlier program authorization, queue and manifest
-remain historical records of the research agenda; they **cannot** activate
-a research wake or grant authority for a new experiment or merge.
-
-The active execution model is `OWNER_DIRECTED_INTERACTIVE_PDSA`, fail-closed:
-- Each task starts from exact current GitHub `main` and a **specific owner
-  instruction in the current session**. No standing authorization to create
-  future tasks, branches, experiments, or PRs without a session-specific
-  instruction.
-- **Plan:** define scope, exact reference, typed architectural origin,
-  immutable controls, verification gates and single scientific changed factor.
-  Freeze a separate scientific Plan **before** Do.
-- **Do:** modify only within the approved task on a branch (never direct
-  research writes on `main`). Keep research and control-plane maintenance
-  separate.
-- **Study:** independent Lean/CI and exact-head evidence, dependency/axiom
-  measurement, all failures, provenance and no post-verification drift.
-- **Act:** record findings and recommend accept/recover/stop; leave PR merging,
-  experiment transitions, `SELECTS` or acceptance changes to **explicit owner
-  decisions**. A research PASS is not an acceptance promotion.
-- Automated verification in Actions is permissible; automation of scientific
-  judgement, research execution, and merge decisions is not.
-- Ambiguity, attempted unattended action, or missing specific authority means
-  `OWNER_REQUIRED` and no research-changing write.
-
-`ST2-EXP-015` is closed PASS; `ST2-EXP-016` remains unstarted without a
-Frozen Plan; `ST2-EXP-017` is conditional. The accepted mathematics and
-all historical experimental artifacts are unchanged. The control-plane
-policy/state files must explicitly disable current routine merge, even if
-historical `ST2_RP_001_PROGRAM_MANIFEST_001.json` retains its original
-2026-08-25 authorization value for provenance.
-
-**Status authority:** the current owner decision, this Section 0, the current
-execution block of `LAB/PDSA/STATUS.md`, and the live policy/state override
-Sections 1–13 below wherever those historical instructions conflict.
-
-## Historical autonomous-governance specification (archived operating model)
-
-The following original 2026-08-25 sections are retained as **historical
-governance design and experiment provenance only**. Any language below such
-as `AUTO_CONTINUE`, unattended executor, scheduled wake, or conditional
-routine merge describes the **retired** model and has no current execution
-force.
 
 ## 1. Purpose
 

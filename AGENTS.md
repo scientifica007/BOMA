@@ -63,6 +63,14 @@ The old manifest and owner-approved queue are *historical research agenda*,
 not permission to continue/merge autonomously. `main` has an active Ruleset.
 These terms govern the historical snapshots retained below.
 
+**Current machine policy:** `LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_POLICY_2026_10_29.json`.
+**Current governance:** `LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_GOVERNANCE_2026_10_29.md`.
+The historical program Manifest and the backward-compatible legacy state flag
+`routine_merge_authorized: true` remain unchanged for frozen experimental
+verification. **Effective authority** is separately recorded as
+`effective_execution_authority.routine_merge_authorized: false`; only this
+effective field and the owner decision govern new work.
+
 Mandatory for owner-directed AI collaborators and any other tools; no unattended
 agent may execute research.
 
@@ -75,6 +83,8 @@ Read, in order:
 README.md
 LAB/PDSA/STATUS.md
 LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md
+LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_GOVERNANCE_2026_10_29.md
+LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_POLICY_2026_10_29.json
 LAB/PDSA/PDSA-INTERACTIVE-TRANSITION-001.md
 LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md
 LAB/PDSA/reviews/BOMA_MATHEMATICAL_AUDIT_CORRECTIONS_2026-10-28.md

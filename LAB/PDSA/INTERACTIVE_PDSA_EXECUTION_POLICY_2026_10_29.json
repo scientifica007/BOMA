@@ -1,0 +1,44 @@
+{
+  "schema": "BOMA-INTERACTIVE-PDSA-EXECUTION-POLICY-001",
+  "status": "ACTIVE_OWNER_DIRECTED",
+  "effective_date": "2026-10-29",
+  "owner_decision_record": "LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md",
+  "binding_governance": "LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_GOVERNANCE_2026_10_29.md",
+  "legacy_governance_record": "LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md",
+  "legacy_policy_record": "LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json",
+  "execution_mode": "OWNER_DIRECTED_INTERACTIVE_PDSA",
+  "fail_closed": true,
+  "authority_unit": "EXPLICIT_OWNER_SESSION_INSTRUCTION",
+  "autonomous_research_enabled": false,
+  "unattended_continuation_enabled": false,
+  "routine_merge_authorized": false,
+  "autonomous_actions_when_authorized": [],
+  "scheduled_continuation": {
+    "enabled": false
+  },
+  "allowed_with_specific_owner_instruction": [
+    "READ_GITHUB_CURRENT_MAIN",
+    "PLAN",
+    "CREATE_BRANCH",
+    "DO",
+    "VERIFY",
+    "STUDY",
+    "ACT",
+    "OPEN_PR_FOR_OWNER_REVIEW"
+  ],
+  "requires_new_owner_instruction_for": [
+    "EACH_NEW_TASK",
+    "EACH_EXPERIMENT_START",
+    "EACH_EXPERIMENT_TRANSITION",
+    "EACH_PR_MERGE",
+    "ANY_ACCEPTANCE_OR_SELECTS_CHANGE"
+  ],
+  "verification_only_github_actions_allowed": true,
+  "historic_manifest_is_not_execution_authority": true,
+  "historic_routine_merge_authority_revoked": true,
+  "safety": {
+    "ambiguous_authority_means": "OWNER_REQUIRED",
+    "main_research_writes_allowed": false,
+    "closed_evidence_must_remain_immutable": true
+  }
+}

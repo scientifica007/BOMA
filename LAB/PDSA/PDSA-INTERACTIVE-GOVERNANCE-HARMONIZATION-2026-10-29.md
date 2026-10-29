@@ -17,8 +17,7 @@ consistency audit. Preserve:
   original `routine_merge_authorized: true`, as **historical evidence**
   superseded by the binding 2026-10-29 owner decision.
 
-**Scope:** change five active governance/status files plus the governance audit,
-and add this maintenance record. Do not edit `.autonomy/` historical runtime
+**Final scope:** AGENTS.md, STATUS.md, mutable program state, new interactive governance/policy, independent audit/verification workflow, and this PDSA record. The 2026-08-25 governance, policy, legacy auditor and Manifest remain byte-identical to their frozen historical baseline. Do not edit `.autonomy/` historical runtime
 state, `scripts/boma_autonomy/`, experiment records or accepted math. The
 autonomous engine is already disabled manually in GitHub; the runtime is
 unarmed. No workflow run or experiment is initiated by this maintenance.
@@ -46,6 +45,27 @@ unarmed. No workflow run or experiment is initiated by this maintenance.
    Act approval. A pending/failed check is not a PASS.
 4. Confirm no `AUTO_CONTINUE` or routine auto-merge is presented as current
    authority. Retained references must be clearly marked as archived.
+
+
+## Study — observed failure and exact recovery
+The first candidate commit `26a8ed13fee0327271dc7dc02afbb47ac6f3c022`
+modified the legacy program governance and policy. The 015 verification run
+`40936376116` failed with `RuntimeError: baseline control/history changed:
+LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md`.
+This was a genuine **historical frozen-baseline provenance check**, not a
+mathematical counterexample. The failure is retained in GitHub Actions.
+
+The recovery restores the protected historical governance, policy and
+legacy audit script **exactly**, leaves the 2026-08-25 Manifest unchanged,
+and introduces current binding interactive policy and governance files.
+The mutable program state retains a legacy `routine_merge_authorized: true`
+value for the 015 frozen audit but adds
+`effective_execution_authority.routine_merge_authorized: false`. The latter
+is binding for present work alongside the new owner-directed policy.
+A new read-only workflow verifies the current overlay independently.
+
+**Study gate:** rerun every applicable GitHub check on the revised exact head;
+do not call a failure or pending check PASS and do not weaken the 015 verifier.
 
 ## Act — owner decision gate
 Create a reviewable PR and **do not auto-merge**. The owner alone decides

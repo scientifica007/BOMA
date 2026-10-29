@@ -39,7 +39,6 @@ require(policy.get("schema") == "BOMA-AUTONOMOUS-RESEARCH-PROGRAM-POLICY-001", "
 require(policy.get("default_posture") == "FAIL_CLOSED", "policy must remain FAIL_CLOSED")
 require(policy.get("program_authorization_required") is True, "program authorization must be required")
 require(policy.get("active_program_created_by_policy") is False, "policy must not activate a program implicitly")
-require(policy.get("execution_mode") == "OWNER_DIRECTED_INTERACTIVE_PDSA", "owner-directed interactive PDSA policy must be active")
 
 allowed_states = policy.get("allowed_states")
 require(isinstance(allowed_states, list) and len(allowed_states) > 0, "allowed_states must be a non-empty list")
@@ -49,31 +48,6 @@ require(state.get("safety", {}).get("fail_closed") is True, "state must preserve
 require(state.get("safety", {}).get("ambiguous_authority_means") == "OWNER_REQUIRED", "ambiguous authority must mean OWNER_REQUIRED")
 require(state.get("safety", {}).get("main_research_writes_allowed") is False, "autonomous research writes to main must remain false")
 require(isinstance(state.get("routine_merge_authorized"), bool), "routine_merge_authorized must be boolean")
-
-# The 2026-10-29 owner decision revokes operational autonomy while preserving
-# the historical program manifest, authorization record, queue and evidence.
-INTERACTIVE_MODE = "OWNER_DIRECTED_INTERACTIVE_PDSA"
-if policy.get("execution_mode") == INTERACTIVE_MODE:
-    owner_decision = policy.get("owner_decision_record")
-    require(owner_decision == "LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md", "wrong owner decision record")
-    require((ROOT / str(owner_decision)).is_file(), "binding interactive owner decision missing")
-    require(state.get("execution_mode") == INTERACTIVE_MODE, "interactive execution mode mismatch")
-    require(state.get("owner_decision_record") == owner_decision, "state owner decision mismatch")
-    require(state.get("state") == "OWNER_REQUIRED", "interactive transition must remain OWNER_REQUIRED")
-    require(state.get("active_experiment") is None, "interactive stop may not have active research")
-    require(state.get("active_frozen_plan") is None, "interactive stop may not have frozen Plan")
-    require(state.get("routine_merge_authorized") is False, "unattended routine merge must be revoked")
-    require(policy.get("autonomous_research_enabled") is False, "autonomous research must be disabled")
-    require(policy.get("unattended_continuation_enabled") is False, "unattended continuation must be disabled")
-    require(policy.get("autonomous_merge_enabled") is False, "autonomous merge must be disabled")
-    require(policy.get("autonomous_actions_when_authorized") == [], "autonomous action list must be empty")
-    require(policy.get("scheduled_continuation", {}).get("enabled") is False, "scheduled continuation must be disabled")
-    require(state.get("autonomous_research_enabled") is False, "state must forbid autonomous research")
-    require(state.get("unattended_continuation_enabled") is False, "state must forbid unattended wake")
-    require(state.get("autonomous_merge_enabled") is False, "state must forbid unattended merge")
-    require(state.get("safety", {}).get("owner_instruction_required_per_task") is True, "each new task requires owner instruction")
-    require(owner_decision in agents and owner_decision in status, "owner decision absent from active authority markers")
-
 
 queue = state.get("authorized_experiment_queue")
 
@@ -126,13 +100,7 @@ else:
             require(manifest.get("baseline_main_sha") == baseline, "manifest baseline must match state baseline")
             require(manifest.get("queue_order") == queue, "manifest queue must exactly match authorized state queue")
             require(manifest.get("fail_closed") is True, "manifest must preserve fail_closed=true")
-            # The pinned manifest recorded the 2026-08-25 delegation. Preserve
-            # that historical bit; the later owner decision revokes its current effect.
-            if policy.get("execution_mode") == INTERACTIVE_MODE:
-                require(manifest.get("routine_merge_authorized") is True, "original manifest routine merge history must be preserved")
-                require(state.get("routine_merge_authorized") is False, "effective routine merge authority must remain revoked")
-            else:
-                require(manifest.get("routine_merge_authorized") == state.get("routine_merge_authorized"), "manifest/state routine merge authority mismatch")
+            require(manifest.get("routine_merge_authorized") == state.get("routine_merge_authorized"), "manifest/state routine merge authority mismatch")
             experiments = manifest.get("experiments")
             require(isinstance(experiments, list) and len(experiments) == len(queue), "manifest experiment records must cover queue exactly")
             if isinstance(experiments, list) and isinstance(queue, list):
