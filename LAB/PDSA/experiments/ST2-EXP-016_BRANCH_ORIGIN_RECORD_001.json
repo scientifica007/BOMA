@@ -1,0 +1,39 @@
+{
+  "schema": "BOMA-STAGE-TWO-EXPERIMENT-ORIGIN-RECORD-001",
+  "experiment_id": "ST2-EXP-016",
+  "program_id": "ST2-RP-001",
+  "status": "PLAN_FROZEN_NO_DO",
+  "date": "2026-10-29",
+  "origin_kind": "DEPENDENCY_EDGE",
+  "origin_id": "BOMA-C-R-DEP-001",
+  "single_changed_factor": "PRODUCTION_ORDERTOTAL_TO_ONE_EXACT_FROZEN_NON_ORDER_ALGEBRAIC_NONDEGENERACY_CONDITION",
+  "exact_condition_name": "NormAnisotropy016",
+  "exact_condition": "∀ a b : RBOMA, rAdd (rMulCandidate a a) (rMulCandidate b b) = rZero → a = rZero ∧ b = rZero",
+  "preserved_controls": [
+    "OTHER_FIFTEEN_ST2_EXP_001_PRODUCTION_FIELDS_UNCHANGED",
+    "RBOMA_SELECTED_DEDEKIND_SCALAR_PRODUCER_AND_OPERATIONS_UNCHANGED",
+    "C_ROUTE_P_PAIR_QUADRATIC_MEANING_UNCHANGED",
+    "NINE_ACCEPTED_C_CLAIM_MEANINGS_UNCHANGED",
+    "ST2_EXP_004_SENSITIVITY_AS_HISTORICAL_CONTROL",
+    "ST2_EXP_011_EXPLICIT_EXTRACTOR_COMPARISON",
+    "ST2_EXP_014_015_EXTERNAL_HISTORICAL_CONTROLS",
+    "NO_HIDDEN_ORDER_TOTAL_OR_EXTRA_ALGEBRAIC_ASSUMPTION",
+    "NO_ACCEPTED_MATH_MANIFEST_OR_SELECTS_CHANGE",
+    "NO_GLOBAL_CHOICE_SELECTOR",
+    "HISTORICAL_FROZEN_PLANS_IMMUTABLE"
+  ],
+  "affected_cone": [
+    "C-CL-FIELD-001",
+    "C-CL-INTEGRATION-001",
+    "AUDIT_OTHER_SEVEN_C_CLAIM_FAMILIES"
+  ],
+  "frozen_reference_commit": "e03ea85528aa98cb86562a1d00e57ca5c06323fa",
+  "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-016_NORM_ANISOTROPY_FROZEN.md",
+  "machine_frozen_plan": "LAB/PDSA/plans/ST2-EXP-016/FROZEN_PLAN.json",
+  "freeze_branch": "planning/st2-exp-016-frozen-plan-2026-10-29",
+  "experimental_product_status": "NOT_STARTED_RESEARCH_ONLY",
+  "owner_freeze_authorization": "OWNER_EXPLICIT_FREEZE_ONLY_2026_10_29",
+  "do_authorized": false,
+  "accepted_selection_unchanged": true,
+  "g8_armed": false
+}

@@ -1,0 +1,113 @@
+{
+  "schema": "BOMA-OWNER-DIRECTED-INTERACTIVE-FROZEN-PLAN-016-001",
+  "program_id": "ST2-RP-001",
+  "experiment_id": "ST2-EXP-016",
+  "status": "PLAN_FROZEN_NO_DO",
+  "execution_mode": "OWNER_DIRECTED_INTERACTIVE_PDSA",
+  "frozen_reference_main_sha": "e03ea85528aa98cb86562a1d00e57ca5c06323fa",
+  "freeze_branch": "planning/st2-exp-016-frozen-plan-2026-10-29",
+  "human_plan": "LAB/PDSA/PDSA-ST2-EXP-016_NORM_ANISOTROPY_FROZEN.md",
+  "machine_plan": "LAB/PDSA/plans/ST2-EXP-016/FROZEN_PLAN.json",
+  "typed_origin_record": "LAB/PDSA/experiments/ST2-EXP-016_BRANCH_ORIGIN_RECORD_001.json",
+  "owner_authority": "EXPLICIT_2026-10-29_FREEZE_ONLY_NOT_DO",
+  "owner_scientific_choices_record": "LAB/PDSA/drafts/ST2-EXP-016_OWNER_REVIEW_DECISION_2026-10-29_AR.md",
+  "owner_review_draft": "LAB/PDSA/drafts/ST2-EXP-016_PLAN_REVIEW_DRAFT_2026-10-29_AR.md",
+  "origin_kind": "DEPENDENCY_EDGE",
+  "origin_id": "BOMA-C-R-DEP-001",
+  "single_changed_factor": "PRODUCTION_ORDERTOTAL_TO_ONE_EXACT_FROZEN_NON_ORDER_ALGEBRAIC_NONDEGENERACY_CONDITION",
+  "exact_condition_name": "NormAnisotropy016",
+  "exact_condition": "∀ a b : RBOMA, rAdd (rMulCandidate a a) (rMulCandidate b b) = rZero → a = rZero ∧ b = rZero",
+  "replacement_of": "NarrowROrderedFieldCertificate.orderTotal",
+  "comparison_certificate": "BOMA.C.StageTwo.TotalOrderRegime004.WithoutOrderTotal.RWithoutOrderTotalCertificate",
+  "fixed_scalar_carrier": "RBOMA",
+  "fixed_complex_route": "C_ROUTE_P",
+  "fixed_scalar_interface_field_count": 15,
+  "fixed_controls": [
+    "OTHER_FIFTEEN_ST2_EXP_001_PRODUCTION_FIELDS_UNCHANGED",
+    "RBOMA_SELECTED_DEDEKIND_SCALAR_PRODUCER_AND_OPERATIONS_UNCHANGED",
+    "C_ROUTE_P_PAIR_QUADRATIC_MEANING_UNCHANGED",
+    "NINE_ACCEPTED_C_CLAIM_MEANINGS_UNCHANGED",
+    "ST2_EXP_004_SENSITIVITY_AS_HISTORICAL_CONTROL",
+    "ST2_EXP_011_EXPLICIT_EXTRACTOR_COMPARISON",
+    "ST2_EXP_014_015_EXTERNAL_HISTORICAL_CONTROLS",
+    "NO_HIDDEN_ORDER_TOTAL_OR_EXTRA_ALGEBRAIC_ASSUMPTION",
+    "NO_ACCEPTED_MATH_MANIFEST_OR_SELECTS_CHANGE",
+    "NO_GLOBAL_CHOICE_SELECTOR",
+    "HISTORICAL_FROZEN_PLANS_IMMUTABLE"
+  ],
+  "affected_cone": [
+    "C-CL-FIELD-001",
+    "C-CL-INTEGRATION-001",
+    "AUDIT_OTHER_SEVEN_C_CLAIM_FAMILIES"
+  ],
+  "survivor_claims": [
+    "C-CL-CARRIER-001",
+    "C-CL-REMBED-001",
+    "C-CL-I-001",
+    "C-CL-GEN-001",
+    "C-CL-COORDUNIQ-001",
+    "C-CL-NONREAL-001",
+    "C-CL-COMPARE-001"
+  ],
+  "target_claims": [
+    "C-CL-FIELD-001",
+    "C-CL-INTEGRATION-001"
+  ],
+  "auxiliary_certificate_rule": "NORM_NONNEGATIVE_MAY_CHANGE_ONLY_AS_NONACCEPTED_PROOF_STRUCTURE_WITH_ALL_NINE_CLAIM_MEANINGS_PRESERVED",
+  "hypotheses": [
+    "H1_SEVEN_CLAIM_CONTROL_FIDELITY",
+    "H2_SINGLE_ANISOTROPY_CONDITION_TO_NORM_NONZERO",
+    "H3_FIELD_CLOSURE_WITH_EXISTENTIAL_INVERSE_WITNESSES",
+    "H4_FULL_NINE_CLAIM_INTEGRATION",
+    "H5_MEASURED_ABSTRACT_DEPENDENCY_REDUCTION_WITH_CONCRETE_COST_SEPARATED",
+    "H6_FROZEN_PROVENANCE_CI_AND_OWNER_GOVERNANCE"
+  ],
+  "gates": [
+    "A_FROZEN_AUTHORITY_BASELINE_AND_SEMANTIC_INVENTORY",
+    "B_SEVEN_CLAIM_CONTROLS",
+    "C_PURE_ALGEBRAIC_NORM",
+    "D_FIELD_AND_INTEGRATION",
+    "E_EXACT_DECLARATION_DEPENDENCY_AND_AXIOM_MEASUREMENT",
+    "F_EXACT_HEAD_CI_AND_HISTORICAL_REGRESSIONS",
+    "G_STUDY_ACT_AND_OWNER_LIFECYCLE"
+  ],
+  "passing_rule": "ALL_H1_TO_H6_CONFIRMED_NO_WEAKENING_NO_NEW_ASSUMPTION_EXACT_HEAD_CI",
+  "informative_fail_rule": "REPRODUCIBLE_MATHEMATICAL_COUNTEREVIDENCE_NOT_UNPROVED_GOAL_OR_INFRA_FAILURE",
+  "stop_conditions": [
+    "ANY_SECOND_SCIENTIFIC_FACTOR",
+    "ANY_CHANGE_TO_NORM_ANISOTROPY_CONDITION",
+    "HIDDEN_ORDER_TOTAL_IN_ABSTRACT_ROOTS",
+    "MISSING_ACCEPTED_C_CLAIM_MEANING",
+    "NEW_FOUNDATIONAL_AXIOM_OR_SELECTOR",
+    "FROZEN_CONTROL_OR_PLAN_DRIFT",
+    "NEW_OWNER_SCOPE_REQUIRED",
+    "016_CANNOT_SUPPLY_017_PREREQUISITE"
+  ],
+  "allowed_recovery_envelope": [
+    "PROOF_SCRIPT_NAMESPACE_UNFOLDING_ONLY",
+    "MANIFEST_PATH_ORDERING_ONLY",
+    "DEPENDENCY_FALSE_POSITIVE_RECHECK",
+    "CI_INFRA_RETRY_SAME_MATH_SOURCE",
+    "PRESERVE_ALL_MATERIAL_FAILURE_EVIDENCE"
+  ],
+  "planned_verification_commands": [
+    "python3 LAB/00_ARCHITECTURE/tools/architecture_consistency_audit.py",
+    "python3 LAB/00_ARCHITECTURE/tools/claim_surface_audit.py --json",
+    "python3 LAB/PDSA/tools/interactive_pdsa_governance_audit.py",
+    "python3 LAB/PDSA/tools/autonomous_research_program_audit.py",
+    "python3 -m unittest discover -s tests/boma_autonomy -q",
+    "python3 LAB/00_ARCHITECTURE/tools/st2_exp_015_verify.py --output-dir /tmp/boma-st2-exp-015-regression"
+  ],
+  "expected_later_research_paths": [
+    "LAB/payloads/lean/CStage/ST2Exp016*.lean",
+    "LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016*",
+    "LAB/PDSA/experiments/ST2-EXP-016*",
+    "LAB/00_ARCHITECTURE/tools/st2_exp_016_verify.py"
+  ],
+  "owner_do_authorized": false,
+  "experiment_started": false,
+  "autonomous_continuation_authorized": false,
+  "auto_merge_authorized": false,
+  "transition_to_017_authorized": false,
+  "previous_experiment_closed": "ST2-EXP-015"
+}
