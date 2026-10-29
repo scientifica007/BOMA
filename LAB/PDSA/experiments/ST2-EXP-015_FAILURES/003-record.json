@@ -1,0 +1,9 @@
+{
+  "attempt": "015-LOCAL-F-001",
+  "date": "2026-10-28",
+  "kind": "TECHNICAL_OUTPUT_PARSING",
+  "diagnostic": "IndexError: list index out of range in single-line #print axioms parser; one Lean axiom list wrapped over three lines. All four kernel/dependency gates had passed.",
+  "recovery": "Parse complete bracketed lists across whitespace; require all expected roots and unchanged allowed axiom set.",
+  "evidence_kind": "TRANSCRIPT_DIAGNOSTIC; original uncommitted scratch log was lost at session reset.",
+  "mathematical_failure": false
+}
