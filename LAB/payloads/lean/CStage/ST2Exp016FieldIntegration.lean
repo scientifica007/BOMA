@@ -231,7 +231,7 @@ theorem mulOneLeftPair016 (C : RWithoutOrderTotalCertificate) (z : Pair004) :
       rAdd (rMulCandidate rOne z.re)
         (rNeg (rMulCandidate rZero z.im)) = z.re
     rw [C.mulOneLeft z.re, mulZeroLeft016 C z.im,
-      neg_zero_from_interface C,
+      neg_zero004 C,
       add_zero_right004 C z.re]
   · change
       rAdd (rMulCandidate rOne z.im)
@@ -275,7 +275,7 @@ theorem mulZeroLeftPair016 (C : RWithoutOrderTotalCertificate) (z : Pair004) :
         (rNeg (rMulCandidate rZero z.im)) = rZero
     rw [mulZeroLeft016 C z.re,
       mulZeroLeft016 C z.im,
-      neg_zero_from_interface C, C.addZeroLeft rZero]
+      neg_zero004 C, C.addZeroLeft rZero]
   · change
       rAdd (rMulCandidate rZero z.im)
         (rMulCandidate rZero z.re) = rZero
