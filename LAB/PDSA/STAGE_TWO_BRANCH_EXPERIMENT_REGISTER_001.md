@@ -7,7 +7,7 @@ This synchronized marker supersedes older current-frontier prose below.
 Historical records remain immutable evidence of their own time.
 
 ```text
-STATE: DO
+STATE: CLOSING
 PROGRAM: ST2-RP-001
 QUEUE_CURSOR: 1
 ACTIVE_EXPERIMENT: ST2-EXP-015
@@ -18,10 +18,10 @@ TRANSITION_CANDIDATE: ST2-EXP-015
 TRANSITION_DECISION_RECORDED: True
 FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
 FROZEN_REFERENCE_MAIN_SHA: 575ce175ebc024a33d5c3e7925779b2b8ae9921f
-NEXT_LEGAL_ACTION: VERIFY_ST2-EXP-015_EXACT_HEAD_THEN_STUDY_ACT_AND_CLOSE
+NEXT_LEGAL_ACTION: VERIFY_ST2-EXP-015_CLOSURE_HEAD_THEN_FINALIZE_BOUNDED_STOP
 ```
 
-Owner-directed continuation of 2026-10-28: independent Plan frozen before Do; local B/C/D gates reverified on 2026-10-29; CI pending.
+Owner-directed continuation of 2026-10-28: independent Plan frozen before Do; mathematical head passed all 20 PR checks; Study/Act PASS; exact closure CI pending.
 G8 remains paused. This bounded continuation stops before starting/freezing 016.
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
