@@ -382,7 +382,7 @@ theorem fieldCertificate016 (C : RNormAnisotropyCertificate016) :
 /-- Research integration candidate: exact Gate-E seven-family certificate
 plus the algebraically rebuilt field and explicit 011 coordinate comparison.
 Claim-surface correspondence still requires Gate D semantic audit. -/
-structure NineClaimCandidate016 (C : RNormAnisotropyCertificate016) : Prop where
+structure NineClaimCandidate016 (C : RNormAnisotropyCertificate016) where
   controls : CSurvivorCertificate004 C.scalar
   field : FieldCertificate016 C
   comparison : ∀ (B : BOMA.C.StageTwo.ComparisonInterface011.QuadraticPresentation
@@ -410,7 +410,7 @@ theorem anyQuadraticComparison016
   BOMA.C.StageTwo.ComparisonInterface011.quadraticComparison
     comparisonPresentation004 B
 
-theorem explicitFunctionalComparison016
+def explicitFunctionalComparison016
     (B : BOMA.C.StageTwo.ComparisonInterface011.QuadraticPresentation scalarOps004)
     (EB : BOMA.C.StageTwo.ComparisonInterface011.CoordinateExtractor B) :
     BOMA.C.StageTwo.ComparisonInterface011.ConstructiveQuadraticIsomorphism
@@ -418,7 +418,7 @@ theorem explicitFunctionalComparison016
   BOMA.C.StageTwo.ComparisonInterface011.constructiveQuadraticIsomorphism
     comparisonPresentation004 B explicitPairExtractor016 EB
 
-theorem nineClaimCandidate016 (C : RNormAnisotropyCertificate016) :
+def nineClaimCandidate016 (C : RNormAnisotropyCertificate016) :
     NineClaimCandidate016 C where
   controls := cSurvivorCertificate004 C.scalar
   field := fieldCertificate016 C
