@@ -23,7 +23,7 @@
   "active_experiment_origin_record": null,
   "active_work_head_before_ci_state_commit": null,
   "last_verified_head": "d91b32250f4cdc800f26b728e388902797bf5200",
-  "waiting_on": "BOUNDED_015_COMPLETE_AWAIT_OWNER_SCOPE_FOR_016",
+  "waiting_on": "EXPLICIT_OWNER_SESSION_INSTRUCTION_WHILE_ST2_EXP_016_NOT_STARTED",
   "owner_required_reason": "BOUNDED_OWNER_INSTRUCTION_COMPLETED_AT_015_NO_016_START_OR_PLAN_FREEZE",
   "routine_merge_authorized": true,
   "current_stage_two_frontier": {
@@ -47,11 +47,14 @@
     "last_transition_decision": "OWNER_REQUIRED",
     "transition_record": "LAB/PDSA/experiments/ST2-EXP-015_TO_ST2-EXP-016_BOUNDARY_ASSESSMENT_001.json"
   },
-  "next_legal_action": "STOP_BEFORE_ST2-EXP-016_UNTIL_OWNER_EXTENDS_BOUNDED_SCOPE",
+  "next_legal_action": "AWAIT_EXPLICIT_OWNER_SESSION_INSTRUCTION_NO_AUTO_CONTINUE_NO_AUTONOMOUS_MERGE",
   "safety": {
     "fail_closed": true,
     "ambiguous_authority_means": "OWNER_REQUIRED",
-    "main_research_writes_allowed": false
+    "main_research_writes_allowed": false,
+    "owner_instruction_required_per_task": true,
+    "automated_verification_allowed": true,
+    "autonomous_research_execution_allowed": false
   },
   "active_frozen_plan_machine": null,
   "owner_execution_authorization_record": "LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md",
@@ -64,5 +67,22 @@
     "exact_verification_record": "LAB/PDSA/experiments/ST2-EXP-015_EXACT_LIFECYCLE_VERIFICATION_001.json",
     "routine_merge_tracking": "https://github.com/scientifica007/BOMA/pull/25"
   },
-  "synchronized_main_sha_scope": "LAST_SYNCHRONIZED_PRE_015_MAIN; current main and merge identity are resolved from Git and PR 25."
+  "synchronized_main_sha_scope": "LAST_SYNCHRONIZED_PRE_015_MAIN; current main and merge identity are resolved from Git and PR 25.",
+  "execution_mode": "OWNER_DIRECTED_INTERACTIVE_PDSA",
+  "owner_decision_record": "LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md",
+  "autonomous_research_enabled": false,
+  "unattended_continuation_enabled": false,
+  "autonomous_merge_enabled": false,
+  "effective_execution_authority": {
+    "mode": "OWNER_DIRECTED_INTERACTIVE_PDSA",
+    "owner_decision_record": "LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md",
+    "autonomous_research_enabled": false,
+    "unattended_continuation_enabled": false,
+    "routine_merge_authorized": false,
+    "new_task_requires_explicit_owner_session_instruction": true,
+    "new_experiment_requires_explicit_owner_session_instruction": true,
+    "merge_requires_explicit_owner_approval": true,
+    "automated_verification_allowed": true,
+    "historical_routine_merge_authorized_field_is_not_current_authority": true
+  }
 }

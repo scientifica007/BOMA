@@ -31,7 +31,49 @@ not a mathematical failure. The accepted selections and exports are unchanged.
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
 
-Mandatory for AI agents and other automated collaborators.
+## CURRENT BINDING OWNER AUTHORITY — 2026-10-29
+
+The owner retired unattended Agents and autonomous research execution in PR #26.
+The binding decision is `LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md` and its PDSA plan is
+`LAB/PDSA/PDSA-INTERACTIVE-TRANSITION-001.md`. They override any older
+program-level `AUTO_CONTINUE`, `routine_merge_authorized: true`, or scheduled
+research instructions retained further below for provenance.
+
+**Effective mode:** `OWNER_DIRECTED_INTERACTIVE_PDSA` / `OWNER_REQUIRED`.
+An AI assistant acts only on the owner's explicit instruction *for the current
+session and task*. It may read, plan, edit a separate branch, run verification,
+and open a PR **only within the scope of that instruction**. It must not
+self-schedule, run/arm G8 or a successor, autonomously transition to the next
+experiment, or auto-merge. Verification-only GitHub Actions remain permissible.
+No task, PR, experiment, or merge is automatically authorized by the old queue.
+
+**Required PDSA:** read actual GitHub `current main` → Plan (typed origin,
+single scientific factor when scientific, baseline, fixed controls, success/fail
+criteria) → separately scoped Do → independently verify exact-head evidence,
+dependencies, failures and historical integrity in Study → propose Act and
+request the owner's decision. For scientific experiments, freeze an independent
+Plan before Do, preserve immutable closure evidence and accepted selections.
+For maintenance, separate control-plane changes from scientific experiments.
+Any ambiguity ⇒ `OWNER_REQUIRED`; stop rather than extrapolate.
+
+**Live frontier:** ST2-EXP-015 `CLOSED_PASS` via PR #25; ST2-EXP-016
+`NOT_STARTED / NO_FROZEN_PLAN`, prerequisites `MET` but no execution authority;
+ST2-EXP-017 remains contingent. No active experiment. G8 disabled/unarmed.
+The old manifest and owner-approved queue are *historical research agenda*,
+not permission to continue/merge autonomously. `main` has an active Ruleset.
+These terms govern the historical snapshots retained below.
+
+**Current machine policy:** `LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_POLICY_2026_10_29.json`.
+**Current governance:** `LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_GOVERNANCE_2026_10_29.md`.
+The historical program Manifest and the backward-compatible legacy state flag
+`routine_merge_authorized: true` remain unchanged for frozen experimental
+verification. **Effective authority** is separately recorded as
+`effective_execution_authority.routine_merge_authorized: false`; only this
+effective field and the owner decision govern new work.
+
+Mandatory for owner-directed AI collaborators and any other tools; no unattended
+agent may execute research.
+
 
 ## 1. Read current state before acting
 
@@ -40,6 +82,10 @@ Read, in order:
 ```text
 README.md
 LAB/PDSA/STATUS.md
+LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md
+LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_GOVERNANCE_2026_10_29.md
+LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_POLICY_2026_10_29.json
+LAB/PDSA/PDSA-INTERACTIVE-TRANSITION-001.md
 LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md
 LAB/PDSA/reviews/BOMA_MATHEMATICAL_AUDIT_CORRECTIONS_2026-10-28.md
 LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md
@@ -74,7 +120,12 @@ these two current paths remain active forever.
 
 Historical records preserve provenance; they do not override later synchronized current-state authorities.
 
-## 2. Current structural state
+## 2. Historical structural snapshot (superseded operational lines)
+
+**Historical only:** the accepted mathematical chain described here is preserved,
+but the old autonomous program frontier, dated synchronization SHA, routine-merge
+permission, and 014→015 next action below are superseded by the current marker
+and binding owner-directed authority above.
 
 ```text
 Pre-numerical layer   CALIBRATED
@@ -110,7 +161,12 @@ REQUIRED NEXT ACT     re-read synchronized main → evaluate 014→015 transitio
 Historical proposed IDs `ST2-EXP-005..013` remain candidate history and are not
 implicitly authorized or repurposed.
 
-## 3. Authority distinction and fail-closed posture
+## 3. Historical two-authority model (autonomy retired)
+
+The program-level unattended-execution authority described below is revoked.
+The older fields and examples are retained only as audit evidence of the
+2026-08-25 program model. Current actions require an explicit owner instruction
+in the current session, including starting 016 or merging any PR.
 
 Two execution-authority mechanisms exist and must not be conflated:
 
@@ -178,10 +234,12 @@ shared generic interface = Junction
 formal proof ancestry = mathematical necessity
 ```
 
-`ST2-RP-001` grants conditional routine merge authority only for program-scope
+`ST2-RP-001` **historically granted** conditional routine merge authority for program-scope
 research/lifecycle records and verified-knowledge integration satisfying its
-exact gates. It does not authorize accepted-source replacement, SELECTS change,
-acceptance promotion, or acceptance-contract revision.
+exact gates. **This unattended merge delegation is revoked as of
+2026-10-29, irrespective of historical program records.** It never authorized
+accepted-source replacement, SELECTS change, acceptance promotion, or
+acceptance-contract revision.
 
 ## 5. Exact C-production R→C mathematical dependency rule
 
@@ -215,10 +273,13 @@ BOMA.C.StageTwo.NarrowRInterface001.narrowRFromAcceptedProducers
 
 Do not confuse accepted-source formal ancestry with mathematical necessity.
 
-`ST2-EXP-016` is authorized to test replacement of exactly `orderTotal` by one
+`ST2-EXP-016` is listed in the historical authorized research agenda to test
+replacement of exactly `orderTotal` by one
 exact algebraic nondegeneracy condition selected before Do and frozen in that
-experiment's independent Plan. Until 016 supplies evidence, the sixteen-field
-surface remains the current production authority.
+experiment's independent Plan. **Its execution is not authorized by queue
+membership:** the owner must separately instruct a new Plan in a session.
+Until 016 supplies evidence, the sixteen-field surface remains the current
+production authority.
 
 ## 6. Exact C comparison dependency rule — ST2-EXP-011
 
@@ -374,7 +435,11 @@ ST2-EXP-002-PQ-J-001 is permanent verified non-acceptance Junction
 Program experiments 014–017 test robustness/minimality/generalization while
 these selected/accepted facts remain controls.
 
-## 11. Stage-Two lifecycle rule
+## 11. Historical Stage-Two lifecycle snapshot
+
+The dated closure evidence is immutable. The old `Current program` block
+below is a 014→015 snapshot, **not** the current frontier after closed 015.
+Consult the marker and owner-directed decision at the top.
 
 Closed and integrated/retained:
 
@@ -426,6 +491,7 @@ and compare them against these controls. A PASS is not automatic promotion.
 When current-state documents conflict, prefer:
 
 ```text
+LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md
 LAB/PDSA/STATUS.md
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_GOVERNANCE_001.md
 LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_POLICY_001.json
@@ -443,7 +509,9 @@ README.md / AGENTS.md
 historical checkpoints
 ```
 
-The autonomous state/program files govern execution scope; they may not rewrite mathematical or architectural facts.
+The current owner decision and fail-closed program state govern execution scope.
+The historical program/manifest records may not grant unattended authority or
+rewrite mathematical or architectural facts.
 
 The old top-level stop markers in `STAGE_TWO_BRANCH_ORIGIN_LEDGER_001.json` were
 correct at the completed 004 frontier. When they conflict with the later
@@ -453,7 +521,11 @@ origin records. New experiment typed origins are carried by the active program
 manifest and must enter permanent origin records as each experiment is
 independently frozen.
 
-## 14. Verification rules
+## 14. Historical baseline-verification rules
+
+The following pre-015 and 014→015 invariants were valid for their frozen
+reference. They are **not** tests of today's current frontier, and do not
+authorize restoration of G8.
 
 Historical ST2-EXP-004 and ST2-EXP-014 evidence remains immutable and must
 continue to verify as historical closure. Do not reinterpret historical
@@ -487,11 +559,16 @@ leanprover/lean4:v4.32.1
 Lake packages: none
 ```
 
-## 15. GitHub continuation rule
+## 15. Historical autonomous GitHub continuation rule (revoked)
+
+The 014→015 `AUTO_CONTINUE` sequence below is an archived operating plan,
+not an instruction. **Current rule:** a separate owner-requested PDSA task,
+branch, evidence, and owner-approved PR for every change; no unattended
+transitions or merges.
 
 Do not conduct experiment work on `main`.
 
-Current legal sequence:
+Historical legal sequence (superseded on 2026-10-29):
 
 ```text
 re-read synchronized main 2a6c38af70e596c840ef2db4733421bde38f3ee5
@@ -503,8 +580,8 @@ re-read synchronized main 2a6c38af70e596c840ef2db4733421bde38f3ee5
 → evaluate exact 015→016 transition gate
 ```
 
-The same pattern applies at every program transition. Routine merge authority is
-active only within exact `ST2-RP-001` scope and gates.
+The above pattern is historical. No autonomous transition or routine merge
+authority remains effective, including within the old `ST2-RP-001` queue.
 
 Do not:
 

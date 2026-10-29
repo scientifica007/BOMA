@@ -30,7 +30,42 @@ was created or frozen. OWNER_REQUIRED records the completed bounded scope,
 not a mathematical failure. The accepted selections and exports are unchanged.
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
-### Owner-directed continuation — 2026-10-28
+## CURRENT OWNER EXECUTION MODE — 2026-10-29
+
+**Mode:** `OWNER_DIRECTED_INTERACTIVE_PDSA`; **authority:** `LAB/PDSA/OWNER_DECISION_2026-10-29_INTERACTIVE_PDSA_MODE.md` (merged in PR #26).
+**Method:** PDSA Plan → Do → Study → Act, with exact verification and preserved
+scientific and failure provenance. The assistant may act only on the owner's
+specific instruction in the present session; there are **no unattended Agents,
+scheduled research wakes, autonomous transitions, or routine auto-merges**.
+Verification-only Actions are retained, and the GitHub `main` branch Ruleset
+`BOMA-MAIN-INTERACTIVE-PDSA` is active. G8 is manually disabled and unarmed;
+its sources and experiment records remain historical evidence.
+
+**Current governance:** `LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_GOVERNANCE_2026_10_29.md`.
+**Current policy:** `LAB/PDSA/INTERACTIVE_PDSA_EXECUTION_POLICY_2026_10_29.json`.
+The frozen historical policy, governance specification, program Manifest and
+their original merge authorization are retained byte-identical. The
+backward-compatible state flag `routine_merge_authorized: true` is historical,
+whereas `effective_execution_authority.routine_merge_authorized: false`
+and the new interactive policy govern present work.
+
+**Scientific frontier:** `ST2-RP-001` is retained as an ordered research agenda,
+not a blanket execution grant. `ST2-EXP-015` is `CLOSED_PASS` and merged by
+PR #25; `ST2-EXP-016` is `NOT_STARTED / NO_FROZEN_PLAN`, with scientific
+prerequisites `MET` but execution held for a **new owner instruction**.
+`ST2-EXP-017` remains conditional on evidence from 016. Current state remains
+`OWNER_REQUIRED`, no active experiment. The selected Dedekind R and Route P C,
+accepted source interfaces, `SELECTS`, and historical Frozen Plans stay intact.
+
+**Next legal work:** complete explicitly commissioned maintenance PDSA tasks,
+or await a separate owner-authorized Plan for 016. Begin from actual current
+GitHub `main`, never from the historical `synchronized_main_sha` baseline.
+No direct writes to protected `main`; submit a PR for the owner's review and
+decision. The current state/decision supersede the old autonomy snapshot below.
+
+### Historical program/status snapshots — reference only
+
+### Previous owner-directed continuation — 2026-10-28 (historical)
 
 The owner authorized preserving the mathematical audit, making documented
 evidence-backed clarifications, then resuming ST2-EXP-015 under the existing
@@ -61,7 +96,7 @@ historical and is superseded by the current marker and this dated continuation.
 
 ---
 
-## Current program frontier
+## Historical program frontier — 2026-08-26 (superseded)
 
 ```text
 AUTONOMOUS RESEARCH PROGRAM: ST2-RP-001 / OWNER_AUTHORIZED
@@ -100,7 +135,7 @@ commitment, canonical/acceptance decision, or ambiguous authority sets
 
 ---
 
-## ST2-RP-001 authorized queue
+## Historical ST2-RP-001 authorized queue (agenda preserved; no autonomous execution)
 
 | Order | Experiment | Core question | Current disposition |
 | ---: | --- | --- | --- |
