@@ -1,26 +1,33 @@
 # PDSA STATUS — Current Research Cycle Index
 
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_BEGIN -->
-### Autonomous runtime current-state marker
+### Current execution-state marker
 
-This block is maintained by the autonomous runtime and supersedes older
-current-frontier prose below it when the two disagree. Historical records
-remain immutable evidence of their own time.
+This synchronized marker supersedes older current-frontier prose below.
+Historical records remain immutable evidence of their own time.
 
 ```text
-STATE: PREPARING_EXPERIMENT
+STATE: OWNER_REQUIRED
 PROGRAM: ST2-RP-001
 QUEUE_CURSOR: 1
 ACTIVE_EXPERIMENT: None
-LATEST_COMPLETED: ST2-EXP-014
-NEXT_EXPERIMENT: ST2-EXP-015
-TRANSITION_FROM: ST2-EXP-014
-TRANSITION_CANDIDATE: ST2-EXP-015
+LATEST_COMPLETED: ST2-EXP-015 / CLOSED_PASS / EXACT_CLOSURE_VERIFIED
+NEXT_EXPERIMENT: ST2-EXP-016 / NOT_STARTED / NO_FROZEN_PLAN
+TRANSITION_FROM: ST2-EXP-015
+TRANSITION_CANDIDATE: ST2-EXP-016
 TRANSITION_DECISION_RECORDED: True
-NEXT_LEGAL_ACTION: CREATE_INDEPENDENT_ST2-EXP-015_BRANCH_AND_FREEZE_PLAN_BEFORE_DO
+TRANSITION_DECISION: OWNER_REQUIRED / BOUNDED_OWNER_SCOPE_COMPLETED
+SCIENTIFIC_PREREQUISITES_FOR_016: MET
+015_EXACT_CLOSURE_HEAD: d91b32250f4cdc800f26b728e388902797bf5200
+015_FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
+NEXT_LEGAL_ACTION: STOP_BEFORE_ST2-EXP-016_UNTIL_OWNER_EXTENDS_BOUNDED_SCOPE
 ```
 
-Runtime note: Autonomous transition gate ST2-EXP-014→ST2-EXP-015: AUTO_CONTINUE; ST2-EXP-015 not started.
+Owner-directed 015 continuation completed on 2026-10-29. Both the mathematical
+and lifecycle heads passed all 20 applicable PR checks. Final administrative
+head and merge evidence are tracked by PR #25. G8 remains unarmed; no 016 Plan
+was created or frozen. OWNER_REQUIRED records the completed bounded scope,
+not a mathematical failure. The accepted selections and exports are unchanged.
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
 ### Owner-directed continuation — 2026-10-28

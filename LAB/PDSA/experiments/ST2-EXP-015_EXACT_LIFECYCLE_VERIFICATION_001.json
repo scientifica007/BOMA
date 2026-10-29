@@ -1,0 +1,202 @@
+{
+  "schema": "BOMA-ST2-EXP-015-EXACT-LIFECYCLE-VERIFICATION-001",
+  "status": "CLOSED_PASS",
+  "verified_closure_head": "d91b32250f4cdc800f26b728e388902797bf5200",
+  "verified_math_head": "10fcc0f5da0be9891408bee08c9fb86c622f851f",
+  "frozen_plan_sha": "1bd27f622753558fb622436d2e27560462ea1771",
+  "baseline_main_sha": "575ce175ebc024a33d5c3e7925779b2b8ae9921f",
+  "closure_record": "LAB/PDSA/experiments/ST2-EXP-015_LIFECYCLE_CLOSURE_001.md",
+  "study_act": "LAB/PDSA/experiments/ST2-EXP-015_FINAL_STUDY_ACT_001.md",
+  "workflow": {
+    "id": 40887819369,
+    "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819369",
+    "attempt": 1,
+    "conclusion": "success",
+    "job_id": 123496164890
+  },
+  "artifact": {
+    "id": 12904505682,
+    "name": "st2-exp-015-route-square-40887819369-1",
+    "size_in_bytes": 2258107,
+    "url": "https://api.github.com/repos/scientifica007/BOMA/actions/artifacts/12904505682",
+    "archive_download_url": "https://api.github.com/repos/scientifica007/BOMA/actions/artifacts/12904505682/zip",
+    "expired": false,
+    "created_at": "2026-10-29T14:05:30Z",
+    "expires_at": "2027-01-27T14:04:05Z",
+    "updated_at": "2026-10-29T14:05:30Z",
+    "digest": "sha256:087394910b9e7e651982cb32388fcba25c8cc098b1db32b01ebbf11b44efe5af",
+    "workflow_run": {
+      "id": 40887819369,
+      "repository_id": 1347595277,
+      "head_repository_id": 1347595277,
+      "head_branch": "feature/stage-two-st2-exp-015-route-composition",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200"
+    }
+  },
+  "downloaded_archive_sha256_verified": true,
+  "archive_repository_path": "LAB/PDSA/experiments/ST2-EXP-015_EVIDENCE_40887819369/artifact.zip",
+  "checks": [
+    {
+      "id": 123496204385,
+      "name": "verify immutable historical Gate B",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819475/job/123496204385"
+    },
+    {
+      "id": 123496183001,
+      "name": "verify research Cauchy quadratic field rebuild",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819441/job/123496183001"
+    },
+    {
+      "id": 123496166119,
+      "name": "verify generic comparison, accepted RBOMA, native Cauchy H6, and lifecycle closure",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819599/job/123496166119"
+    },
+    {
+      "id": 123496166016,
+      "name": "verify research Dedekind-Cauchy R reconvergence junction",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819389/job/123496166016"
+    },
+    {
+      "id": 123496165540,
+      "name": "prove Cauchy route independently through exact least-upper-bound completeness",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819415/job/123496165540"
+    },
+    {
+      "id": 123496165508,
+      "name": "verify immutable historical Gate F",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819544/job/123496165508"
+    },
+    {
+      "id": 123496165474,
+      "name": "guard",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819434/job/123496165474"
+    },
+    {
+      "id": 123496165453,
+      "name": "prove Q independently before admitting explicit P/Q reconvergence",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819507/job/123496165453"
+    },
+    {
+      "id": 123496165446,
+      "name": "verify immutable historical Gate E",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819517/job/123496165446"
+    },
+    {
+      "id": 123496165330,
+      "name": "verify (quadratic-quotient)",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819477/job/123496165330"
+    },
+    {
+      "id": 123496165186,
+      "name": "audit-autonomous-research-governance",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819382/job/123496165186"
+    },
+    {
+      "id": 123496165109,
+      "name": "verify (pair)",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819477/job/123496165109"
+    },
+    {
+      "id": 123496164978,
+      "name": "verify immutable closed-state provenance",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819551/job/123496164978"
+    },
+    {
+      "id": 123496164936,
+      "name": "verify separate C acceptance and every prior stage independently",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819386/job/123496164936"
+    },
+    {
+      "id": 123496164890,
+      "name": "verify independent Q, native PQ and external square",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819369/job/123496164890"
+    },
+    {
+      "id": 123496164841,
+      "name": "verify immutable historical Gate C",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819524/job/123496164841"
+    },
+    {
+      "id": 123496164772,
+      "name": "verify immutable historical Gate D",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819394/job/123496164772"
+    },
+    {
+      "id": 123496164387,
+      "name": "verify selected C integration and theorem-level claim ownership",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819473/job/123496164387"
+    },
+    {
+      "id": 123496164381,
+      "name": "verify immutable historical Gate A",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819372/job/123496164381"
+    },
+    {
+      "id": 123496164010,
+      "name": "preserve owner-authorized ST2-EXP-001..003 closure",
+      "head_sha": "d91b32250f4cdc800f26b728e388902797bf5200",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/scientifica007/BOMA/actions/runs/40887819374/job/123496164010"
+    }
+  ],
+  "mathematics_manifests_verifier_workflow_unchanged_since_math_head": true,
+  "qualification": "The exact lifecycle commit passed. Administrative finalization and merge still require all checks on the final candidate head; no mathematical or closure-record edits are permitted."
+}

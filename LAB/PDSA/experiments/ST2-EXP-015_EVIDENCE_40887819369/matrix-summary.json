@@ -1,0 +1,81 @@
+{
+  "status": "PASS",
+  "matrix_schema": "BOMA-STAGE-TRANSPARENCY-MATRIX-001",
+  "audited_source": "d91b32250f4cdc800f26b728e388902797bf5200",
+  "workflow_run": "40887819369",
+  "toolchain": "leanprover/lean4:v4.32.1",
+  "stages": [
+    {
+      "stage": "N-Core",
+      "slug": "N_CORE",
+      "root_mode": "producer_union",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    },
+    {
+      "stage": "N-Arithmetic",
+      "slug": "N_ARITH",
+      "root_mode": "producer_union",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    },
+    {
+      "stage": "Z",
+      "slug": "Z",
+      "root_mode": "producer_union",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    },
+    {
+      "stage": "Q",
+      "slug": "Q",
+      "root_mode": "producer_union",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    },
+    {
+      "stage": "R",
+      "slug": "R",
+      "root_mode": "single_target",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    },
+    {
+      "stage": "C",
+      "slug": "C",
+      "root_mode": "single_target",
+      "audit_rc": 0,
+      "classify_rc": 0,
+      "compare_rc": 0,
+      "closure_status": "PROTOTYPE_PASS",
+      "classification_status": "CLASSIFICATION_PASS",
+      "producer_status": "CLAIM_PRODUCER_PASS",
+      "passed": true
+    }
+  ]
+}

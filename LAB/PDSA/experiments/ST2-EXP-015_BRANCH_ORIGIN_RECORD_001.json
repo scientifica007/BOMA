@@ -1,0 +1,41 @@
+{
+  "schema": "BOMA-STAGE-TWO-EXPERIMENT-ORIGIN-RECORD-001",
+  "experiment_id": "ST2-EXP-015",
+  "program_id": "ST2-RP-001",
+  "status": "PLAN_FROZEN",
+  "date": "2026-10-28",
+  "origin_kind": "DECISION_POINT",
+  "origin_id": "C-DP-001",
+  "single_changed_factor": "WITH_CAUCHY_SCALAR_FIXED_C_REALIZATION_ROUTE_P_TO_ROUTE_Q",
+  "preserved_controls": [
+    "RCBOMA_CAUCHY_SCALAR_PRODUCER",
+    "QUADRATIC_EXTENSION_TARGET_MEANING",
+    "NO_DEDEKIND_IMPLEMENTATION_TRANSPORT",
+    "ACCEPTED_C_REMAINS_CONTROL"
+  ],
+  "affected_cone": [
+    "C_CARRIER_IDENTITY_OVER_RCBOMA",
+    "C_FIELD_OVER_RCBOMA",
+    "C_COORDINATES_OVER_RCBOMA",
+    "C_COMPARISON_OVER_RCBOMA"
+  ],
+  "frozen_reference_commit": "575ce175ebc024a33d5c3e7925779b2b8ae9921f",
+  "frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-015_ROUTE_COMPOSITION_SQUARE.md",
+  "machine_frozen_plan": "LAB/PDSA/autonomy/ST2-EXP-015/FROZEN_PLAN.json",
+  "research_branch": "feature/stage-two-st2-exp-015-route-composition",
+  "experimental_product_status": "RESEARCH_ONLY",
+  "transition_record_reused": "LAB/PDSA/experiments/ST2-EXP-014_TO_ST2-EXP-015_AUTONOMOUS_TRANSITION_001.json",
+  "owner_authorization_record": "LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md",
+  "maintenance_pr": 24,
+  "maintenance_verified_head": "86ff1a950a1fdc981f7ab42b64b5df2e11bb5739",
+  "maintenance_merge": "575ce175ebc024a33d5c3e7925779b2b8ae9921f",
+  "maintenance_infrastructure_retry": {
+    "run_id": 40689562904,
+    "failed_attempt": 1,
+    "failed_job_id": 122820594508,
+    "cause": "Elan installer connection reset before Lean proof steps",
+    "successful_attempt": 2,
+    "successful_job_id": 123014298159,
+    "same_head": true
+  }
+}

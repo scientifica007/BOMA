@@ -1,12 +1,12 @@
 {
   "schema": "BOMA-AUTONOMOUS-RESEARCH-PROGRAM-STATE-001",
-  "status_date": "2026-10-28",
-  "state": "PREPARING_EXPERIMENT",
+  "status_date": "2026-10-29",
+  "state": "OWNER_REQUIRED",
   "active_program_id": "ST2-RP-001",
   "owner_authorization_record": "LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md",
   "program_manifest": "LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json",
   "program_baseline_main_sha": "1fac73b24b9b2e0db9dafc95e1944267aa9040da",
-  "synchronized_main_sha": "2a6c38af70e596c840ef2db4733421bde38f3ee5",
+  "synchronized_main_sha": "575ce175ebc024a33d5c3e7925779b2b8ae9921f",
   "baseline_integrity_audit": "LAB/PDSA/BASELINE_INTEGRITY_AUDIT_AUTONOMY_001.md",
   "authorized_experiment_queue": [
     "ST2-EXP-014",
@@ -22,36 +22,47 @@
   "active_experiment_frozen_reference_sha": null,
   "active_experiment_origin_record": null,
   "active_work_head_before_ci_state_commit": null,
-  "last_verified_head": "19cc6541457b3e8c58ea4607198d2474cd293dc9",
-  "waiting_on": "OWNER_DIRECTED_ST2_EXP_015_PLAN_PREPARATION_AFTER_AUDIT_CLARIFICATION",
-  "owner_required_reason": null,
+  "last_verified_head": "d91b32250f4cdc800f26b728e388902797bf5200",
+  "waiting_on": "BOUNDED_015_COMPLETE_AWAIT_OWNER_SCOPE_FOR_016",
+  "owner_required_reason": "BOUNDED_OWNER_INSTRUCTION_COMPLETED_AT_015_NO_016_START_OR_PLAN_FREEZE",
   "routine_merge_authorized": true,
   "current_stage_two_frontier": {
     "active_experiment": null,
-    "active_experiment_status": "NONE / PREPARING_EXPERIMENT",
-    "latest_completed_experiment": "ST2-EXP-014",
-    "latest_completed_status": "CLOSED_PASS / EXACT_HEAD_VERIFIED / ROUTINE_MERGED",
+    "active_experiment_status": "NONE / BOUNDED_015_COMPLETE",
+    "latest_completed_experiment": "ST2-EXP-015",
+    "latest_completed_status": "CLOSED_PASS / EXACT_CLOSURE_VERIFIED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-003",
-    "next_experiment": "ST2-EXP-015",
-    "next_experiment_status": "OWNER_AUTHORIZED / TRANSITION_PASSED / NOT_STARTED",
-    "activation_authorized_by_this_state": true
+    "next_experiment": "ST2-EXP-016",
+    "next_experiment_status": "SCIENTIFIC_PREREQUISITES_MET / HELD_BY_BOUNDED_OWNER_INSTRUCTION / NOT_STARTED",
+    "activation_authorized_by_this_state": false
   },
   "program_transition": {
-    "from_experiment": "ST2-EXP-014",
-    "to_candidate": "ST2-EXP-015",
+    "from_experiment": "ST2-EXP-015",
+    "to_candidate": "ST2-EXP-016",
     "queue_order_immutable_without_owner": true,
     "informative_fail_may_transition_if_prerequisites_hold": true,
     "sequence_critical_discovery_means": "OWNER_REQUIRED",
     "program_completion_requires_program_level_synthesis": true,
     "transition_decision_recorded": true,
-    "last_transition_decision": "AUTO_CONTINUE"
+    "last_transition_decision": "OWNER_REQUIRED",
+    "transition_record": "LAB/PDSA/experiments/ST2-EXP-015_TO_ST2-EXP-016_BOUNDARY_ASSESSMENT_001.json"
   },
-  "next_legal_action": "CREATE_INDEPENDENT_ST2-EXP-015_BRANCH_AND_FREEZE_PLAN_BEFORE_DO",
+  "next_legal_action": "STOP_BEFORE_ST2-EXP-016_UNTIL_OWNER_EXTENDS_BOUNDED_SCOPE",
   "safety": {
     "fail_closed": true,
     "ambiguous_authority_means": "OWNER_REQUIRED",
     "main_research_writes_allowed": false
   },
   "active_frozen_plan_machine": null,
-  "owner_execution_authorization_record": "LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md"
+  "owner_execution_authorization_record": "LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md",
+  "last_completed_experiment_evidence": {
+    "experiment": "ST2-EXP-015",
+    "branch": "feature/stage-two-st2-exp-015-route-composition",
+    "frozen_plan_sha": "1bd27f622753558fb622436d2e27560462ea1771",
+    "frozen_reference_sha": "575ce175ebc024a33d5c3e7925779b2b8ae9921f",
+    "verified_closure_head": "d91b32250f4cdc800f26b728e388902797bf5200",
+    "exact_verification_record": "LAB/PDSA/experiments/ST2-EXP-015_EXACT_LIFECYCLE_VERIFICATION_001.json",
+    "routine_merge_tracking": "https://github.com/scientifica007/BOMA/pull/25"
+  },
+  "synchronized_main_sha_scope": "LAST_SYNCHRONIZED_PRE_015_MAIN; current main and merge identity are resolved from Git and PR 25."
 }

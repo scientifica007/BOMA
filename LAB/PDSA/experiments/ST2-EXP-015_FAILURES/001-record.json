@@ -1,0 +1,10 @@
+{
+  "attempt": "015-LOCAL-B-001",
+  "stage": "Gate B",
+  "kind": "TECHNICAL_NAMESPACE_ALIAS",
+  "base_head": "50c1178d0797503d919f304b7ed8a73485e3b65b",
+  "diagnostic": "Unknown identifier qFieldCertificateFromCauchyR; adapted theorem retained old FromAcceptedR suffix.",
+  "log_sha256": "c95968364eaaae1a661842169453a1d8ab065ec1fd50bc85cf578b89356d54f7",
+  "recovery": "Rename new 015 instantiated aliases only; no theorem statement, assumption, Plan or baseline source changes.",
+  "mathematical_failure": false
+}

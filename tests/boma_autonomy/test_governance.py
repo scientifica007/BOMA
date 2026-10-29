@@ -6,6 +6,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts/boma_autonomy"))
@@ -25,46 +26,59 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
         self.assertTrue(research["safety"]["fail_closed"])
         self.assertFalse(research["safety"]["main_research_writes_allowed"])
 
-    def test_prestart_frontier_matches_generation_authority(self) -> None:
-        experiment = core.load_json(core.EXP_STATE)
+    def generation_008_prestart_fixture(self) -> dict:
+        # START is a predicate on a proposed frontier, not an invariant that
+        # owner-directed research must remain permanently at its starting point.
         state = core.load_json(core.RESEARCH_STATE)
-        if experiment.get("armed"):
-            self.assertIn(
-                state["state"],
-                {
-                    "TRANSITION_GATE", "PREPARING_EXPERIMENT", "PLAN_FROZEN", "DO",
-                    "WAITING_CI", "RECOVERY_ALLOWED", "STUDY", "ACT", "CLOSING",
-                    "PROGRAM_COMPLETE", "OWNER_REQUIRED",
-                },
-            )
-            return
-        if experiment.get("experiment_state") != "BOOTSTRAP":
-            self.assertIn(
-                experiment.get("experiment_state"),
-                {"FINISHED", "STOPPED", "PAUSED_FOR_META_REVIEW"},
-            )
-            return
-        self.assertEqual(core.start_frontier_errors(), [])
-        self.assertIsNone(state["active_experiment"])
-        self.assertIsNone(state["active_frozen_plan"])
-        self.assertEqual(state["program_transition"]["from_experiment"], "ST2-EXP-014")
-        self.assertEqual(state["program_transition"]["to_candidate"], "ST2-EXP-015")
-        if experiment.get("experiment_generation") == "BOMA-AUTONOMY-008":
-            self.assertEqual(state["state"], "PREPARING_EXPERIMENT")
-            self.assertEqual(state["queue_cursor"], 1)
-            self.assertTrue(state["program_transition"]["transition_decision_recorded"])
-            self.assertEqual(state["program_transition"]["last_transition_decision"], "AUTO_CONTINUE")
-            self.assertEqual(
-                state["current_stage_two_frontier"]["next_experiment_status"],
-                "OWNER_AUTHORIZED / TRANSITION_PASSED / NOT_STARTED",
-            )
-            self.assertEqual(
-                state["next_legal_action"],
-                "CREATE_INDEPENDENT_ST2-EXP-015_BRANCH_AND_FREEZE_PLAN_BEFORE_DO",
-            )
-        else:
-            self.assertEqual(state["state"], "TRANSITION_GATE")
-            self.assertFalse(state["program_transition"]["transition_decision_recorded"])
+        state.update(
+            state="PREPARING_EXPERIMENT", queue_cursor=1,
+            active_experiment=None, active_frozen_plan=None,
+            next_legal_action="CREATE_INDEPENDENT_ST2-EXP-015_BRANCH_AND_FREEZE_PLAN_BEFORE_DO",
+        )
+        state["program_transition"].update(
+            from_experiment="ST2-EXP-014", to_candidate="ST2-EXP-015",
+            transition_decision_recorded=True, last_transition_decision="AUTO_CONTINUE",
+        )
+        state["current_stage_two_frontier"].update(
+            next_experiment="ST2-EXP-015",
+            next_experiment_status="OWNER_AUTHORIZED / TRANSITION_PASSED / NOT_STARTED",
+        )
+        return state
+
+    def start_errors_for_fixture(self, state: dict) -> list[str]:
+        original = core.load_json
+        experiment = original(core.EXP_STATE)
+        experiment["experiment_generation"] = "BOMA-AUTONOMY-008"
+
+        def fixture_load(path):
+            if path == core.RESEARCH_STATE:
+                return state
+            if path == core.EXP_STATE:
+                return experiment
+            return original(path)
+
+        with patch.object(core, "load_json", side_effect=fixture_load):
+            return core.start_frontier_errors()
+
+    def test_prestart_frontier_matches_generation_authority(self) -> None:
+        self.assertEqual(self.start_errors_for_fixture(self.generation_008_prestart_fixture()), [])
+
+    def test_generation_008_start_rejects_active_or_completed_owner_research(self) -> None:
+        for phase in ("PLAN_FROZEN", "DO", "STUDY", "ACT", "CLOSING"):
+            with self.subTest(phase=phase):
+                state = self.generation_008_prestart_fixture()
+                state.update(state=phase, active_experiment="ST2-EXP-015",
+                             active_frozen_plan="synthetic/frozen-plan.md")
+                errors = self.start_errors_for_fixture(state)
+                self.assertIn("START requires no active research experiment", errors)
+                self.assertIn("START requires no active Frozen Plan", errors)
+                self.assertIn("Generation 008 START requires PREPARING_EXPERIMENT research state", errors)
+        state = self.generation_008_prestart_fixture()
+        state.update(state="OWNER_REQUIRED", next_legal_action="STOP_BEFORE_016")
+        state["current_stage_two_frontier"].update(next_experiment="ST2-EXP-016")
+        errors = self.start_errors_for_fixture(state)
+        self.assertIn("START requires ST2-EXP-015 as next authorized experiment", errors)
+        self.assertIn("Generation 008 START requires pre-Plan-freeze next legal action", errors)
 
     def test_executor_cannot_touch_control_plane_or_current_state(self) -> None:
         forbidden = [
@@ -226,8 +240,14 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
             "verification_commands": ["true"],
             "allowed_recovery_envelope": ["synthetic"],
         }
+        # The contract under test is specifically 015, independent of the
+        # live frontier moving to a later, owner-held candidate after closure.
+        fixture = self.generation_008_prestart_fixture()
         original = provider.load_json
-        provider.load_json = lambda path: {"armed": True} if path == core.EXP_STATE else original(path)
+        provider.load_json = lambda path: (
+            {"armed": True} if path == core.EXP_STATE else
+            fixture if path == core.RESEARCH_STATE else original(path)
+        )
         try:
             metrics: dict = {}
             bound = provider._planner_contract(raw, metrics)
@@ -250,8 +270,14 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
             "verification_commands": ["true"],
             "allowed_recovery_envelope": ["synthetic"],
         }
+        # The contract under test is specifically 015, independent of the
+        # live frontier moving to a later, owner-held candidate after closure.
+        fixture = self.generation_008_prestart_fixture()
         original = provider.load_json
-        provider.load_json = lambda path: {"armed": True} if path == core.EXP_STATE else original(path)
+        provider.load_json = lambda path: (
+            {"armed": True} if path == core.EXP_STATE else
+            fixture if path == core.RESEARCH_STATE else original(path)
+        )
         try:
             metrics: dict = {}
             bound = provider._planner_contract(raw, metrics)

@@ -1,0 +1,10 @@
+{
+  "attempt": "015-LOCAL-F-002",
+  "date": "2026-10-29",
+  "kind": "TECHNICAL_GOVERNANCE_TEST_LIFECYCLE_ASSUMPTION",
+  "reproduced_at_head": "1a07ebfde2521e32923db0696cd5cd44d935cc83",
+  "diagnostic": "test_prestart_frontier_matches_generation_authority incorrectly asserted start_frontier_errors()==[] against live PLAN_FROZEN state while G8 remained unarmed in BOOTSTRAP. Runtime correctly returned five START rejections.",
+  "recovery": "Test START on an explicit proposed prestart fixture; add rejection checks for five active phases and completed owner-directed research. No runtime, policy, G8 state, Frozen Plan or mathematical source is changed.",
+  "validation": "30/30 governance tests and scripts/boma_autonomy/validate.py PASS.",
+  "mathematical_failure": false
+}

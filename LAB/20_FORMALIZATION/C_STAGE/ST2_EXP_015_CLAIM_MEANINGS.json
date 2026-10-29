@@ -1,0 +1,47 @@
+{
+  "C-CL-CARRIER-001": {
+    "root": "BOMA.C.StageTwo.QExpression015.QuotientCandidate",
+    "meaning": "Expression quotient by equality of Q-local normal forms; q_ext characterizes equality.",
+    "accepted_export_changed": false
+  },
+  "C-CL-REMBED-001": {
+    "root": "BOMA.C.StageTwo.QQuotientField015.q_ofR_injective",
+    "meaning": "Faithful scalar embedding preserving 0, 1, negation, addition and multiplication.",
+    "accepted_export_changed": false
+  },
+  "C-CL-FIELD-001": {
+    "root": "BOMA.C.StageTwo.QQuotientField015.qFieldCertificateFromCauchyR",
+    "meaning": "Nontrivial commutative field with unique existential inverse witnesses.",
+    "accepted_export_changed": false
+  },
+  "C-CL-I-001": {
+    "root": "BOMA.C.StageTwo.QQuotientField015.q_i_squared",
+    "meaning": "Distinguished I squares to negative one.",
+    "accepted_export_changed": false
+  },
+  "C-CL-GEN-001": {
+    "root": "BOMA.C.StageTwo.QQuotientField015.q_generation",
+    "meaning": "Every quotient element has two native scalar coordinates.",
+    "accepted_export_changed": false
+  },
+  "C-CL-COORDUNIQ-001": {
+    "root": "BOMA.C.StageTwo.QQuotientField015.q_coordinate_unique",
+    "meaning": "Those coordinates are unique.",
+    "accepted_export_changed": false
+  },
+  "C-CL-NONREAL-001": {
+    "root": "BOMA.C.StageTwo.QQuotientField015.q_i_not_real",
+    "meaning": "I is not in the embedded scalar line.",
+    "accepted_export_changed": false
+  },
+  "C-CL-COMPARE-001": {
+    "root": "BOMA.C.StageTwo.QPresentation015.qNativeComparison",
+    "meaning": "Shared-coordinate relation; functional maps require explicit coordinate extractors.",
+    "accepted_export_changed": false
+  },
+  "C-CL-INTEGRATION-001": {
+    "root": "BOMA.C.StageTwo.QPresentation015.nativeQFullCertificate",
+    "meaning": "Full independent native Q field and comparison meaning, research-only.",
+    "accepted_export_changed": false
+  }
+}

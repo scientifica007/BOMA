@@ -1,0 +1,9 @@
+{
+  "attempt": "015-LOCAL-C-001",
+  "date": "2026-10-28",
+  "kind": "TECHNICAL_MANIFEST_COMPOSITION",
+  "diagnostic": "Unknown namespace BOMA.C.StageTwo.CauchyQuadratic003: the first native P/Q assembly omitted the H6 fragment.",
+  "recovery": "Add unchanged ST2Exp003CauchyQuadraticRebuild.lean before the native 011 adapter. Q-independent sources remain byte-identical.",
+  "evidence_kind": "TRANSCRIPT_DIAGNOSTIC; original uncommitted scratch log was lost at session reset; do not treat this as that log.",
+  "mathematical_failure": false
+}
