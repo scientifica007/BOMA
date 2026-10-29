@@ -15,6 +15,7 @@ BASELINE = '575ce175ebc024a33d5c3e7925779b2b8ae9921f'
 FREEZE = '1bd27f622753558fb622436d2e27560462ea1771'
 TEST_REPAIR = '927d78044e3521067709eea5dc306c2ca95cfbc1'
 TEST_FILE = 'tests/boma_autonomy/test_governance.py'
+TEST_REPAIR_BLOB = '2866cefeb0fe3f680b13b5daf61e8584cc9eb27f'
 PLAN = 'LAB/PDSA/PDSA-ST2-EXP-015_ROUTE_COMPOSITION_SQUARE.md'
 MACHINE = 'LAB/PDSA/autonomy/ST2-EXP-015/FROZEN_PLAN.json'
 STATE = 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json'
@@ -77,7 +78,7 @@ def main():
     require(not out.is_relative_to(ROOT),'evidence output must be outside repository')
     out.mkdir(parents=True,exist_ok=True)
     summary={'schema':'BOMA-ST2-EXP-015-VERIFICATION-001','status':'RUNNING',
-             'baseline':BASELINE,'freeze':FREEZE,'test_repair_commit':TEST_REPAIR,'steps':[],'closures':{}}
+             'baseline':BASELINE,'freeze':FREEZE,'test_repair_commit':TEST_REPAIR,'test_repair_blob':TEST_REPAIR_BLOB,'steps':[],'closures':{}}
     def save(): (out/'verification.json').write_text(json.dumps(summary,indent=2)+'\n')
     def step(name):
         summary['steps'].append(name);save();print(name+': PASS',flush=True)
@@ -101,9 +102,9 @@ def main():
             meta,p=row.split(b'\t',1);path=p.decode();mode,kind,digest=meta.decode().split()
             if path in MUTABLE: continue
             require(kind=='blob' and (ROOT/path).is_file(),f'baseline path missing: {path}')
-            # One documented test-harness repair; it is pinned, not freely mutable.
+            # Documented START/planner test fixtures; exact bytes are pinned.
             if path==TEST_FILE:
-                require((ROOT/path).read_bytes()==git('show',f'{TEST_REPAIR}:{path}'),'test repair drift')
+                require(blob_hash((ROOT/path).read_bytes())==TEST_REPAIR_BLOB,'test repair drift')
                 digest=blob_hash((ROOT/path).read_bytes())
             else:
                 require(blob_hash((ROOT/path).read_bytes())==digest,f'baseline control/history changed: {path}')

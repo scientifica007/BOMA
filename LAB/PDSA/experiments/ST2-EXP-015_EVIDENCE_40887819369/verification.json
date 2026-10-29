@@ -1,0 +1,174 @@
+{
+  "schema": "BOMA-ST2-EXP-015-VERIFICATION-001",
+  "status": "PASS",
+  "baseline": "575ce175ebc024a33d5c3e7925779b2b8ae9921f",
+  "freeze": "1bd27f622753558fb622436d2e27560462ea1771",
+  "test_repair_commit": "927d78044e3521067709eea5dc306c2ca95cfbc1",
+  "steps": [
+    "A-frozen-authority-and-immutable-controls",
+    "B-source-separation-and-selector-firewall",
+    "native-q-full-kernel-and-dependency-closure",
+    "native-q-field-kernel-and-dependency-closure",
+    "native-pq-kernel-and-dependency-closure",
+    "external-square-kernel-and-dependency-closure",
+    "E-inherited-logical-cost",
+    "E-nine-Claim-meaning-map",
+    "F-historical-regressions",
+    "F-six-stage-transparency",
+    "F-architecture-claims-program-and-governance"
+  ],
+  "closures": {
+    "native-q-full": {
+      "root": "BOMA.C.StageTwo.QPresentation015.nativeQFullCertificate",
+      "counts": {
+        "internal": 745,
+        "external_boundary": 80,
+        "dependency_edges": 8219,
+        "unresolved": 0,
+        "raw_unmapped_internal_ranges": 44,
+        "generated_source_inferences": 44,
+        "unmapped_internal_ranges": 0,
+        "internal_axioms": 0,
+        "targets": 1
+      },
+      "sha256": "5aa7bd9dd567a6e1bd9fd531597e96b5d8b6996094631ef974c924994eaa5ccf"
+    },
+    "native-q-field": {
+      "root": "BOMA.C.StageTwo.QQuotientField015.qFieldCertificateFromCauchyR",
+      "counts": {
+        "internal": 663,
+        "external_boundary": 80,
+        "dependency_edges": 7471,
+        "unresolved": 0,
+        "raw_unmapped_internal_ranges": 44,
+        "generated_source_inferences": 44,
+        "unmapped_internal_ranges": 0,
+        "internal_axioms": 0,
+        "targets": 1
+      },
+      "sha256": "3ebf0691c8338b23d8e3f3c1896b4ed44e5fca34218f497601fbd1bc7c7809a2"
+    },
+    "native-pq": {
+      "root": "BOMA.C.StageTwo.NativePQ015.nativePQJunctionCertificate",
+      "counts": {
+        "internal": 994,
+        "external_boundary": 82,
+        "dependency_edges": 11121,
+        "unresolved": 0,
+        "raw_unmapped_internal_ranges": 57,
+        "generated_source_inferences": 57,
+        "unmapped_internal_ranges": 0,
+        "internal_axioms": 0,
+        "targets": 1
+      },
+      "sha256": "90ca8dddcf0fd572ff2ce5066e2294cf473403b32763271fb3a189663c2c3614"
+    },
+    "external-square": {
+      "root": "BOMA.C.StageTwo.RouteSquare015.routeSquareCertificate",
+      "counts": {
+        "internal": 1793,
+        "external_boundary": 83,
+        "dependency_edges": 21391,
+        "unresolved": 0,
+        "raw_unmapped_internal_ranges": 109,
+        "generated_source_inferences": 109,
+        "unmapped_internal_ranges": 0,
+        "internal_axioms": 0,
+        "targets": 1
+      },
+      "sha256": "e8b01c0a0b05526ce5ca84ad7bddc00cf8baaa00001cd2a8af7711e29bcceb9c"
+    }
+  },
+  "verified_head": "d91b32250f4cdc800f26b728e388902797bf5200",
+  "run_id": "40887819369",
+  "run_attempt": "1",
+  "lean_version": "Lean (version 4.32.1, x86_64-unknown-linux-gnu, commit f054605aea4b840552cca2e725580bffd1e1b704, Release)",
+  "protected_baseline_files": 1145,
+  "execution_state": "CLOSING",
+  "new_source_sha256": {
+    "LAB/payloads/lean/CStage/ST2Exp015NativePQJunction.lean": "cecce13db93bfbf2bcf6f936295e8884a0976be0764b23735ad3a277843f6cd7",
+    "LAB/payloads/lean/CStage/ST2Exp015QExpression.lean": "3e4428ff29020bca3b76fd9ec622c8c67be478008d839f0bbd15173e4aa03c8e",
+    "LAB/payloads/lean/CStage/ST2Exp015QNormalCore.lean": "72aae7f8995bbbb3a633174395a2042f91a425122f8d7af92c8761d440aff09f",
+    "LAB/payloads/lean/CStage/ST2Exp015QNormalNormInverse.lean": "84fc681eda1ea6513179737fff80723bd8d1fb9ddc8aae77324dba2515da9fee",
+    "LAB/payloads/lean/CStage/ST2Exp015QNormalRoute.lean": "e81519b0c3fde5ebb4da3fc4057599f5d2923194083ab269d0784720f9fcb4d2",
+    "LAB/payloads/lean/CStage/ST2Exp015QPresentation.lean": "8e7d67274ffe342fce05f30a0bec845f4b2db5f0cea9f91dfda84f1483bda486",
+    "LAB/payloads/lean/CStage/ST2Exp015QQuotientField.lean": "55169cb82485c7969c2d873669aae829cbb2d9394447ae93fea246869c23d48f",
+    "LAB/payloads/lean/CStage/ST2Exp015RouteCompositionSquare.lean": "a7320b014cd3b662de6f627cbea7bb4fe327a3ae19e523d884c0f03f27b9e76f",
+    "LAB/payloads/lean/CStage/ST2Exp015ScalarConsequences.lean": "06e13b0774c54b0309a47fac4d73d342f9190129db3672bae0d52be705d373d0",
+    "LAB/payloads/lean/CStage/ST2Exp015ScalarInterface.lean": "4562a4e615d1d644b02d370106413ec7d23451014a90e4a9280983777e093825"
+  },
+  "source_counts": {
+    "Q_INDEPENDENT": 78,
+    "NATIVE_PQ": 82,
+    "EXTERNAL_SQUARE": 145
+  },
+  "axiom_reports": {
+    "BOMA.C.StageTwo.QPresentation015.nativeQFullCertificate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BOMA.C.StageTwo.QQuotientField015.qFieldCertificateFromCauchyR": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BOMA.C.StageTwo.NativePQ015.nativePQJunctionCertificate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "BOMA.C.StageTwo.RouteSquare015.routeSquareCertificate": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ]
+  },
+  "claim_meanings": {
+    "C-CL-CARRIER-001": {
+      "root": "BOMA.C.StageTwo.QExpression015.QuotientCandidate",
+      "meaning": "Expression quotient by equality of Q-local normal forms; q_ext characterizes equality.",
+      "accepted_export_changed": false
+    },
+    "C-CL-REMBED-001": {
+      "root": "BOMA.C.StageTwo.QQuotientField015.q_ofR_injective",
+      "meaning": "Faithful scalar embedding preserving 0, 1, negation, addition and multiplication.",
+      "accepted_export_changed": false
+    },
+    "C-CL-FIELD-001": {
+      "root": "BOMA.C.StageTwo.QQuotientField015.qFieldCertificateFromCauchyR",
+      "meaning": "Nontrivial commutative field with unique existential inverse witnesses.",
+      "accepted_export_changed": false
+    },
+    "C-CL-I-001": {
+      "root": "BOMA.C.StageTwo.QQuotientField015.q_i_squared",
+      "meaning": "Distinguished I squares to negative one.",
+      "accepted_export_changed": false
+    },
+    "C-CL-GEN-001": {
+      "root": "BOMA.C.StageTwo.QQuotientField015.q_generation",
+      "meaning": "Every quotient element has two native scalar coordinates.",
+      "accepted_export_changed": false
+    },
+    "C-CL-COORDUNIQ-001": {
+      "root": "BOMA.C.StageTwo.QQuotientField015.q_coordinate_unique",
+      "meaning": "Those coordinates are unique.",
+      "accepted_export_changed": false
+    },
+    "C-CL-NONREAL-001": {
+      "root": "BOMA.C.StageTwo.QQuotientField015.q_i_not_real",
+      "meaning": "I is not in the embedded scalar line.",
+      "accepted_export_changed": false
+    },
+    "C-CL-COMPARE-001": {
+      "root": "BOMA.C.StageTwo.QPresentation015.qNativeComparison",
+      "meaning": "Shared-coordinate relation; functional maps require explicit coordinate extractors.",
+      "accepted_export_changed": false
+    },
+    "C-CL-INTEGRATION-001": {
+      "root": "BOMA.C.StageTwo.QPresentation015.nativeQFullCertificate",
+      "meaning": "Full independent native Q field and comparison meaning, research-only.",
+      "accepted_export_changed": false
+    }
+  }
+}

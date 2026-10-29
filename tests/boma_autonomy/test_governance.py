@@ -240,8 +240,14 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
             "verification_commands": ["true"],
             "allowed_recovery_envelope": ["synthetic"],
         }
+        # The contract under test is specifically 015, independent of the
+        # live frontier moving to a later, owner-held candidate after closure.
+        fixture = self.generation_008_prestart_fixture()
         original = provider.load_json
-        provider.load_json = lambda path: {"armed": True} if path == core.EXP_STATE else original(path)
+        provider.load_json = lambda path: (
+            {"armed": True} if path == core.EXP_STATE else
+            fixture if path == core.RESEARCH_STATE else original(path)
+        )
         try:
             metrics: dict = {}
             bound = provider._planner_contract(raw, metrics)
@@ -264,8 +270,14 @@ class BomaAutonomyGovernanceTests(unittest.TestCase):
             "verification_commands": ["true"],
             "allowed_recovery_envelope": ["synthetic"],
         }
+        # The contract under test is specifically 015, independent of the
+        # live frontier moving to a later, owner-held candidate after closure.
+        fixture = self.generation_008_prestart_fixture()
         original = provider.load_json
-        provider.load_json = lambda path: {"armed": True} if path == core.EXP_STATE else original(path)
+        provider.load_json = lambda path: (
+            {"armed": True} if path == core.EXP_STATE else
+            fixture if path == core.RESEARCH_STATE else original(path)
+        )
         try:
             metrics: dict = {}
             bound = provider._planner_contract(raw, metrics)

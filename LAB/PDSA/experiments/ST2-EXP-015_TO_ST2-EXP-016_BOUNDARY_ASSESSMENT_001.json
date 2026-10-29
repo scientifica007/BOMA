@@ -1,0 +1,25 @@
+{
+  "schema": "BOMA-ST2-EXP-015-TO-016-BOUNDED-TRANSITION-ASSESSMENT-001",
+  "date": "2026-10-29",
+  "from_experiment": "ST2-EXP-015",
+  "to_candidate": "ST2-EXP-016",
+  "queue_cursor": 1,
+  "scientific_prerequisites": "MET",
+  "decision": "OWNER_REQUIRED",
+  "decision_reason": "BOUNDED_OWNER_INSTRUCTION_COMPLETED_AT_015; do not start or freeze 016 within this continuation.",
+  "gates": {
+    "014_closed_and_preserved": true,
+    "015_closed_exact_head": "d91b32250f4cdc800f26b728e388902797bf5200",
+    "route_composition_square_verified": true,
+    "accepted_orderTotal_dependency_question_remains_separable_from_route_identity": true,
+    "accepted_production_interface_unchanged": true,
+    "new_sequence_critical_prerequisite": false,
+    "queue_order_unchanged": true
+  },
+  "mathematical_scope": "015 retained orderTotal. Its current field declaration closure contains CauchyScalarCertificate.orderTotal and CauchyOrderTotal003.rcle_total. This records current proof dependence, not mathematical necessity or a minimal interface. No 016 replacement condition is chosen here.",
+  "execution_scope": "OWNER_DIRECTED_BOUNDED_015_ONLY",
+  "owner_authorization_record": "LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md",
+  "016_started": false,
+  "016_frozen_plan": null,
+  "G8_armed_by_this_act": false
+}

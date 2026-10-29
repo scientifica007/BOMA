@@ -1,7 +1,7 @@
 {
   "schema": "BOMA-AUTONOMOUS-RESEARCH-PROGRAM-STATE-001",
   "status_date": "2026-10-29",
-  "state": "CLOSING",
+  "state": "OWNER_REQUIRED",
   "active_program_id": "ST2-RP-001",
   "owner_authorization_record": "LAB/PDSA/RESEARCH_PROGRAM_ST2_RP_001_R_C_COMPOSITIONALITY_MINIMALITY.md",
   "program_manifest": "LAB/PDSA/ST2_RP_001_PROGRAM_MANIFEST_001.json",
@@ -15,43 +15,54 @@
     "ST2-EXP-017"
   ],
   "queue_cursor": 1,
-  "active_experiment": "ST2-EXP-015",
-  "active_experiment_branch": "feature/stage-two-st2-exp-015-route-composition",
-  "active_frozen_plan": "LAB/PDSA/PDSA-ST2-EXP-015_ROUTE_COMPOSITION_SQUARE.md",
-  "active_frozen_plan_sha": "1bd27f622753558fb622436d2e27560462ea1771",
-  "active_experiment_frozen_reference_sha": "575ce175ebc024a33d5c3e7925779b2b8ae9921f",
-  "active_experiment_origin_record": "LAB/PDSA/experiments/ST2-EXP-015_BRANCH_ORIGIN_RECORD_001.json",
-  "active_work_head_before_ci_state_commit": "10fcc0f5da0be9891408bee08c9fb86c622f851f",
-  "last_verified_head": "10fcc0f5da0be9891408bee08c9fb86c622f851f",
-  "waiting_on": "EXACT_HEAD_ST2_EXP_015_STUDY_ACT_AND_LIFECYCLE_CLOSURE_CI",
-  "owner_required_reason": null,
+  "active_experiment": null,
+  "active_experiment_branch": null,
+  "active_frozen_plan": null,
+  "active_frozen_plan_sha": null,
+  "active_experiment_frozen_reference_sha": null,
+  "active_experiment_origin_record": null,
+  "active_work_head_before_ci_state_commit": null,
+  "last_verified_head": "d91b32250f4cdc800f26b728e388902797bf5200",
+  "waiting_on": "BOUNDED_015_COMPLETE_AWAIT_OWNER_SCOPE_FOR_016",
+  "owner_required_reason": "BOUNDED_OWNER_INSTRUCTION_COMPLETED_AT_015_NO_016_START_OR_PLAN_FREEZE",
   "routine_merge_authorized": true,
   "current_stage_two_frontier": {
-    "active_experiment": "ST2-EXP-015",
-    "active_experiment_status": "CLOSING / STUDY_ACT_PASS / EXACT_CLOSURE_CI_PENDING",
-    "latest_completed_experiment": "ST2-EXP-014",
-    "latest_completed_status": "CLOSED_PASS / EXACT_HEAD_VERIFIED / ROUTINE_MERGED",
+    "active_experiment": null,
+    "active_experiment_status": "NONE / BOUNDED_015_COMPLETE",
+    "latest_completed_experiment": "ST2-EXP-015",
+    "latest_completed_status": "CLOSED_PASS / EXACT_CLOSURE_VERIFIED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-003",
-    "next_experiment": "ST2-EXP-015",
-    "next_experiment_status": "ACTIVE / CLOSING",
-    "activation_authorized_by_this_state": true
+    "next_experiment": "ST2-EXP-016",
+    "next_experiment_status": "SCIENTIFIC_PREREQUISITES_MET / HELD_BY_BOUNDED_OWNER_INSTRUCTION / NOT_STARTED",
+    "activation_authorized_by_this_state": false
   },
   "program_transition": {
-    "from_experiment": "ST2-EXP-014",
-    "to_candidate": "ST2-EXP-015",
+    "from_experiment": "ST2-EXP-015",
+    "to_candidate": "ST2-EXP-016",
     "queue_order_immutable_without_owner": true,
     "informative_fail_may_transition_if_prerequisites_hold": true,
     "sequence_critical_discovery_means": "OWNER_REQUIRED",
     "program_completion_requires_program_level_synthesis": true,
     "transition_decision_recorded": true,
-    "last_transition_decision": "AUTO_CONTINUE"
+    "last_transition_decision": "OWNER_REQUIRED",
+    "transition_record": "LAB/PDSA/experiments/ST2-EXP-015_TO_ST2-EXP-016_BOUNDARY_ASSESSMENT_001.json"
   },
-  "next_legal_action": "VERIFY_ST2-EXP-015_CLOSURE_HEAD_THEN_FINALIZE_BOUNDED_STOP",
+  "next_legal_action": "STOP_BEFORE_ST2-EXP-016_UNTIL_OWNER_EXTENDS_BOUNDED_SCOPE",
   "safety": {
     "fail_closed": true,
     "ambiguous_authority_means": "OWNER_REQUIRED",
     "main_research_writes_allowed": false
   },
-  "active_frozen_plan_machine": "LAB/PDSA/autonomy/ST2-EXP-015/FROZEN_PLAN.json",
-  "owner_execution_authorization_record": "LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md"
+  "active_frozen_plan_machine": null,
+  "owner_execution_authorization_record": "LAB/PDSA/OWNER_AUTHORIZATION_ST2_EXP_015_2026-10-28.md",
+  "last_completed_experiment_evidence": {
+    "experiment": "ST2-EXP-015",
+    "branch": "feature/stage-two-st2-exp-015-route-composition",
+    "frozen_plan_sha": "1bd27f622753558fb622436d2e27560462ea1771",
+    "frozen_reference_sha": "575ce175ebc024a33d5c3e7925779b2b8ae9921f",
+    "verified_closure_head": "d91b32250f4cdc800f26b728e388902797bf5200",
+    "exact_verification_record": "LAB/PDSA/experiments/ST2-EXP-015_EXACT_LIFECYCLE_VERIFICATION_001.json",
+    "routine_merge_tracking": "https://github.com/scientifica007/BOMA/pull/25"
+  },
+  "synchronized_main_sha_scope": "LAST_SYNCHRONIZED_PRE_015_MAIN; current main and merge identity are resolved from Git and PR 25."
 }

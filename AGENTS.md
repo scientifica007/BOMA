@@ -7,22 +7,27 @@ This synchronized marker supersedes older current-frontier prose below.
 Historical records remain immutable evidence of their own time.
 
 ```text
-STATE: CLOSING
+STATE: OWNER_REQUIRED
 PROGRAM: ST2-RP-001
 QUEUE_CURSOR: 1
-ACTIVE_EXPERIMENT: ST2-EXP-015
-LATEST_COMPLETED: ST2-EXP-014
-NEXT_EXPERIMENT: ST2-EXP-015
-TRANSITION_FROM: ST2-EXP-014
-TRANSITION_CANDIDATE: ST2-EXP-015
+ACTIVE_EXPERIMENT: None
+LATEST_COMPLETED: ST2-EXP-015 / CLOSED_PASS / EXACT_CLOSURE_VERIFIED
+NEXT_EXPERIMENT: ST2-EXP-016 / NOT_STARTED / NO_FROZEN_PLAN
+TRANSITION_FROM: ST2-EXP-015
+TRANSITION_CANDIDATE: ST2-EXP-016
 TRANSITION_DECISION_RECORDED: True
-FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
-FROZEN_REFERENCE_MAIN_SHA: 575ce175ebc024a33d5c3e7925779b2b8ae9921f
-NEXT_LEGAL_ACTION: VERIFY_ST2-EXP-015_CLOSURE_HEAD_THEN_FINALIZE_BOUNDED_STOP
+TRANSITION_DECISION: OWNER_REQUIRED / BOUNDED_OWNER_SCOPE_COMPLETED
+SCIENTIFIC_PREREQUISITES_FOR_016: MET
+015_EXACT_CLOSURE_HEAD: d91b32250f4cdc800f26b728e388902797bf5200
+015_FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
+NEXT_LEGAL_ACTION: STOP_BEFORE_ST2-EXP-016_UNTIL_OWNER_EXTENDS_BOUNDED_SCOPE
 ```
 
-Owner-directed continuation of 2026-10-28: independent Plan frozen before Do; mathematical head passed all 20 PR checks; Study/Act PASS; exact closure CI pending.
-G8 remains paused. This bounded continuation stops before starting/freezing 016.
+Owner-directed 015 continuation completed on 2026-10-29. Both the mathematical
+and lifecycle heads passed all 20 applicable PR checks. Final administrative
+head and merge evidence are tracked by PR #25. G8 remains unarmed; no 016 Plan
+was created or frozen. OWNER_REQUIRED records the completed bounded scope,
+not a mathematical failure. The accepted selections and exports are unchanged.
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
 

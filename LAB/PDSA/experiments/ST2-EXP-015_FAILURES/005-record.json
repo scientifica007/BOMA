@@ -1,0 +1,13 @@
+{
+  "attempt": "015-LOCAL-FINALIZATION-001",
+  "date": "2026-10-29",
+  "kind": "TECHNICAL_PLANNER_TEST_LIVE_FRONTIER_COUPLING",
+  "verified_closure_head": "d91b32250f4cdc800f26b728e388902797bf5200",
+  "diagnostic": "After active 015 was cleared and next_experiment correctly became held 016, test_planner_manifest_contract_injects_missing_fixed_fields expected ST2-EXP-015 but the live-state planner correctly selected ST2-EXP-016.",
+  "recovery": "The two existing 015 planner-contract tests now supply the explicit 015 prestart fixture, while retaining positive field injection and negative conflicting-factor assertions. No live runtime state is armed or changed by the tests.",
+  "verifier_change": "Pin the exact corrected test Git blob, retaining the initial repair-commit ancestry check and all other protected baseline checks.",
+  "test_blob": "2866cefeb0fe3f680b13b5daf61e8584cc9eb27f",
+  "scientific_plan_changed": false,
+  "mathematical_failure": false,
+  "final_exact_head_ci_required": true
+}
