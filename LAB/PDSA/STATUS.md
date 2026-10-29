@@ -12,22 +12,28 @@ PROGRAM: ST2-RP-001
 QUEUE_CURSOR: 1
 ACTIVE_EXPERIMENT: None
 LATEST_COMPLETED: ST2-EXP-015 / CLOSED_PASS / EXACT_CLOSURE_VERIFIED
-NEXT_EXPERIMENT: ST2-EXP-016 / NOT_STARTED / NO_FROZEN_PLAN
+NEXT_EXPERIMENT: ST2-EXP-016 / PLAN_FROZEN / NOT_STARTED / NO_DO
 TRANSITION_FROM: ST2-EXP-015
 TRANSITION_CANDIDATE: ST2-EXP-016
 TRANSITION_DECISION_RECORDED: True
-TRANSITION_DECISION: OWNER_REQUIRED / BOUNDED_OWNER_SCOPE_COMPLETED
+TRANSITION_DECISION: OWNER_REQUIRED / 016_PLAN_FROZEN_AWAIT_EXPLICIT_OWNER_DO
 SCIENTIFIC_PREREQUISITES_FOR_016: MET
 015_EXACT_CLOSURE_HEAD: d91b32250f4cdc800f26b728e388902797bf5200
 015_FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
-NEXT_LEGAL_ACTION: STOP_BEFORE_ST2-EXP-016_UNTIL_OWNER_EXTENDS_BOUNDED_SCOPE
+NEXT_LEGAL_ACTION: STOP_BEFORE_016_DO_UNTIL_NEW_EXPLICIT_OWNER_INSTRUCTION
+016_FROZEN_PLAN_COMMIT: 212f4f87fe02af13ef8fd2ed487e0bec18841d88
+016_FROZEN_REFERENCE_MAIN: e03ea85528aa98cb86562a1d00e57ca5c06323fa
 ```
 
 Owner-directed 015 continuation completed on 2026-10-29. Both the mathematical
 and lifecycle heads passed all 20 applicable PR checks. Final administrative
-head and merge evidence are tracked by PR #25. G8 remains unarmed; no 016 Plan
-was created or frozen. OWNER_REQUIRED records the completed bounded scope,
-not a mathematical failure. The accepted selections and exports are unchanged.
+head and merge evidence are tracked by PR #25. At that historical 015
+closure, no 016 Plan existed. **Subsequently on 2026-10-29**, by a distinct
+owner instruction, 016 received a frozen Plan in commit `212f4f87fe02af13ef8fd2ed487e0bec18841d88`
+on `planning/st2-exp-016-frozen-plan-2026-10-29`. This is **PLAN ONLY, NO DO**; the active experiment
+remains null, and `OWNER_REQUIRED` now waits for a *separate* Do
+instruction. G8 remains disabled/unarmed. The accepted selections and
+exports are unchanged.
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
 ## CURRENT OWNER EXECUTION MODE — 2026-10-29
@@ -51,14 +57,17 @@ and the new interactive policy govern present work.
 
 **Scientific frontier:** `ST2-RP-001` is retained as an ordered research agenda,
 not a blanket execution grant. `ST2-EXP-015` is `CLOSED_PASS` and merged by
-PR #25; `ST2-EXP-016` is `NOT_STARTED / NO_FROZEN_PLAN`, with scientific
-prerequisites `MET` but execution held for a **new owner instruction**.
+PR #25; `ST2-EXP-016` is `PLAN_FROZEN / NOT_STARTED / NO_DO`, with scientific
+prerequisites `MET` but execution held for a **new explicit owner Do instruction**.
 `ST2-EXP-017` remains conditional on evidence from 016. Current state remains
 `OWNER_REQUIRED`, no active experiment. The selected Dedekind R and Route P C,
 accepted source interfaces, `SELECTS`, and historical Frozen Plans stay intact.
 
 **Next legal work:** complete explicitly commissioned maintenance PDSA tasks,
-or await a separate owner-authorized Plan for 016. Begin from actual current
+or await a separate owner instruction to begin Do for the frozen 016 Plan.
+The frozen Plan is indexed by `pre_do_frozen_plan` in the current program
+state; `active_frozen_plan` remains null because no Do has been authorized.
+Begin from actual current
 GitHub `main`, never from the historical `synchronized_main_sha` baseline.
 No direct writes to protected `main`; submit a PR for the owner's review and
 decision. The current state/decision supersede the old autonomy snapshot below.

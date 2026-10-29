@@ -1,0 +1,38 @@
+{
+  "schema": "BOMA-ST2-EXP-016-PLAN-FREEZE-RECORD-001",
+  "date": "2026-10-29",
+  "program_id": "ST2-RP-001",
+  "experiment_id": "ST2-EXP-016",
+  "status": "PLAN_FROZEN_OWNER_DO_REQUIRED",
+  "owner_authorization_scope": "PREPARE_AND_FREEZE_PLAN_ONLY",
+  "current_main_at_freeze": "e03ea85528aa98cb86562a1d00e57ca5c06323fa",
+  "freeze_branch": "planning/st2-exp-016-frozen-plan-2026-10-29",
+  "freeze_commit_sha": "212f4f87fe02af13ef8fd2ed487e0bec18841d88",
+  "freeze_commit_parent_sha": "e03ea85528aa98cb86562a1d00e57ca5c06323fa",
+  "immutable_files": [
+    {
+      "path": "LAB/PDSA/PDSA-ST2-EXP-016_NORM_ANISOTROPY_FROZEN.md",
+      "git_blob_sha": "821ff8e23afc06cba2c047bc9372736bbbb79f20"
+    },
+    {
+      "path": "LAB/PDSA/plans/ST2-EXP-016/FROZEN_PLAN.json",
+      "git_blob_sha": "8979e12856064352b48aba30d156fd8de6f1ee90"
+    },
+    {
+      "path": "LAB/PDSA/experiments/ST2-EXP-016_BRANCH_ORIGIN_RECORD_001.json",
+      "git_blob_sha": "830eafd1c041217529cb1ca12e296547469eb51f"
+    }
+  ],
+  "commit_tree_sha": "16e26f826483324ab870d4f9c6adc1e0254b9085",
+  "frozen_plan_committed_before_do": true,
+  "research_payload_files_in_freeze_commit": 0,
+  "experiment_started": false,
+  "active_experiment": null,
+  "active_frozen_plan": null,
+  "do_authorized": false,
+  "state_after_freeze": "OWNER_REQUIRED",
+  "future_workflow_must_verify": "FROZEN_PLAN_IS_ANCESTOR_AND_IMMUTABLE_BYTES",
+  "automatic_017_transition_allowed": false,
+  "automatic_merge_allowed": false,
+  "provenance_note": "The freeze commit adds only the human Plan, JSON twin and typed origin record. This subsequent bookkeeping commit updates mutable state, status and the freeze-record pointer. No mathematical Do occurred."
+}
