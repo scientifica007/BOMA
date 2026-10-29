@@ -1,0 +1,58 @@
+name: BOMA ST2-EXP-015 route-composition square
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/payloads/lean/CStage/ST2Exp015*.lean'
+      - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_015*'
+      - 'LAB/PDSA/PDSA-ST2-EXP-015_ROUTE_COMPOSITION_SQUARE.md'
+      - 'LAB/PDSA/autonomy/ST2-EXP-015/**'
+      - 'LAB/PDSA/experiments/ST2-EXP-015*'
+      - 'LAB/PDSA/experiments/ST2-EXP-015*/**'
+      - 'LAB/PDSA/AUTONOMOUS_RESEARCH_PROGRAM_STATE_001.json'
+      - 'LAB/00_ARCHITECTURE/tools/st2_exp_015_verify.py'
+      - 'tests/boma_autonomy/test_governance.py'
+      - '.github/workflows/boma-st2-exp-015-route-composition.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: boma-st2-exp-015-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    name: verify independent Q, native PQ and external square
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact experimental head and full ancestry
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Verify frozen Plan, ordered native gates, external square and regressions
+        env:
+          BOMA_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          PYTHONDONTWRITEBYTECODE: '1'
+        run: python3 LAB/00_ARCHITECTURE/tools/st2_exp_015_verify.py --output-dir /tmp/boma-st2-exp-015-verification
+      - name: Preserve exact-head evidence including failures
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-015-route-square-${{ github.run_id }}-${{ github.run_attempt }}
+          path: /tmp/boma-st2-exp-015-verification
+          if-no-files-found: warn
+          retention-days: 90
