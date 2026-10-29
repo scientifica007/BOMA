@@ -12,15 +12,17 @@ PROGRAM: ST2-RP-001
 QUEUE_CURSOR: 1
 ACTIVE_EXPERIMENT: None
 LATEST_COMPLETED: ST2-EXP-015 / CLOSED_PASS / EXACT_CLOSURE_VERIFIED
-NEXT_EXPERIMENT: ST2-EXP-016 / PLAN_FROZEN / NOT_STARTED / NO_DO
+NEXT_EXPERIMENT: ST2-EXP-016 / DO_IN_PROGRESS / NOT_CLOSED
 TRANSITION_FROM: ST2-EXP-015
 TRANSITION_CANDIDATE: ST2-EXP-016
 TRANSITION_DECISION_RECORDED: True
-TRANSITION_DECISION: OWNER_REQUIRED / 016_PLAN_FROZEN_AWAIT_EXPLICIT_OWNER_DO
+TRANSITION_DECISION: OWNER_REQUIRED / 016_OWNER_DIRECTED_DO_ACTIVE
 SCIENTIFIC_PREREQUISITES_FOR_016: MET
 015_EXACT_CLOSURE_HEAD: d91b32250f4cdc800f26b728e388902797bf5200
 015_FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
-NEXT_LEGAL_ACTION: STOP_BEFORE_016_DO_UNTIL_NEW_EXPLICIT_OWNER_INSTRUCTION
+NEXT_LEGAL_ACTION: OWNER_DIRECTED_ST2_EXP_016_DO_ONLY_NO_AUTONOMOUS_ACTION_NO_017
+016_VERIFIED_DO_HEAD: d1ea2b1d64253206cba4c8eb34cfd8cea2e8b24b
+016_DO_GATES: A_C_VERIFIED / D_KERNEL_CANDIDATE_VERIFIED / SEMANTIC_AUDIT_OPEN
 016_FROZEN_PLAN_COMMIT: 212f4f87fe02af13ef8fd2ed487e0bec18841d88
 016_FROZEN_REFERENCE_MAIN: e03ea85528aa98cb86562a1d00e57ca5c06323fa
 ```
@@ -30,9 +32,14 @@ and lifecycle heads passed all 20 applicable PR checks. Final administrative
 head and merge evidence are tracked by PR #25. At that historical 015
 closure, no 016 Plan existed. **Subsequently on 2026-10-29**, by a distinct
 owner instruction, 016 received a frozen Plan in commit `212f4f87fe02af13ef8fd2ed487e0bec18841d88`
-on `planning/st2-exp-016-frozen-plan-2026-10-29`. This is **PLAN ONLY, NO DO**; the active experiment
-remains null, and `OWNER_REQUIRED` now waits for a *separate* Do
-instruction. G8 remains disabled/unarmed. The accepted selections and
+on `planning/st2-exp-016-frozen-plan-2026-10-29`. That freeze was **PLAN ONLY**, with no Do permission at freeze time.
+**Later on 2026-10-29** the owner explicitly authorized Do, which is
+now in progress on a separate research branch with exact-head A–D kernel
+candidate evidence. The historical G8 active-experiment field remains
+null to preserve the disabled-runtime audit; the authoritative live
+human-directed Do overlay is `owner_directed_do_016` in the mutable
+program state. Semantic nine-Claim/axiom and final-head verification
+remain open; G8 remains disabled/unarmed. The accepted selections and
 exports are unchanged.
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
@@ -57,16 +64,19 @@ and the new interactive policy govern present work.
 
 **Scientific frontier:** `ST2-RP-001` is retained as an ordered research agenda,
 not a blanket execution grant. `ST2-EXP-015` is `CLOSED_PASS` and merged by
-PR #25; `ST2-EXP-016` is `PLAN_FROZEN / NOT_STARTED / NO_DO`, with scientific
-prerequisites `MET` but execution held for a **new explicit owner Do instruction**.
+PR #25; `ST2-EXP-016` is `PLAN_FROZEN / OWNER_DIRECTED_DO_IN_PROGRESS /
+NOT_CLOSED`. The owner has explicitly authorized Do. No automatic
+Study/Act/017 transition or merge is authorized.
 `ST2-EXP-017` remains conditional on evidence from 016. Current state remains
 `OWNER_REQUIRED`, no active experiment. The selected Dedekind R and Route P C,
 accepted source interfaces, `SELECTS`, and historical Frozen Plans stay intact.
 
 **Next legal work:** complete explicitly commissioned maintenance PDSA tasks,
-or await a separate owner instruction to begin Do for the frozen 016 Plan.
-The frozen Plan is indexed by `pre_do_frozen_plan` in the current program
-state; `active_frozen_plan` remains null because no Do has been authorized.
+or continue only the owner-authorized, bounded 016 Do task on its
+research branch. `pre_do_frozen_plan` retains the pre-Do historical
+snapshot while `owner_directed_do_016` records the later explicit Do
+permission and exact-head proof evidence. Legacy `active_frozen_plan`
+remains null because the autonomous engine is permanently disabled.
 Begin from actual current
 GitHub `main`, never from the historical `synchronized_main_sha` baseline.
 No direct writes to protected `main`; submit a PR for the owner's review and
