@@ -6,6 +6,7 @@ on:
       - 'LAB/payloads/lean/CStage/ST2Exp016AcceptedSemanticBridge.lean'
       - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016_ACCEPTED_BRIDGE_INPUTS.txt'
       - '.github/workflows/boma-st2-exp-016-accepted-bridge.yml'
+      - 'LAB/00_ARCHITECTURE/tools/st2_exp_016_semantic_boundary_audit.py'
   push:
     branches:
       - 'feature/stage-two-st2-exp-016-*'
@@ -64,6 +65,21 @@ jobs:
           assert not any(n.endswith('.cPairFieldCertificateFromAcceptedR') or n.endswith('.cStageIntegrationCertificate') for n in names), 'selected accepted field/integration proof oracle'
           print('EXTERNAL ACCEPTED TYPE ADAPTER VERIFIED — NOT CA-19 JUNCTION PROMOTION')
           PY
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage ST2-EXP-016-SEMANTIC-ONLY-FIELD \
+            --manifest LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016_ACCEPTED_BRIDGE_INPUTS.txt \
+            --target BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.selectedFieldCompatibility016 \
+            --json-out /tmp/boma-016-semantic/field-dependency.json >/dev/null
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage ST2-EXP-016-SEMANTIC-ONLY-INTEGRATION \
+            --manifest LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016_ACCEPTED_BRIDGE_INPUTS.txt \
+            --target BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.selectedIntegrationCompatibility016 \
+            --json-out /tmp/boma-016-semantic/integration-dependency.json >/dev/null
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_016_semantic_boundary_audit.py \
+            --field /tmp/boma-016-semantic/field-dependency.json \
+            --integration /tmp/boma-016-semantic/integration-dependency.json \
+            --joint /tmp/boma-016-semantic/dependency.json \
+            --output-dir /tmp/boma-016-semantic
           test -z "$(git status --porcelain=v1)"
       - name: Upload bridge verification output
         if: always()
