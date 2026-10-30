@@ -1,0 +1,72 @@
+name: BOMA ST2-EXP-016 — accepted semantics external bridge
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/payloads/lean/CStage/ST2Exp016AcceptedSemanticBridge.lean'
+      - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016_ACCEPTED_BRIDGE_INPUTS.txt'
+      - '.github/workflows/boma-st2-exp-016-accepted-bridge.yml'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-016-*'
+permissions:
+  contents: read
+jobs:
+  verify:
+    name: verify 016 exact accepted field and presentation adapters
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - name: Checkout exact source head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Verify external semantic adapter, dependency roots, and frozen controls
+        env:
+          BOMA_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          PYTHONDONTWRITEBYTECODE: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/boma-016-semantic
+          test "$(git rev-parse HEAD)" = "$BOMA_EXPECTED_HEAD"
+          git merge-base --is-ancestor 212f4f87fe02af13ef8fd2ed487e0bec18841d88 HEAD
+          git diff --exit-code 212f4f87fe02af13ef8fd2ed487e0bec18841d88 HEAD -- \
+            LAB/PDSA/PDSA-ST2-EXP-016_NORM_ANISOTROPY_FROZEN.md \
+            LAB/PDSA/plans/ST2-EXP-016/FROZEN_PLAN.json \
+            LAB/PDSA/experiments/ST2-EXP-016_BRANCH_ORIGIN_RECORD_001.json
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage ST2-EXP-016-ACCEPTED-SEMANTIC-EXTERNAL \
+            --manifest LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016_ACCEPTED_BRIDGE_INPUTS.txt \
+            --target BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.selectedFieldCompatibility016 \
+            --target BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.researchAcceptedPresentation016 \
+            --target BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.researchExactComparison016 \
+            --target BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.compareResearchToSelected016 \
+            --json-out /tmp/boma-016-semantic/dependency.json \
+            | tee /tmp/boma-016-semantic/console.log
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/boma-016-semantic/dependency.json'))
+          assert d['status']=='PROTOTYPE_PASS' and not d['unresolved'] and not d['internal_axioms']
+          names={x['name'] for x in d['internal']}|{x['name'] for x in d['external_boundary']}
+          assert not any(n.endswith('.cPairFieldCertificateFromAcceptedR') or n.endswith('.cStageIntegrationCertificate') for n in names), 'selected accepted field/integration proof oracle'
+          print('EXTERNAL ACCEPTED TYPE ADAPTER VERIFIED — NOT CA-19 JUNCTION PROMOTION')
+          PY
+          test -z "$(git status --porcelain=v1)"
+      - name: Upload bridge verification output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-016-semantic-${{ github.run_id }}-${{ github.run_attempt }}
+          path: /tmp/boma-016-semantic
+          if-no-files-found: warn
