@@ -33,7 +33,7 @@
     "latest_completed_status": "CLOSED_PASS / EXACT_CLOSURE_VERIFIED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-003",
     "next_experiment": "ST2-EXP-016",
-    "next_experiment_status": "OWNER_DIRECTED_STUDY_RECORDED_PARTIAL / NOT_CLOSED / ACT_NOT_STARTED",
+    "next_experiment_status": "SUPPLEMENTAL_DO_BRIDGE_VERIFIED / OWNER_STUDY_REASSESSMENT_REQUIRED / NOT_CLOSED",
     "activation_authorized_by_this_state": false
   },
   "program_transition": {
@@ -103,7 +103,7 @@
     "experiment_id": "ST2-EXP-016",
     "program_id": "ST2-RP-001",
     "mode": "OWNER_DIRECTED_INTERACTIVE_PDSA",
-    "status": "STUDY_RECORDED_PARTIAL_NOT_CLOSED_OWNER_REVIEW_REQUIRED",
+    "status": "SUPPLEMENTAL_DO_BRIDGE_VERIFIED_OWNER_STUDY_REASSESSMENT_REQUIRED_NOT_CLOSED",
     "do_authorized": true,
     "owner_authorization_type": "EXPLICIT_USER_CURRENT_SESSION_2026_10_29",
     "owner_authorization_record": "LAB/PDSA/experiments/ST2-EXP-016_DO_KERNEL_CHECKPOINT_001.md",
@@ -132,6 +132,19 @@
     "study_reference_head": "c327135c86c28c34ea2a2fd9376a76c911ae8ce7",
     "study_owner_authorized": true,
     "act_authorized": false,
-    "merge_authorized": false
+    "merge_authorized": false,
+    "supplemental_do_authorized": true,
+    "supplemental_do_scope": "EXACT_ACCEPTED_SEMANTIC_BRIDGE_016_NO_STUDY_ACT_MERGE_017",
+    "supplemental_do_source_head": "e84fb8b36dd05ff03191e1bf1a8b7c1b50d9c2e3",
+    "supplemental_do_evidence_record": "LAB/PDSA/experiments/ST2-EXP-016_SUPPLEMENTAL_DO_CHECKPOINT_004.md",
+    "supplemental_do_machine_record": "LAB/PDSA/experiments/ST2-EXP-016_SUPPLEMENTAL_DO_EVIDENCE_004.json",
+    "supplemental_do_field_and_integration_types": "VERIFIED_EXTERNAL_ACCEPTED_TYPES",
+    "supplemental_do_accepted_junction_governance": "NOT_PROMOTED_STUDY_REASSESSMENT_NEEDED",
+    "supplemental_do_check_runs": [
+      41025332718,
+      41025340797
+    ],
+    "supplemental_do_ci_status": "TARGETED_BRIDGE_TESTS_SUCCESS_FULL_SOURCE_AND_DOC_HEAD_CHECKS_RECHECK",
+    "study_reassessment_authorized": false
   }
 }

@@ -12,15 +12,15 @@ PROGRAM: ST2-RP-001
 QUEUE_CURSOR: 1
 ACTIVE_EXPERIMENT: None
 LATEST_COMPLETED: ST2-EXP-015 / CLOSED_PASS / EXACT_CLOSURE_VERIFIED
-NEXT_EXPERIMENT: ST2-EXP-016 / STUDY_RECORDED_PARTIAL / NOT_CLOSED
+NEXT_EXPERIMENT: ST2-EXP-016 / SUPPLEMENTAL_DO_VERIFIED / STUDY_REASSESSMENT_REQUIRED / NOT_CLOSED
 TRANSITION_FROM: ST2-EXP-015
 TRANSITION_CANDIDATE: ST2-EXP-016
 TRANSITION_DECISION_RECORDED: True
-TRANSITION_DECISION: OWNER_REQUIRED / 016_STUDY_ONLY_ACT_NOT_STARTED
+TRANSITION_DECISION: OWNER_REQUIRED / 016_SUPPLEMENTAL_DO_DONE_NO_ACT
 SCIENTIFIC_PREREQUISITES_FOR_016: MET
 015_EXACT_CLOSURE_HEAD: d91b32250f4cdc800f26b728e388902797bf5200
 015_FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
-NEXT_LEGAL_ACTION: OWNER_REVIEW_STUDY_016_NO_ACT_NO_MERGE_NO_017
+NEXT_LEGAL_ACTION: OWNER_REVIEW_SUPPLEMENTAL_DO_016_AND_AUTHORIZE_STUDY_REASSESSMENT_NO_ACT_NO_017
 016_VERIFIED_DO_HEAD: 3a63e7f84d9c9b6fa1f1820ea050a2aa88dd7c95
 016_DO_GATES: A_C_VERIFIED / D_NINE_CLAIM_TYPED_ROOT_VERIFIED / E_ABSTRACT_AND_CONCRETE_AXIOMS_MEASURED / STUDY_PARTIAL_H4_H6_OPEN
 016_FROZEN_PLAN_COMMIT: 212f4f87fe02af13ef8fd2ed487e0bec18841d88
@@ -54,6 +54,16 @@ and final lifecycle are **PARTIAL/OPEN**. No mathematical counterexample
 has been established. **ACT_NOT_STARTED**, PR #33 Draft, 017 forbidden,
 G8 disabled. Do scientific head `c327135c86c28c34ea2a2fd9376a76c911ae8ce7` completed **27/27 CI PASS**.
 This Study bookkeeping head requires separate verification.
+
+Supplemental owner-directed Do (authorized 2026-10-30) has recorded
+research-only **exact accepted certificate-type compatibility** for
+`CPairFieldCertificate`, `QuadraticFieldPresentation` and
+`CStageIntegrationCertificate`, with separate accepted order and
+historical selected comparison dependencies. Evidence:
+`LAB/PDSA/experiments/ST2-EXP-016_SUPPLEMENTAL_DO_CHECKPOINT_004.md`; exact scientific source head
+`e84fb8b36dd05ff03191e1bf1a8b7c1b50d9c2e3`. The earlier Study PARTIAL verdict remains preserved
+until **separately owner-authorized Study reassessment**. No Act, no
+acceptance promotion, no 017, no automatic merge or G8.
 
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
