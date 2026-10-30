@@ -14,8 +14,8 @@ open BOMA.C.StageTwo.NormAnisotropy016
 
 /-- Fixed other fifteen fields, projected from the historical R certificate. -/
 def concreteFifteen016 : RWithoutOrderTotalCertificate where
-  orderTrans := narrowRFromAcceptedProducers.orderTrans
-  orderAntisymm := narrowRFromAcceptedProducers.orderAntisymm
+  orderTrans := fun _ _ _ hab hbc => narrowRFromAcceptedProducers.orderTrans hab hbc
+  orderAntisymm := fun _ _ hab hba => narrowRFromAcceptedProducers.orderAntisymm hab hba
   nontrivial := narrowRFromAcceptedProducers.nontrivial
   addComm := narrowRFromAcceptedProducers.addComm
   addAssoc := narrowRFromAcceptedProducers.addAssoc
