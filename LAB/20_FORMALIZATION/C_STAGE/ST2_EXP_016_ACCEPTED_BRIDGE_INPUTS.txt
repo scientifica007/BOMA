@@ -92,6 +92,13 @@ LAB/payloads/lean/CStage/CPairCore001.lean
 LAB/payloads/lean/CStage/CPairNormInverse001.lean
 LAB/payloads/lean/CStage/CQuadraticComparison001.lean
 LAB/payloads/lean/CStage/CStageIntegration001.lean
+LAB/payloads/lean/CStage/ST2Exp001NarrowRInterface.lean
+LAB/payloads/lean/CStage/ST2Exp001NarrowNoSquare.lean
+LAB/payloads/lean/CStage/ST2Exp001NarrowRoutePair.lean
+LAB/payloads/lean/CStage/ST2Exp001NarrowPairCore.lean
+LAB/payloads/lean/CStage/ST2Exp001NarrowPairNormInverse.lean
+LAB/payloads/lean/CStage/ST2Exp001NarrowQuadraticComparison.lean
+LAB/payloads/lean/CStage/ST2Exp001NarrowIntegration.lean
 LAB/payloads/lean/CStage/ST2Exp011GenericQuadraticComparison.lean
 LAB/payloads/lean/CStage/ST2Exp004WithoutOrderTotalCConsumers.lean
 LAB/payloads/lean/CStage/ST2Exp016AlgebraicNormBridge.lean
