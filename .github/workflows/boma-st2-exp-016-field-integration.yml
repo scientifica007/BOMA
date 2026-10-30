@@ -6,6 +6,7 @@ on:
       - 'LAB/payloads/lean/CStage/ST2Exp016*.lean'
       - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016*'
       - '.github/workflows/boma-st2-exp-016-field-integration.yml'
+      - 'LAB/00_ARCHITECTURE/tools/st2_exp_016_gate_e_axioms.py'
   push:
     branches:
       - 'feature/stage-two-st2-exp-016-*'
@@ -61,6 +62,8 @@ jobs:
           assert not any(x.endswith('.orderTotal') or 'rLE_total_classical' in x for x in names), 'hidden totality dependence'
           print('GATE_D_KERNEL_CANDIDATE_ONLY — semantic Claim audit not yet closed')
           PY
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_016_gate_e_axioms.py \
+            --output-dir /tmp/boma-st2-exp-016-gate-d
           test -z "$(git status --porcelain=v1)"
       - name: Upload Gate D output even when blocked
         if: always()
