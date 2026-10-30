@@ -1,4 +1,18 @@
-# BOMA — Project Handoff / START HERE
+# BOMA — Branch Oriented Math | البداية / START HERE
+
+## ما هو BOMA؟ / What is BOMA?
+
+**BOMA منظومة لبناء رياضيات شفافة، قابلة للتتبع والتحقق والتوثيق والتفرع.** يتيح فتح فرع بنائي مستقل نتيجة تغيير محدد، ثم تطويره دون تعديل الأصل أو اشتراط الرجوع إليه؛ ويحتفظ بأدلة الفروع الناجحة والجزئية والفاشلة. الطموح الأعلى اكتشاف أو ابتكار رياضيات جديدة، مع قيمة بيداغوجية مستقلة.
+
+**BOMA constructs transparent, traceable, verifiable and branchable mathematics.** A controlled change can open an independent mathematical branch founded on its actual roots. The original is preserved; comparison or reconvergence is optional. Successful and unsuccessful branches both yield documented knowledge. New mathematical discovery is an aspiration; pedagogical value does not depend on it.
+
+**Critical distinction / تمييز أساسي:** rebuilding known number systems (`N → Z → Q → R → C`) is a **calibration/test strategy**, not BOMA's definition, a mandatory starting point, or a limit on future mathematical constructions.
+
+**Start here for the owner's complete, bilingual explanation:** [BOMA Project Identity and Branching Principles — عربي / English](LAB/00_ARCHITECTURE/BOMA_PROJECT_IDENTITY_AND_BRANCHING_PRINCIPLES.md).
+
+For the live research frontier, always inspect [PDSA STATUS](LAB/PDSA/STATUS.md), current GitHub PRs and the latest owner authority. Historical onboarding snapshots in this file can predate open research branches (e.g. [Draft PR #33 — archived partial 016 research](https://github.com/scientifica007/BOMA/pull/33), as of 2026-10-30); Draft research is not merged `main` acceptance.
+
+## Historical mathematical-calibration and handoff context
 
 BOMA builds a transparent, traceable mathematical architecture from a declared pre-numerical constructional layer toward standard number systems.
 
