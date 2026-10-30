@@ -1,0 +1,98 @@
+{
+  "schema": "BOMA-ST2-EXP-016-NINE-CLAIM-RESEARCH-MEANINGS-001",
+  "date": "2026-10-30",
+  "status": "DO_GATE_D_RESEARCH_SEMANTIC_WITNESS_CANDIDATE_NOT_ACCEPTANCE_PROMOTION",
+  "program": "ST2-RP-001",
+  "experiment": "ST2-EXP-016",
+  "frozen_plan_commit": "212f4f87fe02af13ef8fd2ed487e0bec18841d88",
+  "scalar": "RBOMA",
+  "route": "C_ROUTE_P",
+  "single_changed_factor": "ORDERTOTAL_TO_NORM_ANISOTROPY",
+  "semantic_root": "BOMA.C.StageTwo.NormAnisotropy016.nineClaimMeaningCertificate016",
+  "field_root": "BOMA.C.StageTwo.NormAnisotropy016.fieldCertificate016",
+  "nonnneg_auxiliary": "normNonnegative omitted from research proof structure only; accepted contract untouched; final semantic classification pending",
+  "claims": [
+    {
+      "id": "C-CL-CARRIER-001",
+      "fields": [
+        "carrierExt"
+      ],
+      "origin": "004_GATE_E_FIXED"
+    },
+    {
+      "id": "C-CL-REMBED-001",
+      "fields": [
+        "embeddingInjective",
+        "embeddingZero",
+        "embeddingOne",
+        "embeddingNeg",
+        "embeddingAdd",
+        "embeddingMul"
+      ],
+      "origin": "004_GATE_E_FIXED"
+    },
+    {
+      "id": "C-CL-FIELD-001",
+      "fields": [
+        "scalarNontrivial",
+        "pairNontrivial",
+        "field"
+      ],
+      "origin": "016_NEW_FIELD_KERNEL"
+    },
+    {
+      "id": "C-CL-I-001",
+      "fields": [
+        "generatorSquared"
+      ],
+      "origin": "004_GATE_E_FIXED"
+    },
+    {
+      "id": "C-CL-GEN-001",
+      "fields": [
+        "realGeneration"
+      ],
+      "origin": "004_GATE_E_FIXED"
+    },
+    {
+      "id": "C-CL-COORDUNIQ-001",
+      "fields": [
+        "coordinateUnique"
+      ],
+      "origin": "004_GATE_E_FIXED"
+    },
+    {
+      "id": "C-CL-NONREAL-001",
+      "fields": [
+        "imaginaryNotReal"
+      ],
+      "origin": "004_GATE_E_FIXED"
+    },
+    {
+      "id": "C-CL-COMPARE-001",
+      "fields": [
+        "comparison",
+        "functionalComparison"
+      ],
+      "origin": "011_FIXED_EXTRACTOR_BOUNDARY"
+    },
+    {
+      "id": "C-CL-INTEGRATION-001",
+      "fields": [
+        "carrierExt",
+        "embeddingInjective",
+        "field",
+        "generatorSquared",
+        "realGeneration",
+        "coordinateUnique",
+        "imaginaryNotReal",
+        "comparison",
+        "functionalComparison"
+      ],
+      "origin": "016_NEW_INTEGRATION_RESEARCH_ROOT"
+    }
+  ],
+  "closed_acceptance_contract": false,
+  "study_act_started": false,
+  "do_status": "ACTIVE"
+}

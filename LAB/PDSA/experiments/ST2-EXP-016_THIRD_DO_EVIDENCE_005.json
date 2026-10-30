@@ -1,0 +1,82 @@
+{
+  "schema": "BOMA-ST2-EXP-016-THIRD-DO-EVIDENCE-005",
+  "record_date": "2026-10-30",
+  "phase": "THIRD_DO_ONLY",
+  "status": "RESEARCH_PROOFS_VERIFIED_STUDY_REQUIRED_NOT_CLOSED",
+  "owner_scope": "BOUNDED_INDEPENDENT_SELECTED_CA11_AND_RESEARCH_CA17_18_19_PROVENANCE_NO_STUDY_ACT_MERGE_017",
+  "scientific_head": "a4a17e01df02be241bb36dee2769aa89ce5a5341",
+  "frozen_plan_commit": "212f4f87fe02af13ef8fd2ed487e0bec18841d88",
+  "lean_roots": [
+    "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedComparison016",
+    "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedFunctionalComparison016",
+    "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedNineClaims016",
+    "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.concreteIndependentSelectedNineClaims016"
+  ],
+  "dependency_closure": {
+    "internal": 928,
+    "external_leaves": 77,
+    "edges": 10935,
+    "unresolved": 0,
+    "internal_axioms": 0,
+    "generated_source_inferences": 85,
+    "generated_historical_coordinate_helpers_explicitly_classified": 10
+  },
+  "inherited_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "historical_coordinate_helper_source": "LAB/payloads/lean/CStage/CQuadraticComparison001.lean",
+  "historical_coordinate_helper_names": [
+    "BOMA.C.QuadraticComparison001.selectedPresentation._proof_1",
+    "BOMA.C.QuadraticComparison001.selectedPresentation._proof_2",
+    "BOMA.C.QuadraticComparison001.selectedPresentation._proof_3",
+    "BOMA.C.QuadraticComparison001.selectedPresentation._proof_4",
+    "BOMA.C.QuadraticComparison001.selectedPresentation._proof_5",
+    "BOMA.C.QuadraticComparison001.selectedPresentation._proof_6",
+    "BOMA.C.QuadraticComparison001.selectedPresentation._proof_7",
+    "BOMA.C.QuadraticComparison001.selectedPresentation._proof_8",
+    "BOMA.C.QuadraticComparison001.selectedPresentation._proof_9",
+    "BOMA.C.QuadraticComparison001.selectedPresentation._proof_10"
+  ],
+  "forbidden_old_selected_c_inverse_reachable": false,
+  "forbidden_old_selected_presentation_full_reachable": false,
+  "accepted_C_J_001_producer_reachable": false,
+  "original_accepted_integration_comparison_ancestry_still_historical": true,
+  "accepted_real_order_external_auxiliary_retained": true,
+  "new_accepted_CA17_18_19_V5": false,
+  "CA20_promoted": false,
+  "research_claim_ownership": "LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016_RESEARCH_CLAIM_PRODUCERS_003.json",
+  "success_runs": [
+    {
+      "run_id": 41035707523,
+      "job": 123995890401,
+      "artifact": 12968685095,
+      "zip_sha256": "894a691f31e8a687b8d6ab9a1a9877dcab577b51b9371b2c7563508bb99a4721"
+    },
+    {
+      "run_id": 41035715335,
+      "job": 123995915676,
+      "artifact": 12968371472,
+      "zip_sha256": "fab49415a28ee656fcc9de7abe7c5568b7a25474101d77339f71e142d9921482"
+    }
+  ],
+  "failed_technical_runs": [
+    41034988899,
+    41034982793,
+    41035204789,
+    41035194567,
+    41035338982,
+    41035330797,
+    41035528664,
+    41035521697
+  ],
+  "historical_study_002_verdict": "PARTIAL_PRESERVED",
+  "third_do_study_authorized": false,
+  "act_authorized": false,
+  "merge_authorized": false,
+  "transition_to_017_authorized": false,
+  "g8_armed": false,
+  "experiment_closed": false,
+  "administrative_checkpoint_exact_head_ci": "REQUIRES_SEPARATE_CHECK"
+}

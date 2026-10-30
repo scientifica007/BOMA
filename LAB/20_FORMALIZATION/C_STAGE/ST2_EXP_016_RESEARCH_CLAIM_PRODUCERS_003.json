@@ -1,0 +1,68 @@
+{
+  "schema": "BOMA-ST2-EXP-016-THIRD-DO-RESEARCH-CLAIM-OWNERSHIP-001",
+  "phase": "BOUNDED_THIRD_DO_ONLY",
+  "plan_sha": "212f4f87fe02af13ef8fd2ed487e0bec18841d88",
+  "owner_scope": "INDEPENDENT_SELECTED_COMPARISON_AND_CA17_18_19_RESEARCH_PROVENANCE",
+  "claims": [
+    {
+      "id": "C-CL-CARRIER-001",
+      "owner": "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedNineClaims016",
+      "producer": "BOMA.C.PairCore001.c_ext",
+      "dependency_class": "FIXED_CARRIER"
+    },
+    {
+      "id": "C-CL-REMBED-001",
+      "owner": "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedNineClaims016",
+      "producer": "BOMA.C.PairCore001.cPairRingCoreCertificate",
+      "dependency_class": "FIXED_RING"
+    },
+    {
+      "id": "C-CL-FIELD-001",
+      "owner": "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedNineClaims016",
+      "producer": "BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.selectedFieldCompatibility016",
+      "dependency_class": "016_FIELD_EXTERNAL_ORDER_AUX"
+    },
+    {
+      "id": "C-CL-I-001",
+      "owner": "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedNineClaims016",
+      "producer": "BOMA.C.PairCore001.cPairRingCoreCertificate",
+      "dependency_class": "FIXED_RING"
+    },
+    {
+      "id": "C-CL-GEN-001",
+      "owner": "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedNineClaims016",
+      "producer": "BOMA.C.PairCore001.cPairRingCoreCertificate",
+      "dependency_class": "FIXED_RING"
+    },
+    {
+      "id": "C-CL-COORDUNIQ-001",
+      "owner": "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedNineClaims016",
+      "producer": "BOMA.C.PairCore001.cPairRingCoreCertificate",
+      "dependency_class": "FIXED_RING"
+    },
+    {
+      "id": "C-CL-NONREAL-001",
+      "owner": "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedNineClaims016",
+      "producer": "BOMA.C.PairCore001.cPairRingCoreCertificate",
+      "dependency_class": "FIXED_RING"
+    },
+    {
+      "id": "C-CL-COMPARE-001",
+      "owner": "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedNineClaims016",
+      "producer": "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedComparison016",
+      "dependency_class": "NEW_016_COMPARISON"
+    },
+    {
+      "id": "C-CL-INTEGRATION-001",
+      "owner": "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedNineClaims016",
+      "producer": "BOMA.C.StageTwo.NormAnisotropy016.IndependentSelected.researchSelectedNineClaims016",
+      "dependency_class": "RESEARCH_NINE_CLAIM_PACK"
+    }
+  ],
+  "original_accepted_CA17_18_19_unchanged": true,
+  "new_accepted_V5": false,
+  "new_accepted_Junction": false,
+  "CA20_promoted": false,
+  "known_signature_boundary": "The original accepted CStageIntegrationCertificate comparison fields are typed over historical selectedPresentation and cannot lose that declared ancestry without changing accepted types.",
+  "owner_required_for_study_act_merge_017": true
+}

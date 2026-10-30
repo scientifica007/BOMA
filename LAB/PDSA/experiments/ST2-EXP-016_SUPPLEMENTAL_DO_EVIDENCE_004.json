@@ -1,0 +1,90 @@
+{
+  "schema": "BOMA-ST2-EXP-016-SUPPLEMENTAL-DO-EVIDENCE-004",
+  "record_date": "2026-10-30",
+  "experiment": "ST2-EXP-016",
+  "phase": "SUPPLEMENTAL_DO",
+  "owner_scope": "DO_ONLY_NO_STUDY_ACT_MERGE_017",
+  "scientific_source_head": "e84fb8b36dd05ff03191e1bf1a8b7c1b50d9c2e3",
+  "frozen_plan_commit": "212f4f87fe02af13ef8fd2ed487e0bec18841d88",
+  "experiment_closed": false,
+  "act_authorized": false,
+  "merge_authorized": false,
+  "transition_to_017_authorized": false,
+  "g8_armed": false,
+  "sources": [
+    "LAB/payloads/lean/CStage/ST2Exp016AcceptedSemanticBridge.lean",
+    "LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016_ACCEPTED_BRIDGE_INPUTS.txt",
+    "LAB/00_ARCHITECTURE/tools/st2_exp_016_semantic_boundary_audit.py"
+  ],
+  "verified_roots": [
+    "BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.selectedFieldCompatibility016",
+    "BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.researchAcceptedPresentation016",
+    "BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.researchExactComparison016",
+    "BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.selectedIntegrationCompatibility016",
+    "BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.concreteAcceptedIntegrationCompatibility016"
+  ],
+  "kernel_closure": {
+    "field_only": {
+      "internal": 571,
+      "external_boundary": 75,
+      "edges": 6151,
+      "unresolved": 0,
+      "unmapped": 0,
+      "internal_axioms": 0
+    },
+    "integration_only": {
+      "internal": 972,
+      "external_boundary": 77,
+      "edges": 11540,
+      "unresolved": 0,
+      "unmapped": 0,
+      "internal_axioms": 0
+    },
+    "joint_six_roots": {
+      "internal": 1053,
+      "external_boundary": 77,
+      "edges": 12222,
+      "unresolved": 0,
+      "unmapped": 0,
+      "internal_axioms": 0
+    }
+  },
+  "axioms_inherited": [
+    "propext",
+    "Quot.sound",
+    "Classical.choice"
+  ],
+  "abstract_016_root_changed": false,
+  "accepted_selected_C_field_producer_oracle": false,
+  "accepted_selected_C_integration_producer_oracle": false,
+  "external_field_root_uses_accepted_c_inverse": false,
+  "external_integration_root_has_historical_selected_comparison_c_inverse": true,
+  "concrete_integration_root_has_rLE_total_classical": true,
+  "normNonnegative_source": "EXTERNAL_ACCEPTED_REAL_ORDER_INTERFACE_NOT_ABSTRACT_15_PLUS_ONE",
+  "accepted_CA19_provenance_promotion": false,
+  "runs": [
+    {
+      "id": 41025332718,
+      "job": 123961986516,
+      "artifact": 12963945382,
+      "artifact_zip_sha256": "8ddd4e151fc9d37710ae53f5e4f4f392e91010a237eed0ccafc2481a9579ad1e"
+    },
+    {
+      "id": 41025340797,
+      "job": 123962011902,
+      "artifact": 12963526023,
+      "artifact_zip_sha256": "45c992ebb245577c4c21b4d83bfcf8314ced907634d5c238c8dd8aa3bbddd5df"
+    }
+  ],
+  "failed_attempts": [
+    {
+      "head": "c32987a5fd02f1c4f5a42fc661732bc73d1fef68",
+      "run_ids": [
+        41024586871,
+        41024579583
+      ],
+      "classification": "TECHNICAL_BLOCK_EXTERNAL_MANIFEST_MISSING_HISTORICAL_NARROW_SOURCES"
+    }
+  ],
+  "next": "OWNER_STUDY_REASSESSMENT_REQUIRED_TO_DECIDE_H4_H6_NO_ACT"
+}

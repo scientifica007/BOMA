@@ -12,15 +12,17 @@ PROGRAM: ST2-RP-001
 QUEUE_CURSOR: 1
 ACTIVE_EXPERIMENT: None
 LATEST_COMPLETED: ST2-EXP-015 / CLOSED_PASS / EXACT_CLOSURE_VERIFIED
-NEXT_EXPERIMENT: ST2-EXP-016 / PLAN_FROZEN / NOT_STARTED / NO_DO
+NEXT_EXPERIMENT: ST2-EXP-016 / ARCHIVED_PARTIAL_NON_SUCCESS / NOT_CLOSED
 TRANSITION_FROM: ST2-EXP-015
 TRANSITION_CANDIDATE: ST2-EXP-016
 TRANSITION_DECISION_RECORDED: True
-TRANSITION_DECISION: OWNER_REQUIRED / 016_PLAN_FROZEN_AWAIT_EXPLICIT_OWNER_DO
+TRANSITION_DECISION: OWNER_REQUIRED / 016_PARTIAL_ARCHIVED_NONCLOSING_NO_017
 SCIENTIFIC_PREREQUISITES_FOR_016: MET
 015_EXACT_CLOSURE_HEAD: d91b32250f4cdc800f26b728e388902797bf5200
 015_FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
-NEXT_LEGAL_ACTION: STOP_BEFORE_016_DO_UNTIL_NEW_EXPLICIT_OWNER_INSTRUCTION
+NEXT_LEGAL_ACTION: STOP_ARCHIVED_016_UNTIL_SEPARATE_OWNER_INSTRUCTION
+016_VERIFIED_DO_HEAD: 3d048addd1166366feff8589eca2db9de018f9dc
+016_DO_GATES: A_C_VERIFIED / D_INDEPENDENT_SELECTED_RESEARCH_COMPARISON_VERIFIED / E_NINE_RESEARCH_CLAIM_OWNER_MAP_AUDITED / LIMITED_ACT_PARTIAL_NOT_CLOSED
 016_FROZEN_PLAN_COMMIT: 212f4f87fe02af13ef8fd2ed487e0bec18841d88
 016_FROZEN_REFERENCE_MAIN: e03ea85528aa98cb86562a1d00e57ca5c06323fa
 ```
@@ -30,10 +32,126 @@ and lifecycle heads passed all 20 applicable PR checks. Final administrative
 head and merge evidence are tracked by PR #25. At that historical 015
 closure, no 016 Plan existed. **Subsequently on 2026-10-29**, by a distinct
 owner instruction, 016 received a frozen Plan in commit `212f4f87fe02af13ef8fd2ed487e0bec18841d88`
-on `planning/st2-exp-016-frozen-plan-2026-10-29`. This is **PLAN ONLY, NO DO**; the active experiment
-remains null, and `OWNER_REQUIRED` now waits for a *separate* Do
-instruction. G8 remains disabled/unarmed. The accepted selections and
+on `planning/st2-exp-016-frozen-plan-2026-10-29`. That freeze was **PLAN ONLY**, with no Do permission at freeze time.
+**Later on 2026-10-29** the owner explicitly authorized Do, which is
+now in progress on a separate research branch with exact-head A–D kernel
+candidate evidence. The historical G8 active-experiment field remains
+null to preserve the disabled-runtime audit; the authoritative live
+human-directed Do overlay is `owner_directed_do_016` in the mutable
+program state. Typed nine-Claim research root plus separate abstract and concrete RBOMA
+norm-anisotropy proofs have verified Lean closure. The concrete proof retains
+`rLE_total_classical`; both abstract and concrete roots inherit `propext`,
+`Quot.sound`, `Classical.choice`. Do scientific head
+`3a63e7f84d9c9b6fa1f1820ea050a2aa88dd7c95` passed 26/26 CI checks.
+The final CA-04/CA-19 accepted-semantic equivalence judgment and
+Study/Act/lifecycle closure remain OPEN. The current checkpoint-indexing
+commit is separately CI-verified. G8 remains disabled/unarmed. The accepted selections and
 exports are unchanged.
+Study authorized by the owner on 2026-10-30 and recorded in
+`LAB/PDSA/experiments/ST2-EXP-016_STUDY_ASSESSMENT_001.md`. The 016 mathematical field witness and concrete norm hypothesis
+are verified, but exact accepted CA-04/CA-11/CA-17/CA-18/CA-19 equivalence
+and final lifecycle are **PARTIAL/OPEN**. No mathematical counterexample
+has been established. **ACT_NOT_STARTED**, PR #33 Draft, 017 forbidden,
+G8 disabled. Do scientific head `c327135c86c28c34ea2a2fd9376a76c911ae8ce7` completed **27/27 CI PASS**.
+This Study bookkeeping head requires separate verification.
+
+Supplemental owner-directed Do (authorized 2026-10-30) has recorded
+research-only **exact accepted certificate-type compatibility** for
+`CPairFieldCertificate`, `QuadraticFieldPresentation` and
+`CStageIntegrationCertificate`, with separate accepted order and
+historical selected comparison dependencies. Evidence:
+`LAB/PDSA/experiments/ST2-EXP-016_SUPPLEMENTAL_DO_CHECKPOINT_004.md`; exact scientific source head
+`e84fb8b36dd05ff03191e1bf1a8b7c1b50d9c2e3`. The earlier Study PARTIAL verdict remains immutable. Owner-authorized
+Study reassessment 002 now records the stronger accepted-type compatibility
+without claiming independent CA-17/18/19 proof provenance. No Act, no
+acceptance promotion, no 017, no automatic merge or G8.
+
+
+Owner-authorized **Study reassessment 002** (2026-10-30) is documented in
+`LAB/PDSA/experiments/ST2-EXP-016_STUDY_REASSESSMENT_002.md` and machine
+`ST2-EXP-016_STUDY_REASSESSMENT_002.json`. The exact supplemental Do input
+head `a3e9c02b5cbca8d758a381d45d6149f29659a3aa` passed **29/29**
+applicable GitHub checks, zero failure or pending. The new bridge verifies
+accepted carrier/field/presentation/integration *types*, while historical
+selected-presentation `c_inverse_exists` ancestry is still reachable
+through external comparison and concrete RBOMA uses inherited order.
+**H4 remains PARTIAL** for independent CA-17/18/19 accepted ownership/V5/
+Junction provenance; **H6 remains PARTIAL** for lifecycle, while frozen
+controls and the 29/29 pre-Study head are verified. The Study-record head
+requires its own CI; no final `CLOSED_PASS` is inferred. `OWNER_REQUIRED`;
+**NO ACT / NO PR #33 MERGE / NO CA-20 PROMOTION / NO 017 / NO G8**.
+
+
+Owner-approved **third bounded Do** on 2026-10-30 now verifies a new research
+`CBOMA` selected quadratic presentation and comparison, using 016 inverse
+witnesses rather than the historical selected C inverse proof. Nine research
+Claim owners/producers are registered and kernel/dependency checked at scientific
+head `a4a17e01df02be241bb36dee2769aa89ce5a5341`; 928 internal declarations, 77 leaves, 10,935 edges,
+0 unresolved and 0 new internal axioms. Exactly ten generated historical
+coordinate helper constants are classified as fixed provenance from accepted
+`CQuadraticComparison001.lean`, **not** silently claimed independent.
+Two dedicated verifier jobs pass: runs 41035707523 and 41035715335.
+Evidence: `LAB/PDSA/experiments/ST2-EXP-016_THIRD_DO_CHECKPOINT_005.md`
+and machine `ST2-EXP-016_THIRD_DO_EVIDENCE_005.json`.
+The Study 002 PARTIAL disposition is unchanged; this new Do does not independently
+reissue accepted `C-J-001` or its CA-17/18/19 V5 acceptance provenance.
+**Owner authorization required for any new Study. NO ACT / NO MERGE / NO 017 / NO G8.**
+
+
+Owner-authorized **Study reassessment 003** (2026-10-30) now records an
+independent examination of third-Do evidence against frozen H1–H6 and
+accepted CA-04/11/17/18/19 contracts. Input PR head
+`3d048addd1166366feff8589eca2db9de018f9dc` completed **31/31 SUCCESS**, 0 failed/pending. New research
+selected `CBOMA` presentation and original-signature CA-11 comparison use
+016 inverse witnesses; four-root dependency closure contains 928 internal
+declarations, 77 external leaves, 10,935 edges and no unresolved/new
+internal axioms. Ten generated historical coordinate helpers remain explicitly
+attributed; accepted `normNonnegative` is externally order-derived.
+The nine Claim *mathematical research meanings* are represented, but a new
+accepted-level CA-17/18/19 owner/V5/Junction close has **not** been shown,
+and the original accepted integration comparison signature still mentions its
+historical selected presentation. Therefore **H4 = PARTIAL**, **H6 = PARTIAL**;
+H1/H2/H3 and bounded H5 remain CONFIRMED, all-H PASS unmet.
+Independent record: `LAB/PDSA/experiments/ST2-EXP-016_STUDY_REASSESSMENT_003.md`,
+machine twin: `ST2-EXP-016_STUDY_REASSESSMENT_003.json`.
+The Study documentation commit requires exact-new-head CI verification.
+**OWNER_REQUIRED / NO ACT / NO MERGE PR #33 / NO CA-20 PROMOTION /
+NO 017 / NO G8 / NOT_CLOSED.**
+
+
+Owner-authorized limited **Act** (2026-10-30) is now **recorded without
+experiment closure**: `LAB/PDSA/experiments/ST2-EXP-016_LIMITED_ACT_PARTIAL_DECISION_001.md`
+and `ST2-EXP-016_LIMITED_ACT_PARTIAL_DECISION_001.json`.
+Study 003 remains immutable: H1/H2/H3 CONFIRMED, H5 CONFIRMED (bounded),
+H4/H6 PARTIAL. Exact Study input head `3845faa120e8a393d9732c964742d7d7a2769cb2` passed **31/31**
+GitHub checks. The new algebraic norm bridge, selected CBOMA research
+comparison and nine research Claim meanings are retained as **PARTIAL
+verified research learning**, not newly accepted C-J-001/V5/CA-20.
+CA-17/18/19 acceptance-level proof provenance and 016 lifecycle closure
+remain OPEN. The frozen ALL-H1–H6 PASS condition is NOT met; 017
+prerequisites are NOT established by this Act. This Act record's new
+head must receive its own exact-head CI. **NO CLOSED_PASS / NO CLOSED_PARTIAL
+DECLARED / NO PR #33 MERGE / NO ACCEPTANCE PROMOTION / NO 017 / NO G8.**
+`OWNER_REQUIRED` for 016 partial lifecycle disposition.
+
+
+Owner's explicit **PARTIAL archival disposition** (2026-10-30) has been
+recorded as `ARCHIVED_PARTIAL_NON_SUCCESS / NOT_CLOSED / OWNER_REQUIRED`.
+The administrative archive is distinct from a `CLOSED_PASS`,
+`CLOSED_PARTIAL`, or mathematical `INFORMATIVE_FAIL` lifecycle.
+Experimental research execution is paused; 016 is not a completed predecessor
+for 017. The latest closed `CLOSED_PASS` research remains 015. Evidence:
+`LAB/PDSA/experiments/ST2-EXP-016_PARTIAL_ARCHIVAL_DECISION_001.md`
+and `ST2-EXP-016_PARTIAL_ARCHIVAL_DECISION_001.json`.
+All H1/H2/H3 and bounded H5 conclusions are preserved; H4/H6 still
+`PARTIAL`, accepted CA-17/18/19 proof provenance and full 016 closure
+OPEN. The prior Act source head `4b8f1cfeed7935ab47433aab7e9878c0e9c0a772` passed **31/31** applicable
+GitHub checks, with no failures/pending; this archive record's new head
+requires independent exact-head checking. Frozen Plans, source/SELECTS,
+accepted C-J-001 and CA-20, all studies and failure records are unchanged.
+**NO CLOSED_PASS / NO NEW CLOSED_PARTIAL / NO MERGE PR #33 / NO CA-20 PROMOTION /
+NO ST2-EXP-017 / NO G8 / NO AUTONOMOUS RESUMPTION**.
+
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
 ## CURRENT OWNER EXECUTION MODE — 2026-10-29
@@ -57,16 +175,19 @@ and the new interactive policy govern present work.
 
 **Scientific frontier:** `ST2-RP-001` is retained as an ordered research agenda,
 not a blanket execution grant. `ST2-EXP-015` is `CLOSED_PASS` and merged by
-PR #25; `ST2-EXP-016` is `PLAN_FROZEN / NOT_STARTED / NO_DO`, with scientific
-prerequisites `MET` but execution held for a **new explicit owner Do instruction**.
+PR #25; `ST2-EXP-016` is `STUDY_REASSESSMENT_002_RECORDED / PARTIAL /
+NOT_CLOSED`. The owner authorized Do and the separately bounded Study
+reassessment; neither authorization includes Act, merge or 017.
 `ST2-EXP-017` remains conditional on evidence from 016. Current state remains
 `OWNER_REQUIRED`, no active experiment. The selected Dedekind R and Route P C,
 accepted source interfaces, `SELECTS`, and historical Frozen Plans stay intact.
 
-**Next legal work:** complete explicitly commissioned maintenance PDSA tasks,
-or await a separate owner instruction to begin Do for the frozen 016 Plan.
-The frozen Plan is indexed by `pre_do_frozen_plan` in the current program
-state; `active_frozen_plan` remains null because no Do has been authorized.
+**Next legal work:** record the independently verified 016 Study reassessment
+and wait for a separate owner decision on targeted further Do or a bounded
+Act disposition. No additional research action is implicitly authorized. `pre_do_frozen_plan` retains the pre-Do historical
+snapshot while `owner_directed_do_016` records the later explicit Do
+permission and exact-head proof evidence. Legacy `active_frozen_plan`
+remains null because the autonomous engine is permanently disabled.
 Begin from actual current
 GitHub `main`, never from the historical `synchronized_main_sha` baseline.
 No direct writes to protected `main`; submit a PR for the owner's review and

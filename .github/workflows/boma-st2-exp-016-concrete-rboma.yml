@@ -1,0 +1,71 @@
+name: BOMA ST2-EXP-016 — external concrete RBOMA audit
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'LAB/payloads/lean/CStage/ST2Exp016ConcreteRBOMA.lean'
+      - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016_CONCRETE_RBOMA_INPUTS.txt'
+      - '.github/workflows/boma-st2-exp-016-concrete-rboma.yml'
+      - 'LAB/00_ARCHITECTURE/tools/st2_exp_016_concrete_axioms.py'
+  push:
+    branches:
+      - 'feature/stage-two-st2-exp-016-*'
+permissions:
+  contents: read
+jobs:
+  verify:
+    name: verify 016 concrete RBOMA condition separately
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+      - name: Setup pinned Lean
+        uses: leanprover/lean-action@v1
+        with:
+          auto-config: false
+          build: false
+          test: false
+          lint: false
+          use-github-cache: false
+          use-mathlib-cache: false
+      - name: Verify external RBOMA hypothesis and provenance
+        env:
+          BOMA_EXPECTED_HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
+          PYTHONDONTWRITEBYTECODE: '1'
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/boma-st2-exp-016-concrete
+          test "$(git rev-parse HEAD)" = "$BOMA_EXPECTED_HEAD"
+          git merge-base --is-ancestor 212f4f87fe02af13ef8fd2ed487e0bec18841d88 HEAD
+          git diff --exit-code 212f4f87fe02af13ef8fd2ed487e0bec18841d88 HEAD -- \
+            LAB/PDSA/PDSA-ST2-EXP-016_NORM_ANISOTROPY_FROZEN.md \
+            LAB/PDSA/plans/ST2-EXP-016/FROZEN_PLAN.json \
+            LAB/PDSA/experiments/ST2-EXP-016_BRANCH_ORIGIN_RECORD_001.json
+          python3 LAB/00_ARCHITECTURE/tools/lean_dependency_audit.py \
+            --stage ST2-EXP-016-CONCRETE-RBOMA-EXTERNAL \
+            --manifest LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016_CONCRETE_RBOMA_INPUTS.txt \
+            --target BOMA.C.StageTwo.ConcreteRBOMA016.concreteNormAnisotropy016 \
+            --target BOMA.C.StageTwo.ConcreteRBOMA016.concreteFieldWitness016 \
+            --json-out /tmp/boma-st2-exp-016-concrete/dependency.json \
+            | tee /tmp/boma-st2-exp-016-concrete/output.log
+          python3 - <<'PY'
+          import json
+          d=json.load(open('/tmp/boma-st2-exp-016-concrete/dependency.json'))
+          assert d['status']=='PROTOTYPE_PASS' and not d['unresolved'] and not d['internal_axioms']
+          print('CONCRETE RBOMA WITNESS — NOT ABSTRACT ORDER INDEPENDENCE')
+          PY
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_016_concrete_axioms.py \
+            --output-dir /tmp/boma-st2-exp-016-concrete
+          test -z "$(git status --porcelain=v1)"
+      - name: Save concrete verification artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: st2-exp-016-concrete-${{ github.run_id }}-${{ github.run_attempt }}
+          path: /tmp/boma-st2-exp-016-concrete
+          if-no-files-found: warn
