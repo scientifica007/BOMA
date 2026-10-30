@@ -1,0 +1,110 @@
+{
+  "schema": "BOMA-ST2-EXP-016-INDEPENDENT-STUDY-REASSESSMENT-002",
+  "record_date": "2026-10-30",
+  "program_id": "ST2-RP-001",
+  "experiment_id": "ST2-EXP-016",
+  "phase": "STUDY_REASSESSMENT_ONLY",
+  "authority": "EXPLICIT_OWNER_CURRENT_SESSION_STUDY_ONLY",
+  "frozen_plan_commit": "212f4f87fe02af13ef8fd2ed487e0bec18841d88",
+  "input_main_sha": "895384b5617763622be4cc2b53fe3bc0686eac62",
+  "input_pr_head": "a3e9c02b5cbca8d758a381d45d6149f29659a3aa",
+  "pre_study_exact_head_ci": {
+    "checks": 29,
+    "success": 29,
+    "failed": 0,
+    "pending": 0,
+    "source": "GITHUB_COMMIT_CHECK_RUNS_API"
+  },
+  "post_study_record_exact_head_ci": "PENDING_SEPARATE_VERIFICATION",
+  "historical_study_001": "PARTIAL_PRESERVED_IMMUTABLE",
+  "assessment": "PARTIAL_NOT_CLOSED_NO_MATHEMATICAL_COUNTEREXAMPLE",
+  "hypotheses": {
+    "H1": "CONFIRMED_SEVEN_CONTROLS",
+    "H2": "CONFIRMED_FROZEN_ANISOTROPY_NORM_BRIDGE",
+    "H3": "CONFIRMED_RESEARCH_EXISTENTIAL_INVERSE_FIELD_STRENGTH",
+    "H4": "PARTIAL_EXACT_ACCEPTED_TYPES_VERIFIED_INDEPENDENT_CA17_18_19_PROVENANCE_NOT_DISCHARGED",
+    "H5": "CONFIRMED_BOUNDED_ABSTRACT_NO_ORDERTOTAL_EXTERNAL_HISTORICAL_ORDER_RETAINED",
+    "H6": "PARTIAL_FULL_LIFECYCLE_FROZEN_CONTROLS_AND_PRE_STUDY_29_29_VERIFIED"
+  },
+  "accepted_contract_assessment": {
+    "CA04": "ACCEPTED_FIELD_CERTIFICATE_TYPE_RESEARCH_VERIFIED_WITH_EXTERNAL_REAL_ORDER_NORMNONNEGATIVE",
+    "CA11": "ORIGINAL_QUADRATIC_PRESENTATION_AND_EXPLICIT_EXTRACTOR_VERIFIED_HISTORICAL_SELECTED_TARGET_ANCESTRY_RETAINED",
+    "CA17": "NO_NEW_016_ACCEPTED_CLAIM_PRODUCER_OWNERSHIP_CERTIFICATE",
+    "CA18": "NO_NEW_016_ACCEPTANCE_LEVEL_V5_REPLACEMENT_HISTORICAL_ACCEPTED_V5_UNCHANGED",
+    "CA19": "SELECTED_INTEGRATION_CERTIFICATE_TYPE_INHABITED_RESEARCH_ONLY_NOT_NEW_C_J_001",
+    "CA20": "NOT_PROMOTED"
+  },
+  "claim_status": {
+    "C-CL-CARRIER-001": "VERIFIED_TRANSPORT",
+    "C-CL-REMBED-001": "VERIFIED_FIXED_CONTROL",
+    "C-CL-FIELD-001": "VERIFIED_ACCEPTED_TYPE_EXTERNAL_AUXILIARY",
+    "C-CL-I-001": "VERIFIED_TRANSPORT",
+    "C-CL-GEN-001": "VERIFIED_TRANSPORT",
+    "C-CL-COORDUNIQ-001": "VERIFIED_TRANSPORT",
+    "C-CL-NONREAL-001": "VERIFIED_TRANSPORT",
+    "C-CL-COMPARE-001": "VERIFIED_TYPED_COMPARISON_INHERITED_SELECTED_TARGET",
+    "C-CL-INTEGRATION-001": "TYPED_COMPATIBILITY_VERIFIED_CA17_18_19_PROVENANCE_OPEN"
+  },
+  "external_dependency_closure": {
+    "field_only": {
+      "internal": 571,
+      "external_leaves": 75,
+      "edges": 6151,
+      "unresolved": 0,
+      "unmapped": 0,
+      "internal_axioms": 0
+    },
+    "integration_only": {
+      "internal": 972,
+      "external_leaves": 77,
+      "edges": 11540,
+      "unresolved": 0,
+      "unmapped": 0,
+      "internal_axioms": 0
+    },
+    "joint_six_roots": {
+      "internal": 1053,
+      "external_leaves": 77,
+      "edges": 12222,
+      "unresolved": 0,
+      "unmapped": 0,
+      "internal_axioms": 0
+    }
+  },
+  "axioms_inherited": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "abstract_norm_condition_unchanged": true,
+  "abstract_field_root_uses_accepted_selected_C_inverse": false,
+  "external_field_root_uses_accepted_selected_C_inverse": false,
+  "external_integration_root_has_historical_selected_comparison_c_inverse": true,
+  "concrete_integration_root_has_rLE_total_classical": true,
+  "external_norm_nonnegative_from_accepted_real_order_not_abstract_15_plus_1": true,
+  "freeze_git_blobs": {
+    "human_plan": "821ff8e23afc06cba2c047bc9372736bbbb79f20",
+    "machine_plan": "8979e12856064352b48aba30d156fd8de6f1ee90",
+    "typed_origin": "830eafd1c041217529cb1ca12e296547469eb51f"
+  },
+  "preserved_failed_attempts": [
+    40970574189,
+    40971069474,
+    41015369686,
+    41015362741,
+    41024586871,
+    41024579583
+  ],
+  "supplemental_do_evidence": "LAB/PDSA/experiments/ST2-EXP-016_SUPPLEMENTAL_DO_EVIDENCE_004.json",
+  "independent_study_record": "LAB/PDSA/experiments/ST2-EXP-016_STUDY_REASSESSMENT_002.md",
+  "act_authorized": false,
+  "act_started": false,
+  "closed_pass": false,
+  "merge_authorized": false,
+  "pr33_draft": true,
+  "transition_to_017_authorized": false,
+  "acceptance_promotion_authorized": false,
+  "g8_armed": false,
+  "autonomous_execution_authorized": false,
+  "next_owner_gate": "OWNER_REQUIRED_DECIDE_TARGETED_DO_OR_PARTIAL_ACT_SEPARATELY_NO_IMPLICIT_AUTHORITY"
+}
