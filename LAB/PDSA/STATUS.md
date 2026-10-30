@@ -12,17 +12,17 @@ PROGRAM: ST2-RP-001
 QUEUE_CURSOR: 1
 ACTIVE_EXPERIMENT: None
 LATEST_COMPLETED: ST2-EXP-015 / CLOSED_PASS / EXACT_CLOSURE_VERIFIED
-NEXT_EXPERIMENT: ST2-EXP-016 / SUPPLEMENTAL_DO_VERIFIED / STUDY_REASSESSMENT_REQUIRED / NOT_CLOSED
+NEXT_EXPERIMENT: ST2-EXP-016 / STUDY_REASSESSMENT_002_RECORDED / PARTIAL / NOT_CLOSED
 TRANSITION_FROM: ST2-EXP-015
 TRANSITION_CANDIDATE: ST2-EXP-016
 TRANSITION_DECISION_RECORDED: True
-TRANSITION_DECISION: OWNER_REQUIRED / 016_SUPPLEMENTAL_DO_DONE_NO_ACT
+TRANSITION_DECISION: OWNER_REQUIRED / 016_STUDY_REASSESSMENT_002_PARTIAL_NO_ACT
 SCIENTIFIC_PREREQUISITES_FOR_016: MET
 015_EXACT_CLOSURE_HEAD: d91b32250f4cdc800f26b728e388902797bf5200
 015_FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
-NEXT_LEGAL_ACTION: OWNER_REVIEW_SUPPLEMENTAL_DO_016_AND_AUTHORIZE_STUDY_REASSESSMENT_NO_ACT_NO_017
-016_VERIFIED_DO_HEAD: 3a63e7f84d9c9b6fa1f1820ea050a2aa88dd7c95
-016_DO_GATES: A_C_VERIFIED / D_NINE_CLAIM_TYPED_ROOT_VERIFIED / E_ABSTRACT_AND_CONCRETE_AXIOMS_MEASURED / STUDY_PARTIAL_H4_H6_OPEN
+NEXT_LEGAL_ACTION: OWNER_DECISION_AFTER_STUDY_REASSESSMENT_002_NO_IMPLICIT_ACT_MERGE_OR_017
+016_VERIFIED_DO_HEAD: a3e9c02b5cbca8d758a381d45d6149f29659a3aa
+016_DO_GATES: A_C_VERIFIED / D_NINE_CLAIM_TYPED_ROOT_VERIFIED / E_EXTERNAL_ACCEPTED_TYPES_AND_AXIOMS_MEASURED / STUDY_002_PARTIAL_H4_H6_OPEN
 016_FROZEN_PLAN_COMMIT: 212f4f87fe02af13ef8fd2ed487e0bec18841d88
 016_FROZEN_REFERENCE_MAIN: e03ea85528aa98cb86562a1d00e57ca5c06323fa
 ```
@@ -61,9 +61,25 @@ research-only **exact accepted certificate-type compatibility** for
 `CStageIntegrationCertificate`, with separate accepted order and
 historical selected comparison dependencies. Evidence:
 `LAB/PDSA/experiments/ST2-EXP-016_SUPPLEMENTAL_DO_CHECKPOINT_004.md`; exact scientific source head
-`e84fb8b36dd05ff03191e1bf1a8b7c1b50d9c2e3`. The earlier Study PARTIAL verdict remains preserved
-until **separately owner-authorized Study reassessment**. No Act, no
+`e84fb8b36dd05ff03191e1bf1a8b7c1b50d9c2e3`. The earlier Study PARTIAL verdict remains immutable. Owner-authorized
+Study reassessment 002 now records the stronger accepted-type compatibility
+without claiming independent CA-17/18/19 proof provenance. No Act, no
 acceptance promotion, no 017, no automatic merge or G8.
+
+
+Owner-authorized **Study reassessment 002** (2026-10-30) is documented in
+`LAB/PDSA/experiments/ST2-EXP-016_STUDY_REASSESSMENT_002.md` and machine
+`ST2-EXP-016_STUDY_REASSESSMENT_002.json`. The exact supplemental Do input
+head `a3e9c02b5cbca8d758a381d45d6149f29659a3aa` passed **29/29**
+applicable GitHub checks, zero failure or pending. The new bridge verifies
+accepted carrier/field/presentation/integration *types*, while historical
+selected-presentation `c_inverse_exists` ancestry is still reachable
+through external comparison and concrete RBOMA uses inherited order.
+**H4 remains PARTIAL** for independent CA-17/18/19 accepted ownership/V5/
+Junction provenance; **H6 remains PARTIAL** for lifecycle, while frozen
+controls and the 29/29 pre-Study head are verified. The Study-record head
+requires its own CI; no final `CLOSED_PASS` is inferred. `OWNER_REQUIRED`;
+**NO ACT / NO PR #33 MERGE / NO CA-20 PROMOTION / NO 017 / NO G8**.
 
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
@@ -88,16 +104,16 @@ and the new interactive policy govern present work.
 
 **Scientific frontier:** `ST2-RP-001` is retained as an ordered research agenda,
 not a blanket execution grant. `ST2-EXP-015` is `CLOSED_PASS` and merged by
-PR #25; `ST2-EXP-016` is `PLAN_FROZEN / OWNER_DIRECTED_DO_IN_PROGRESS /
-NOT_CLOSED`. The owner has explicitly authorized Do. No automatic
-Study/Act/017 transition or merge is authorized.
+PR #25; `ST2-EXP-016` is `STUDY_REASSESSMENT_002_RECORDED / PARTIAL /
+NOT_CLOSED`. The owner authorized Do and the separately bounded Study
+reassessment; neither authorization includes Act, merge or 017.
 `ST2-EXP-017` remains conditional on evidence from 016. Current state remains
 `OWNER_REQUIRED`, no active experiment. The selected Dedekind R and Route P C,
 accepted source interfaces, `SELECTS`, and historical Frozen Plans stay intact.
 
-**Next legal work:** complete explicitly commissioned maintenance PDSA tasks,
-or continue only the owner-authorized, bounded 016 Do task on its
-research branch. `pre_do_frozen_plan` retains the pre-Do historical
+**Next legal work:** record the independently verified 016 Study reassessment
+and wait for a separate owner decision on targeted further Do or a bounded
+Act disposition. No additional research action is implicitly authorized. `pre_do_frozen_plan` retains the pre-Do historical
 snapshot while `owner_directed_do_016` records the later explicit Do
 permission and exact-head proof evidence. Legacy `active_frozen_plan`
 remains null because the autonomous engine is permanently disabled.
