@@ -1,5 +1,15 @@
 # AGENTS.md — BOMA continuation rules
 
+## Project identity: MANDATORY READING BEFORE SUMMARIZING BOMA
+
+Read [BOMA_PROJECT_IDENTITY_AND_BRANCHING_PRINCIPLES.md](LAB/00_ARCHITECTURE/BOMA_PROJECT_IDENTITY_AND_BRANCHING_PRINCIPLES.md) and the introductory `README.md` **before** describing BOMA to a human, proposing research, or interpreting construction branches.
+
+**BOMA = Branch Oriented Math**: a general-purpose transparent, root-traceable, verifiable, documentable and mathematically **branchable** construction system. Building familiar `N/Z/Q/R/C` objects is **a calibration strategy**, NOT its identity or a required starting point. If `R → A → B`, a change suggested by B can yield an **independent sibling** `A → B′` using A and other actually declared roots, **not automatically** `B → B′`. Keep distinct change-origin provenance versus proved mathematical dependency. Preserve B. Branch exploration need not compare, equal, outperform or reconverge with B. Log failed/incomplete branches as epistemic evidence. Original mathematical discovery is an aspiration; pedagogy is independently valuable. A mathematical construction branch is **not** a Git branch.
+
+**Arabic / تنبيه:** البناء المعروف اختبار للمنظومة وليس تعريفاً لها. الفرع `B′` يمكن أن يخرج من الجذور المشتركة مع `B` دون أن يعتمد برهانياً على `B`. يجب حفظ الفروع المتعثرة، ولا تُفرض العودة أو المقارنة مع الأصل.
+
+**Authority firewall:** project identity conveys **no permission** to run research, modify accepted `SELECTS`, merge PRs or start new experiments. The current 2026-10-29 interactive owner-directed governance and live `STATUS.md` control work. The legacy runtime marker below reflects a historical `main` snapshot: inspect current live research PRs, including [Draft #33](https://github.com/scientifica007/BOMA/pull/33) with the owner-approved 2026-10-30 PARTIAL/non-closing archive, before asserting that 016 was never started. Do not replace historical evidence or claim Draft PR results are on `main`.
+
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_BEGIN -->
 ### Current execution-state marker
 
