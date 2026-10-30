@@ -204,4 +204,60 @@ def compareResearchToSelected016
       (researchAcceptedPresentation016 C R) (selectedPresentation R) :=
   researchExactComparison016 C R (selectedPresentation R)
 
+
+/-- The exact accepted C-J-001 CERTIFICATE TYPE, now inhabited by
+    independently verified 016 field witnesses plus an explicit external
+    R-based normNonnegative auxiliary. Comparison is the original
+    representation-neutral generic operation against the fixed selected
+    presentation (and therefore retains its historical logical lineage).
+    This is an external COMPATIBILITY witness only; it does not assert new
+    V5 ownership, change CA-20, or redefine the accepted Junction. -/
+def selectedIntegrationCompatibility016
+    (C : RNormAnisotropyCertificate016) :
+    BOMA.C.StageIntegration001.CStageIntegrationCertificate where
+  field := selectedFieldCompatibility016 C rStageIntegrationCertificate
+  generatorSquared := by
+    have hh := congrArg toSelected016
+      ((nineClaimMeaningCertificate016 C).generatorSquared)
+    simpa only [toMul016, toImag016, toNeg016, toOne016] using hh
+  realGeneration := by
+    intro z
+    rcases (nineClaimMeaningCertificate016 C).realGeneration
+      (fromSelected016 z) with ⟨a, b, hh⟩
+    refine ⟨a, b, ?_⟩
+    have ht := congrArg toSelected016 hh
+    simpa only [toFrom016, toAdd016, toReal016, toMul016, toImag016]
+      using ht
+  coordinateUnique := by
+    intro a b c d hh
+    have ht :
+        add004 (ofR004 a) (mul004 (ofR004 b) imag004) =
+        add004 (ofR004 c) (mul004 (ofR004 d) imag004) := by
+      apply pair_ext004
+      · exact congrArg BOMA.C.RoutePairProbe001.PairCandidate.re hh
+      · exact congrArg BOMA.C.RoutePairProbe001.PairCandidate.im hh
+    exact (nineClaimMeaningCertificate016 C).coordinateUnique ht
+  imaginaryNotReal := by
+    intro hh
+    rcases hh with ⟨a, ha⟩
+    apply (nineClaimMeaningCertificate016 C).imaginaryNotReal
+    refine ⟨a, ?_⟩
+    apply pair_ext004
+    · exact congrArg BOMA.C.RoutePairProbe001.PairCandidate.re ha
+    · exact congrArg BOMA.C.RoutePairProbe001.PairCandidate.im ha
+  comparison := fun B =>
+    quadraticComparison (selectedPresentation rStageIntegrationCertificate) B
+  functionalComparison := fun B E =>
+    constructiveQuadraticIsomorphism
+      (selectedPresentation rStageIntegrationCertificate) B
+      (selectedExtractor rStageIntegrationCertificate) E
+
+/-- Concretization uses the ORIGINAL REAL CARRIER: accepted R and
+    independent 016 concrete norm witness, not a selected C field oracle.
+    Its orderTotal ancestry is external to the abstract 016 roots. -/
+def concreteAcceptedIntegrationCompatibility016 :
+    BOMA.C.StageIntegration001.CStageIntegrationCertificate :=
+  selectedIntegrationCompatibility016
+    BOMA.C.StageTwo.ConcreteRBOMA016.concreteAnisotropyCertificate016
+
 end BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge
