@@ -52,6 +52,8 @@ jobs:
             --target BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.researchAcceptedPresentation016 \
             --target BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.researchExactComparison016 \
             --target BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.compareResearchToSelected016 \
+            --target BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.selectedIntegrationCompatibility016 \
+            --target BOMA.C.StageTwo.NormAnisotropy016.AcceptedBridge.concreteAcceptedIntegrationCompatibility016 \
             --json-out /tmp/boma-016-semantic/dependency.json \
             | tee /tmp/boma-016-semantic/console.log
           python3 - <<'PY'
