@@ -23,8 +23,8 @@
   "active_experiment_origin_record": null,
   "active_work_head_before_ci_state_commit": null,
   "last_verified_head": "d91b32250f4cdc800f26b728e388902797bf5200",
-  "waiting_on": "OWNER_DECISION_AFTER_STUDY_REASSESSMENT_003_PARTIAL_NO_ACT",
-  "owner_required_reason": "016_STUDY_003_PARTIAL_H4_H6_FULL_ACCEPTANCE_AND_LIFECYCLE_NOT_CLOSED",
+  "waiting_on": "OWNER_LIFECYCLE_DISPOSITION_AFTER_016_LIMITED_PARTIAL_ACT",
+  "owner_required_reason": "016_LIMITED_ACT_RECORDED_PARTIAL_NO_CLOSED_PASS_NEW_ACCEPTED_CA17_18_19_OR_017_PREREQUISITE",
   "routine_merge_authorized": true,
   "current_stage_two_frontier": {
     "active_experiment": null,
@@ -33,7 +33,7 @@
     "latest_completed_status": "CLOSED_PASS / EXACT_CLOSURE_VERIFIED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-003",
     "next_experiment": "ST2-EXP-016",
-    "next_experiment_status": "STUDY_REASSESSMENT_003_RECORDED_PARTIAL_NOT_CLOSED_OWNER_REQUIRED",
+    "next_experiment_status": "LIMITED_ACT_PARTIAL_RECORDED_NOT_CLOSED_OWNER_REQUIRED",
     "activation_authorized_by_this_state": false
   },
   "program_transition": {
@@ -47,7 +47,7 @@
     "last_transition_decision": "OWNER_REQUIRED",
     "transition_record": "LAB/PDSA/experiments/ST2-EXP-015_TO_ST2-EXP-016_BOUNDARY_ASSESSMENT_001.json"
   },
-  "next_legal_action": "OWNER_REVIEW_STUDY_003_DECIDE_SEPARATE_PARTIAL_ACT_OR_NEW_RESEARCH_NO_IMPLICIT_ACT_MERGE_017",
+  "next_legal_action": "OWNER_REVIEW_PARTIAL_ACT_016_DECIDE_LIFECYCLE_DISPOSITION_NO_IMPLICIT_MERGE_017",
   "safety": {
     "fail_closed": true,
     "ambiguous_authority_means": "OWNER_REQUIRED",
@@ -103,7 +103,7 @@
     "experiment_id": "ST2-EXP-016",
     "program_id": "ST2-RP-001",
     "mode": "OWNER_DIRECTED_INTERACTIVE_PDSA",
-    "status": "STUDY_REASSESSMENT_003_RECORDED_PARTIAL_NOT_CLOSED_OWNER_REQUIRED",
+    "status": "LIMITED_ACT_PARTIAL_RECORDED_NOT_CLOSED_OWNER_REQUIRED",
     "do_authorized": true,
     "owner_authorization_type": "EXPLICIT_USER_CURRENT_SESSION_2026_10_29",
     "owner_authorization_record": "LAB/PDSA/experiments/ST2-EXP-016_DO_KERNEL_CHECKPOINT_001.md",
@@ -116,7 +116,7 @@
     "gate_d_semantic_claim_audit": "NINE_CLAIM_TYPED_RESEARCH_CERTIFICATE_VERIFIED_CA04_CA19_FINAL_STUDY_PENDING",
     "gate_e_dependency_logical_cost": "ABSTRACT_AND_CONCRETE_RBOMA_AXIOMS_AND_ORDER_ANCESTRY_MEASURED",
     "gate_f_final_head_ci": "SUPPLEMENTAL_DO_INPUT_HEAD_29_OF_29_PASS_STUDY_RECORD_HEAD_RECHECK_REQUIRED",
-    "study_act": "STUDY_003_RECORDED_PARTIAL_ACT_NOT_STARTED",
+    "study_act": "STUDY_003_PARTIAL_LIMITED_ACT_DECISION_RECORDED_EXPERIMENT_NOT_CLOSED",
     "g8_armed": false,
     "autonomous_merges_allowed": false,
     "transition_to_017_allowed": false,
@@ -131,7 +131,7 @@
     "study_machine_evidence": "LAB/PDSA/experiments/ST2-EXP-016_STUDY_ASSESSMENT_001.json",
     "study_reference_head": "c327135c86c28c34ea2a2fd9376a76c911ae8ce7",
     "study_owner_authorized": true,
-    "act_authorized": false,
+    "act_authorized": true,
     "merge_authorized": false,
     "supplemental_do_authorized": true,
     "supplemental_do_scope": "EXACT_ACCEPTED_SEMANTIC_BRIDGE_016_NO_STUDY_ACT_MERGE_017",
@@ -182,6 +182,19 @@
     "study_003_input_head": "3d048addd1166366feff8589eca2db9de018f9dc",
     "study_003_human_record": "LAB/PDSA/experiments/ST2-EXP-016_STUDY_REASSESSMENT_003.md",
     "study_003_machine_record": "LAB/PDSA/experiments/ST2-EXP-016_STUDY_REASSESSMENT_003.json",
-    "study_003_record_head_ci": "PENDING_EXACT_STUDY_003_DOCUMENTATION_HEAD"
+    "study_003_record_head_ci": "31_OF_31_SUCCESS_ON_3845faa120e8a393d9732c964742d7d7a2769cb2",
+    "act_authorization_scope": "CURRENT_SESSION_LIMITED_ACT_PARTIAL_EVIDENCE_LEARNING_AND_CLOSURE_ELIGIBILITY_ONLY",
+    "act_executed": true,
+    "act_limited_complete": true,
+    "act_record": "LAB/PDSA/experiments/ST2-EXP-016_LIMITED_ACT_PARTIAL_DECISION_001.md",
+    "act_machine_record": "LAB/PDSA/experiments/ST2-EXP-016_LIMITED_ACT_PARTIAL_DECISION_001.json",
+    "act_decision": "ACT_RECORDED_PARTIAL_NONCLOSING",
+    "act_experiment_closure_status": "NOT_CLOSED_H4_H6_PARTIAL",
+    "act_closed_pass": false,
+    "act_closed_partial": false,
+    "act_017_scientific_prerequisite_ready": false,
+    "act_acceptance_promotion": false,
+    "act_source_study_003_head": "3845faa120e8a393d9732c964742d7d7a2769cb2",
+    "act_final_head_ci": "PENDING_EXACT_ACT_RECORD_HEAD_CI"
   }
 }
