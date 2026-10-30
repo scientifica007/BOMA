@@ -23,8 +23,8 @@
   "active_experiment_origin_record": null,
   "active_work_head_before_ci_state_commit": null,
   "last_verified_head": "d91b32250f4cdc800f26b728e388902797bf5200",
-  "waiting_on": "OWNER_DECISION_AFTER_016_STUDY_REASSESSMENT_002_PARTIAL_NO_ACT",
-  "owner_required_reason": "016_STUDY_REASSESSMENT_002_PARTIAL_H4_H6_OWNER_ACT_OR_FURTHER_DO_DECISION_REQUIRED",
+  "waiting_on": "OWNER_AUTHORIZATION_STUDY_AFTER_016_THIRD_DO",
+  "owner_required_reason": "016_THIRD_DO_RESEARCH_PROOF_VERIFIED_STUDY_REQUIRED_NOT_CLOSED",
   "routine_merge_authorized": true,
   "current_stage_two_frontier": {
     "active_experiment": null,
@@ -33,7 +33,7 @@
     "latest_completed_status": "CLOSED_PASS / EXACT_CLOSURE_VERIFIED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-003",
     "next_experiment": "ST2-EXP-016",
-    "next_experiment_status": "STUDY_REASSESSMENT_002_RECORDED_PARTIAL_NOT_CLOSED_OWNER_REQUIRED",
+    "next_experiment_status": "THIRD_DO_RESEARCH_PROOFS_VERIFIED_STUDY_REASSESSMENT_REQUIRED_NOT_CLOSED",
     "activation_authorized_by_this_state": false
   },
   "program_transition": {
@@ -47,7 +47,7 @@
     "last_transition_decision": "OWNER_REQUIRED",
     "transition_record": "LAB/PDSA/experiments/ST2-EXP-015_TO_ST2-EXP-016_BOUNDARY_ASSESSMENT_001.json"
   },
-  "next_legal_action": "OWNER_DECISION_AFTER_STUDY_REASSESSMENT_002_NO_IMPLICIT_ACT_MERGE_OR_017",
+  "next_legal_action": "OWNER_DIRECTED_STUDY_REASSESSMENT_AFTER_THIRD_DO_NO_IMPLICIT_ACT_MERGE_017",
   "safety": {
     "fail_closed": true,
     "ambiguous_authority_means": "OWNER_REQUIRED",
@@ -103,7 +103,7 @@
     "experiment_id": "ST2-EXP-016",
     "program_id": "ST2-RP-001",
     "mode": "OWNER_DIRECTED_INTERACTIVE_PDSA",
-    "status": "STUDY_REASSESSMENT_002_RECORDED_PARTIAL_NOT_CLOSED_OWNER_REQUIRED",
+    "status": "THIRD_DO_RESEARCH_PROOFS_VERIFIED_STUDY_REASSESSMENT_REQUIRED_NOT_CLOSED",
     "do_authorized": true,
     "owner_authorization_type": "EXPLICIT_USER_CURRENT_SESSION_2026_10_29",
     "owner_authorization_record": "LAB/PDSA/experiments/ST2-EXP-016_DO_KERNEL_CHECKPOINT_001.md",
@@ -153,6 +153,26 @@
     "study_reassessment_machine_record": "LAB/PDSA/experiments/ST2-EXP-016_STUDY_REASSESSMENT_002.json",
     "study_reassessment_current_ci": "PENDING_EXACT_STUDY_RECORD_HEAD_CI",
     "study_reassessment_h4": "PARTIAL_TYPED_BRIDGE_VERIFIED_CA17_CA18_CA19_INDEPENDENT_PROVENANCE_OPEN",
-    "study_reassessment_h6": "PARTIAL_FULL_LIFECYCLE_FROZEN_INVARIANTS_AND_29_29_INPUT_CI_VERIFIED"
+    "study_reassessment_h6": "PARTIAL_FULL_LIFECYCLE_FROZEN_INVARIANTS_AND_29_29_INPUT_CI_VERIFIED",
+    "third_do_authorized": true,
+    "third_do_scope": "INDEPENDENT_SELECTED_COMPARISON_AND_CA17_18_19_RESEARCH_PROVENANCE",
+    "third_do_scientific_head": "a4a17e01df02be241bb36dee2769aa89ce5a5341",
+    "third_do_evidence_record": "LAB/PDSA/experiments/ST2-EXP-016_THIRD_DO_CHECKPOINT_005.md",
+    "third_do_machine_record": "LAB/PDSA/experiments/ST2-EXP-016_THIRD_DO_EVIDENCE_005.json",
+    "third_do_failure_record": "LAB/PDSA/experiments/ST2-EXP-016_FAILURE_005_GENERATED_COORDINATE_PROVENANCE.md",
+    "third_do_status": "RESEARCH_PROOFS_VERIFIED_ADDITIONAL_STUDY_NOT_AUTHORIZED",
+    "third_do_research_ci_runs": [
+      41035707523,
+      41035715335
+    ],
+    "third_do_research_dependency_counts": {
+      "internal": 928,
+      "external": 77,
+      "edges": 10935,
+      "unresolved": 0,
+      "internal_axioms": 0,
+      "inherited_historical_coordinate_helpers": 10
+    },
+    "third_do_admin_head_ci": "PENDING_EXACT_HEAD_CI"
   }
 }

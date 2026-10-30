@@ -12,17 +12,17 @@ PROGRAM: ST2-RP-001
 QUEUE_CURSOR: 1
 ACTIVE_EXPERIMENT: None
 LATEST_COMPLETED: ST2-EXP-015 / CLOSED_PASS / EXACT_CLOSURE_VERIFIED
-NEXT_EXPERIMENT: ST2-EXP-016 / STUDY_REASSESSMENT_002_RECORDED / PARTIAL / NOT_CLOSED
+NEXT_EXPERIMENT: ST2-EXP-016 / THIRD_DO_RESEARCH_VERIFIED / STUDY_REQUIRED / NOT_CLOSED
 TRANSITION_FROM: ST2-EXP-015
 TRANSITION_CANDIDATE: ST2-EXP-016
 TRANSITION_DECISION_RECORDED: True
-TRANSITION_DECISION: OWNER_REQUIRED / 016_STUDY_REASSESSMENT_002_PARTIAL_NO_ACT
+TRANSITION_DECISION: OWNER_REQUIRED / 016_THIRD_DO_COMPLETE_STUDY_REQUIRED_NO_ACT
 SCIENTIFIC_PREREQUISITES_FOR_016: MET
 015_EXACT_CLOSURE_HEAD: d91b32250f4cdc800f26b728e388902797bf5200
 015_FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
-NEXT_LEGAL_ACTION: OWNER_DECISION_AFTER_STUDY_REASSESSMENT_002_NO_IMPLICIT_ACT_MERGE_OR_017
+NEXT_LEGAL_ACTION: OWNER_STUDY_REASSESSMENT_AFTER_THIRD_DO_NO_IMPLICIT_ACT_MERGE_OR_017
 016_VERIFIED_DO_HEAD: a3e9c02b5cbca8d758a381d45d6149f29659a3aa
-016_DO_GATES: A_C_VERIFIED / D_NINE_CLAIM_TYPED_ROOT_VERIFIED / E_EXTERNAL_ACCEPTED_TYPES_AND_AXIOMS_MEASURED / STUDY_002_PARTIAL_H4_H6_OPEN
+016_DO_GATES: A_C_VERIFIED / D_NINE_CLAIM_TYPED_ROOT_VERIFIED / E_NEW_SELECTED_COMPARISON_AND_RESEARCH_CLAIM_PROVENANCE_VERIFIED / NEXT_STUDY_REQUIRED
 016_FROZEN_PLAN_COMMIT: 212f4f87fe02af13ef8fd2ed487e0bec18841d88
 016_FROZEN_REFERENCE_MAIN: e03ea85528aa98cb86562a1d00e57ca5c06323fa
 ```
@@ -80,6 +80,22 @@ Junction provenance; **H6 remains PARTIAL** for lifecycle, while frozen
 controls and the 29/29 pre-Study head are verified. The Study-record head
 requires its own CI; no final `CLOSED_PASS` is inferred. `OWNER_REQUIRED`;
 **NO ACT / NO PR #33 MERGE / NO CA-20 PROMOTION / NO 017 / NO G8**.
+
+
+Owner-approved **third bounded Do** on 2026-10-30 now verifies a new research
+`CBOMA` selected quadratic presentation and comparison, using 016 inverse
+witnesses rather than the historical selected C inverse proof. Nine research
+Claim owners/producers are registered and kernel/dependency checked at scientific
+head `a4a17e01df02be241bb36dee2769aa89ce5a5341`; 928 internal declarations, 77 leaves, 10,935 edges,
+0 unresolved and 0 new internal axioms. Exactly ten generated historical
+coordinate helper constants are classified as fixed provenance from accepted
+`CQuadraticComparison001.lean`, **not** silently claimed independent.
+Two dedicated verifier jobs pass: runs 41035707523 and 41035715335.
+Evidence: `LAB/PDSA/experiments/ST2-EXP-016_THIRD_DO_CHECKPOINT_005.md`
+and machine `ST2-EXP-016_THIRD_DO_EVIDENCE_005.json`.
+The Study 002 PARTIAL disposition is unchanged; this new Do does not independently
+reissue accepted `C-J-001` or its CA-17/18/19 V5 acceptance provenance.
+**Owner authorization required for any new Study. NO ACT / NO MERGE / NO 017 / NO G8.**
 
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
