@@ -23,8 +23,8 @@
   "active_experiment_origin_record": null,
   "active_work_head_before_ci_state_commit": null,
   "last_verified_head": "d91b32250f4cdc800f26b728e388902797bf5200",
-  "waiting_on": "OWNER_LIFECYCLE_DISPOSITION_AFTER_016_LIMITED_PARTIAL_ACT",
-  "owner_required_reason": "016_LIMITED_ACT_RECORDED_PARTIAL_NO_CLOSED_PASS_NEW_ACCEPTED_CA17_18_19_OR_017_PREREQUISITE",
+  "waiting_on": "OWNER_NEW_EXPLICIT_INSTRUCTION_IF_016_PARTIAL_ARCHIVE_REOPEN_OR_017_PREREQ_RESEARCH",
+  "owner_required_reason": "016_ARCHIVED_PARTIAL_NON_SUCCESS_NOT_CLOSED_017_PREREQ_AND_ACCEPTED_CA17_18_19_OPEN",
   "routine_merge_authorized": true,
   "current_stage_two_frontier": {
     "active_experiment": null,
@@ -33,7 +33,7 @@
     "latest_completed_status": "CLOSED_PASS / EXACT_CLOSURE_VERIFIED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-003",
     "next_experiment": "ST2-EXP-016",
-    "next_experiment_status": "LIMITED_ACT_PARTIAL_RECORDED_NOT_CLOSED_OWNER_REQUIRED",
+    "next_experiment_status": "ARCHIVED_PARTIAL_NON_SUCCESS_NOT_CLOSED_NO_017_TRANSITION_OWNER_REQUIRED",
     "activation_authorized_by_this_state": false
   },
   "program_transition": {
@@ -47,7 +47,7 @@
     "last_transition_decision": "OWNER_REQUIRED",
     "transition_record": "LAB/PDSA/experiments/ST2-EXP-015_TO_ST2-EXP-016_BOUNDARY_ASSESSMENT_001.json"
   },
-  "next_legal_action": "OWNER_REVIEW_PARTIAL_ACT_016_DECIDE_LIFECYCLE_DISPOSITION_NO_IMPLICIT_MERGE_017",
+  "next_legal_action": "STOP_ARCHIVED_016_RESEARCH_UNTIL_SEPARATE_EXPLICIT_OWNER_INSTRUCTION",
   "safety": {
     "fail_closed": true,
     "ambiguous_authority_means": "OWNER_REQUIRED",
@@ -103,7 +103,7 @@
     "experiment_id": "ST2-EXP-016",
     "program_id": "ST2-RP-001",
     "mode": "OWNER_DIRECTED_INTERACTIVE_PDSA",
-    "status": "LIMITED_ACT_PARTIAL_RECORDED_NOT_CLOSED_OWNER_REQUIRED",
+    "status": "ARCHIVED_PARTIAL_NON_SUCCESS_SCIENTIFIC_NOT_CLOSED_OWNER_REQUIRED",
     "do_authorized": true,
     "owner_authorization_type": "EXPLICIT_USER_CURRENT_SESSION_2026_10_29",
     "owner_authorization_record": "LAB/PDSA/experiments/ST2-EXP-016_DO_KERNEL_CHECKPOINT_001.md",
@@ -116,7 +116,7 @@
     "gate_d_semantic_claim_audit": "NINE_CLAIM_TYPED_RESEARCH_CERTIFICATE_VERIFIED_CA04_CA19_FINAL_STUDY_PENDING",
     "gate_e_dependency_logical_cost": "ABSTRACT_AND_CONCRETE_RBOMA_AXIOMS_AND_ORDER_ANCESTRY_MEASURED",
     "gate_f_final_head_ci": "SUPPLEMENTAL_DO_INPUT_HEAD_29_OF_29_PASS_STUDY_RECORD_HEAD_RECHECK_REQUIRED",
-    "study_act": "STUDY_003_PARTIAL_LIMITED_ACT_DECISION_RECORDED_EXPERIMENT_NOT_CLOSED",
+    "study_act": "STUDY_003_PARTIAL_LIMITED_ACT_RECORDED_OWNER_PARTIAL_ARCHIVE_NONCLOSING",
     "g8_armed": false,
     "autonomous_merges_allowed": false,
     "transition_to_017_allowed": false,
@@ -195,6 +195,20 @@
     "act_017_scientific_prerequisite_ready": false,
     "act_acceptance_promotion": false,
     "act_source_study_003_head": "3845faa120e8a393d9732c964742d7d7a2769cb2",
-    "act_final_head_ci": "PENDING_EXACT_ACT_RECORD_HEAD_CI"
+    "act_final_head_ci": "31_OF_31_SUCCESS_ON_4b8f1cfeed7935ab47433aab7e9878c0e9c0a772",
+    "partial_archive_authorized": true,
+    "partial_archive_disposition": "ARCHIVED_PARTIAL_NON_SUCCESS",
+    "partial_archive_scientific_status": "PARTIAL_NOT_PASS_NOT_REFUTED",
+    "partial_archive_experiment_closed": false,
+    "partial_archive_closed_pass": false,
+    "partial_archive_closed_partial": false,
+    "partial_archive_research_execution_paused": true,
+    "partial_archive_owner_authority": "CURRENT_SESSION_EXPLICIT_OWNER_APPROVAL_WITH_GOVERNANCE_CHECK",
+    "partial_archive_input_head": "4b8f1cfeed7935ab47433aab7e9878c0e9c0a772",
+    "partial_archive_human_record": "LAB/PDSA/experiments/ST2-EXP-016_PARTIAL_ARCHIVAL_DECISION_001.md",
+    "partial_archive_machine_record": "LAB/PDSA/experiments/ST2-EXP-016_PARTIAL_ARCHIVAL_DECISION_001.json",
+    "partial_archive_record_head_ci": "PENDING_EXACT_ARCHIVE_RECORD_HEAD_CI",
+    "partial_archive_017_prerequisites_established": false,
+    "partial_archive_owner_reopen_required": true
   }
 }
