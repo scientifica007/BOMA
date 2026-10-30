@@ -6,6 +6,7 @@ on:
       - 'LAB/payloads/lean/CStage/ST2Exp016ConcreteRBOMA.lean'
       - 'LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016_CONCRETE_RBOMA_INPUTS.txt'
       - '.github/workflows/boma-st2-exp-016-concrete-rboma.yml'
+      - 'LAB/00_ARCHITECTURE/tools/st2_exp_016_concrete_axioms.py'
   push:
     branches:
       - 'feature/stage-two-st2-exp-016-*'
@@ -58,6 +59,8 @@ jobs:
           assert d['status']=='PROTOTYPE_PASS' and not d['unresolved'] and not d['internal_axioms']
           print('CONCRETE RBOMA WITNESS — NOT ABSTRACT ORDER INDEPENDENCE')
           PY
+          python3 LAB/00_ARCHITECTURE/tools/st2_exp_016_concrete_axioms.py \
+            --output-dir /tmp/boma-st2-exp-016-concrete
           test -z "$(git status --porcelain=v1)"
       - name: Save concrete verification artifacts
         if: always()
