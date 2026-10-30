@@ -26,7 +26,7 @@ def main():
     d=json.loads(pathlib.Path(args.dependency).read_text())
     p=json.loads((ROOT/CLAIMS).read_text())
     if d["status"]!="PROTOTYPE_PASS" or d["unresolved"] or d["internal_axioms"] or d["counts"]["unmapped_internal_ranges"]!=0 or d["targets"]!=ROOTS:
-        raise RuntimeError("Exact root dependency closure not verified: "+repr({"status":d["status"],"unresolved":d["unresolved"],"axioms":d["internal_axioms"],"unmapped":d["counts"]["unmapped_internal_ranges"],"unmapped_names":d["unmapped_internal_ranges"],"actual_targets":d["targets"],"expected_targets":ROOTS}))
+        raise RuntimeError("Exact root dependency closure not verified: "+repr({"status":d["status"],"unresolved":d["unresolved"],"axioms":d["internal_axioms"],"unmapped":d["counts"]["unmapped_internal_ranges"],"unmapped_names":d["unmapped_internal_ranges"],"actual_targets":d["targets"],"expected_targets":ROOTS,"historical_reachable":[x["name"] for x in d["internal"] if "selectedPresentation" in x["name"] or x["name"].endswith("c_inverse_exists")][:20],"generated_incoming":[e for e in d["edges"] if e["dependency"].endswith("selectedPresentation._proof_1")][:10]}))
     manifest=[x.strip() for x in (ROOT/MANIFEST).read_text().splitlines() if x.strip()]
     if manifest[-1]!=SOURCE or len(manifest)!=len(set(manifest)):
         raise RuntimeError("Invalid independent source manifest")
