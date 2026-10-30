@@ -1,0 +1,120 @@
+{
+  "schema": "BOMA-ST2-EXP-016-STUDY-ASSESSMENT-001",
+  "recorded_date": "2026-10-30",
+  "program_id": "ST2-RP-001",
+  "experiment_id": "ST2-EXP-016",
+  "authorized_phase": "STUDY_ONLY",
+  "stage": "STUDY_RECORDED",
+  "result": "PARTIAL_EVIDENCE_NOT_CLOSED",
+  "act_started": false,
+  "merge_authorized": false,
+  "transition_to_017_authorized": false,
+  "g8_armed": false,
+  "frozen_plan_commit": "212f4f87fe02af13ef8fd2ed487e0bec18841d88",
+  "do_verified_head": "c327135c86c28c34ea2a2fd9376a76c911ae8ce7",
+  "do_verified_tree": "12dd9f88ce652d9284f7be26fd4fc22b5023241a",
+  "do_ci": {
+    "total": 27,
+    "success": 27,
+    "failure": 0,
+    "pending": 0
+  },
+  "changed_factor": "PRODUCTION_ORDERTOTAL_TO_ONE_EXACT_FROZEN_NON_ORDER_ALGEBRAIC_NONDEGENERACY_CONDITION",
+  "hypotheses": {
+    "H1": {
+      "result": "CONFIRMED",
+      "scope": "seven surviving claims under fixed 004 fifteen-field interface"
+    },
+    "H2": {
+      "result": "CONFIRMED",
+      "scope": "single norm anisotropy bridge and scalar witness"
+    },
+    "H3": {
+      "result": "CONFIRMED",
+      "scope": "research commutative field strength and existential inverse witnesses"
+    },
+    "H4": {
+      "result": "PARTIAL",
+      "reason": "Accepted exact CA04 CA11 CA17 CA18 CA19 carrier/presentation/governance crosswalk not kernel-proven; research witness is not a full accepted Junction"
+    },
+    "H5": {
+      "result": "CONFIRMED_BOUNDED",
+      "scope": "abstract 016 roots avoid orderTotal projection; concrete RBOMA retains rLE_total_classical and inherited classical axioms"
+    },
+    "H6": {
+      "result": "PARTIAL",
+      "reason": "Do provenance and historical/freeze invariants verified; Study commit CI and owner Act/lifecycle closure not completed"
+    }
+  },
+  "claim_crosswalk": [
+    {
+      "id": "C-CL-CARRIER-001",
+      "result": "RESEARCH_MEANING_PRESENT_FORMAL_ACCEPTED_ADAPTER_PENDING"
+    },
+    {
+      "id": "C-CL-REMBED-001",
+      "result": "RESEARCH_MEANING_PRESENT"
+    },
+    {
+      "id": "C-CL-FIELD-001",
+      "result": "CORE_CA04_RESEARCH_FIELD_VERIFIED_SELECTED_CERTIFICATE_TYPE_BRIDGE_PENDING"
+    },
+    {
+      "id": "C-CL-I-001",
+      "result": "RESEARCH_MEANING_PRESENT"
+    },
+    {
+      "id": "C-CL-GEN-001",
+      "result": "RESEARCH_MEANING_PRESENT"
+    },
+    {
+      "id": "C-CL-COORDUNIQ-001",
+      "result": "RESEARCH_MEANING_PRESENT"
+    },
+    {
+      "id": "C-CL-NONREAL-001",
+      "result": "RESEARCH_MEANING_PRESENT"
+    },
+    {
+      "id": "C-CL-COMPARE-001",
+      "result": "RESEARCH_011_PRESENT_ACCEPTED_FIELD_PRESENTATION_ADAPTER_PENDING"
+    },
+    {
+      "id": "C-CL-INTEGRATION-001",
+      "result": "RESEARCH_AGGREGATION_PRESENT_CA17_CA18_CA19_JUNCTION_PROVENANCE_UNPROVEN"
+    }
+  ],
+  "accepted_norm_nonnegative": {
+    "is_explicit_CA04_claim": false,
+    "present_in_selected_CPairFieldCertificate": true,
+    "absent_in_research_FieldCertificate016": true,
+    "classification": "IMPLEMENTATION_AUXILIARY_WITH_FORMAL_TYPE_EQUIVALENCE_GAP",
+    "new_assumption_added": false
+  },
+  "logic": {
+    "abstract_orderTotal_projection": false,
+    "concrete_rLE_total_classical": true,
+    "inherited_axioms": [
+      "propext",
+      "Quot.sound",
+      "Classical.choice"
+    ],
+    "internal_axioms": 0,
+    "unresolved": 0,
+    "concrete_dependency_counts": {
+      "internal": 692,
+      "external": 76,
+      "edges": 8454
+    }
+  },
+  "technical_failure_runs": [
+    40970574189,
+    40971069474,
+    41015369686,
+    41015362741
+  ],
+  "conclusion": "PASS_NOT_ESTABLISHED_H4_PARTIAL_NO_MATHEMATICAL_COUNTEREXAMPLE",
+  "owner_gate": "OWNER_DECISION_NEEDED_FOR_FUTURE_TARGETED_DO_OR_PARTIAL_ACT_NOT_AUTHORIZED_IN_THIS_STUDY",
+  "no_accepted_source_edit": true,
+  "closed_pass": false
+}

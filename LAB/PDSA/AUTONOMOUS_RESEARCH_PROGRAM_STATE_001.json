@@ -33,7 +33,7 @@
     "latest_completed_status": "CLOSED_PASS / EXACT_CLOSURE_VERIFIED",
     "latest_learning_integration": "BOMA-ST2-LEARNING-INTEGRATION-003",
     "next_experiment": "ST2-EXP-016",
-    "next_experiment_status": "OWNER_DIRECTED_DO_IN_PROGRESS / PLAN_FROZEN / NOT_CLOSED",
+    "next_experiment_status": "OWNER_DIRECTED_STUDY_RECORDED_PARTIAL / NOT_CLOSED / ACT_NOT_STARTED",
     "activation_authorized_by_this_state": false
   },
   "program_transition": {
@@ -103,7 +103,7 @@
     "experiment_id": "ST2-EXP-016",
     "program_id": "ST2-RP-001",
     "mode": "OWNER_DIRECTED_INTERACTIVE_PDSA",
-    "status": "DO_ACTIVE_ABSTRACT_AND_CONCRETE_NORM_CONDITION_KERNEL_VERIFIED_NOT_CLOSED",
+    "status": "STUDY_RECORDED_PARTIAL_NOT_CLOSED_OWNER_REVIEW_REQUIRED",
     "do_authorized": true,
     "owner_authorization_type": "EXPLICIT_USER_CURRENT_SESSION_2026_10_29",
     "owner_authorization_record": "LAB/PDSA/experiments/ST2-EXP-016_DO_KERNEL_CHECKPOINT_001.md",
@@ -116,7 +116,7 @@
     "gate_d_semantic_claim_audit": "NINE_CLAIM_TYPED_RESEARCH_CERTIFICATE_VERIFIED_CA04_CA19_FINAL_STUDY_PENDING",
     "gate_e_dependency_logical_cost": "ABSTRACT_AND_CONCRETE_RBOMA_AXIOMS_AND_ORDER_ANCESTRY_MEASURED",
     "gate_f_final_head_ci": "DO_SCIENTIFIC_HEAD_26_OF_26_PASS_LATEST_ADMIN_HEAD_RECHECK_REQUIRED",
-    "study_act": "NOT_STARTED",
+    "study_act": "STUDY_RECORDED_ACT_NOT_STARTED",
     "g8_armed": false,
     "autonomous_merges_allowed": false,
     "transition_to_017_allowed": false,
@@ -125,6 +125,13 @@
     "last_verified_check_count": 26,
     "last_verified_check_success": 26,
     "last_verified_check_source": "GITHUB_COMMIT_EXACT_HEAD",
-    "concrete_model_result": "RBOMA_NORM_ANISOTROPY_VERIFIED_WITH_INHERITED_CLASSICAL_ORDER"
+    "concrete_model_result": "RBOMA_NORM_ANISOTROPY_VERIFIED_WITH_INHERITED_CLASSICAL_ORDER",
+    "study_status": "STUDY_COMPLETE_AS_ASSESSMENT_H4_PARTIAL_H6_PARTIAL",
+    "study_evidence_record": "LAB/PDSA/experiments/ST2-EXP-016_STUDY_ASSESSMENT_001.md",
+    "study_machine_evidence": "LAB/PDSA/experiments/ST2-EXP-016_STUDY_ASSESSMENT_001.json",
+    "study_reference_head": "c327135c86c28c34ea2a2fd9376a76c911ae8ce7",
+    "study_owner_authorized": true,
+    "act_authorized": false,
+    "merge_authorized": false
   }
 }
