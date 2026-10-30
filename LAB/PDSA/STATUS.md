@@ -21,8 +21,8 @@ SCIENTIFIC_PREREQUISITES_FOR_016: MET
 015_EXACT_CLOSURE_HEAD: d91b32250f4cdc800f26b728e388902797bf5200
 015_FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
 NEXT_LEGAL_ACTION: OWNER_DIRECTED_ST2_EXP_016_DO_ONLY_NO_AUTONOMOUS_ACTION_NO_017
-016_VERIFIED_DO_HEAD: c6991c1314ca7301f0d07204ea22968dbac892bc
-016_DO_GATES: A_C_VERIFIED / D_NINE_CLAIM_TYPED_ROOT_VERIFIED / E_ABSTRACT_AXIOMS_MEASURED / CA19_AND_CONCRETE_OPEN
+016_VERIFIED_DO_HEAD: 3a63e7f84d9c9b6fa1f1820ea050a2aa88dd7c95
+016_DO_GATES: A_C_VERIFIED / D_NINE_CLAIM_TYPED_ROOT_VERIFIED / E_ABSTRACT_AND_CONCRETE_AXIOMS_AND_ORDER_COST_MEASURED / STUDY_NOT_STARTED
 016_FROZEN_PLAN_COMMIT: 212f4f87fe02af13ef8fd2ed487e0bec18841d88
 016_FROZEN_REFERENCE_MAIN: e03ea85528aa98cb86562a1d00e57ca5c06323fa
 ```
@@ -38,11 +38,14 @@ now in progress on a separate research branch with exact-head A–D kernel
 candidate evidence. The historical G8 active-experiment field remains
 null to preserve the disabled-runtime audit; the authoritative live
 human-directed Do overlay is `owner_directed_do_016` in the mutable
-program state. Typed nine-Claim research meaning and abstract inherited-axiom evidence are
-verified at checkpoint head `c6991c1314ca7301f0d07204ea22968dbac892bc` (25/25 CI PASS).
-The exact CA-04/CA-19 accepted-semantic crosswalk, concrete RBOMA logical-cost
-classification and final lifecycle verification are still OPEN. G8 remains
-disabled/unarmed. The accepted selections and
+program state. Typed nine-Claim research root plus separate abstract and concrete RBOMA
+norm-anisotropy proofs have verified Lean closure. The concrete proof retains
+`rLE_total_classical`; both abstract and concrete roots inherit `propext`,
+`Quot.sound`, `Classical.choice`. Do scientific head
+`3a63e7f84d9c9b6fa1f1820ea050a2aa88dd7c95` passed 26/26 CI checks.
+The final CA-04/CA-19 accepted-semantic equivalence judgment and
+Study/Act/lifecycle closure remain OPEN. The current checkpoint-indexing
+commit is separately CI-verified. G8 remains disabled/unarmed. The accepted selections and
 exports are unchanged.
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
