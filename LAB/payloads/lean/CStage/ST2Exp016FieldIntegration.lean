@@ -425,4 +425,75 @@ def nineClaimCandidate016 (C : RNormAnisotropyCertificate016) :
   comparison := anyQuadraticComparison016
   functionalComparison := explicitFunctionalComparison016
 
+
+/-- Gate D semantic inventory: expose EACH original accepted Claim obligation
+    as an explicit research-only typed field. This certificate is intentionally
+    independent of selected CStageIntegration001 and does not inherit its
+    nonnegative-norm auxiliary. Kernel checking alone does not decide whether
+    the full accepted CA-19 integration audit is semantically satisfied. -/
+structure NineClaimMeaningCertificate016 (C : RNormAnisotropyCertificate016) where
+  -- C-CL-CARRIER-001: fixed Route-P pair identity.
+  carrierExt : ∀ {z w : Pair004},
+    z.re = w.re → z.im = w.im → z = w
+  -- C-CL-REMBED-001: faithful scalar embedding and operation preservation.
+  embeddingInjective : ∀ {a b : RBOMA}, ofR004 a = ofR004 b → a = b
+  embeddingZero : ofR004 rZero = zero004
+  embeddingOne : ofR004 rOne = one004
+  embeddingNeg : ∀ a : RBOMA, ofR004 (rNeg a) = neg004 (ofR004 a)
+  embeddingAdd : ∀ a b : RBOMA,
+    ofR004 (rAdd a b) = add004 (ofR004 a) (ofR004 b)
+  embeddingMul : ∀ a b : RBOMA,
+    ofR004 (rMulCandidate a b) = mul004 (ofR004 a) (ofR004 b)
+  -- C-CL-FIELD-001: algebraic field laws and witness-only inversion,
+  -- including non-collapse of the zero/one elements.
+  scalarNontrivial : rZero ≠ rOne
+  pairNontrivial : zero004 ≠ one004
+  field : FieldCertificate016 C
+  -- C-CL-I-001.
+  generatorSquared : mul004 imag004 imag004 = neg004 one004
+  -- C-CL-GEN-001.
+  realGeneration : ∀ z : Pair004,
+    ∃ a b : RBOMA, z = add004 (ofR004 a) (mul004 (ofR004 b) imag004)
+  -- C-CL-COORDUNIQ-001.
+  coordinateUnique : ∀ {a b c d : RBOMA},
+    add004 (ofR004 a) (mul004 (ofR004 b) imag004) =
+      add004 (ofR004 c) (mul004 (ofR004 d) imag004) → a = c ∧ b = d
+  -- C-CL-NONREAL-001.
+  imaginaryNotReal : ¬ ∃ a : RBOMA, imag004 = ofR004 a
+  -- C-CL-COMPARE-001: relation and conditional functional comparison.
+  comparison : ∀
+    (B : BOMA.C.StageTwo.ComparisonInterface011.QuadraticPresentation scalarOps004),
+    BOMA.C.StageTwo.ComparisonInterface011.QuadraticComparisonCertificate
+      comparisonPresentation004 B
+  functionalComparison : ∀
+    (B : BOMA.C.StageTwo.ComparisonInterface011.QuadraticPresentation scalarOps004),
+    BOMA.C.StageTwo.ComparisonInterface011.CoordinateExtractor B →
+    BOMA.C.StageTwo.ComparisonInterface011.ConstructiveQuadraticIsomorphism
+      comparisonPresentation004 B
+
+/-- The nine exact Claim families are made auditable in a single local
+    certificate with no extra algebraic assumption beyond NormAnisotropy016.
+    This is a research semantic witness, not CA-20 acceptance. -/
+def nineClaimMeaningCertificate016
+    (C : RNormAnisotropyCertificate016) : NineClaimMeaningCertificate016 C where
+  carrierExt := @pair_ext004
+  embeddingInjective := @ofR_injective004
+  embeddingZero := ofR_zero004
+  embeddingOne := ofR_one004
+  embeddingNeg := ofR_neg004 C.scalar
+  embeddingAdd := ofR_add004 C.scalar
+  embeddingMul := ofR_mul004 C.scalar
+  scalarNontrivial := C.scalar.nontrivial
+  pairNontrivial := by
+    intro h
+    have hr : rZero = rOne := congrArg Pair004.re h
+    exact C.scalar.nontrivial hr
+  field := fieldCertificate016 C
+  generatorSquared := imag_squared004 C.scalar
+  realGeneration := generation004 C.scalar
+  coordinateUnique := @coordinate_unique004 C.scalar
+  imaginaryNotReal := imag_not_real004 C.scalar
+  comparison := anyQuadraticComparison016
+  functionalComparison := explicitFunctionalComparison016
+
 end BOMA.C.StageTwo.NormAnisotropy016

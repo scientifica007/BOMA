@@ -50,6 +50,7 @@ jobs:
             --manifest LAB/20_FORMALIZATION/C_STAGE/ST2_EXP_016_FIELD_INPUTS.txt \
             --target BOMA.C.StageTwo.NormAnisotropy016.fieldCertificate016 \
             --target BOMA.C.StageTwo.NormAnisotropy016.nineClaimCandidate016 \
+            --target BOMA.C.StageTwo.NormAnisotropy016.nineClaimMeaningCertificate016 \
             --json-out /tmp/boma-st2-exp-016-gate-d/dependency.json \
             | tee /tmp/boma-st2-exp-016-gate-d/console.log
           python3 - <<'PY'
