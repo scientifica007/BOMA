@@ -1,0 +1,130 @@
+{
+  "schema": "BOMA-ST2-EXP-016-INDEPENDENT-THIRD-STUDY-REASSESSMENT-003",
+  "record_date": "2026-10-30",
+  "program": "ST2-RP-001",
+  "experiment": "ST2-EXP-016",
+  "phase": "STUDY_ONLY",
+  "authority": "EXPLICIT_OWNER_CURRENT_SESSION_STUDY_OF_BOUNDED_THIRD_DO_ONLY",
+  "input_pr_head": "3d048addd1166366feff8589eca2db9de018f9dc",
+  "input_main_sha": "895384b5617763622be4cc2b53fe3bc0686eac62",
+  "pr_number": 33,
+  "pr_draft": true,
+  "pr_merged": false,
+  "frozen_plan_commit": "212f4f87fe02af13ef8fd2ed487e0bec18841d88",
+  "source_third_do_scientific_head": "a4a17e01df02be241bb36dee2769aa89ce5a5341",
+  "source_third_do_human": "LAB/PDSA/experiments/ST2-EXP-016_THIRD_DO_CHECKPOINT_005.md",
+  "source_third_do_machine": "LAB/PDSA/experiments/ST2-EXP-016_THIRD_DO_EVIDENCE_005.json",
+  "historical_studies_preserved": [
+    "LAB/PDSA/experiments/ST2-EXP-016_STUDY_ASSESSMENT_001.md",
+    "LAB/PDSA/experiments/ST2-EXP-016_STUDY_REASSESSMENT_002.md"
+  ],
+  "input_exact_head_ci": {
+    "sha": "3d048addd1166366feff8589eca2db9de018f9dc",
+    "total": 31,
+    "success": 31,
+    "failed": 0,
+    "pending": 0,
+    "source": "GITHUB_COMMIT_CHECK_RUNS_API"
+  },
+  "post_study_record_exact_head_ci": "REQUIRES_SEPARATE_VERIFICATION",
+  "overall": "PARTIAL_NOT_CLOSED_NO_MATHEMATICAL_COUNTEREXAMPLE",
+  "hypotheses": {
+    "H1": "CONFIRMED_SEVEN_FIXED_SURVIVORS",
+    "H2": "CONFIRMED_ABSTRACT_ONE_FACTOR_ALGEBRAIC_NORM_BRIDGE",
+    "H3": "CONFIRMED_WITNESS_ONLY_COMPLEX_FIELD_STRENGTH",
+    "H4": "PARTIAL_RESEARCH_SELECTED_NINE_CLAIMS_AND_CA11_CONFIRMED_ACCEPTED_CA17_18_19_INDEPENDENT_GATE_OPEN",
+    "H5": "CONFIRMED_BOUNDED_ABSTRACT_NO_ORDER_TOTAL_EXTERNAL_ORDER_COST_RETAINED",
+    "H6": "PARTIAL_COMPLETE_LIFECYCLE_INPUT_HEAD_FROZEN_CI_PROVENANCE_CONFIRMED"
+  },
+  "accepted_contracts": {
+    "CA04": "RESEARCH_ACCEPTED_CARRIER_WITNESS_FIELD_VERIFIED_WITH_EXTERNAL_NORMNONNEGATIVE",
+    "CA11": "RESEARCH_ORIGINAL_SIGNATURE_COMPARISON_VERIFIED_WITH_TEN_HISTORICAL_COORDINATE_HELPERS",
+    "CA17": "RESEARCH_NINE_CLAIM_OWNERSHIP_MAPPED_NOT_FULL_PROMOTED_ACCEPTANCE_PROVENANCE",
+    "CA18": "RESEARCH_EXACT_HEAD_LEAN_AND_CI_VERIFIED_NOT_REISSUED_PER_CLAIM_ACCEPTED_V5",
+    "CA19": "RESEARCH_NINE_CLAIM_SELECTED_CARRIER_PACK_VERIFIED_ORIGINAL_ACCEPTED_JUNCTION_NOT_REISSUED",
+    "CA20": "NO_ACCEPTANCE_PROMOTION_ACCEPTED_SELECTED_EXPORT_UNCHANGED"
+  },
+  "claim_meanings": [
+    {
+      "id": "C-CL-CARRIER-001",
+      "disposition": "RESEARCH_SELECTED_CARRIER_VERIFIED_FIXED_ACCEPTED_CONTROL"
+    },
+    {
+      "id": "C-CL-REMBED-001",
+      "disposition": "RESEARCH_SELECTED_EMBEDDING_VERIFIED_FIXED_ACCEPTED_CONTROL"
+    },
+    {
+      "id": "C-CL-FIELD-001",
+      "disposition": "RESEARCH_016_FIELD_WITNESS_VERIFIED_NORMNONNEGATIVE_EXTERNAL_ORDER"
+    },
+    {
+      "id": "C-CL-I-001",
+      "disposition": "RESEARCH_SELECTED_GENERATOR_VERIFIED_FIXED_ACCEPTED_CONTROL"
+    },
+    {
+      "id": "C-CL-GEN-001",
+      "disposition": "RESEARCH_SELECTED_GENERATION_VERIFIED_FIXED_ACCEPTED_CONTROL"
+    },
+    {
+      "id": "C-CL-COORDUNIQ-001",
+      "disposition": "RESEARCH_SELECTED_COORDINATE_UNIQUENESS_VERIFIED_FIXED_ACCEPTED_CONTROL"
+    },
+    {
+      "id": "C-CL-NONREAL-001",
+      "disposition": "RESEARCH_SELECTED_NONCOLLAPSE_VERIFIED_FIXED_ACCEPTED_CONTROL"
+    },
+    {
+      "id": "C-CL-COMPARE-001",
+      "disposition": "RESEARCH_016_ACCEPTED_SIGNATURE_COMPARISON_VERIFIED_TEN_INHERITED_COORDINATE_HELPERS"
+    },
+    {
+      "id": "C-CL-INTEGRATION-001",
+      "disposition": "RESEARCH_NINE_CLAIM_PACKET_VERIFIED_ACCEPTED_JUNCTION_V5_NOT_REPLACED"
+    }
+  ],
+  "third_do_four_root_closure": {
+    "internal": 928,
+    "external_boundary": 77,
+    "edges": 10935,
+    "unresolved": 0,
+    "internal_axioms": 0,
+    "generated_inferred": 85,
+    "unmapped_generated_exactly_classified": 10
+  },
+  "inherited_coordinate_helpers_source": "LAB/payloads/lean/CStage/CQuadraticComparison001.lean",
+  "inherited_axioms": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "old_selected_C_inverse_reachable_in_new_four_roots": false,
+  "old_full_selected_presentation_reachable_in_new_four_roots": false,
+  "historical_selected_coordinate_helpers_reachable": true,
+  "accepted_CStageIntegration_comparison_signature_still_historical": true,
+  "external_norm_nonnegative_from_accepted_R_order": true,
+  "concrete_RBOMA_totality_ancestry": true,
+  "separate_accepted_CA17_18_19_Junction_V5_discharge": false,
+  "technical_failure_class": "TECHNICAL_BLOCK_FIXED_SOURCE_ATTRIBUTION",
+  "technical_failure_record": "LAB/PDSA/experiments/ST2-EXP-016_FAILURE_005_GENERATED_COORDINATE_PROVENANCE.md",
+  "frozen_blobs": {
+    "human": "821ff8e23afc06cba2c047bc9372736bbbb79f20",
+    "machine": "8979e12856064352b48aba30d156fd8de6f1ee90",
+    "origin": "830eafd1c041217529cb1ca12e296547469eb51f"
+  },
+  "input_git_compare": {
+    "ahead_by": 39,
+    "behind_by": 0,
+    "changed_files": 42,
+    "accepted_math_or_plan_modified": false
+  },
+  "human_record": "LAB/PDSA/experiments/ST2-EXP-016_STUDY_REASSESSMENT_003.md",
+  "machine_record": "LAB/PDSA/experiments/ST2-EXP-016_STUDY_REASSESSMENT_003.json",
+  "act_authorized": false,
+  "act_started": false,
+  "closed_pass": false,
+  "pr33_merge_authorized": false,
+  "acceptance_promotion_authorized": false,
+  "transition_to_017_authorized": false,
+  "g8_armed": false,
+  "owner_required_next": "SEPARATE_OWNER_DECISION_ON_PARTIAL_ACT_OR_NEW_BOUNDARY_RESEARCH"
+}

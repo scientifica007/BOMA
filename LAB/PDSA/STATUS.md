@@ -12,17 +12,17 @@ PROGRAM: ST2-RP-001
 QUEUE_CURSOR: 1
 ACTIVE_EXPERIMENT: None
 LATEST_COMPLETED: ST2-EXP-015 / CLOSED_PASS / EXACT_CLOSURE_VERIFIED
-NEXT_EXPERIMENT: ST2-EXP-016 / THIRD_DO_RESEARCH_VERIFIED / STUDY_REQUIRED / NOT_CLOSED
+NEXT_EXPERIMENT: ST2-EXP-016 / STUDY_003_RECORDED / PARTIAL / NOT_CLOSED
 TRANSITION_FROM: ST2-EXP-015
 TRANSITION_CANDIDATE: ST2-EXP-016
 TRANSITION_DECISION_RECORDED: True
-TRANSITION_DECISION: OWNER_REQUIRED / 016_THIRD_DO_COMPLETE_STUDY_REQUIRED_NO_ACT
+TRANSITION_DECISION: OWNER_REQUIRED / 016_STUDY_003_PARTIAL_NO_ACT
 SCIENTIFIC_PREREQUISITES_FOR_016: MET
 015_EXACT_CLOSURE_HEAD: d91b32250f4cdc800f26b728e388902797bf5200
 015_FROZEN_PLAN_SHA: 1bd27f622753558fb622436d2e27560462ea1771
-NEXT_LEGAL_ACTION: OWNER_STUDY_REASSESSMENT_AFTER_THIRD_DO_NO_IMPLICIT_ACT_MERGE_OR_017
-016_VERIFIED_DO_HEAD: a3e9c02b5cbca8d758a381d45d6149f29659a3aa
-016_DO_GATES: A_C_VERIFIED / D_NINE_CLAIM_TYPED_ROOT_VERIFIED / E_NEW_SELECTED_COMPARISON_AND_RESEARCH_CLAIM_PROVENANCE_VERIFIED / NEXT_STUDY_REQUIRED
+NEXT_LEGAL_ACTION: OWNER_REVIEW_STUDY_003_PARTIAL_ACT_OR_NEW_RESEARCH_NO_IMPLICIT_ACT_MERGE_OR_017
+016_VERIFIED_DO_HEAD: 3d048addd1166366feff8589eca2db9de018f9dc
+016_DO_GATES: A_C_VERIFIED / D_INDEPENDENT_SELECTED_RESEARCH_COMPARISON_VERIFIED / E_NINE_RESEARCH_CLAIM_OWNER_MAP_AUDITED / STUDY_003_PARTIAL_H4_H6
 016_FROZEN_PLAN_COMMIT: 212f4f87fe02af13ef8fd2ed487e0bec18841d88
 016_FROZEN_REFERENCE_MAIN: e03ea85528aa98cb86562a1d00e57ca5c06323fa
 ```
@@ -96,6 +96,27 @@ and machine `ST2-EXP-016_THIRD_DO_EVIDENCE_005.json`.
 The Study 002 PARTIAL disposition is unchanged; this new Do does not independently
 reissue accepted `C-J-001` or its CA-17/18/19 V5 acceptance provenance.
 **Owner authorization required for any new Study. NO ACT / NO MERGE / NO 017 / NO G8.**
+
+
+Owner-authorized **Study reassessment 003** (2026-10-30) now records an
+independent examination of third-Do evidence against frozen H1–H6 and
+accepted CA-04/11/17/18/19 contracts. Input PR head
+`3d048addd1166366feff8589eca2db9de018f9dc` completed **31/31 SUCCESS**, 0 failed/pending. New research
+selected `CBOMA` presentation and original-signature CA-11 comparison use
+016 inverse witnesses; four-root dependency closure contains 928 internal
+declarations, 77 external leaves, 10,935 edges and no unresolved/new
+internal axioms. Ten generated historical coordinate helpers remain explicitly
+attributed; accepted `normNonnegative` is externally order-derived.
+The nine Claim *mathematical research meanings* are represented, but a new
+accepted-level CA-17/18/19 owner/V5/Junction close has **not** been shown,
+and the original accepted integration comparison signature still mentions its
+historical selected presentation. Therefore **H4 = PARTIAL**, **H6 = PARTIAL**;
+H1/H2/H3 and bounded H5 remain CONFIRMED, all-H PASS unmet.
+Independent record: `LAB/PDSA/experiments/ST2-EXP-016_STUDY_REASSESSMENT_003.md`,
+machine twin: `ST2-EXP-016_STUDY_REASSESSMENT_003.json`.
+The Study documentation commit requires exact-new-head CI verification.
+**OWNER_REQUIRED / NO ACT / NO MERGE PR #33 / NO CA-20 PROMOTION /
+NO 017 / NO G8 / NOT_CLOSED.**
 
 <!-- BOMA_AUTONOMY_RUNTIME_STATE_END -->
 
